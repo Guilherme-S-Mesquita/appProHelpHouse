@@ -13,28 +13,16 @@ const styles = StyleSheet.create({
         height:300,
        
       },
-      buttons:{
-        width:'100%',
-        
-      },
-      itensButtons:{
-        position:'relative',
-        alignItems:'center',
-        lineHeight:80,
-      },
-      input: {
-        position:'relative',
-        
-        height: 45,
-        borderColor: '#004AAD', // Cor da borda em azul
-        borderWidth: 4,
-        borderRadius: 20,
-        marginBottom: 20,
-        borderStyle: 'solid',   // Define o estilo da borda
-        width: '80%',
-        color: '#000', // Cor do texto em azul
-        zIndex:111,
-      },
+     input:{
+      width:280,
+      height:60,
+      marginBottom:40,
+    
+     },
+     button:{ 
+        width:220,
+        color:'#004AAD'
+     },
       inputFocused:{
      position:'absolute',
         fontSize:20,
