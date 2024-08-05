@@ -3,15 +3,16 @@ import { View, Image, Text } from 'react-native';
 import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
-import { useNavigation } from '@react-navigation/native'; // Importar o hook useNavigation
 import styles from '../css/loginCss';
 
-const Login: React.FC = () => {
+
+
+
+const Login: React.FC<{ navigation: any }> = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [cont, setCont] = useState('');
     const [show, setShow] = useState(false);
     const [senha, setSenha] = useState('');
-    const navigation = useNavigation(); // Usar o hook useNavigation
 
     // Defina a função handleLoginPress
  
@@ -61,7 +62,7 @@ const Login: React.FC = () => {
                 <FloatingLabelInput
                     label="Senha"
                     isPassword
-                   
+                    staticLabel
                     togglePassword={show}
                     value={cont}
                     onChangeText={value => setCont(value)}
@@ -99,8 +100,17 @@ const Login: React.FC = () => {
                 color='#004AAD'
                 variant="primary"
                 title="Entrar" 
-               
-            />
+                onPress={() => navigation.navigate('Loading')} 
+    />
+
+
+                <View>
+                    <View>
+                        <Text>Ainda não tem uma conta</Text>
+                        <Text>Profissional HelpHouse?</Text>
+                    </View>
+                </View>
+                    
         </View>
     );
 };

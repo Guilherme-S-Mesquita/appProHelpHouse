@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     
      },
      button:{ 
-        width:220,
+        width:160,
         color:'#004AAD'
      },
       inputFocused:{
