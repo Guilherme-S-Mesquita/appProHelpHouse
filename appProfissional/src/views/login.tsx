@@ -105,12 +105,19 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
 
 
                 <View>
-                    <View>
+                    <View style={[styles.conta ]}>
                         <Text>Ainda não tem uma conta</Text>
-                        <Text>Profissional HelpHouse?</Text>
+                        <Text>Profissional <Text style={styles.helpText} >Help</Text><Text style={styles.houseText}>House</Text>? </Text>
                     </View>
                 </View>
                     
+                <Button
+                style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
+                color='#004AAD'
+                variant="primary"
+                title="Cadastre-se" 
+                onPress={() => navigation.navigate('Loading')} 
+    />
         </View>
     );
 };

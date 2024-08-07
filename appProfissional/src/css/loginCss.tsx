@@ -39,6 +39,21 @@ const styles = StyleSheet.create({
       color:'#FF8F49',
 
       },
+      conta:{
+          marginTop:'10%'
+      },
+      helpText:{
+        color:'#004AAD'
+      },
+      houseText:{
+        color:'#F6A059'
+      },
+      buttonCad:{
+        marginTop:'10%',
+        width:160,
+        color:'#004AAD'
+      },
+      
    
    
 });
