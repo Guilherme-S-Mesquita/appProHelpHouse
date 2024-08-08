@@ -66,7 +66,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                     togglePassword={show}
                     value={cont}
                     onChangeText={value => setCont(value)}
-                    customShowPasswordComponent={<Text>Show</Text>}
+                    customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Hide</Text>}
                     containerStyles={{
                         borderWidth: 2,

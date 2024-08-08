@@ -15,6 +15,9 @@ const styles = StyleSheet.create({
     borderRadius: 250,
     zIndex: -1,
   },
+  scrollContainer: {
+
+},
   title: {
     width: '100%',
     justifyContent: 'flex-end',
@@ -43,6 +46,12 @@ const styles = StyleSheet.create({
   pessoais:{
         color:'#FF914D'
   },
+  input:{
+    width:280,
+    height:60,
+
+  
+   },
 });
 
 export default styles;
