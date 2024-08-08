@@ -67,7 +67,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                     value={cont}
                     onChangeText={value => setCont(value)}
                     customShowPasswordComponent={<Text>Mostrar</Text>}
-                    customHidePasswordComponent={<Text>Hide</Text>}
+                    customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
                         borderWidth: 2,
                         paddingHorizontal: 10,

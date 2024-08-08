@@ -29,20 +29,22 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             value={Nome}
                             onChangeText={value => setNome(value)}
                             containerStyles={{
-                                borderTopWidth: 0,
-                                borderLeftWidth: 0,
-                                borderRightWidth: 0,
                                 borderBottomWidth: 5,
-                                marginTop: 50,
                                 borderColor: '#fff',
+                                marginTop: 20,
                             }}
                             customLabelStyles={{
+                                topFocused: -20,  // Move o label para cima 20px quando focado
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
                                 color: '#FF8F49',
+                            }}
+                            inputStyles={{
+                                color: '#fff',
+                                fontSize: 16,
                             }}
                         />
 
@@ -52,14 +54,12 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             value={Sobrenome}
                             onChangeText={value => setSobrenome(value)}
                             containerStyles={{
-                                borderTopWidth: 0,
-                                borderLeftWidth: 0,
-                                borderRightWidth: 0,
                                 borderBottomWidth: 5,
-                                marginTop: 50,
                                 borderColor: '#fff',
+                                marginTop: 20,
                             }}
                             customLabelStyles={{
+                                topFocused: -20,  // Move o label para cima 20px quando focado
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
                             }}
@@ -67,7 +67,10 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 paddingHorizontal: 5,
                                 color: '#FF8F49',
                             }}
-                            
+                            inputStyles={{
+                                color: '#fff',
+                                fontSize: 16,
+                            }}
                         />
 
                         {/* Data de Nascimento */}
@@ -82,20 +85,23 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             customTextInputProps={{
                                 label: "Nascimento",
                                 containerStyles: {
-                                    borderTopWidth: 0,
-                                    borderLeftWidth: 0,
-                                    borderRightWidth: 0,
                                     borderBottomWidth: 5,
-                                    marginTop: 50,
                                     borderColor: '#fff',
+                                    marginTop: 20,
                                 },
                                 customLabelStyles: {
+                                    topFocused: -20,  // Move o label para cima 20px quando focado
                                     colorFocused: '#fff',
                                     fontSizeFocused: 16,
                                 },
                                 labelStyles: {
                                     paddingHorizontal: 5,
                                     color: '#FF8F49',
+                                },
+                                inputStyles: {
+                                
+                                    fontSize: 18,
+                                    color: '#fff',
                                 },
                             }}
                         />
@@ -112,22 +118,25 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             onChangeText={text => setPhone(text)}
                             customTextInput={FloatingLabelInput}
                             customTextInputProps={{
-                                label: "Phone",
+                                label: "Telefone",
                                 containerStyles: {
-                                    borderTopWidth: 0,
-                                    borderLeftWidth: 0,
-                                    borderRightWidth: 0,
                                     borderBottomWidth: 5,
-                                    marginTop: 50,
                                     borderColor: '#fff',
+                                    marginTop: 20,
                                 },
                                 customLabelStyles: {
+                                    topFocused: -20,  // Move o label para cima 20px quando focado
                                     colorFocused: '#fff',
                                     fontSizeFocused: 16,
                                 },
                                 labelStyles: {
                                     paddingHorizontal: 5,
                                     color: '#FF8F49',
+                                },
+                                inputStyles: {
+                                  
+                                    fontSize: 18,
+                                    color: '#fff',
                                 },
                             }}
                         />
@@ -141,20 +150,23 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             customTextInputProps={{
                                 label: "CPF",
                                 containerStyles: {
-                                    borderTopWidth: 0,
-                                    borderLeftWidth: 0,
-                                    borderRightWidth: 0,
                                     borderBottomWidth: 5,
-                                    marginTop: 50,
                                     borderColor: '#fff',
+                                    marginTop: 20,
                                 },
                                 customLabelStyles: {
+                                    topFocused: -20,  // Move o label para cima 20px quando focado
                                     colorFocused: '#fff',
                                     fontSizeFocused: 16,
                                 },
                                 labelStyles: {
                                     paddingHorizontal: 5,
                                     color: '#FF8F49',
+                                },
+                                inputStyles: {
+                                  
+                                    fontSize: 18,
+                                    color: '#fff',
                                 },
                             }}
                         />

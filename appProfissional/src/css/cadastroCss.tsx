@@ -49,9 +49,11 @@ const styles = StyleSheet.create({
   input:{
     width:280,
     height:60,
-
+    position:'relative',
+    top:60
   
    },
+  
 });
 
 export default styles;
