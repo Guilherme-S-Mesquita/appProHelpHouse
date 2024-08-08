@@ -100,7 +100,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                 color='#004AAD'
                 variant="primary"
                 title="Entrar" 
-                onPress={() => navigation.navigate('Loading')} 
+                onPress={() => navigation.navigate('confirmeid')} 
     />
 
 
@@ -116,7 +116,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                 color='#004AAD'
                 variant="primary"
                 title="Cadastre-se" 
-                onPress={() => navigation.navigate('Loading')} 
+                onPress={() => navigation.navigate('cadastro')} 
     />
         </View>
     );
