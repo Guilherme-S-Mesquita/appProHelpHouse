@@ -38,7 +38,7 @@ import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
             color='#fff'
             variant="primary"
             title="Continuar" 
-            onPress={() => navigation.navigate('Loading')} // Atualize para handleLoginPress
+            onPress={() => navigation.navigate('login')} // Atualize para handleLoginPress
           />
  
 
@@ -47,6 +47,7 @@ import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
  
         <StatusBar style="auto" />
       </View>
+    
     </ImageBackground>
   );
 };
