@@ -3,85 +3,80 @@ import { View, Text } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
+import * as Location from 'expo-location';  
+import MapView, { Marker } from 'react-native-maps';  // Importando o MapView e Marker
+import Map from '../../componentes/Map/Map';  // Importe o componente Map
+
 
 
 import styles from '../css/cad2Css';
 
 const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [Nome, setNome] = useState('');
-    const [Sobrenome, setSobrenome] = useState('');
+    const [Cep, setCep] = useState('');
+    const [Bairro, setBairro] = useState('');
+    const [Rua, setRua] = useState('');
+    const [Numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [telefone, setTelefone] = useState('');
 
-    const formatCPF = (text) => {
+
+
+    const formatCep = (text: string) => {
+        // Remove todos os caracteres que não são números
         let cleaned = text.replace(/\D/g, '');
 
-        if (cleaned.length > 9) {
-            cleaned = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-        } else if (cleaned.length > 6) {
-            cleaned = cleaned.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
-        } else if (cleaned.length > 3) {
-            cleaned = cleaned.replace(/(\d{3})(\d{0,3})/, '$1.$2');
+        // Aplica a formatação para CEP
+        if (cleaned.length > 5) {
+            // Formato completo: XXXXX-XXX
+            cleaned = cleaned.replace(/(\d{5})(\d{3})/, '$1-$2');
+        } else {
+            // Caso ainda não tenha 8 dígitos, apenas retorna os números sem formatação
+            cleaned = cleaned.slice(0, 5);
         }
 
+        // Retorna o CEP formatado ou parcialmente formatado
         return cleaned;
     };
 
-    const handleCPFChange = (text) => {
-        setCpf(formatCPF(text));
+
+    const handleCepChange = (text) => {
+        setCep(formatCep(text));
     };
 
-    const formatPhone = (text) => {
-        let cleaned = text.replace(/\D/g, '');
 
-        if (cleaned.length > 10) {
-            cleaned = cleaned.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        } else if (cleaned.length > 5) {
-            cleaned = cleaned.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-        } else if (cleaned.length > 2) {
-            cleaned = cleaned.replace(/(\d{2})(\d{0,5})/, '($1) $2');
-        } else if (cleaned.length > 0) {
-            cleaned = cleaned.replace(/(\d{0,2})/, '($1');
-        }
 
-        return cleaned;
-    };
 
-    const handlePhoneChange = (text) => {
-        setTelefone(formatPhone(text));
-    };
+
+
 
     return (
         <View style={styles.container}>
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRA-SE</Text>
             </View>
-                <View style={styles.containerCadastro}>
-                    <View style={styles.title}>
-                        <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
-                    </View>
-                    <View style={styles.legenda}>
+            <View style={styles.containerCadastro}>
+                <View style={styles.title}>
+                    <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
+                </View>
+                <View style={styles.legenda}>
                     <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
                     <Text style={styles.legendaTitle}>nessa área?</Text>
-                    <View  style={styles.inputTempoTrabalhado}>
-                    <TextInputMask
+                    <View style={styles.inputTempoTrabalhado}>
+                        <TextInputMask
                             type={'datetime'}
                             options={{
                                 format: 'DD/MM/YYYY',
                             }}
-                           
+
                             value={tempoTrabalhado}
-                            onChangeText={text => setTempoTrabalhado(text)}
                             customTextInput={FloatingLabelInput}
                             customTextInputProps={{
                                 containerStyles: {
                                     marginTop: 20,
                                     marginBottom: 10,
-                                    backgroundColor:'#7098E2',
-                                    borderRadius:40,
-                                    height:'100%',
-                                  
+                                    backgroundColor: '#7098E2',
+                                    borderRadius: 40,
+                                    height: '100%',
+
                                 },
                                 customLabelStyles: {
                                     topFocused: -20,
@@ -97,139 +92,150 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     color: '#fff',
                                 },
                             }}
-                         
-                         />
-                         </View>
+
+                        />
                     </View>
-                    <View style={styles.input}>
-
-                        {/* Nome */}
-                        <FloatingLabelInput
-                            label="Nome"
-                            value={Nome}
-                            onChangeText={value => setNome(value)}
-                            containerStyles={{
-                                borderBottomWidth: 5,
-                                borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
-                                color: '#fff',
-                                fontSize: 16,
-                            }}
-                        />
-
-                        {/* Sobrenome */}
-                        <FloatingLabelInput
-                            label="Sobrenome"
-                            value={Sobrenome}
-                            onChangeText={value => setSobrenome(value)}
-                            containerStyles={{
-                                borderBottomWidth: 5,
-                                borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
-                                color: '#fff',
-                                fontSize: 16,
-                            }}
-                        />
-
-                      
-
-                        {/* CPF */}
-                        <FloatingLabelInput
-                            label="CPF"
-                            value={cpf}
-                            onChangeText={handleCPFChange}
-                            keyboardType="numeric"
-                            maxLength={14}  // Limite para formato XXX.XXX.XXX-XX
-                            containerStyles={{
-                                borderBottomWidth: 5,
-                                borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-
-                            }}
-                            inputStyles={{
-                                color: '#fff',
-                                fontSize: 16,
-                            }}
-                        />
-
-                        {/* Telefone */}
-                        <FloatingLabelInput
-                            label="Telefone"
-                            value={telefone}
-                            onChangeText={handlePhoneChange}
-                            keyboardType="numeric"
-                            maxLength={15}  // Limite para formato (XX) XXXXX-XXXX
-                            containerStyles={{
-                                borderBottomWidth: 5,
-                                borderColor: '#fff',
-                                marginTop: 20,
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
-                                color: '#fff',
-                                fontSize: 16,
-                            }}
-                        />
-                        <View>
-                            <Button
-                                style={[styles.buttonEnviar, {
-                                    backgroundColor: '#FF914D',
-
-                                }]} // Defina a cor de fundo desejada aqui
-                                color='#FF914D'
-                                variant="primary"
-                                title="Enviar"
-                                onPress={() => navigation.navigate('map')}
-                            />
-                        </View>
-
-                    </View>
-
-
                 </View>
+                <View style={styles.input}>
+
+                    {/* Nome */}
+                    <FloatingLabelInput
+                        label="Cep"
+                        value={Cep}
+                        keyboardType="numeric"
+                        maxLength={9}
+                        onChangeText={handleCepChange}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',
+                            fontSizeFocused: 16,
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            color: '#FF8F49',
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
+                    />
+
+                    <FloatingLabelInput
+                        label="Bairro"
+                        value={Bairro}
+                        onChangeText={value => setBairro(value)}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',
+                            fontSizeFocused: 16,
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            color: '#FF8F49',
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
+                    />
+
+                    <View style={styles.inputRow}>
+                        {/* Rua */}
+                        <FloatingLabelInput
+                            label="Rua"
+                            value={Rua}
+                            onChangeText={value => setRua(value)}
+                            containerStyles={{
+                                borderBottomWidth: 5,
+                                borderColor: '#fff',
+                                marginTop: 20,
+                                marginBottom: 10,
+                             
+
+                            }}
+                            customLabelStyles={{
+                                topFocused: -20,
+                                colorFocused: '#fff',
+                                fontSizeFocused: 16,
+                            }}
+                            labelStyles={{
+                                paddingHorizontal: 5,
+                                color: '#FF8F49',
+                            }}
+                            inputStyles={{
+                                color: '#fff',
+                                fontSize: 16,
+                            }}
+                        />
+                    <View style={styles.inputNum}>
+
+                        {/* Numero */}
+                        <FloatingLabelInput
+                            label="Numero"
+                            value={Numero}
+                         
+                            onChangeText={value => setNumero(value)}
+                            keyboardType="numeric"
+                            containerStyles={{
+                                borderBottomWidth: 5,
+                                borderColor: '#fff',
+                                marginTop: 20,
+                                marginBottom: 10,
+                                marginLeft: 10,  // Espaçamento entre os inputs
+                                width: 80,       // Largura fixa para o campo de número
+                            }}
+                            customLabelStyles={{
+                                topFocused: -20,
+                                colorFocused: '#fff',
+                                fontSizeFocused: 16,
+                            }}
+                            labelStyles={{
+                                paddingHorizontal: 5,
+                                color: '#FF8F49',
+                            }}
+                            inputStyles={{
+                                color: '#fff',
+                                fontSize: 16,
+                            }}
+                        />
+                    </View>
+                    </View>
+
+                    <Button
+                        style={[styles.buttonEnviar, {
+                            backgroundColor: '#FF914D',
+                        }]} // Defina a cor de fundo desejada aqui
+                        color='#FF914D'
+                        variant="primary"
+                        title="Próximo"
+                        onPress={() => navigation.navigate('map')}
+                    />
+                </View>
+
+
+                <View style={styles.mapContainer}>
+                    <View>
             
+
+                    </View>
+                </View>
+
+
+
+            </View>
+
 
         </View>
     );
