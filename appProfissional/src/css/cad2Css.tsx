@@ -4,32 +4,36 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',     
-  },
-  fundo: {
-    height: '100%',
-    width: '140%',
     backgroundColor: '#004AAD',
-    position: 'absolute', 
-    top: '20%',            
-    left: '-20%',         
-    borderRadius: 250,
-    zIndex: -1,
   },
-  scrollContainer: {
-
-},
   title: {
     width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',    
-    height:'14%'
+    height:'9%'
   },
   titulo: {
     color: '#004AAD',
     fontSize: 30,
+    fontWeight: '900', 
+  },
+  legenda:{
+    justifyContent: 'flex-end',
+    alignItems: 'flex-start',    
+    width: '100%',
+    marginLeft:'20%',
+   
+  },
+  legendaTitle:{
+    color: '#fff',
+    fontSize: 15,
     fontWeight: '900',
- 
     
+  },
+  inputTempoTrabalhado:{
+    display:'flex',
+    width:'30%',
+    height:'5%',
   },
   containerCadastro: {
     width: '100%',
@@ -42,6 +46,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
+
   },
   pessoais:{
         color:'#FF914D'

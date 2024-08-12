@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavigationContainer } from "@react-navigation/native";
 import TabRoutes from './tabs'
 import {View, Text, StyleSheet} from "react-native";
