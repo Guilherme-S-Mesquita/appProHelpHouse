@@ -6,13 +6,14 @@ import * as Location from 'expo-location';
 import CustomMarker from './CustomMarker';  // Importando o CustomMarker
 
 function Map() {
+    //Aqui é para quando você iniciar o Map, como local prédefinido caso não aceite a localiização
     const initialLocation = {
         latitude: 37.78825,
         longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     };
-
+// Criamos variaveis como, minhaLocalização, regiao, mapa e o pin como marcador
     const [myLocation, setMyLocation] = useState(initialLocation);
     const [pin, setPin] = useState(initialLocation);
     const [region, setRegion] = useState(initialLocation);
@@ -24,20 +25,24 @@ function Map() {
 
     const _getLocation = async () => {
         try {
+            // Solicitação de permissao para localização
             const { status } = await Location.requestForegroundPermissionsAsync();
 
+            // Caso não seja aceita
             if (status !== 'granted') {
                 console.warn('Pode usar sua localização ai namoral ');
                 return;
             }
 
             const location = await Location.getCurrentPositionAsync({});
+            // Atualiza o local para myLocation atual
             setMyLocation(location.coords);
             setRegion({
                 ...location.coords,
                 latitudeDelta: 0.0922,
                 longitudeDelta: 0.0421,
             });
+            // Exibindo a localização no console
             console.log('Localização atual =>', location);
         } catch (err) {
             console.warn(err);
@@ -81,9 +86,7 @@ function Map() {
                     />
                 }
             </MapView>
-            <View style={styles.buttonContainer}>
-                <Button title='Get Location' onPress={focusOnLocation} />
-            </View>
+          
         </View>
     );
 }

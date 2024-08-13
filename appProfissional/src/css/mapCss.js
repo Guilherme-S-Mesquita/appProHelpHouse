@@ -9,14 +9,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
   },
   map: {
-        width: Dimensions.get('window').width,
-        height: Dimensions.get ('window').height,
+    width: 300, // largura fixa em pixels
+    height: 150, // altura fixa em pixels
+    position:'relative',
+    top:80,
   },
   buttonContainer:{
     position:'absolute',
-    bottom:20,
+    top:60,
     width:'100%',
     alignItems:'center',
+    position:'relative',
+  
 
   },
   markerImage:{

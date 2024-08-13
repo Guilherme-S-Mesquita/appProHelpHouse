@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import * as Location from 'expo-location';  
 import MapView, { Marker } from 'react-native-maps';  // Importando o MapView e Marker
-import Map from '../../componentes/Map/Map';  // Importe o componente Map
-
+import Map from '../../componentes/Map/map';  // Importe o componente Map
+import Api from '../../componentes/apiCep/api'
 
 
 import styles from '../css/cad2Css';
@@ -19,6 +19,28 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
 
 
+
+    async function buscarCep(){
+        // Se Cep for vazio vai aparecer um alerta
+        if(Cep== ""){
+            Alert.alert('Cep inválido')
+            setCep("")
+        }
+        try{
+            // await serve para esperar a resposta que vai ser passada
+            const response = await Api.get(`/${Cep}/json/`)
+            //Esse get, serve para puxar a info la do servidor da API 
+            
+            
+            //Os set São as infos que você vai pegar da API
+            setBairro(response.data.bairro)
+            setRua(response.data.logradouro);
+            
+            // Caso não carregue retornara um erro
+        }catch(error){
+            console.log('ERROGAY'+ error)
+        }
+    }
 
     const formatCep = (text: string) => {
         // Remove todos os caracteres que não são números
@@ -209,7 +231,11 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 color: '#fff',
                                 fontSize: 16,
                             }}
+
+                            
                         />
+
+                        
                     </View>
                     </View>
 
@@ -220,14 +246,14 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         color='#FF914D'
                         variant="primary"
                         title="Próximo"
-                        onPress={() => navigation.navigate('map')}
+                        onPress={buscarCep}
                     />
                 </View>
 
 
                 <View style={styles.mapContainer}>
                     <View>
-            
+                    <Map /> 
 
                     </View>
                 </View>

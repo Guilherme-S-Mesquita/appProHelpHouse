@@ -83,14 +83,15 @@ const styles = StyleSheet.create({
   },
 mapContainer:{
 flexDirection:'column',
-width:'100%',
+width:'10%',
 alignItems:'center',
-height:'30%'
+justifyContent:'flex-end',
+height:'60%'
 },
 
   buttonEnviar: {
     position: 'relative',
-    top: 40
+    top: 250
   }
 });
 
