@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, ScrollView } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
-import * as Location from 'expo-location';  
+import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';  // Importando o MapView e Marker
 import Map from '../../componentes/Map/map';  // Importe o componente Map
 import Api from '../../componentes/apiCep/api'
@@ -20,25 +20,25 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
 
 
-    async function buscarCep(){
+    async function buscarCep() {
         // Se Cep for vazio vai aparecer um alerta
-        if(Cep== ""){
+        if (Cep == "") {
             Alert.alert('Cep inválido')
             setCep("")
         }
-        try{
+        try {
             // await serve para esperar a resposta que vai ser passada
             const response = await Api.get(`/${Cep}/json/`)
             //Esse get, serve para puxar a info la do servidor da API 
-            
-            
+
+
             //Os set São as infos que você vai pegar da API
             setBairro(response.data.bairro)
             setRua(response.data.logradouro);
-            
+
             // Caso não carregue retornara um erro
-        }catch(error){
-            console.log('ERROGAY'+ error)
+        } catch (error) {
+            console.log('ERROGAY' + error)
         }
     }
 
@@ -72,9 +72,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.title}>
-                <Text style={styles.titulo}>CADASTRA-SE</Text>
-            </View>
+
             <View style={styles.containerCadastro}>
                 <View style={styles.title}>
                     <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
@@ -97,7 +95,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                     marginBottom: 10,
                                     backgroundColor: '#7098E2',
                                     borderRadius: 40,
-                                    height: '100%',
+                                    height: '80%',
 
                                 },
                                 customLabelStyles: {
@@ -124,6 +122,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                     <FloatingLabelInput
                         label="Cep"
                         value={Cep}
+                        
                         keyboardType="numeric"
                         maxLength={9}
                         onChangeText={handleCepChange}
@@ -135,12 +134,13 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         }}
                         customLabelStyles={{
                             topFocused: -20,
-                            colorFocused: '#fff',
+                            colorFocused: '#fff',  // Cor do label quando o input está em foco
                             fontSizeFocused: 16,
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
                         }}
                         labelStyles={{
                             paddingHorizontal: 5,
-                            color: '#FF8F49',
+                            fontWeight: 'bold',
                         }}
                         inputStyles={{
                             color: '#fff',
@@ -161,11 +161,14 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         customLabelStyles={{
                             topFocused: -20,
                             colorFocused: '#fff',
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
                             fontSizeFocused: 16,
                         }}
                         labelStyles={{
                             paddingHorizontal: 5,
                             color: '#FF8F49',
+                            fontWeight: 'bold'
                         }}
                         inputStyles={{
                             color: '#fff',
@@ -184,76 +187,87 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 borderColor: '#fff',
                                 marginTop: 20,
                                 marginBottom: 10,
-                             
+
 
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
+                                colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
                                 color: '#FF8F49',
+                                fontWeight: 'bold'
+
                             }}
                             inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
                             }}
                         />
-                    <View style={styles.inputNum}>
+                        <View style={styles.inputNum}>
 
-                        {/* Numero */}
-                        <FloatingLabelInput
-                            label="Numero"
-                            value={Numero}
-                         
-                            onChangeText={value => setNumero(value)}
-                            keyboardType="numeric"
-                            containerStyles={{
-                                borderBottomWidth: 5,
-                                borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
-                                marginLeft: 10,  // Espaçamento entre os inputs
-                                width: 80,       // Largura fixa para o campo de número
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
-                                color: '#fff',
-                                fontSize: 16,
-                            }}
+                            {/* Numero */}
+                            <FloatingLabelInput
+                                label="Numero"
+                                value={Numero}
 
-                            
-                        />
+                                onChangeText={value => setNumero(value)}
+                                keyboardType="numeric"
+                                containerStyles={{
+                                    borderBottomWidth: 5,
+                                    borderColor: '#fff',
+                                    marginTop: 20,
+                                    marginBottom: 10,
+                                    marginLeft: 10,  // Espaçamento entre os inputs
+                                    width: 80,       // Largura fixa para o campo de número
+                                }}
+                                customLabelStyles={{
+                                    topFocused: -20,
+                                    colorFocused: '#fff',
+                                    fontSizeFocused: 16,
+                                    colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
 
-                        
+                                }}
+                                labelStyles={{
+                                    paddingHorizontal: 5,
+                                    color: '#FF8F49',
+                                    fontWeight: 'bold'
+
+                                }}
+                                inputStyles={{
+                                    color: '#fff',
+                                    fontSize: 16,
+                                }}
+
+
+                            />
+
+
+
+                        </View>
+
                     </View>
-                    </View>
 
+                </View>
+                <View style={styles.containerButton}>
                     <Button
                         style={[styles.buttonEnviar, {
                             backgroundColor: '#FF914D',
+                            width: '40%'
                         }]} // Defina a cor de fundo desejada aqui
                         color='#FF914D'
                         variant="primary"
-                        title="Próximo"
+                        title="Buscar Cep"
                         onPress={buscarCep}
                     />
                 </View>
-
-
                 <View style={styles.mapContainer}>
                     <View>
-                    <Map /> 
+                        <Map />
 
                     </View>
                 </View>

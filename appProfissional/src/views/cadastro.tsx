@@ -3,9 +3,9 @@ import { View, Text } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
-import Map from '../../componentes/Map/Map';  // Importe o componente Map
+import Map from '../../componentes/Map/map';  // Importe o componente Map
 
-import styles from '../css/cad2Css';
+import styles from '../css/cadastroCss';
 const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [Nome, setNome] = useState('');
     const [Sobrenome, setSobrenome] = useState('');
@@ -60,7 +60,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRA-SE</Text>
             </View>
-            
+                <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
                     <View style={styles.title}>
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
@@ -222,7 +222,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                     </View>
 
-
+                    </View>
                 </View>
             </View>
 
