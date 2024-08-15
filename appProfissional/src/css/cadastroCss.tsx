@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
   },
   fundo: {
     height: '100%',
-    width: '140%',
+    width: '160%',
     backgroundColor: '#004AAD',
     position: 'absolute', 
     top: '20%',            
-    left: '-20%',         
-    borderRadius: 250,
+    left: '-29%',         
+    borderRadius: 310,
     zIndex: -1,
   },
   scrollContainer: {
@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
- 
-    
+    top:10
   },
   containerCadastro: {
     width: '100%',
@@ -42,9 +41,12 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
+    marginBottom:2
+
   },
   pessoais:{
-        color:'#FF914D'
+        color:'#FF914D',
+       
   },
   input:{
     width:280,
@@ -78,7 +80,9 @@ const styles = StyleSheet.create({
   },
   buttonEnviar:{
     position:'relative',
-    top:40
+    width:145,
+    left:60,
+    top:110
   }
 });
 

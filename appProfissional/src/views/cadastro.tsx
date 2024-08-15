@@ -73,15 +73,19 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             value={Nome}
                             onChangeText={value => setNome(value)}
                             containerStyles={{
-                                borderBottomWidth: 5,
+                                
+                                borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
+                                marginTop: -10,
+                                marginBottom: 25,
+                                marginHorizontal:-20,
+                                
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
+                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
@@ -99,23 +103,27 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             value={Sobrenome}
                             onChangeText={value => setSobrenome(value)}
                             containerStyles={{
-                                borderBottomWidth: 5,
+                                borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 10,
+                                marginTop: 4,
+                                marginBottom: 20,
+                                marginHorizontal:-20
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
+                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
                                 color: '#FF8F49',
+                               
                             }}
                             inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginBottom:89
                             }}
                         />
 
@@ -131,15 +139,18 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             customTextInputProps={{
                                 label: "Nascimento",
                                 containerStyles: {
-                                    borderBottomWidth: 5,
+                                    borderBottomWidth: 3,
                                     borderColor: '#fff',
                                     marginTop: 20,
-                                    marginBottom: 10,
+                                    marginBottom: 21,
+                                    marginHorizontal:-20
                                 },
                                 customLabelStyles: {
                                     topFocused: -20,
                                     colorFocused: '#fff',
                                     fontSizeFocused: 16,
+                                    colorBlurred: '#fff',  // Cor do label quando o input não está em foco
+
                                 },
                                 labelStyles: {
                                     paddingHorizontal: 5,
@@ -160,15 +171,18 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             keyboardType="numeric"
                             maxLength={14}  // Limite para formato XXX.XXX.XXX-XX
                             containerStyles={{
-                                borderBottomWidth: 5,
+                                borderBottomWidth: 3,
                                 borderColor: '#fff',
                                 marginTop: 20,
-                                marginBottom: 10,
+                                marginBottom: 19,
+                                marginHorizontal:-20
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
+                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
+
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
@@ -189,14 +203,17 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             keyboardType="numeric"
                             maxLength={15}  // Limite para formato (XX) XXXXX-XXXX
                             containerStyles={{
-                                borderBottomWidth: 5,
+                                borderBottomWidth: 3,
                                 borderColor: '#fff',
                                 marginTop: 20,
+                                marginHorizontal:-20
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
+                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
+
                             }}
                             labelStyles={{
                                 paddingHorizontal: 5,
@@ -215,7 +232,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 }]} // Defina a cor de fundo desejada aqui
                                 color='#FF914D'
                                 variant="primary"
-                                title="Enviar"
+                                title="Próximo"
                                 onPress={() => navigation.navigate('cadastro1')}
                             />
                         </View>
