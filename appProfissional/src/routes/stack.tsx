@@ -7,11 +7,13 @@ import LoadingScreen from '../views/loading';
 import loginScreen from '../views/login';
 // import mapScreen from '/github/appProHelpHouse/appProfissional/componentes/Map/map';
 import Cadastro1 from '../views/cadastroScreen2';
+import HomeScreen from '../views/home';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="bemvindo">
+      <Stack.Screen name="home" component={HomeScreen} options={{headerShown: false}}/>
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{headerShown: false}}/>
       <Stack.Screen name="cadastro" component={CadastroScreen} options={{headerShown: false}}/>
       <Stack.Screen name="confirmeid" component={ConfirmedIdScreen} options={{headerShown: false}} />
