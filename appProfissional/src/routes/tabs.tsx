@@ -3,8 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Loading from '../views/loading';
 import BemVindo from '../views/bemVindo';
 import login from '../views/login';
-import ConfirmedId from '../views/confirmeId'
-import cadastro from '../views/cadastro'
+import ConfirmedId from '../views/confirmeId';
 
 
 
@@ -19,7 +18,7 @@ const Tabs = () => {
         options={{headerShown:false}} 
         />
         <Tab.Screen 
-        name="bemVindo" 
+        name="bemvindo" 
         component={BemVindo} 
         options={{headerShown:false}} 
         />
@@ -31,11 +30,6 @@ const Tabs = () => {
          <Tab.Screen 
         name="confirme" 
         component={ConfirmedId} 
-        options={{headerShown:false}} 
-        />
-         <Tab.Screen 
-        name="Cadastro" 
-        component={cadastro} 
         options={{headerShown:false}} 
         />
       </Tab.Navigator>

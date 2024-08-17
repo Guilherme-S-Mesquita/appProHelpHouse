@@ -7,12 +7,12 @@ const styles = StyleSheet.create({
   },
   fundo: {
     height: '100%',
-    width: '140%',
+    width: '160%',
     backgroundColor: '#004AAD',
     position: 'absolute', 
     top: '20%',            
-    left: '-20%',         
-    borderRadius: 250,
+    left: '-29%',         
+    borderRadius: 310,
     zIndex: -1,
   },
   scrollContainer: {
@@ -28,8 +28,7 @@ const styles = StyleSheet.create({
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
- 
-    
+    top:10
   },
   containerCadastro: {
     width: '100%',
@@ -42,18 +41,49 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
+    marginBottom:2
+
   },
   pessoais:{
-        color:'#FF914D'
+        color:'#FF914D',
+       
   },
   input:{
     width:280,
     height:60,
     position:'relative',
-    top:60
-  
+    top:60,
    },
-  
+   inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  textInput: {
+    width: 60,
+    borderBottomWidth: 2,
+    borderColor: '#fff',
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  separator: {
+    marginHorizontal: 8,
+    fontSize: 28,
+    color: '#fff',
+  },
+  phoneSeparator: {
+    fontSize: 30,
+    color: '#fff',
+  },
+  phoneInput: {
+    width: 30,
+  },
+  buttonEnviar:{
+    position:'relative',
+    width:145,
+    left:60,
+    top:110
+  }
 });
 
 export default styles;
