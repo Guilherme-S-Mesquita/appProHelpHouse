@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TextInput } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
@@ -16,7 +16,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
 
 
-    
+
     const formatCPF = (text) => {
         let cleaned = text.replace(/\D/g, '');
 
@@ -60,74 +60,50 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRO</Text>
             </View>
-                <View style={styles.fundo}>
+            <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
-                    
+
                     <View style={styles.title}>
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
                     </View>
                     <View style={styles.input}>
-
+                        <Text style={styles.nome}>Nome</Text>
                         {/* Nome */}
-                        <FloatingLabelInput
-                            label="Nome"
+                        <TextInput
                             value={Nome}
                             onChangeText={value => setNome(value)}
-                            containerStyles={{
-                                
+                            style={{
                                 borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: -15,
-                                marginBottom: 25,
-                                marginHorizontal:-20,
-                                
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginTop: -10,
+                                marginBottom: 27,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite seu nome..."
+                            placeholderTextColor="#fff"
                         />
 
-                        {/* Sobrenome */}
-                        <FloatingLabelInput
-                            label="Sobrenome"
+                        <Text style={styles.sobrenome}>Sobrenome</Text>
+                        {/* Nome */}
+                        <TextInput
                             value={Sobrenome}
-                            onChangeText={value => setSobrenome(value)}
-                            containerStyles={{
+                            onChangeText={value => setNome(value)}
+                            style={{
                                 borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: 4,
-                                marginBottom: 20,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                               
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
-                                marginBottom:89
+                                marginTop: -10,
+                                marginBottom: 25,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite seu Sobrenome..."
+                            placeholderTextColor="#fff"
                         />
 
+                        <Text style={styles.nascimeto}>Data de nascimento</Text>
                         {/* Data de Nascimento */}
                         <TextInputMask
                             type={'datetime'}
@@ -136,99 +112,64 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             }}
                             value={Nascimento}
                             onChangeText={text => setNascimento(text)}
-                            customTextInput={FloatingLabelInput}
-                            customTextInputProps={{
-                                label: "Nascimento",
-                                containerStyles: {
-                                    borderBottomWidth: 3,
-                                    borderColor: '#fff',
-                                    marginTop: 20,
-                                    marginBottom: 21,
-                                    marginHorizontal:-20
-                                },
-                                customLabelStyles: {
-                                    topFocused: -20,
-                                    colorFocused: '#fff',
-                                    fontSizeFocused: 16,
-                                    colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                                },
-                                labelStyles: {
-                                    paddingHorizontal: 5,
-                                    color: '#FF8F49',
-                                },
-                                inputStyles: {
-                                    fontSize: 18,
-                                    color: '#fff',
-                                },
+                            style={{
+                                borderBottomWidth: 3,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 25,
+                                marginHorizontal: -20,
                             }}
-                        />
+                            placeholder="Digite sua data de nascimento..."
+                            placeholderTextColor="#fff"
 
+                        />
+                        <Text style={styles.cpf}>CPF</Text>
                         {/* CPF */}
-                        <FloatingLabelInput
-                            label="CPF"
+                        <TextInput
                             value={cpf}
                             onChangeText={handleCPFChange}
                             keyboardType="numeric"
-                            maxLength={14}  // Limite para formato XXX.XXX.XXX-XX
-                            containerStyles={{
+                            maxLength={14}
+                            style={{
                                 borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 19,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 19,
+                                marginHorizontal: -20,
                             }}
+                          placeholder="Digite o seu CPF..."
+                            placeholderTextColor="#fff"
                         />
 
+                        <Text style={styles.telefone}>Telefone</Text>
                         {/* Telefone */}
-                        <FloatingLabelInput
-                            label="Telefone"
+                        <TextInput
                             value={telefone}
                             onChangeText={handlePhoneChange}
                             keyboardType="numeric"
-                            maxLength={15}  // Limite para formato (XX) XXXXX-XXXX
-                            containerStyles={{
+                            maxLength={15}
+                            style={{
                                 borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginTop: 10,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite o seu telefone..."
+                            placeholderTextColor="#fff"
                         />
+
                         <View>
                             <Button
                                 style={[styles.buttonEnviar, {
-                                    backgroundColor: '#FF914D',
+                                    backgroundColor: '#FF914D',  
+                                    
+                            
 
                                 }]} // Defina a cor de fundo desejada aqui
                                 color='#FF914D'
@@ -240,11 +181,11 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                     </View>
 
-                    </View>
                 </View>
             </View>
+        </View>
 
-        
+
     );
 };
 

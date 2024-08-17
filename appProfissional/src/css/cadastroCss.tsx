@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     width:280,
     height:60,
     position:'relative',
-    top:60,
+    top:29,
    },
    inputContainer: {
     flexDirection: 'row',
@@ -85,8 +85,43 @@ const styles = StyleSheet.create({
     position:'relative',
     width:145,
     left:60,
-    top:110
-  }
+    top:38
+  },
+  nome:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:30,
+    fontSize:18,
+    right:22
+  },
+  sobrenome:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:30,
+    fontSize:18,
+    right:22
+  },
+  nascimeto:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:15,
+    fontSize:18,
+    right:22
+  },
+  cpf:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:15,
+    fontSize:18,
+    right:22
+  },
+  telefone:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:15,
+    fontSize:18,
+    right:22
+  },
 });
 
 export default styles;
