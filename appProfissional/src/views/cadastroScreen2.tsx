@@ -264,6 +264,19 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         title="Buscar Cep"
                         onPress={buscarCep}
                     />
+
+                        <Button
+                                style={[styles.buttonEnviar, {
+                                    backgroundColor: '#FF914D',
+                                    marginBottom:10
+
+                                }]} // Defina a cor de fundo desejada aqui
+                                color='#FF914D'
+                                variant="primary"
+                                title="Continuar"
+                                onPress={() => navigation.navigate('areaAtuacao')}
+                            />
+
                 </View>
                 <View style={styles.mapContainer}>
                     <View>

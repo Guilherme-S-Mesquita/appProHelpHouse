@@ -3,17 +3,20 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',     
+    alignItems: 'center',    
+    overflow:'hidden' 
   },
   fundo: {
+
     height: '100%',
-    width: '160%',
+    width: '140%',
     backgroundColor: '#004AAD',
     position: 'absolute', 
     top: '20%',            
-    left: '-29%',         
+    left: '-19%',         
     borderRadius: 310,
     zIndex: -1,
+    
   },
   scrollContainer: {
 
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
-    top:10
+    top:20
   },
   containerCadastro: {
     width: '100%',

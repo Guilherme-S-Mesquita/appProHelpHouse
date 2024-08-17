@@ -58,10 +58,11 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <View style={styles.title}>
-                <Text style={styles.titulo}>CADASTRA-SE</Text>
+                <Text style={styles.titulo}>CADASTRO</Text>
             </View>
                 <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
+                    
                     <View style={styles.title}>
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
                     </View>
@@ -76,7 +77,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 
                                 borderBottomWidth: 3,
                                 borderColor: '#fff',
-                                marginTop: -10,
+                                marginTop: -15,
                                 marginBottom: 25,
                                 marginHorizontal:-20,
                                 
