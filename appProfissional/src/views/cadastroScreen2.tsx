@@ -272,6 +272,20 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                     </View>
                 </View>
 
+                <View style={styles.containerButton}>
+                    <Button
+                        style={[styles.buttonEnviar1, {
+                            backgroundColor: '#FF914D',
+                            width: '70%'
+                        }]} // Defina a cor de fundo desejada aqui
+                        color='#FF914D'
+                        variant="primary"
+                        title="Cadastrar-se"
+                        onPress={() => navigation.navigate('home')}
+
+                    />
+                </View>
+
 
 
             </View>

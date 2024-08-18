@@ -1,20 +1,38 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
+import config from "../../config/config.json"
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
 import Map from '../../componentes/Map/map';  // Importe o componente Map
 
 import styles from '../css/cadastroCss';
 const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [Nome, setNome] = useState('');
-    const [Sobrenome, setSobrenome] = useState('');
-    const [Nascimento, setNascimento] = useState('');
+    const [nome, setNome] = useState('');
+    const [sobrenome, setSobrenome] = useState('');
+    const [nascimento, setNascimento] = useState('');
     const [cpf, setCpf] = useState('');
     const [telefone, setTelefone] = useState('');
+    const [email, setEmail] = useState('');
+    const [senha, setSenha] = useState('');
 
 
-
+async function cadastroContratado() {
+    // Primeira requisição 
+    let reqs = await fetch (config.urlRootNode+'create', {
+        method:'POST',
+        headers:{
+            'Accept': 'aplication/json',
+            'Content-Type': 'aplication/json'
+        },
+        body: JSON.stringify({
+            nomeContratado: nome,
+            sobrenome
+        })
+    })
+    
+}
+ // 
 
     
     const formatCPF = (text) => {
@@ -64,13 +82,14 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                 <View style={styles.containerCadastro}>
                     <View style={styles.title}>
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
+                        
                     </View>
                     <View style={styles.input}>
 
                         {/* Nome */}
                         <FloatingLabelInput
                             label="Nome"
-                            value={Nome}
+                            value={nome}
                             onChangeText={value => setNome(value)}
                             containerStyles={{
                                 
@@ -100,7 +119,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         {/* Sobrenome */}
                         <FloatingLabelInput
                             label="Sobrenome"
-                            value={Sobrenome}
+                            value={sobrenome}
                             onChangeText={value => setSobrenome(value)}
                             containerStyles={{
                                 borderBottomWidth: 3,
@@ -133,7 +152,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             options={{
                                 format: 'DD/MM/YYYY',
                             }}
-                            value={Nascimento}
+                            value={nascimento}
                             onChangeText={text => setNascimento(text)}
                             customTextInput={FloatingLabelInput}
                             customTextInputProps={{
@@ -235,6 +254,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 title="Próximo"
                                 onPress={() => navigation.navigate('cadastro1')}
                             />
+                            {/* <Text>{Nome} - {Sobrenome} - {cpf}- {telefone}</Text> */}
                         </View>
 
                     </View>

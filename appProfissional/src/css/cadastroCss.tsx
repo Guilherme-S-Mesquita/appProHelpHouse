@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
-    marginBottom:2
+    marginBottom:25
 
   },
   pessoais:{
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     width:280,
     height:60,
     position:'relative',
-    top:60,
+    
    },
    inputContainer: {
     flexDirection: 'row',
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     position:'relative',
     width:145,
     left:60,
-    top:110
+    top:30
   }
 });
 

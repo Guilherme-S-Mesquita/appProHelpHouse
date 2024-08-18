@@ -9,7 +9,7 @@ function Home({ navigation }) {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <ImageBackground
-        source={require('../assets/icon.jpg')} // Atualize o caminho conforme necessário
+      
         style={styles.backgroundImage}
       >
         <View style={styles.overlay}>
