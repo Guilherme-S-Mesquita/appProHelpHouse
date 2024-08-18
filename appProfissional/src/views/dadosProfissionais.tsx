@@ -14,11 +14,7 @@ import styles from '../css/dadosProfissionaisCss'; // Importa o arquivo de estil
       style={styles.background}  // Define o estilo para a imagem de fundo
       resizeMode="cover"  // Ajusta a imagem para cobrir a tela
     >
-      <View style={styles.container}>
-
-      
-      </View>
-    
+  
     </ImageBackground>
   );
 };

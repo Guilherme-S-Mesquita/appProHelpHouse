@@ -8,7 +8,7 @@ import Imagens from '../../img/img';
 
 
 import styles from '../css/areaAtuacaoCss';
-const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
+const UltimosPassos: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     return (
         <View style={styles.containerPrincipal}>
@@ -49,7 +49,7 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                         </View>
 
                         <View style={styles.jadineiro}>
-                            <Text style={styles.name4}>Jadineiro</Text>
+                            <Text style={styles.name4}>AAAAAAAAAAA</Text>
                             <Image source={Imagens.jardineiro} style={styles.jardineiroImg} />
                         </View>
 
@@ -105,7 +105,7 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
     );
 };
 
-export default AreaAtuacao;
+export default UltimosPassos;
 
 
 

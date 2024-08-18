@@ -22,21 +22,21 @@ const styles = StyleSheet.create({
     alignItems: 'flex-start',
     width: '100%',
     marginLeft: '20%',
-    marginTop:15
+    marginTop: 15
 
   },
   legendaTitle: {
     color: '#fff',
     fontSize: 15,
     fontWeight: '900',
-   
+
 
   },
   inputTempoTrabalhado: {
     display: 'flex',
     width: '30%',
-    flexDirection:'row',
-  
+    flexDirection: 'row',
+
   },
   containerCadastro: {
     width: '100%',
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     width: 280,
     height: 60,
     position: 'relative',
-    top:10,
+    top: 10,
     flexDirection: 'column',  // Esta linha pode ser removida se a direção for definida localmente
   },
 
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
   inputNum: {
     width: 80,
     marginLeft: 30,
-    flexDirection:'column'
+    flexDirection: 'column'
   },
 
   inputContainer: {
@@ -85,22 +85,28 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
   },
-  containerButton:{
-position:'relative',
-bottom:'5%'
-  
+  containerButton: {
+    position: 'relative',
+    bottom: '5%'
+
   },
-mapContainer:{
-flexDirection:'column',
-width:'10%',
-alignItems:'center',
-justifyContent:'flex-end',
-height:'60%'
-},
+  mapContainer: {
+    flexDirection: 'column',
+    width: '10%',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    height: '45%'
+  },
 
   buttonEnviar: {
     position: 'relative',
-    top: 250
+    top: 190
+  },
+
+  buttonEnviar1:{
+    position: 'relative',
+    top: 70,
+  
   }
 });
 

@@ -179,8 +179,8 @@ const styles = StyleSheet.create({
     },
     encanadorImg:{
         width:60,
-        height: 90,
-        top:-12,
+        height: 92,
+        top:-10,
         left:'12%'
     },
     name5:{
