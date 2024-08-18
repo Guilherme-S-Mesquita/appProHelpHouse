@@ -3,17 +3,20 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',     
+    alignItems: 'center',    
+    overflow:'hidden' 
   },
   fundo: {
+
     height: '100%',
-    width: '160%',
+    width: '140%',
     backgroundColor: '#004AAD',
     position: 'absolute', 
     top: '20%',            
-    left: '-29%',         
+    left: '-19%',         
     borderRadius: 310,
     zIndex: -1,
+    
   },
   scrollContainer: {
 
@@ -28,7 +31,7 @@ const styles = StyleSheet.create({
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
-    top:10
+    top:20
   },
   containerCadastro: {
     width: '100%',
@@ -82,8 +85,40 @@ const styles = StyleSheet.create({
     position:'relative',
     width:145,
     left:60,
-    top:30
-  }
+    top:38
+  },
+  nome:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:15,
+    fontSize:18,
+    right:22
+  },
+  sobrenome:{
+    fontWeight:'700',
+    color: 'white',
+    marginBottom:15,
+    fontSize:18,
+    right:22
+  },
+  nascimeto:{
+    fontWeight:'700',
+    color: 'white',
+    fontSize:18,
+    right:22
+  },
+  cpf:{
+    fontWeight:'700',
+    color: 'white',
+    fontSize:18,
+    right:22
+  },
+  telefone:{
+    fontWeight:'700',
+    color: 'white',
+    fontSize:18,
+    right:22
+  },
 });
 
 export default styles;

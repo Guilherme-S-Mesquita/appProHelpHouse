@@ -7,28 +7,80 @@ import * as Location from 'expo-location';
 import MapView, { Marker } from 'react-native-maps';  // Importando o MapView e Marker
 import Map from '../../componentes/Map/map';  // Importe o componente Map
 import Api from '../../componentes/apiCep/api'
+import cad from '../views/cadastro'
+import config from '../../config/config.json'
 
 
 import styles from '../css/cad2Css';
+import { error } from 'console';
 
-const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [Cep, setCep] = useState('');
-    const [Bairro, setBairro] = useState('');
-    const [Rua, setRua] = useState('');
-    const [Numero, setNumero] = useState('');
+
+// CHAMA FIO ESSA AQUI DEU CERTO 
+//  RO
+const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) => {
+    const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
+    const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [rua, setRua] = useState('');
+    const [numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
 
-
+    async function cadastroContratado() {
+        try {
+            // 1- Foi criada uma variável reqs - abreviação de requisição
+            let reqs = await fetch(config.urlRootNode + 'create', {
+                // 2- Passa o método POST
+                method: 'POST',
+                // 3- Aqui estamos falando que vamos trabalhar com formato JSON
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                // Quais infos eu vou passar para o banco
+                body: JSON.stringify({
+                    nomeContratado: nome,
+                    sobrenome: sobrenome,
+                    email: email,
+                    nascimento: nascimento,
+                    cpf: cpf,
+                    telefone: telefone,
+                    senha: senha,
+                    cep: cep,
+                    bairro: bairro,
+                    rua: rua,
+                    numero: numero,
+                })
+            });
+    
+            // Aqui estamos falando o seguinte parceiro
+            const data = await reqs.json();
+    
+            // Se o cadastro seja bem sucedido
+            if (reqs.ok) {
+                // Ele te leva para a outra tela 
+                navigation.navigate('login');
+            } else {
+                Alert.alert('Erro', data.message || 'Falha no cadastro');
+            }
+        } catch (error) {
+            // Captura e lida com erros que podem ocorrer
+            console.error('Erro ao cadastrar:', error);
+            Alert.alert('Erro', 'Ocorreu um erro inesperado. Por favor, tente novamente.');
+        }
+    }
+    
+ 
+ 
 
     async function buscarCep() {
         // Se Cep for vazio vai aparecer um alerta
-        if (Cep == "") {
+        if (cep == "") {
             Alert.alert('Cep inválido')
             setCep("")
         }
         try {
             // await serve para esperar a resposta que vai ser passada
-            const response = await Api.get(`/${Cep}/json/`)
+            const response = await Api.get(`/${cep}/json/`)
             //Esse get, serve para puxar a info la do servidor da API 
 
 
@@ -121,7 +173,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                     {/* Nome */}
                     <FloatingLabelInput
                         label="Cep"
-                        value={Cep}
+                        value={cep}
                         
                         keyboardType="numeric"
                         maxLength={9}
@@ -150,7 +202,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                     <FloatingLabelInput
                         label="Bairro"
-                        value={Bairro}
+                        value={bairro}
                         onChangeText={value => setBairro(value)}
                         containerStyles={{
                             borderBottomWidth: 5,
@@ -180,7 +232,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         {/* Rua */}
                         <FloatingLabelInput
                             label="Rua"
-                            value={Rua}
+                            value={rua}
                             onChangeText={value => setRua(value)}
                             containerStyles={{
                                 borderBottomWidth: 5,
@@ -213,7 +265,7 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             {/* Numero */}
                             <FloatingLabelInput
                                 label="Numero"
-                                value={Numero}
+                                value={numero}
 
                                 onChangeText={value => setNumero(value)}
                                 keyboardType="numeric"
@@ -264,6 +316,8 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         title="Buscar Cep"
                         onPress={buscarCep}
                     />
+
+                        
                 </View>
                 <View style={styles.mapContainer}>
                     <View>
@@ -281,9 +335,10 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         color='#FF914D'
                         variant="primary"
                         title="Cadastrar-se"
-                        onPress={() => navigation.navigate('home')}
+                        onPress={() => navigation.navigate('areaAtuacao')}
 
                     />
+                  
                 </View>
 
 
@@ -295,4 +350,4 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     );
 };
 
-export default Cadastro;
+export default Cadastro1;

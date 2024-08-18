@@ -23,7 +23,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
 
             <View style={styles.input}>
                 <FloatingLabelInput
-                    label="Email"
+                    label="Usuário ou Email"
                     value={email}
                     staticLabel
                     hintTextColor={'#aaa'}
@@ -44,7 +44,7 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                         fontSizeFocused: 12,
                     }}
                     labelStyles={{
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
                     }}
@@ -80,11 +80,11 @@ const Login: React.FC<{ navigation: any }> = ({navigation}) => {
                         borderBottomWidth: 5,
                     }}
                     customLabelStyles={{
-                        colorFocused: '#FF8F49',
+                        colorFocused: '#FF8F49', 
                         fontSizeFocused: 12,
                     }}
                     labelStyles={{
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
                     }}

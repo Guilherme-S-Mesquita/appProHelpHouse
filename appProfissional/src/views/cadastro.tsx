@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
-import config from "../../config/config.json"
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
-import Map from '../../componentes/Map/map';  // Importe o componente Map
 
 import styles from '../css/cadastroCss';
+
 const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [nome, setNome] = useState('');
     const [sobrenome, setSobrenome] = useState('');
@@ -15,138 +14,120 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [telefone, setTelefone] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
+    const [show, setShow] = useState('');
 
+    // useEffect(() => {
+    //     const timeout = setTimeout(() => {
+    //         setShow(!show);
+    //     }, 5000);
+    //     return () => clearTimeout(timeout);
+    // }, [show]);
 
-async function cadastroContratado() {
-    // Primeira requisição 
-    let reqs = await fetch (config.urlRootNode+'create', {
-        method:'POST',
-        headers:{
-            'Accept': 'aplication/json',
-            'Content-Type': 'aplication/json'
-        },
-        body: JSON.stringify({
-            nomeContratado: nome,
-            sobrenome
-        })
-    })
-    
-}
- // 
-
-    
-    const formatCPF = (text) => {
-        let cleaned = text.replace(/\D/g, '');
-
-        if (cleaned.length > 9) {
-            cleaned = cleaned.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-        } else if (cleaned.length > 6) {
-            cleaned = cleaned.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
-        } else if (cleaned.length > 3) {
-            cleaned = cleaned.replace(/(\d{3})(\d{0,3})/, '$1.$2');
-        }
-
-        return cleaned;
+    // Ele leva para outra pagina e guarda as infos que foi inseridas aqui
+    const dadosCad = () => {
+        navigation.navigate('cadastro1', {
+            nome:nome,
+            sobrenome:sobrenome,
+            nascimento:nascimento,
+            cpf:cpf,
+            telefone:telefone,
+            email:email,
+            senha:senha,
+        });
     };
 
-    const handleCPFChange = (text) => {
-        setCpf(formatCPF(text));
-    };
+ 
 
-    const formatPhone = (text) => {
-        let cleaned = text.replace(/\D/g, '');
 
-        if (cleaned.length > 10) {
-            cleaned = cleaned.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-        } else if (cleaned.length > 5) {
-            cleaned = cleaned.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
-        } else if (cleaned.length > 2) {
-            cleaned = cleaned.replace(/(\d{2})(\d{0,5})/, '($1) $2');
-        } else if (cleaned.length > 0) {
-            cleaned = cleaned.replace(/(\d{0,2})/, '($1');
-        }
-
-        return cleaned;
-    };
-
-    const handlePhoneChange = (text) => {
-        setTelefone(formatPhone(text));
-    };
 
     return (
         <View style={styles.container}>
             <View style={styles.title}>
-                <Text style={styles.titulo}>CADASTRA-SE</Text>
+                <Text style={styles.titulo}>CADASTRO</Text>
             </View>
-                <View style={styles.fundo}>
+            <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
+
                     <View style={styles.title}>
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
-                        
                     </View>
-                    <View style={styles.input}>
 
-                        {/* Nome */}
+                    <View style={styles.input}>
                         <FloatingLabelInput
-                            label="Nome"
-                            value={nome}
-                            onChangeText={value => setNome(value)}
+                            label=""
+                            value={email}
+                            hintTextColor={'#aaa'}
+                            hint="exemple@exemple.com"
                             containerStyles={{
-                                
-                                borderBottomWidth: 3,
+                                borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 marginTop: -10,
-                                marginBottom: 25,
-                                marginHorizontal:-20,
-                                
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
+                                marginBottom: 27,
+                                marginHorizontal: -20,
                             }}
                             inputStyles={{
                                 color: '#fff',
-                                fontSize: 16,
+                                paddingHorizontal: 10,
+                                fontWeight: 'bold'
+                            }}
+                            onChangeText={value => setEmail(value)}
+                        />
+
+                        <FloatingLabelInput
+                            label=""
+                            isPassword
+                            hint="Digite sua senha"
+                            hintTextColor={'#aaa'}
+                            value={senha}
+                            onChangeText={value => setSenha(value)}
+                            customShowPasswordComponent={<Text>Show</Text>}
+                            customHidePasswordComponent={<Text>Hide</Text>}
+                            containerStyles={{
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                marginTop: -10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
+                            }}
+                            inputStyles={{
+                                color: '#fff',
+                                paddingHorizontal: 10,
+                                fontWeight: 'bold'
                             }}
                         />
 
-                        {/* Sobrenome */}
-                        <FloatingLabelInput
-                            label="Sobrenome"
+                        <TextInput
+                            value={nome}
+                            onChangeText={value => setNome(value)}
+                            style={{
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: -10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
+                            }}
+                            placeholder="Digite seu nome..."
+                            placeholderTextColor="#fff"
+                        />
+
+                        <TextInput
                             value={sobrenome}
                             onChangeText={value => setSobrenome(value)}
-                            containerStyles={{
-                                borderBottomWidth: 3,
+                            style={{
+                                borderBottomWidth: 2,
                                 borderColor: '#fff',
-                                marginTop: 4,
-                                marginBottom: 20,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                               
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
-                                marginBottom:89
+                                marginTop: -10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite seu sobrenome..."
+                            placeholderTextColor="#fff"
                         />
 
-                        {/* Data de Nascimento */}
                         <TextInputMask
                             type={'datetime'}
                             options={{
@@ -154,116 +135,73 @@ async function cadastroContratado() {
                             }}
                             value={nascimento}
                             onChangeText={text => setNascimento(text)}
-                            customTextInput={FloatingLabelInput}
-                            customTextInputProps={{
-                                label: "Nascimento",
-                                containerStyles: {
-                                    borderBottomWidth: 3,
-                                    borderColor: '#fff',
-                                    marginTop: 20,
-                                    marginBottom: 21,
-                                    marginHorizontal:-20
-                                },
-                                customLabelStyles: {
-                                    topFocused: -20,
-                                    colorFocused: '#fff',
-                                    fontSizeFocused: 16,
-                                    colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                                },
-                                labelStyles: {
-                                    paddingHorizontal: 5,
-                                    color: '#FF8F49',
-                                },
-                                inputStyles: {
-                                    fontSize: 18,
-                                    color: '#fff',
-                                },
+                            style={{
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite a data em que nasceu..."
+                            placeholderTextColor="#fff"
                         />
 
-                        {/* CPF */}
-                        <FloatingLabelInput
-                            label="CPF"
+                        <TextInput
                             value={cpf}
-                            onChangeText={handleCPFChange}
+                            
                             keyboardType="numeric"
-                            maxLength={14}  // Limite para formato XXX.XXX.XXX-XX
-                            containerStyles={{
-                                borderBottomWidth: 3,
+                            maxLength={14}
+                            style={{
+                                borderBottomWidth: 2,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginBottom: 19,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite o seu CPF..."
+                            placeholderTextColor="#fff"
+                            onChangeText={text => setCpf(text)}
                         />
 
-                        {/* Telefone */}
-                        <FloatingLabelInput
-                            label="Telefone"
+                        <TextInput
                             value={telefone}
-                            onChangeText={handlePhoneChange}
+                          
                             keyboardType="numeric"
-                            maxLength={15}  // Limite para formato (XX) XXXXX-XXXX
-                            containerStyles={{
-                                borderBottomWidth: 3,
+                            maxLength={15}
+                            style={{
+                                borderBottomWidth: 2,
                                 borderColor: '#fff',
-                                marginTop: 20,
-                                marginHorizontal:-20
-                            }}
-                            customLabelStyles={{
-                                topFocused: -20,
-                                colorFocused: '#fff',
-                                fontSizeFocused: 16,
-                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
-
-                            }}
-                            labelStyles={{
-                                paddingHorizontal: 5,
-                                color: '#FF8F49',
-                            }}
-                            inputStyles={{
                                 color: '#fff',
                                 fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
                             }}
+                            placeholder="Digite o seu telefone..."
+                            placeholderTextColor="#fff"
+                            onChangeText={value => setTelefone(value)}
+
                         />
+
                         <View>
                             <Button
-                                style={[styles.buttonEnviar, {
-                                    backgroundColor: '#FF914D',
-
-                                }]} // Defina a cor de fundo desejada aqui
+                                style={[styles.buttonEnviar, { backgroundColor: '#FF914D' }]}
                                 color='#FF914D'
                                 variant="primary"
                                 title="Próximo"
-                                onPress={() => navigation.navigate('cadastro1')}
+                                onPress={dadosCad} 
+                                
                             />
-                            {/* <Text>{Nome} - {Sobrenome} - {cpf}- {telefone}</Text> */}
+                            
                         </View>
-
-                    </View>
-
                     </View>
                 </View>
             </View>
-
-        
+        </View>
     );
 };
 

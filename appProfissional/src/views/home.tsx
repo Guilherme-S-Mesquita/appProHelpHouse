@@ -8,15 +8,12 @@ function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
-      <ImageBackground
       
-        style={styles.backgroundImage}
-      >
         <View style={styles.overlay}>
           <Text style={styles.title}>Bem-vindo ao Home</Text>
           <Button title="Clique Aqui" onPress={() => navigation.navigate('bemvindo')} />
         </View>
-      </ImageBackground>
+      
     </View>
   );
 }

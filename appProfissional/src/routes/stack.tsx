@@ -5,6 +5,7 @@ import CadastroScreen from '../views/cadastro';
 import ConfirmedIdScreen from '../views/confirmeId';
 import LoadingScreen from '../views/loading';
 import loginScreen from '../views/login';
+import AreaAtuacao from '../views/areaAtuacao';
 // import mapScreen from '/github/appProHelpHouse/appProfissional/componentes/Map/map';
 import Cadastro1 from '../views/cadastroScreen2';
 import HomeScreen from '../views/home';
@@ -21,6 +22,7 @@ const AppNavigator = () => {
       <Stack.Screen name="login" component={loginScreen} options={{headerShown: false}} />
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="cadastro1" component={Cadastro1} options={{headerShown: false}} />
+      <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 };
