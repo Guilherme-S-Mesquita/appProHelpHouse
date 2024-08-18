@@ -35,27 +35,33 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                         <View style={styles.pedreiro}>
                             <Text style={styles.name1}>Pedreiro</Text>
+                            <Image source={Imagens.pedreiro} style={styles.pedreiroImg} />
                         </View>
 
                         <View style={styles.mecanico}>
                             <Text style={styles.name2}>Mecânico</Text>
+                            <Image source={Imagens.mecanico} style={styles.mecanicoImg} />
                         </View>
 
                         <View style={styles.eletricista}>
                             <Text style={styles.name3}>Eletricista</Text>
+                            <Image source={Imagens.eletricista} style={styles.eletricistaImg} />
                         </View>
 
-                        <View style={styles.pintor}>
-                            <Text style={styles.name4}>Pintor</Text>
+                        <View style={styles.jadineiro}>
+                            <Text style={styles.name4}>Jadineiro</Text>
+                            <Image source={Imagens.jardineiro} style={styles.jardineiroImg} />
                         </View>
 
 
                         <View style={styles.encanador}>
                             <Text style={styles.name5}>Encanador</Text>
+                            <Image source={Imagens.encanador} style={styles.encanadorImg} />
                         </View>
 
                         <View style={styles.diarista}>
                             <Text style={styles.name6}>Diarista</Text>
+                            <Image source={Imagens.diarista} style={styles.diaristaImg} />
                         </View>
 
 

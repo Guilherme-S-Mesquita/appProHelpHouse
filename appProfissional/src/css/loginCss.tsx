@@ -11,18 +11,26 @@ const styles = StyleSheet.create({
       help:{
         width:300,
         height:300,
-       
       },
      input:{
       width:280,
       height:60,
       marginBottom:40,
-      
-    
      },
-     button:{ 
-        width:160,
-        color:'#004AAD'
+     button:{
+      position: 'relative',
+      top: '3%',
+      backgroundColor: '#FF914D',
+      shadowColor: 'black',
+      shadowRadius: 5,
+      shadowOffset: { width: 0, height: 9 },
+      shadowOpacity: 0.5,
+      elevation: 5,
+      borderRadius: 150,
+      width:130,
+      color:'#004AAD',
+
+
      },
       inputFocused:{
      position:'absolute',
@@ -31,14 +39,11 @@ const styles = StyleSheet.create({
         margin:0,
         marginLeft:20,
         backgroundColor:'#000'
-        
       },
-      
       label:{
       position:'relative',
       fontSize:18,
       color:'#FF8F49',
-
       },
       conta:{
           marginTop:'10%'
@@ -54,9 +59,15 @@ const styles = StyleSheet.create({
         width:160,
         color:'#004AAD'
       },
-      
-   
-   
+      // branco:{
+      //   backgroundColor:'#F5FCFF',
+      //   left:'9%',
+      //   height:'8%',
+      //   width:'38%',
+      //   top:-55,
+      // },
+  
+
 });
 
 export default styles;

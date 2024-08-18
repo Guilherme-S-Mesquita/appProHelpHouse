@@ -4,9 +4,9 @@ const styles = StyleSheet.create({
         position: 'relative',
         width: 145,
         top: '-11%',
+     
         
     },
-
     containerPrincipal: {
         overflow: 'hidden',
         height: '109%',
@@ -21,8 +21,6 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         top: -95,
         left: '25%'
-
-
     },
     areas: {
         color: '#F6A059',
@@ -41,14 +39,11 @@ const styles = StyleSheet.create({
         borderRadius: 925,
         marginTop: -230
     },
-
     pesquisa: {
         justifyContent: 'center',
         height: '5%',
         display: 'flex',
         top:-45
-
-
     },
     input: {
         left: '15%',
@@ -58,9 +53,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         top: 5,
         borderWidth: 1,
-        borderRadius: 159
-
-
+        borderRadius: 159,
     },
 
     trabalhos: {
@@ -73,24 +66,31 @@ const styles = StyleSheet.create({
     display:'flex',
     zIndex:1,
     top:15,
-    left:'18%'
+    left:'18%',
     },
     pedreiro:{
         width: 90,
         height: 90,
         backgroundColor: '#588acd',
         borderRadius: 150,
-        marginTop:8,
+        marginTop:77,
         left:'10%',
         borderWidth:4,
-        borderColor:'#F6A059'
+        borderColor:'#F6A059',
+    },
+    pedreiroImg:{
+        width: 70,
+        height: 100,
+        top:-15,
+        left:'10%'
     },
     name1:{
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
         top:65,
-        left:'9%'
+        left:'9%',
+        zIndex:1
     },
     
     mecanico:{
@@ -101,14 +101,22 @@ const styles = StyleSheet.create({
         left:'40%',
         borderWidth:4,
         borderColor:'#F6A059',
-        top:-90
+        top:-90,
+    },
+    mecanicoImg:{
+        width: 55,
+        height: 75,
+        top:-15,
+        left:'12%',
+       
     },
     name2:{
-        color: '#fff',
+         color: '#fff',
         fontSize: 15,
-        fontWeight: '900',
+        fontWeight:'900',
         top:65,
-        left:'5%'
+        left:'5%',
+        zIndex:1
     },
    
     eletricista:{
@@ -119,16 +127,23 @@ const styles = StyleSheet.create({
         left:'69%',
         borderWidth:4,
         borderColor:'#F6A059',
-        top:-180
+        top:-180,
+    },
+    eletricistaImg:{
+        width:60,
+        height: 100,
+        top:-7,
+        left:'10%'
     },
     name3:{
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
         top:65,
-        left:'0%'
+        left:'0%',
+        zIndex:1
     },
-    pintor:{
+    jadineiro:{
         width: 90,
         height: 90,
         backgroundColor: '#588acd',
@@ -136,14 +151,21 @@ const styles = StyleSheet.create({
         left:'10%',
         borderWidth:4,
         borderColor:'#F6A059',
-        top:-159
+        top:-159,
+    },
+    jardineiroImg:{
+        width:74,
+        height: 90,
+        top:-15,
+        left:'5%'
     },
     name4:{
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
         top:65,
-        left:'20%'
+        left:'20%',
+        zIndex:1
     },
     encanador:{
         width: 90,
@@ -155,12 +177,25 @@ const styles = StyleSheet.create({
         borderColor:'#F6A059',
         top:-249
     },
+    encanadorImg:{
+        width:60,
+        height: 90,
+        top:-12,
+        left:'12%'
+    },
     name5:{
         color: '#fff',
         fontSize: 14,
         fontWeight: '900',
-        top:65,
-        left:'4%'
+        top:67,
+        left:'4%',
+        zIndex:1
+    },
+    diaristaImg:{
+        width:50,
+        height: 70,
+        top:-17,
+        left:'15%'
     },
     diarista:{
         width: 90,
@@ -177,7 +212,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '900',
         top:65,
-        left:'12%'
+        left:'12%',
+        zIndex:1
     },
 
     aindaNao:{
@@ -196,7 +232,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         backgroundColor: '#588acd',
         borderRadius: 19,
-        height: '20%',
+        height: '16%',
         width:'78%',
         top:-270,
         left:'11%'
