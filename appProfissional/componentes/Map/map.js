@@ -75,16 +75,7 @@ function Map() {
                     />
                 }
 
-                {pin.latitude && pin.longitude &&
-                    <Marker
-                        coordinate={{
-                            latitude: pin.latitude,
-                            longitude: pin.longitude,
-                        }}
-                        title='Default Location'
-                        description='I am here'
-                    />
-                }
+            
             </MapView>
           
         </View>

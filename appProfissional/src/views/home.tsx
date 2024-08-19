@@ -11,7 +11,8 @@ function Home({ navigation }) {
       
         <View style={styles.overlay}>
           <Text style={styles.title}>Bem-vindo ao Home</Text>
-          <Button title="Clique Aqui" onPress={() => navigation.navigate('bemvindo')} />
+          <Button title="Clique Aqui"
+           onPress={() => navigation.navigate('bemvindo')} />
         </View>
       
     </View>

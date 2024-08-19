@@ -1,18 +1,14 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, ScrollView } from 'react-native';
+import { View, Text, Alert } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
-import * as Location from 'expo-location';
-import MapView, { Marker } from 'react-native-maps';  // Importando o MapView e Marker
 import Map from '../../componentes/Map/map';  // Importe o componente Map
 import Api from '../../componentes/apiCep/api'
-import cad from '../views/cadastro'
+
 import config from '../../config/config.json'
-
-
 import styles from '../css/cad2Css';
-import { error } from 'console';
+
 
 
 // CHAMA FIO ESSA AQUI DEU CERTO 
@@ -25,49 +21,38 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
     const [numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
 
-    async function cadastroContratado() {
-        try {
-            // 1- Foi criada uma variável reqs - abreviação de requisição
-            let reqs = await fetch(config.urlRootNode + 'create', {
-                // 2- Passa o método POST
-                method: 'POST',
-                // 3- Aqui estamos falando que vamos trabalhar com formato JSON
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                // Quais infos eu vou passar para o banco
-                body: JSON.stringify({
-                    nomeContratado: nome,
-                    sobrenome: sobrenome,
-                    email: email,
-                    nascimento: nascimento,
-                    cpf: cpf,
-                    telefone: telefone,
-                    senha: senha,
-                    cep: cep,
-                    bairro: bairro,
-                    rua: rua,
-                    numero: numero,
-                })
-            });
+ async function cadastroContratado() {
+  
     
-            // Aqui estamos falando o seguinte parceiro
-            const data = await reqs.json();
+        let reqs = await fetch(config.urlRootNode + 'create', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nomeContratado: nome,
+                sobrenome: sobrenome,
+                email: email,
+                nascimento: nascimento,
+                cpf: cpf,
+                telefone: telefone,
+                senha: senha,
+                cep: cep,
+                bairro: bairro,
+                rua: rua,
+                numero: numero,
+            })
+        });
+
     
-            // Se o cadastro seja bem sucedido
-            if (reqs.ok) {
-                // Ele te leva para a outra tela 
-                navigation.navigate('login');
-            } else {
-                Alert.alert('Erro', data.message || 'Falha no cadastro');
-            }
-        } catch (error) {
-            // Captura e lida com erros que podem ocorrer
-            console.error('Erro ao cadastrar:', error);
-            Alert.alert('Erro', 'Ocorreu um erro inesperado. Por favor, tente novamente.');
-        }
-    }
+        
+       
+      
+        
+    } 
+
+
     
  
  
@@ -336,6 +321,7 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
                         variant="primary"
                         title="Cadastrar-se"
                         onPress={() => navigation.navigate('areaAtuacao')}
+                        // onPress={cadastroContratado}
 
                     />
                   
