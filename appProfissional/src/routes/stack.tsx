@@ -9,6 +9,7 @@ import AreaAtuacao from '../views/areaAtuacao';
 // import mapScreen from '/github/appProHelpHouse/appProfissional/componentes/Map/map';
 import Cadastro1 from '../views/cadastroScreen2';
 import HomeScreen from '../views/home';
+import UltimosPassos from '../views/ultimosPassos';
 const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
@@ -23,6 +24,7 @@ const AppNavigator = () => {
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="cadastro1" component={Cadastro1} options={{headerShown: false}} />
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{headerShown: false}} />
+      <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{headerShown: false}} />
     </Stack.Navigator>
   );
 };
