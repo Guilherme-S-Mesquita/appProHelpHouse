@@ -16,15 +16,18 @@ import UltimosPassos from '../views/ultimosPassos';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-// Definindo corretamente a função Tabs
-// const Tabs = () => {
-//   return (
-//     <Tab.Navigator>
-//       <Tab.Screen name="home" component={HomeScreen} />
-//       <Tab.Screen name="ultimosPassos" component={UltimosPassos} />
-//     </Tab.Navigator>
-//   );
-// };
+
+//NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
+// Definindo a função Tabs
+ const Tabs = () => {
+   return (
+     <Tab.Navigator>
+       <Tab.Screen name="home" component={HomeScreen} />
+     <Tab.Screen name="ultimosPassos" component={UltimosPassos} />
+   </Tab.Navigator>
+  );
+ };
+ //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 
 const AppNavigator = () => {
   return (
