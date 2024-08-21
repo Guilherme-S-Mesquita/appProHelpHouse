@@ -13,6 +13,8 @@ import styles from '../css/cad2Css';
 
 // CHAMA FIO ESSA AQUI DEU CERTO 
 //  RO
+
+
 const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) => {
     const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
     const [cep, setCep] = useState('');
@@ -20,38 +22,75 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
-
+ /*
  async function cadastroContratado() {
   
-    
-        let reqs = await fetch(config.urlRootNode + 'create', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nomeContratado: nome,
-                sobrenome: sobrenome,
-                email: email,
-                nascimento: nascimento,
-                cpf: cpf,
-                telefone: telefone,
-                senha: senha,
-                cep: cep,
-                bairro: bairro,
-                rua: rua,
-                numero: numero,
-            })
-        });
 
+    // Aqui quando ele aperta o button chama essa função asincrona que mesmo se de errado o app continua funcionando
+    let enderecoResponse = await fetch('http://127.0.0.1:8000/api/enderecos', {
+    //    Aqui ele chama o metodo POST para os campos que foram inseridos
+        method: 'POST',
+    // Transforma os campos em Json 
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    //Pegando os campos 
+        body: JSON.stringify({
+            cepEndereco: cep,
+            bairroEndereco: bairro,
+            ruaEndereco: rua,
+            numCasaEndereco: numero,
+            // Outros campos de endereço
+        })
+    });
+    // Converte o Json para um atributo em JS
+    let enderecoData = await enderecoResponse.json();
+    // se ocorrer tudo bem 
+    if (enderecoResponse.ok) {
+        // ele chama esssa função
+        console.log('Endereço criado:', enderecoData);
+    } else {
+        // se der bosta
+        console.error('Erro ao criar o endereço:', enderecoData);
+    }
+    const idEndereco = enderecoData.id;  
     
+    
+    // Aqui quando ele aperta o button chama essa função asincrona que mesmo se de errado o app continua funcionando
+    let usuarioResponse = await fetch('http://127.0.0.1:8000/api/clientes', {
         
-       
+     //    Aqui ele chama o metodo POST para os campos que foram inseridos
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            nomeContratado: nome,
+            sobrenome: sobrenome,
+            email: email,
+            nascimento: nascimento,
+            cpf: cpf,
+            telefone: telefone,
+            senha: senha,
+            idEndereco: idEndereco,  // Use o ID do endereço criado anteriormente
+            // Outros campos do usuário ou serviço
+        })
+    });
+    
+    let usuarioData = await usuarioResponse.json();
+    
+    if (usuarioResponse.ok) {
+        console.log('Usuário/Serviço criado com sucesso:', usuarioData);
+    } else {
+        console.error('Erro ao criar o usuário/serviço:', usuarioData);
+    }
+    
       
         
     } 
-
+ */  
 
     
  
@@ -78,6 +117,7 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
             console.log('ERROGAY' + error)
         }
     }
+    
 
     const formatCep = (text: string) => {
         // Remove todos os caracteres que não são números
@@ -320,8 +360,8 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
                         color='#FF914D'
                         variant="primary"
                         title="Cadastrar-se"
-                        onPress={() => navigation.navigate('areaAtuacao')}
-                        // onPress={cadastroContratado}
+                         onPress={() => navigation.navigate('areaAtuacao')}
+                         // onPress={cadastroContratado}
 
                     />
                   
@@ -336,4 +376,4 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
     );
 };
 
-export default Cadastro1;
+export default Cadastro1 ;
