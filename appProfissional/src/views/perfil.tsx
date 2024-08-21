@@ -4,7 +4,8 @@ import { Text, View, ImageBackground, Image, StyleSheet } from 'react-native';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import styles from '../css/pesquisaCss'; // Importa o arquivo de estilos
 
-function Pesquisa({ navigation }) {
+const Pesquisa: React.FC<{ navigation: any }> = ({ navigation }) => {
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />

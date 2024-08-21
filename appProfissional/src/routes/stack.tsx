@@ -36,7 +36,7 @@ const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="bemvindo">
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
-      <Stack.Screen name="homeStack" component={Tabs} options={{ headerShown: false }} />
+      <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />
       <Stack.Screen name="cadastro" component={CadastroScreen} options={{ headerShown: false }} />
       <Stack.Screen name="confirmeid" component={ConfirmedIdScreen} options={{ headerShown: false }} />

@@ -7,7 +7,8 @@ import Imagens from "../../img/img";
 import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
 
 
- function BemVindo({navigation}) {
+const BemVindo: React.FC<{ navigation: any }> = ({ navigation }) => {
+
   return (
     <ImageBackground 
       source={Imagens.fundoBemVindo}

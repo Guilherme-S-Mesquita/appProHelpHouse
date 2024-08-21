@@ -15,14 +15,14 @@ import styles from '../css/cad2Css';
 //  RO
 
 
-const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) => {
+const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigation }) => {
     const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
     const [cep, setCep] = useState('');
     const [bairro, setBairro] = useState('');
     const [rua, setRua] = useState('');
     const [numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
- /*
+ 
  async function cadastroContratado() {
   
 
@@ -90,7 +90,7 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
       
         
     } 
- */  
+ 
 
     
  
@@ -137,7 +137,7 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
     };
 
 
-    const handleCepChange = (text) => {
+    const handleCepChange = (text: string) => {
         setCep(formatCep(text));
     };
 
