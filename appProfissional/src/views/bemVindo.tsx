@@ -26,7 +26,7 @@ import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
             <View style={styles.localFilho}>
                 <Text style={styles.text}>Nosso app utiliza sua</Text>
                 <Text style={styles.text}>localização para</Text>
-                <Text style={styles.text}>encontrar profissionais</Text>
+                <Text style={styles.text}>encontrar clintes</Text>
                 <Text style={styles.text}>perto de você</Text>
             </View>
         </View>
@@ -38,7 +38,7 @@ import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
             color='#fff'
             variant="primary"
             title="Continuar" 
-            onPress={() => navigation.navigate('login')} // Atualize para handleLoginPress
+            onPress={() => navigation.navigate('homeStack')} // Atualize para handleLoginPress
           />
  
 
