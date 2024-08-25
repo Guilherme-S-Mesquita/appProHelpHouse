@@ -7,98 +7,66 @@ import Imagens from '../../img/img';
 
 
 
-import styles from '../css/areaAtuacaoCss';
+import styles from '../css/ultimosPassosCss';
 const UltimosPassos: React.FC<{ navigation: any }> = ({ navigation }) => {
+
 
     return (
         <View style={styles.containerPrincipal}>
 
+            <Text style={styles.ultimo}>Últimos<Text style={styles.passos}> passos</Text></Text>
+            <Text style={styles.acabando}>Já estamos acabando, adicione as {'\n'}últimas informações para criarmos a {'\n'}sua conta!</Text>
 
-            <View style={styles.container2}>
-                <View style={styles.meioCirculo}>
-                </View>
-                <Text style={styles.emQuais}>Em quais <Text style={styles.areas}>áreas</Text> {'\n'} <Text style={styles.voce}>você atua?</Text></Text>
-
-                <View style={styles.pesquisa}>
-                    <Image source={Imagens.lupa} style={styles.lupa} />
-                    <TextInput
-                        placeholder='          buscar..'
-                        style={styles.input}
-                        placeholderTextColor='gray'
-                        keyboardType='default'
-
-                    />
-
-                </View>
-                <ScrollView>
-                    <View style={styles.trabalhos}>
-
-                        <View style={styles.pedreiro}>
-                            <Text style={styles.name1}>Pedreiro</Text>
-                            <Image source={Imagens.pedreiro} style={styles.pedreiroImg} />
-                        </View>
-
-                        <View style={styles.mecanico}>
-                            <Text style={styles.name2}>Mecânico</Text>
-                            <Image source={Imagens.mecanico} style={styles.mecanicoImg} />
-                        </View>
-
-                        <View style={styles.eletricista}>
-                            <Text style={styles.name3}>Eletricista</Text>
-                            <Image source={Imagens.eletricista} style={styles.eletricistaImg} />
-                        </View>
-
-                        <View style={styles.jadineiro}>
-                            <Text style={styles.name4}>AAAAAAAAAAA</Text>
-                            <Image source={Imagens.jardineiro} style={styles.jardineiroImg} />
-                        </View>
-
-
-                        <View style={styles.encanador}>
-                            <Text style={styles.name5}>Encanador</Text>
-                            <Image source={Imagens.encanador} style={styles.encanadorImg} />
-                        </View>
-
-                        <View style={styles.diarista}>
-                            <Text style={styles.name6}>Diarista</Text>
-                            <Image source={Imagens.diarista} style={styles.diaristaImg} />
-                        </View>
-
-
-                        <View style={styles.descricaoAreaTrabalhada}>
-                            <Text style={styles.aindaNao}>Ainda não encontrou uma {'\n'}profissão que te defina?</Text>
-
-                            <Text style={styles.descricaoBreve}>Descreva brevemente sua área de atuação...</Text>
-
-                            <Text style={styles.melhor}>Não deixe de adicionar fotos e vídeos para sua {'\n'} área ser melhor descrita!</Text>
-                            <TextInput
-                                placeholder='          buscar..'
-                                style={styles.descricaoInput}
-                                placeholderTextColor='gray'
-                                keyboardType='default'
-
-                            />
-                        </View>
-                    </View>
-
-
-                </ScrollView>
+            <View style={styles.circulo}>
             </View>
             <Button
-                style={[styles.buttonEnviar, {
+                style={[styles.buttonFoto, {
                     backgroundColor: '#FF914D',
-                    shadowColor:'black',
-                    shadowRadius:4,
-                    shadowOffset:{width:900, height:350},
-                    elevation:5
-            
-
                 }]} // Defina a cor de fundo desejada aqui
                 color='#FF914D'
                 variant="primary"
-                title="Próximo"
+                title="Adicione uma foto de perfil"
+
                 onPress={() => navigation.navigate('ultimosPassos')}
             />
+
+            <View style={styles.container2}>
+
+                <Text style={styles.voce}>Fale um pouco sobre você</Text>
+                <TextInput
+                    style={{
+                        borderBottomWidth: 2,
+                        borderColor: '#fff',
+                        color: '#fff',
+                        fontSize: 16,
+                        top: 84,
+                        bottom: 37,
+                        marginHorizontal: -50,
+                        right: '1%'
+
+                    }}
+                    placeholder="Escreva um pouco sobre você..."
+                    placeholderTextColor="#fff"
+                    returnKeyType='done'>
+
+                </TextInput>
+            </View>
+
+            <View style={styles.container3}>
+                <Text style={styles.promova}>Promova seu trabalho, e adicione {'\n'}fotos ao seu portfólio!</Text>
+
+            
+            </View>
+            <Button
+                    style={[styles.buttonEnviar, {
+                        backgroundColor: '#FF914D',
+                    }]} // Defina a cor de fundo desejada aqui
+                    color='#FF914D'
+                    variant="primary"
+                    title="Criar conta"
+                    onPress={() => navigation.navigate('ultimosPassos')}
+
+                />
 
         </View>
 

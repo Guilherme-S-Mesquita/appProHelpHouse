@@ -39,7 +39,7 @@ const BemVindo: React.FC<{ navigation: any }> = ({ navigation }) => {
             color='#fff'
             variant="primary"
             title="Continuar" 
-            onPress={() => navigation.navigate('homeStack')} // Atualize para handleLoginPress
+            onPress={() => navigation.navigate('login')} // Atualize para handleLoginPress
           />
  
 

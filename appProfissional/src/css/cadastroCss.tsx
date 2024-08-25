@@ -44,7 +44,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
-    marginBottom:25
+    top:65,
+    marginBottom:-25
 
   },
   pessoais:{
@@ -85,40 +86,64 @@ const styles = StyleSheet.create({
     position:'relative',
     width:145,
     left:60,
-    top:38
+    top:55
   },
   nome:{
     fontWeight:'700',
     color: 'white',
     marginBottom:15,
     fontSize:18,
-    right:22
+    right:20,
+    top:125
+    
   },
   sobrenome:{
     fontWeight:'700',
     color: 'white',
     marginBottom:15,
     fontSize:18,
-    right:22
+    right:22,
+    top:98
   },
-  nascimeto:{
+  nascimento:{
     fontWeight:'700',
     color: 'white',
     fontSize:18,
-    right:22
+    right:20,
+    top:79
   },
   cpf:{
     fontWeight:'700',
     color: 'white',
     fontSize:18,
-    right:22
+    right:20,
+    top:70
   },
   telefone:{
     fontWeight:'700',
     color: 'white',
     fontSize:18,
-    right:22
+    right:22,
+    top:65
   },
+  usuario:{
+    fontWeight:'700',
+    color: 'white',
+    fontSize:18,
+    right:20,
+    top:65
+  },
+  senha:{
+    fontWeight:'700',
+    color: 'white',
+    fontSize:18,
+    right:20,
+    top:65
+  },
+  roda:{
+
+  },
+  
 });
 
 export default styles;
