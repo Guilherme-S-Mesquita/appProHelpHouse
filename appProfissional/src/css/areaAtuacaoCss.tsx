@@ -3,9 +3,7 @@ const styles = StyleSheet.create({
     buttonEnviar: {
         position: 'relative',
         width: 145,
-        top: '-11%',
-     
-        
+        bottom:350, 
     },
     containerPrincipal: {
         overflow: 'hidden',
@@ -41,9 +39,10 @@ const styles = StyleSheet.create({
     },
     pesquisa: {
         justifyContent: 'center',
-        height: '5%',
+        height: '3.8%',
         display: 'flex',
-        top:-45
+        top:-45,
+        
     },
     input: {
         left: '15%',
@@ -54,10 +53,13 @@ const styles = StyleSheet.create({
         top: 5,
         borderWidth: 1,
         borderRadius: 159,
+        paddingHorizontal:'9%',
+        color:'white',
+      
     },
 
     trabalhos: {
-
+        bottom:88
     },
     lupa:{
     width: 24,
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '900',
         top:65,
-        left:'20%',
+        left:'3%',
         zIndex:1
     },
     encanador:{
@@ -225,7 +227,7 @@ const styles = StyleSheet.create({
 
     },
     descricaoAreaTrabalhada:{
-      
+    
     },
     descricaoInput:{
         marginTop: 20,
@@ -235,7 +237,11 @@ const styles = StyleSheet.create({
         height: '16%',
         width:'78%',
         top:-270,
-        left:'11%'
+        left:'11%',
+        paddingHorizontal:'6%',
+        color:'white'
+
+      
     },
     descricaoBreve:{
         color: '#fff',
@@ -253,5 +259,6 @@ const styles = StyleSheet.create({
        left:'13%'
     
     },
+  
 });
 export default styles;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { View, Text, TextInput, ScrollView } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
@@ -43,15 +43,14 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
     return (
         <View style={styles.container}>
+
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRO</Text>
             </View>
             <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
 
-                    <View style={styles.title}>
-                        <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
-                    </View>
+                    <View style={styles.roda}>
 
 
 
@@ -212,8 +211,11 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                 </View>
             </View>
         </View>
+        </View>
+
 
     );
+    
 };
-
 export default Cadastro;
+
