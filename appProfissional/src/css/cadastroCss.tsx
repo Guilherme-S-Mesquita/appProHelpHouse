@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   input:{
     width:280,
     height:60,
+    top:60,
     position:'relative',
     
    },

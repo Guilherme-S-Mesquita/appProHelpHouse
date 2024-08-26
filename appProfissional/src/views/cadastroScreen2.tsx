@@ -27,46 +27,68 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
 
     
 
-    const Verificar = () => {
-     
-        
-    
-        fetch('http://localhost:8000/api/pro', {
-          method: 'POST',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            nomeContratado:nomeContratado,
-            sobrenomeContratado:sobrenomeContratado,
-            profissaoContratado:profissaoContratado,
-            cpfContratado:cpfContratado,
-            emailContratado:emailContratado,
-            telefoneContratado:telefoneContratado,
-            password:password,
-            nascContratado:nascContratado,
-            cepContratado:cepContratado,
-            bairroContratado:bairroContratado,
-            ruaContratado:ruaContratado,
-            numCasaContratado:numCasaContratado,
-            ufContratado:ufContratado,
-            cidadeContratado:cidadeContratado,
-            descContratado:descContratado
-
-          }),
-        })
-        .then(response => response.json())
-        .then(data => {
+    const Verificar = async () => {
+        try {
+          const response = await fetch('http://localhost:8000/api/pro', {
+            method: 'POST',
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              nomeContratado,
+              sobrenomeContratado,
+              profissaoContratado,
+              cpfContratado,
+              emailContratado,
+              telefoneContratado,
+              password,
+              nascContratado,
+              cepContratado,
+              bairroContratado,
+              ruaContratado,
+              numCasaContratado,
+              ufContratado,
+              cidadeContratado,
+              descContratado
+            }),
+          });
+      
+          // Verifica se a resposta foi bem-sucedida
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+      
+          // Processa a resposta JSON
+          const data = await response.json();
+          
+          // Mostra uma mensagem de sucesso
           Alert.alert('Sucesso', 'Dados enviados com sucesso!');
-        })
-        .catch(error => {
+        } catch (error) {
+          // Mostra uma mensagem de erro e imprime o erro no console
           Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
-          console.error(error);
-          console.log(nomeContratado, sobrenomeContratado, profissaoContratado);
-
-        });
+          console.error('Erro:', error);
+          console.log({
+            nomeContratado,
+            sobrenomeContratado,
+            profissaoContratado,
+            cpfContratado,
+            emailContratado,
+            telefoneContratado,
+            password,
+            nascContratado,
+            cepContratado,
+            bairroContratado,
+            ruaContratado,
+            numCasaContratado,
+            ufContratado,
+            cidadeContratado,
+            descContratado
+          });
+        }
       };
+      
+      
     
       
  
