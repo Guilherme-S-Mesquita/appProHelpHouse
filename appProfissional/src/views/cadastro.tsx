@@ -6,37 +6,38 @@ import { Button } from "../../componentes/Button/Button";
 
 import styles from '../css/cadastroCss';
 
-const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [nome, setNome] = useState('');
-    const [sobrenome, setSobrenome] = useState('');
-    const [nascimento, setNascimento] = useState('');
-    const [cpf, setCpf] = useState('');
-    const [telefone, setTelefone] = useState('');
-    const [email, setEmail] = useState('');
-    const [senha, setSenha] = useState('');
-    const [show, setShow] = useState('');
+const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
+    const { emailContratado, password } = route.params;
 
-    // useEffect(() => {
-    //     const timeout = setTimeout(() => {
-    //         setShow(!show);
-    //     }, 5000);
-    //     return () => clearTimeout(timeout);
-    // }, [show]);
+    const [nomeContratado, setNomeContratado] = useState('');
+    const [sobrenomeContratado, setSobrenomeContratado] = useState('');
+    const [nascContratado, setNascContratado] = useState('');
+    const [cpfContratado, setCpfContratado] = useState('');
+
+    const [profissaoContratado, setProfissaoContratado] = useState('');
+    const [telefoneContratado, setTelefoneContratado] = useState('');
+    const [descContratado, setDescContratado] = useState('');
+
+
 
     // Ele leva para outra pagina e guarda as infos que foi inseridas aqui
     const dadosCad = () => {
-        navigation.navigate('cadastro1', {
-            nome:nome,
-            sobrenome:sobrenome,
-            nascimento:nascimento,
-            cpf:cpf,
-            telefone:telefone,
-            email:email,
-            senha:senha,
+        navigation.navigate('cadastro2', {
+            nomeContratado: nomeContratado,
+            sobrenomeContratado: sobrenomeContratado,
+            nascContratado: nascContratado,
+            cpfContratado: cpfContratado,
+            telefoneContratado: telefoneContratado,
+            profissaoContratado: profissaoContratado,
+            emailContratado: emailContratado,
+            password: password,
+            descContratado: descContratado,
+
+
         });
     };
 
- 
+
 
 
 
@@ -52,12 +53,19 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
                     </View>
 
+
+
+
+
+
                     <View style={styles.input}>
+
+
                         <FloatingLabelInput
                             label=""
-                            value={email}
+                            value={profissaoContratado}
                             hintTextColor={'#aaa'}
-                            hint="exemple@exemple.com"
+                            hint="Jardineiro"
                             containerStyles={{
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
@@ -70,23 +78,19 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 paddingHorizontal: 10,
                                 fontWeight: 'bold'
                             }}
-                            onChangeText={value => setEmail(value)}
+                            onChangeText={value => setProfissaoContratado(value)}
                         />
 
                         <FloatingLabelInput
                             label=""
-                            isPassword
-                            hint="Digite sua senha"
+                            value={nomeContratado}
                             hintTextColor={'#aaa'}
-                            value={senha}
-                            onChangeText={value => setSenha(value)}
-                            customShowPasswordComponent={<Text>Show</Text>}
-                            customHidePasswordComponent={<Text>Hide</Text>}
+                            hint="Creiton "
                             containerStyles={{
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 marginTop: -10,
-                                marginBottom: 37,
+                                marginBottom: 27,
                                 marginHorizontal: -20,
                             }}
                             inputStyles={{
@@ -94,27 +98,12 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 paddingHorizontal: 10,
                                 fontWeight: 'bold'
                             }}
+                            onChangeText={value => setNomeContratado(value)}
                         />
 
                         <TextInput
-                            value={nome}
-                            onChangeText={value => setNome(value)}
-                            style={{
-                                borderBottomWidth: 2,
-                                borderColor: '#fff',
-                                color: '#fff',
-                                fontSize: 16,
-                                marginTop: -10,
-                                marginBottom: 37,
-                                marginHorizontal: -20,
-                            }}
-                            placeholder="Digite seu nome..."
-                            placeholderTextColor="#fff"
-                        />
-
-                        <TextInput
-                            value={sobrenome}
-                            onChangeText={value => setSobrenome(value)}
+                            value={sobrenomeContratado}
+                            onChangeText={value => setSobrenomeContratado(value)}
                             style={{
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
@@ -131,10 +120,10 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                         <TextInputMask
                             type={'datetime'}
                             options={{
-                                format: 'DD/MM/YYYY',
+                                format: 'YYYY/MM/DD', // Defina o formato de entrada desejado
                             }}
-                            value={nascimento}
-                            onChangeText={text => setNascimento(text)}
+                            value={nascContratado}
+                            onChangeText={text => setNascContratado(text)}
                             style={{
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
@@ -148,9 +137,10 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             placeholderTextColor="#fff"
                         />
 
+
                         <TextInput
-                            value={cpf}
-                            
+                            value={cpfContratado}
+
                             keyboardType="numeric"
                             maxLength={14}
                             style={{
@@ -164,12 +154,12 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             }}
                             placeholder="Digite o seu CPF..."
                             placeholderTextColor="#fff"
-                            onChangeText={text => setCpf(text)}
+                            onChangeText={text => setCpfContratado(text)}
                         />
 
                         <TextInput
-                            value={telefone}
-                          
+                            value={telefoneContratado}
+
                             keyboardType="numeric"
                             maxLength={15}
                             style={{
@@ -183,7 +173,27 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                             }}
                             placeholder="Digite o seu telefone..."
                             placeholderTextColor="#fff"
-                            onChangeText={value => setTelefone(value)}
+                            onChangeText={value => setTelefoneContratado(value)}
+
+                        />
+
+                        <TextInput
+                            value={descContratado}
+
+                            keyboardType="numeric"
+                            maxLength={15}
+                            style={{
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: 10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
+                            }}
+                            placeholder=""
+                            placeholderTextColor="#fff"
+                            onChangeText={value => setDescContratado(value)}
 
                         />
 
@@ -193,15 +203,16 @@ const Cadastro: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 color='#FF914D'
                                 variant="primary"
                                 title="Próximo"
-                                onPress={dadosCad} 
-                                
+                                onPress={dadosCad}
+
                             />
-                            
+
                         </View>
                     </View>
                 </View>
             </View>
         </View>
+
     );
 };
 

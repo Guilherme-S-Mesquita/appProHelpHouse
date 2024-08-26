@@ -9,11 +9,12 @@ import ConfirmedIdScreen from '../views/confirmeId';
 import LoadingScreen from '../views/loading';
 import LoginScreen from '../views/login';
 import AreaAtuacao from '../views/areaAtuacao';
-import Cadastro1 from '../views/cadastroScreen2';
+import Cadastro2 from '../views/cadastroScreen2';
 import UltimosPassos from '../views/ultimosPassos';
 import HomeScreen from '../views/home';
 import PesquisaScreen from '../views/pesquisa';
 import PerfilScreen from '../views/perfil';
+import CadastroEmail from '../views/cadastroEmail';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -39,10 +40,11 @@ const AppNavigator = () => {
       <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />
       <Stack.Screen name="cadastro" component={CadastroScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="cadastroEmail" component={CadastroEmail} options={{ headerShown: false }} />
       <Stack.Screen name="confirmeid" component={ConfirmedIdScreen} options={{ headerShown: false }} />
       <Stack.Screen name="loading" component={LoadingScreen} options={{ headerShown: false }} />
       <Stack.Screen name="login" component={LoginScreen} options={{ headerShown: false }} />
-      <Stack.Screen name="cadastro1" component={Cadastro1} options={{ headerShown: false }} />
+      <Stack.Screen name="cadastro2" component={Cadastro2} options={{ headerShown: false }} />
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
     </Stack.Navigator>

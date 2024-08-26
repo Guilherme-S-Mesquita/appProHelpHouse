@@ -8,24 +8,32 @@ import styles from '../css/loginCss';
 
 
 
-const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [cont, setCont] = useState('');
+const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
+    const [emailContratado, setEmailContratado] = useState('');
     const [show, setShow] = useState(false);
-    const [senha, setSenha] = useState('');
+    const [password, setPassword] = useState('');
 
-    // Defina a função handleLoginPress
+    const dadosLogin = () => {
+        navigation.navigate('cadastro', {
+            emailContratado:emailContratado,
+            password:password
+       
+          
+        });
+    }
 
 
     return (
         <View style={styles.container}>
+
+         
             <Image source={Imagens.helpHouse} style={styles.help} />
 
             <View style={styles.input}>
            
                 <FloatingLabelInput
                     label=" Usuário ou Email "
-                    value={email}
+                    value={emailContratado}
                     staticLabel
                     hintTextColor={'#aaa'}
                     hint="exemple@exemple.com"
@@ -66,7 +74,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         
                     }}
                     onChangeText={value => {
-                        setEmail(value);
+                        setEmailContratado(value);
                     }}
                 />
                  {/* <Text style={styles.branco}></Text>  */}
@@ -78,8 +86,8 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     isPassword
                     staticLabel
                     togglePassword={show}
-                    value={cont}
-                    onChangeText={value => setCont(value)}
+                    value={password}
+                    onChangeText={value => setPassword(value)}
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
@@ -112,33 +120,19 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 />
 
             </View>
-           
-            <Button
-                style={styles.button}
-                color='#004AAD'
-                variant="primary"
-                title="Entrar"
-                onPress={() => navigation.navigate('confirmeid')}
-            />
+    
 
-
-            <View>
-                <View style={[styles.conta]}>
-                    <Text>Ainda não tem uma conta</Text>
-                    <Text>Profissional <Text style={styles.helpText} >Help</Text><Text style={styles.houseText}>House</Text>? </Text>
-                </View>
-            </View>
-
+    
             <Button
                 style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
                 color='#004AAD'
                 variant="primary"
-                title="Cadastre-se"
+                title="Proximo"
 
-                onPress={() => navigation.navigate('cadastroEmail')}
+                onPress={dadosLogin}
             />
         </View>
     );
 };
 
-export default Login;
+export default CadastroEmail;

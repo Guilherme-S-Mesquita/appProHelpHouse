@@ -15,103 +15,80 @@ import styles from '../css/cad2Css';
 //  RO
 
 
-const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigation }) => {
-    const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
-    const [cep, setCep] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [rua, setRua] = useState('');
-    const [numero, setNumero] = useState('');
-    const [tempoTrabalhado, setTempoTrabalhado] = useState('');
- 
- async function cadastroContratado() {
-  
+const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigation }) => {
+    const { nomeContratado,sobrenomeContratado,nascContratado,cpfContratado,telefoneContratado,profissaoContratado, emailContratado, password,descContratado } = route.params;
+    const [cepContratado, setCepContratado] = useState('');
+    const [bairroContratado, setBairroContratado] = useState('');
+    const [ruaContratado, setRuaContratado] = useState('');
+    const [numCasaContratado, setNumCasaContratado] = useState('');
+    const [ufContratado, setUfContratado] = useState('');
+    const [cidadeContratado, setCidadeContratado] = useState('');
+    // const [tempoTrabalhadoContratado, setTempoTrabalhadoContratado] = useState('');
 
-    // Aqui quando ele aperta o button chama essa função asincrona que mesmo se de errado o app continua funcionando
-    let enderecoResponse = await fetch('http://127.0.0.1:8000/api/enderecos', {
-    //    Aqui ele chama o metodo POST para os campos que foram inseridos
-        method: 'POST',
-    // Transforma os campos em Json 
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    //Pegando os campos 
-        body: JSON.stringify({
-            cepEndereco: cep,
-            bairroEndereco: bairro,
-            ruaEndereco: rua,
-            numCasaEndereco: numero,
-            // Outros campos de endereço
-        })
-    });
-    // Converte o Json para um atributo em JS
-    let enderecoData = await enderecoResponse.json();
-    // se ocorrer tudo bem 
-    if (enderecoResponse.ok) {
-        // ele chama esssa função
-        console.log('Endereço criado:', enderecoData);
-    } else {
-        // se der bosta
-        console.error('Erro ao criar o endereço:', enderecoData);
-    }
-    const idEndereco = enderecoData.id;  
     
-    
-    // Aqui quando ele aperta o button chama essa função asincrona que mesmo se de errado o app continua funcionando
-    let usuarioResponse = await fetch('http://127.0.0.1:8000/api/clientes', {
+
+    const Verificar = () => {
+     
         
-     //    Aqui ele chama o metodo POST para os campos que foram inseridos
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            nomeContratado: nome,
-            sobrenome: sobrenome,
-            email: email,
-            nascimento: nascimento,
-            cpf: cpf,
-            telefone: telefone,
-            senha: senha,
-            idEndereco: idEndereco,  // Use o ID do endereço criado anteriormente
-            // Outros campos do usuário ou serviço
+    
+        fetch('http://localhost:8000/api/pro', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            nomeContratado:nomeContratado,
+            sobrenomeContratado:sobrenomeContratado,
+            profissaoContratado:profissaoContratado,
+            cpfContratado:cpfContratado,
+            emailContratado:emailContratado,
+            telefoneContratado:telefoneContratado,
+            password:password,
+            nascContratado:nascContratado,
+            cepContratado:cepContratado,
+            bairroContratado:bairroContratado,
+            ruaContratado:ruaContratado,
+            numCasaContratado:numCasaContratado,
+            ufContratado:ufContratado,
+            cidadeContratado:cidadeContratado,
+            descContratado:descContratado
+
+          }),
         })
-    });
-    
-    let usuarioData = await usuarioResponse.json();
-    
-    if (usuarioResponse.ok) {
-        console.log('Usuário/Serviço criado com sucesso:', usuarioData);
-    } else {
-        console.error('Erro ao criar o usuário/serviço:', usuarioData);
-    }
+        .then(response => response.json())
+        .then(data => {
+          Alert.alert('Sucesso', 'Dados enviados com sucesso!');
+        })
+        .catch(error => {
+          Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
+          console.error(error);
+          console.log(nomeContratado, sobrenomeContratado, profissaoContratado);
+
+        });
+      };
     
       
-        
-    } 
- 
-
-    
  
  
 
     async function buscarCep() {
         // Se Cep for vazio vai aparecer um alerta
-        if (cep == "") {
+        if (cepContratado == "") {
             Alert.alert('Cep inválido')
-            setCep("")
+            setCepContratado("")
         }
         try {
             // await serve para esperar a resposta que vai ser passada
-            const response = await Api.get(`/${cep}/json/`)
+            const response = await Api.get(`/${cepContratado}/json/`)
             //Esse get, serve para puxar a info la do servidor da API 
 
 
             //Os set São as infos que você vai pegar da API
-            setBairro(response.data.bairro)
-            setRua(response.data.logradouro);
-
+            setBairroContratado(response.data.bairro)
+            setRuaContratado(response.data.logradouro);
+            setUfContratado(response.data.uf);
+            setCidadeContratado(response.data.localidade);
             // Caso não carregue retornara um erro
         } catch (error) {
             console.log('ERROGAY' + error)
@@ -138,7 +115,7 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
 
 
     const handleCepChange = (text: string) => {
-        setCep(formatCep(text));
+        setCepContratado(formatCep(text));
     };
 
 
@@ -158,13 +135,13 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                     <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
                     <Text style={styles.legendaTitle}>nessa área?</Text>
                     <View style={styles.inputTempoTrabalhado}>
-                        <TextInputMask
+                        {/* <TextInputMask
                             type={'datetime'}
                             options={{
                                 format: 'DD/MM/YYYY',
                             }}
 
-                            value={tempoTrabalhado}
+                            value={tempoTrabalhadoContratado}
                             customTextInput={FloatingLabelInput}
                             customTextInputProps={{
                                 containerStyles: {
@@ -190,16 +167,69 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                                 },
                             }}
 
-                        />
+                        /> */}
                     </View>
                 </View>
                 <View style={styles.input}>
 
                     {/* Nome */}
                     <FloatingLabelInput
+                        label="UF"
+                        value={ufContratado}
+                        onChangeText={value => setUfContratado(value)}
+                        keyboardType="numeric"
+                        maxLength={9}  
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',  // Cor do label quando o input está em foco
+                            fontSizeFocused: 16,
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            fontWeight: 'bold',
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
+                    />
+                 <FloatingLabelInput
+                        label="Cidade"
+                        value={cidadeContratado}
+                        onChangeText={value => setCidadeContratado(value)}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
+                            fontSizeFocused: 16,
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            color: '#FF8F49',
+                            fontWeight: 'bold'
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
+                    />
+                    <FloatingLabelInput
                         label="Cep"
-                        value={cep}
-                        
+                        value={cepContratado}
                         keyboardType="numeric"
                         maxLength={9}
                         onChangeText={handleCepChange}
@@ -227,8 +257,8 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
 
                     <FloatingLabelInput
                         label="Bairro"
-                        value={bairro}
-                        onChangeText={value => setBairro(value)}
+                        value={bairroContratado}
+                        onChangeText={value => setBairroContratado(value)}
                         containerStyles={{
                             borderBottomWidth: 5,
                             borderColor: '#fff',
@@ -257,8 +287,8 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                         {/* Rua */}
                         <FloatingLabelInput
                             label="Rua"
-                            value={rua}
-                            onChangeText={value => setRua(value)}
+                            value={ruaContratado}
+                            onChangeText={value => setRuaContratado(value)}
                             containerStyles={{
                                 borderBottomWidth: 5,
                                 borderColor: '#fff',
@@ -290,9 +320,9 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                             {/* Numero */}
                             <FloatingLabelInput
                                 label="Numero"
-                                value={numero}
+                                value={numCasaContratado}
 
-                                onChangeText={value => setNumero(value)}
+                                onChangeText={value => setNumCasaContratado(value)}
                                 keyboardType="numeric"
                                 containerStyles={{
                                     borderBottomWidth: 5,
@@ -342,14 +372,16 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                         onPress={buscarCep}
                     />
 
-                        
+                 
+           
+                  
                 </View>
-                <View style={styles.mapContainer}>
+                {/* <View style={styles.mapContainer}>
                     <View>
-                        <Map />
+                     
 
                     </View>
-                </View>
+                </View> */}
 
                 <View style={styles.containerButton}>
                     <Button
@@ -360,10 +392,11 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                         color='#FF914D'
                         variant="primary"
                         title="Cadastrar-se"
-                         onPress={() => navigation.navigate('areaAtuacao')}
-                         // onPress={cadastroContratado}
+                         // onPress={() => navigation.navigate('areaAtuacao')}
+                         onPress={Verificar}
 
                     />
+              
                   
                 </View>
 
@@ -376,4 +409,4 @@ const Cadastro1: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
     );
 };
 
-export default Cadastro1 ;
+export default Cadastro2 ;

@@ -6,7 +6,7 @@ import styles from '../css/homeCss'; // Importa o arquivo de estilos
 
 
 
-function Home({ navigation }) {
+const Home: React.FC<{ navigation: any }> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
