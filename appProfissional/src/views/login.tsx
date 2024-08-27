@@ -4,11 +4,31 @@ import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import styles from '../css/loginCss';
+// axios e como se importasse a API da uma olhada la no arquivo axios.js
+import axios from '../../axios';
+
+
+
+// VALIDAÇÃO DE LOGIN
+// const [form, setForm] = useState({
+//     emailContratado:'',
+//     password:'',
+// })
+
+
+// // cria a variavel login
+// const login = ()=>{
+//     axios.post ('login', form).then((data)=>{
+//         console.log(data)
+//     }).catch((err)=>{
+//         console.log(err)
+//     })
+// }
 
 
 
 
-const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
+const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [cont, setCont] = useState('');
     const [show, setShow] = useState(false);
@@ -65,9 +85,9 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         
                         
                     }}
-                    onChangeText={value => {
-                        setEmail(value);
-                    }}
+                    onChangeText={value => setEmail(value)}
+                    // onChangeText={(text)=>{form.emailContratado = text}}
+
                 />
                  {/* <Text style={styles.branco}></Text>  */}
             </View>
@@ -79,7 +99,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     staticLabel
                     togglePassword={show}
                     value={cont}
-                    onChangeText={value => setCont(value)}
+                  
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
@@ -108,7 +128,8 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         color: '#000',
                         paddingHorizontal: 10,
                     }}
-
+                    // onChangeText={(text)=>{form.password = text}}
+                      onChangeText={value => setCont(value)}
                 />
 
             </View>
@@ -123,7 +144,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
 
 
             <View>
-                <View style={[styles.conta]}>
+                <View style={styles.conta}>
                     <Text>Ainda não tem uma conta</Text>
                     <Text>Profissional <Text style={styles.helpText} >Help</Text><Text style={styles.houseText}>House</Text>? </Text>
                 </View>

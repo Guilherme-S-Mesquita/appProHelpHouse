@@ -8,6 +8,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
       },
 
+      title: {
+        width: '100%',
+        justifyContent: 'flex-end',
+        alignItems: 'center',    
+        height:'14%'
+      },
+      titulo: {
+        color: '#004AAD',
+        fontSize: 30,
+        fontWeight: '900',
+        top:20
+      },
+
       help:{
         width:300,
         height:300,
@@ -46,7 +59,7 @@ const styles = StyleSheet.create({
       color:'#FF8F49',
       },
       conta:{
-          marginTop:'10%'
+          marginTop:'39%'
       },
       helpText:{
         color:'#004AAD'

@@ -25,7 +25,11 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-
+        
+        
+        <View style={styles.title}>
+                <Text style={styles.titulo}>CADASTRO</Text>
+            </View>
          
             <Image source={Imagens.helpHouse} style={styles.help} />
 
@@ -40,7 +44,7 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
                     containerStyles={{
                         borderWidth: 2,
                         paddingHorizontal: 10,
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         borderColor: '#004AAD',
                         borderRadius: 50,
                         borderTopWidth: 5,
@@ -93,7 +97,7 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
                     containerStyles={{
                         borderWidth: 2,
                         paddingHorizontal: 10,
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         borderColor: '#004AAD',
                         borderRadius: 50,
                         borderTopWidth: 5,

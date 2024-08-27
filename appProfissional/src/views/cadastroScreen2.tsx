@@ -5,6 +5,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import Map from '../../componentes/Map/map';  // Importe o componente Map
 import Api from '../../componentes/apiCep/api'
+import AntDesign from '@expo/vector-icons/AntDesign';
 
 import config from '../../config/config.json'
 import styles from '../css/cad2Css';
@@ -15,8 +16,8 @@ import styles from '../css/cad2Css';
 //  RO
 
 
-const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigation }) => {
-    const { nomeContratado,sobrenomeContratado,nascContratado,cpfContratado,telefoneContratado,profissaoContratado, emailContratado, password,descContratado } = route.params;
+const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
+    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, profissaoContratado, emailContratado, password, descContratado } = route.params;
     const [cepContratado, setCepContratado] = useState('');
     const [bairroContratado, setBairroContratado] = useState('');
     const [ruaContratado, setRuaContratado] = useState('');
@@ -25,74 +26,73 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
     const [cidadeContratado, setCidadeContratado] = useState('');
     // const [tempoTrabalhadoContratado, setTempoTrabalhadoContratado] = useState('');
 
-    
+
 
     const Verificar = async () => {
         try {
-          const response = await fetch('http://localhost:8000/api/pro', {
-            method: 'POST',
-            headers: {
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              nomeContratado,
-              sobrenomeContratado,
-              profissaoContratado,
-              cpfContratado,
-              emailContratado,
-              telefoneContratado,
-              password,
-              nascContratado,
-              cepContratado,
-              bairroContratado,
-              ruaContratado,
-              numCasaContratado,
-              ufContratado,
-              cidadeContratado,
-              descContratado
-            }),
-          });
-      
-          // Verifica se a resposta foi bem-sucedida
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-      
-          // Processa a resposta JSON
-          const data = await response.json();
-          
-          // Mostra uma mensagem de sucesso
-          Alert.alert('Sucesso', 'Dados enviados com sucesso!');
+            const response = await fetch('http://localhost:8000/api/pro', {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    nomeContratado,
+                    sobrenomeContratado,
+                    profissaoContratado,
+                    cpfContratado,
+                    emailContratado,
+                    telefoneContratado,
+                    password,
+                    nascContratado,
+                    cepContratado,
+                    bairroContratado,
+                    ruaContratado,
+                    numCasaContratado,
+                    ufContratado,
+                    cidadeContratado,
+                    descContratado
+                }),
+            });
+
+
+            if(response.ok){
+                console.log('Os dados foram inseridos com sucesso!')
+            }
+            // Processa a resposta JSON
+            const data = await response.json();
+
+            // Mostra uma mensagem de sucesso
+
         } catch (error) {
-          // Mostra uma mensagem de erro e imprime o erro no console
-          Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
-          console.error('Erro:', error);
-          console.log({
-            nomeContratado,
-            sobrenomeContratado,
-            profissaoContratado,
-            cpfContratado,
-            emailContratado,
-            telefoneContratado,
-            password,
-            nascContratado,
-            cepContratado,
-            bairroContratado,
-            ruaContratado,
-            numCasaContratado,
-            ufContratado,
-            cidadeContratado,
-            descContratado
-          });
+            // Mostra uma mensagem de erro e imprime o erro no console
+            Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
+            console.error('Erro:', error);
+            console.log({
+                nomeContratado,
+                sobrenomeContratado,
+                profissaoContratado,
+                cpfContratado,
+                emailContratado,
+                telefoneContratado,
+                password,
+                nascContratado,
+                cepContratado,
+                bairroContratado,
+                ruaContratado,
+                numCasaContratado,
+                ufContratado,
+                cidadeContratado,
+                descContratado
+            });
         }
-      };
-      
-      
-    
-      
- 
- 
+    };
+
+
+
+
+
+
 
     async function buscarCep() {
         // Se Cep for vazio vai aparecer um alerta
@@ -116,7 +116,7 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
             console.log('ERROGAY' + error)
         }
     }
-    
+
 
     const formatCep = (text: string) => {
         // Remove todos os caracteres que não são números
@@ -194,13 +194,19 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                 </View>
                 <View style={styles.input}>
 
-                    {/* Nome */}
+                    <View style={styles.inputsCep}>
+                        <Text style={styles.title3}>Buscar cep </Text>
+                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} /></Text>
+                    </View>
+
+
+
                     <FloatingLabelInput
-                        label="UF"
-                        value={ufContratado}
-                        onChangeText={value => setUfContratado(value)}
+                        label="CEP"
+                        value={cepContratado}
                         keyboardType="numeric"
-                        maxLength={9}  
+                        maxLength={9}
+                        onChangeText={handleCepChange}
                         containerStyles={{
                             borderBottomWidth: 5,
                             borderColor: '#fff',
@@ -222,7 +228,7 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                             fontSize: 16,
                         }}
                     />
-                 <FloatingLabelInput
+                    <FloatingLabelInput
                         label="Cidade"
                         value={cidadeContratado}
                         onChangeText={value => setCidadeContratado(value)}
@@ -249,33 +255,7 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                             fontSize: 16,
                         }}
                     />
-                    <FloatingLabelInput
-                        label="Cep"
-                        value={cepContratado}
-                        keyboardType="numeric"
-                        maxLength={9}
-                        onChangeText={handleCepChange}
-                        containerStyles={{
-                            borderBottomWidth: 5,
-                            borderColor: '#fff',
-                            marginTop: 20,
-                            marginBottom: 10,
-                        }}
-                        customLabelStyles={{
-                            topFocused: -20,
-                            colorFocused: '#fff',  // Cor do label quando o input está em foco
-                            fontSizeFocused: 16,
-                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
-                        }}
-                        labelStyles={{
-                            paddingHorizontal: 5,
-                            fontWeight: 'bold',
-                        }}
-                        inputStyles={{
-                            color: '#fff',
-                            fontSize: 16,
-                        }}
-                    />
+
 
                     <FloatingLabelInput
                         label="Bairro"
@@ -382,22 +362,7 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                     </View>
 
                 </View>
-                <View style={styles.containerButton}>
-                    <Button
-                        style={[styles.buttonEnviar, {
-                            backgroundColor: '#FF914D',
-                            width: '40%'
-                        }]} // Defina a cor de fundo desejada aqui
-                        color='#FF914D'
-                        variant="primary"
-                        title="Buscar Cep"
-                        onPress={buscarCep}
-                    />
-
-                 
-           
-                  
-                </View>
+         
                 {/* <View style={styles.mapContainer}>
                     <View>
                      
@@ -406,20 +371,23 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
                 </View> */}
 
                 <View style={styles.containerButton}>
+                    <View style={styles.Buttons}>
                     <Button
                         style={[styles.buttonEnviar1, {
                             backgroundColor: '#FF914D',
-                            width: '70%'
+                            width: '40%'
                         }]} // Defina a cor de fundo desejada aqui
                         color='#FF914D'
                         variant="primary"
                         title="Cadastrar-se"
-                         // onPress={() => navigation.navigate('areaAtuacao')}
-                         onPress={Verificar}
+                        // onPress={() => navigation.navigate('areaAtuacao')}
+                        onPress={Verificar}
 
                     />
-              
-                  
+
+
+                   
+                    </View>
                 </View>
 
 
@@ -431,4 +399,4 @@ const Cadastro2: React.FC<{route: any, navigation: any,  }> = ({ route ,navigati
     );
 };
 
-export default Cadastro2 ;
+export default Cadastro2;
