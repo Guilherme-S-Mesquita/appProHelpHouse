@@ -33,6 +33,21 @@ const styles = StyleSheet.create({
     fontWeight: '900',
     top:20
   },
+  tituloDados:{
+    width: '70%',
+    height:'20%',
+    top:65,
+    left:2
+    
+  },
+  tituloDados2:{
+    color: '#fff',
+    fontSize: 35,
+    fontWeight: '900',
+  },
+  pessoais:{
+    color:'#004AAD',
+  },
   containerCadastro: {
     width: '100%',
     height:'100%',
@@ -49,8 +64,7 @@ const styles = StyleSheet.create({
 
   },
   pessoais:{
-        color:'#FF914D',
-       
+    color:'#FF914D',
   },
   input:{
     width:280,
@@ -89,43 +103,60 @@ const styles = StyleSheet.create({
     left:60,
     top:55
   },
+  profissao:{
+    right: 18,
+    bottom: -31,
+  },
+  textProfissao:{
+   fontSize:17,
+   color:'white',
+   fontWeight:'bold',
+  },
   nome:{
-    fontWeight:'700',
-    color: 'white',
-    marginBottom:15,
-    fontSize:18,
-    right:20,
-    top:125
-    
+    right: 18,
+    bottom: -35,
+  },
+  nome2:{
+    fontSize:17,
+    color:'white',
+    fontWeight:'bold',
+
   },
   sobrenome:{
-    fontWeight:'700',
-    color: 'white',
-    marginBottom:15,
-    fontSize:18,
-    right:22,
-    top:98
+    right: 18,
+    bottom: -38,
+  },
+  sobrenome2:{
+    fontSize:17,
+    color:'white',
+    fontWeight:'bold',
   },
   nascimento:{
-    fontWeight:'700',
-    color: 'white',
-    fontSize:18,
-    right:20,
-    top:79
+    right: 18,
+    bottom: -43,
+  },
+  nascimento2:{
+    fontSize:17,
+    color:'white',
+    fontWeight:'bold',
   },
   cpf:{
-    fontWeight:'700',
-    color: 'white',
-    fontSize:18,
-    right:20,
-    top:70
+    right: 18,
+    bottom: -43,
+  },
+  cpf2:{
+    fontSize:17,
+    color:'white',
+    fontWeight:'bold',
   },
   telefone:{
-    fontWeight:'700',
-    color: 'white',
-    fontSize:18,
-    right:22,
-    top:65
+    right: 18,
+    bottom: -43,
+  },
+  telefone2:{
+    fontSize:17,
+    color:'white',
+    fontWeight:'bold',
   },
   usuario:{
     fontWeight:'700',

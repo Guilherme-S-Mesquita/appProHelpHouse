@@ -45,14 +45,16 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
         <View style={styles.container}>
 
             <View style={styles.title}>
-                <Text style={styles.titulo}>CADASTRO</Text>
+                <Text style={styles.titulo}>CADASTRE-SE</Text>
             </View>
             <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
 
                     <View style={styles.roda}>
 
-
+                    <View style={styles.tituloDados}>
+                        <Text style={styles.tituloDados2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
+                    </View>
 
 
 
@@ -60,22 +62,24 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                     <View style={styles.input}>
 
 
-                        <FloatingLabelInput
+                        {/* <FloatingLabelInput
                             label=""
                             value={profissaoContratado}
-                            hintTextColor={'#aaa'}
-                            hint="Jardineiro"
+                            hintTextColor={'white'}
+                            hint="Digite aqui sua Profissão..."
                             containerStyles={{
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 marginTop: -10,
                                 marginBottom: 27,
                                 marginHorizontal: -20,
+                                bottom:-50
                             }}
                             inputStyles={{
                                 color: '#fff',
                                 paddingHorizontal: 10,
-                                fontWeight: 'bold'
+                                fontWeight: 'bold',
+                               
                             }}
                             onChangeText={value => setProfissaoContratado(value)}
                         />
@@ -91,6 +95,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginTop: -10,
                                 marginBottom: 27,
                                 marginHorizontal: -20,
+                                bottom:-50
                             }}
                             inputStyles={{
                                 color: '#fff',
@@ -98,12 +103,16 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 fontWeight: 'bold'
                             }}
                             onChangeText={value => setNomeContratado(value)}
-                        />
+                        /> */}
 
+                  <View style={styles.profissao}>
+                        <Text style={styles.textProfissao}>Profissão</Text>
+                    </View>
                         <TextInput
-                            value={sobrenomeContratado}
-                            onChangeText={value => setSobrenomeContratado(value)}
+                            value={profissaoContratado}
+                            onChangeText={value => setProfissaoContratado(value)}
                             style={{
+                                opacity:0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -111,11 +120,56 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginTop: -10,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
+                                bottom:-50
+                            }}
+                            placeholder="Digite sua Profissão..."
+                            placeholderTextColor="#fff"
+                        />
+
+                    <View style={styles.nome}>
+                        <Text style={styles.nome2}>Nome</Text>
+                    </View>
+                        <TextInput
+                            value={nomeContratado}
+                            onChangeText={value => setNomeContratado(value)}
+                            style={{
+                                opacity:0.7,
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: -10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
+                                bottom:-53
+                            }}
+                            placeholder="Digite seu nome..."
+                            placeholderTextColor="#fff"
+                        />
+
+                    <View style={styles.sobrenome}>
+                        <Text style={styles.sobrenome2}>Sobrenome</Text>
+                    </View> 
+                        <TextInput
+                            value={sobrenomeContratado}
+                            onChangeText={value => setSobrenomeContratado(value)}
+                            style={{
+                                opacity:0.7,
+                                borderBottomWidth: 2,
+                                borderColor: '#fff',
+                                color: '#fff',
+                                fontSize: 16,
+                                marginTop: -10,
+                                marginBottom: 37,
+                                marginHorizontal: -20,
+                                bottom:-58
                             }}
                             placeholder="Digite seu sobrenome..."
                             placeholderTextColor="#fff"
                         />
-
+                    <View style={styles.nascimento}>
+                        <Text style={styles.nascimento2}>Data de Nascimento</Text>
+                    </View> 
                         <TextInputMask
                             type={'datetime'}
                             options={{
@@ -124,59 +178,69 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             value={nascContratado}
                             onChangeText={text => setNascContratado(text)}
                             style={{
+                                opacity:0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 16,
-                                marginTop: 10,
+                                marginTop: 5,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
+                                bottom:-54
                             }}
                             placeholder="Digite a data em que nasceu..."
                             placeholderTextColor="#fff"
                         />
 
-
+                    <View style={styles.cpf}>
+                        <Text style={styles.cpf2}>CPF</Text>
+                    </View>
                         <TextInput
                             value={cpfContratado}
 
                             keyboardType="numeric"
                             maxLength={14}
                             style={{
+                                opacity:0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 16,
-                                marginTop: 10,
+                                marginTop: 5,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
+                                bottom:-51
                             }}
                             placeholder="Digite o seu CPF..."
                             placeholderTextColor="#fff"
                             onChangeText={text => setCpfContratado(text)}
                         />
-
+                    <View style={styles.telefone}>
+                        <Text style={styles.telefone2}>Telefone</Text>
+                    </View>
                         <TextInput
                             value={telefoneContratado}
 
                             keyboardType="numeric"
                             maxLength={15}
                             style={{
+                                opacity:0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 16,
-                                marginTop: 10,
-                                marginBottom: 37,
+                                marginTop: 5,
+                                marginBottom: 34,
                                 marginHorizontal: -20,
+                                bottom:-50
                             }}
-                            placeholder="Digite o seu telefone..."
+                            placeholder="(XX) XXXXX-XXXX"
                             placeholderTextColor="#fff"
                             onChangeText={value => setTelefoneContratado(value)}
 
                         />
 
-                        <TextInput
+                        {/* <TextInput
                             value={descContratado}
 
                             keyboardType="numeric"
@@ -189,12 +253,13 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginTop: 10,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
+                                bottom:-50
                             }}
                             placeholder=""
                             placeholderTextColor="#fff"
                             onChangeText={value => setDescContratado(value)}
 
-                        />
+                        /> */}
 
                         <View>
                             <Button
