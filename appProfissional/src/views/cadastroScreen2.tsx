@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
@@ -22,7 +22,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     const [bairroContratado, setBairroContratado] = useState('');
     const [ruaContratado, setRuaContratado] = useState('');
     const [numCasaContratado, setNumCasaContratado] = useState('');
-    const [ufContratado, setUfContratado] = useState('');
+
     const [cidadeContratado, setCidadeContratado] = useState('');
     // const [tempoTrabalhadoContratado, setTempoTrabalhadoContratado] = useState('');
 
@@ -30,7 +30,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
     const Verificar = async () => {
         try {
-            const response = await fetch('http://localhost:8000/api/pro', {
+            const response = await fetch('http://localhost:8000/api/proo', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -48,8 +48,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     cepContratado,
                     bairroContratado,
                     ruaContratado,
-                    numCasaContratado,
-                    ufContratado,
+                    numCasaContratado,          
                     cidadeContratado,
                     descContratado
                 }),
@@ -80,8 +79,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 cepContratado,
                 bairroContratado,
                 ruaContratado,
-                numCasaContratado,
-                ufContratado,
+                numCasaContratado,           
                 cidadeContratado,
                 descContratado
             });
@@ -109,7 +107,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
             //Os set São as infos que você vai pegar da API
             setBairroContratado(response.data.bairro)
             setRuaContratado(response.data.logradouro);
-            setUfContratado(response.data.uf);
             setCidadeContratado(response.data.localidade);
             // Caso não carregue retornara um erro
         } catch (error) {
@@ -157,39 +154,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
                     <Text style={styles.legendaTitle}>nessa área?</Text>
                     <View style={styles.inputTempoTrabalhado}>
-                        {/* <TextInputMask
-                            type={'datetime'}
-                            options={{
-                                format: 'DD/MM/YYYY',
-                            }}
-
-                            value={tempoTrabalhadoContratado}
-                            customTextInput={FloatingLabelInput}
-                            customTextInputProps={{
-                                containerStyles: {
-                                    marginTop: 20,
-                                    marginBottom: 10,
-                                    backgroundColor: '#7098E2',
-                                    borderRadius: 40,
-                                    height: '80%',
-
-                                },
-                                customLabelStyles: {
-                                    topFocused: -20,
-                                    colorFocused: '#fff',
-                                    fontSizeFocused: 16,
-                                },
-                                labelStyles: {
-                                    paddingHorizontal: 5,
-                                    color: '#FF8F49',
-                                },
-                                inputStyles: {
-                                    fontSize: 18,
-                                    color: '#fff',
-                                },
-                            }}
-
-                        /> */}
+                       
                     </View>
                 </View>
                 <View style={styles.input}>
@@ -371,23 +336,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 </View> */}
 
                 <View style={styles.containerButton}>
-                    <View style={styles.Buttons}>
-                    <Button
-                        style={[styles.buttonEnviar1, {
-                            backgroundColor: '#FF914D',
-                            width: '40%'
-                        }]} // Defina a cor de fundo desejada aqui
-                        color='#FF914D'
-                        variant="primary"
-                        title="Cadastrar-se"
-                        // onPress={() => navigation.navigate('areaAtuacao')}
-                        onPress={Verificar}
-
-                    />
-
-
-                   
-                    </View>
+                            <TouchableOpacity style={styles.buttonEnviar1}  
+                        onPress={async () => {
+                            await Verificar();// Aguarda a conclusão da verificação
+                            navigation.navigate('login'); // Navega para a tela 'login'
+                            }}>
+                <Text style={styles.buttonText2}>Próximo</Text>
+                </TouchableOpacity>
                 </View>
 
 

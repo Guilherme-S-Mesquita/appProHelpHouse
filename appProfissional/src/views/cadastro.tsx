@@ -106,7 +106,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         /> */}
 
                   <View style={styles.profissao}>
-                        <Text style={styles.textProfissao}>Profissão</Text>
+                        <Text style={styles.textTitle}>Profissão</Text>
                     </View>
                         <TextInput
                             value={profissaoContratado}
@@ -127,7 +127,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         />
 
                     <View style={styles.nome}>
-                        <Text style={styles.nome2}>Nome</Text>
+                        <Text style={styles.textTitle}>Nome</Text>
                     </View>
                         <TextInput
                             value={nomeContratado}
@@ -148,9 +148,10 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         />
 
                     <View style={styles.sobrenome}>
-                        <Text style={styles.sobrenome2}>Sobrenome</Text>
+                        <Text style={styles.textTitle}>Sobrenome</Text>
                     </View> 
                         <TextInput
+                            
                             value={sobrenomeContratado}
                             onChangeText={value => setSobrenomeContratado(value)}
                             style={{
@@ -168,7 +169,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             placeholderTextColor="#fff"
                         />
                     <View style={styles.nascimento}>
-                        <Text style={styles.nascimento2}>Data de Nascimento</Text>
+                        <Text style={styles.textTitle}>Data de Nascimento</Text>
                     </View> 
                         <TextInputMask
                             type={'datetime'}
@@ -193,11 +194,11 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         />
 
                     <View style={styles.cpf}>
-                        <Text style={styles.cpf2}>CPF</Text>
+                        <Text style={styles.textTitle}>CPF</Text>
                     </View>
-                        <TextInput
+                        <TextInputMask
+                          type={'cpf'}
                             value={cpfContratado}
-
                             keyboardType="numeric"
                             maxLength={14}
                             style={{
@@ -216,9 +217,16 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             onChangeText={text => setCpfContratado(text)}
                         />
                     <View style={styles.telefone}>
-                        <Text style={styles.telefone2}>Telefone</Text>
+                        <Text style={styles.textTitle}>Telefone</Text>
                     </View>
-                        <TextInput
+                        <TextInputMask
+                         type={'cel-phone'}
+                         options={{
+                           maskType: 'BRL',
+                           withDDD: true,
+                           dddMask: '(99) '
+                         }}
+                        
                             value={telefoneContratado}
 
                             keyboardType="numeric"
@@ -240,28 +248,9 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
                         />
 
-                        {/* <TextInput
-                            value={descContratado}
+      
 
-                            keyboardType="numeric"
-                            maxLength={15}
-                            style={{
-                                borderBottomWidth: 2,
-                                borderColor: '#fff',
-                                color: '#fff',
-                                fontSize: 16,
-                                marginTop: 10,
-                                marginBottom: 37,
-                                marginHorizontal: -20,
-                                bottom:-50
-                            }}
-                            placeholder=""
-                            placeholderTextColor="#fff"
-                            onChangeText={value => setDescContratado(value)}
-
-                        /> */}
-
-                        <View>
+                        <View style={styles.buttons}>
                             <Button
                                 style={[styles.buttonEnviar, { backgroundColor: '#FF914D' }]}
                                 color='#FF914D'
@@ -283,4 +272,3 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
     
 };
 export default Cadastro;
-

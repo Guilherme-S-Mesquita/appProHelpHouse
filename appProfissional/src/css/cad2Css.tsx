@@ -81,6 +81,11 @@ const styles = StyleSheet.create({
     top: 10,
     flexDirection: 'column',  // Esta linha pode ser removida se a direção for definida localmente
   },
+  buttonText2:{
+    color:'#fff',
+    fontSize:20,
+    fontWeight:'bold'
+  },
 
   inputRow: {
     flexDirection: 'row',  // Coloca os inputs em uma linha

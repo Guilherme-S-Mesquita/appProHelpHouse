@@ -9,33 +9,48 @@ import axios from '../../axios';
 
 
 
-// VALIDAÇÃO DE LOGIN
-// const [form, setForm] = useState({
-//     emailContratado:'',
-//     password:'',
-// })
 
-
-// // cria a variavel login
-// const login = ()=>{
-//     axios.post ('login', form).then((data)=>{
-//         console.log(data)
-//     }).catch((err)=>{
-//         console.log(err)
-//     })
-// }
 
 
 
 
 const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
-    const [email, setEmail] = useState('');
-    const [cont, setCont] = useState('');
+    const [emailContratado, setEmailContratado] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage]= useState ('')
     const [show, setShow] = useState(false);
-    const [senha, setSenha] = useState('');
+ 
 
-    // Defina a função handleLoginPress
-
+    
+    const handleLogin = async () => {
+        if (!emailContratado || !password) {
+            setMessage('Preencha todos os campos');
+            return;
+        }
+    
+        console.log("Email:", emailContratado);
+        console.log("Password:", password);
+    
+        try {
+            const response = await axios.post('http://localhost:8000/api/authpro', {
+                emailContratado:emailContratado,
+                password:password,
+            });
+    
+            console.log("Resposta da API:", response.data);
+    
+            if (response.data && response.data.status === 'Sucesso') {
+                navigation.navigate('homeStack', { screen: 'home' });
+            } else {
+                setMessage('Credenciais incorretas, tente novamente.');
+            }
+    
+        } catch (error) {
+            console.error('Erro ao fazer login:', error);
+            setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
+        }
+    };
+        
 
     return (
         <View style={styles.container}>
@@ -44,8 +59,8 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
             <View style={styles.input}>
            
                 <FloatingLabelInput
-                    label=" Usuário ou Email "
-                    value={email}
+                    label=" Email "
+                    value={emailContratado}
                     staticLabel
                     hintTextColor={'#aaa'}
                     hint="exemple@exemple.com"
@@ -85,10 +100,11 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         
                         
                     }}
-                    onChangeText={value => setEmail(value)}
+                    onChangeText={setEmailContratado}
                     // onChangeText={(text)=>{form.emailContratado = text}}
 
                 />
+                 <Text style={styles.errorMessage}>{message}</Text> 
                  {/* <Text style={styles.branco}></Text>  */}
             </View>
 
@@ -98,8 +114,8 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                     isPassword
                     staticLabel
                     togglePassword={show}
-                    value={cont}
-                  
+                    value={password}
+                    onChangeText={setPassword}
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
@@ -129,7 +145,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         paddingHorizontal: 10,
                     }}
                     // onChangeText={(text)=>{form.password = text}}
-                      onChangeText={value => setCont(value)}
+                      
                 />
 
             </View>
@@ -139,7 +155,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                 color='#004AAD'
                 variant="primary"
                 title="Entrar"
-                onPress={() => navigation.navigate('confirmeid')}
+                onPress={handleLogin}
             />
 
 
@@ -163,3 +179,6 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 };
 
 export default Login;
+function setError(arg0: string) {
+    throw new Error('Function not implemented.');
+}

@@ -72,13 +72,9 @@ const styles = StyleSheet.create({
         width:160,
         color:'#004AAD'
       },
-      // branco:{
-      //   backgroundColor:'#F5FCFF',
-      //   left:'9%',
-      //   height:'8%',
-      //   width:'38%',
-      //   top:-55,
-      // },
+      errorMessage:{
+        color:'#FF0000'
+      }
   
 
 });
