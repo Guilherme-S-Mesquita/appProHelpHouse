@@ -21,36 +21,36 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
     const [numero, setNumero] = useState('');
     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
 
- async function cadastroContratado() {
+//  async function cadastroContratado() {
   
     
-        let reqs = await fetch(config.urlRootNode + 'create', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                nomeContratado: nome,
-                sobrenome: sobrenome,
-                email: email,
-                nascimento: nascimento,
-                cpf: cpf,
-                telefone: telefone,
-                senha: senha,
-                cep: cep,
-                bairro: bairro,
-                rua: rua,
-                numero: numero,
-            })
-        });
+//         let reqs = await fetch(config.urlRootNode + 'create', {
+//             method: 'POST',
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 nomeContratado: nome,
+//                 sobrenome: sobrenome,
+//                 email: email,
+//                 nascimento: nascimento,
+//                 cpf: cpf,
+//                 telefone: telefone,
+//                 senha: senha,
+//                 cep: cep,
+//                 bairro: bairro,
+//                 rua: rua,
+//                 numero: numero,
+//             })
+//         });
 
     
         
        
       
         
-    } 
+//     } 
 
 
     
