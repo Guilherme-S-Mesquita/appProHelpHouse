@@ -4,62 +4,39 @@ import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import styles from '../css/loginCss';
-// axios e como se importasse a API da uma olhada la no arquivo axios.js
-import axios from '../../axios';
 
 
 
 
-
-
-
-
-const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
+const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage]= useState ('')
     const [show, setShow] = useState(false);
- 
+    const [password, setPassword] = useState('');
 
-    
-    const handleLogin = async () => {
-        if (!emailContratado || !password) {
-            setMessage('Preencha todos os campos');
-            return;
-        }
-    
-        console.log("Email:", emailContratado);
-        console.log("Password:", password);
-    
-        try {
-            const response = await axios.post('http://localhost:8000/api/authpro', {
-                emailContratado:emailContratado,
-                password:password,
-            });
-    
-            console.log("Resposta da API:", response.data);
-    
-            if (response.data && response.data.status === 'Sucesso') {
-                navigation.navigate('homeStack', { screen: 'home' });
-            } else {
-                setMessage('Credenciais incorretas, tente novamente.');
-            }
-    
-        } catch (error) {
-            console.error('Erro ao fazer login:', error);
-            setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
-        }
-    };
-        
+    const dadosLogin = () => {
+        navigation.navigate('cadastro', {
+            emailContratado:emailContratado,
+            password:password
+       
+          
+        });
+    }
+
 
     return (
         <View style={styles.container}>
+        
+        
+        <View style={styles.title}>
+                <Text style={styles.titulo}>CADASTRO</Text>
+            </View>
+         
             <Image source={Imagens.helpHouse} style={styles.help} />
 
             <View style={styles.input}>
            
                 <FloatingLabelInput
-                    label=" Email "
+                    label=" Usuário ou Email "
                     value={emailContratado}
                     staticLabel
                     hintTextColor={'#aaa'}
@@ -67,7 +44,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                     containerStyles={{
                         borderWidth: 2,
                         paddingHorizontal: 10,
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         borderColor: '#004AAD',
                         borderRadius: 50,
                         borderTopWidth: 5,
@@ -100,11 +77,10 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         
                         
                     }}
-                    onChangeText={setEmailContratado}
-                    // onChangeText={(text)=>{form.emailContratado = text}}
-
+                    onChangeText={value => {
+                        setEmailContratado(value);
+                    }}
                 />
-                 <Text style={styles.errorMessage}>{message}</Text> 
                  {/* <Text style={styles.branco}></Text>  */}
             </View>
 
@@ -115,13 +91,13 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                     staticLabel
                     togglePassword={show}
                     value={password}
-                    onChangeText={setPassword}
+                    onChangeText={value => setPassword(value)}
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
                         borderWidth: 2,
                         paddingHorizontal: 10,
-                        backgroundColor: '#fff',
+                        backgroundColor: '#F5FCFF',
                         borderColor: '#004AAD',
                         borderRadius: 50,
                         borderTopWidth: 5,
@@ -144,41 +120,23 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         color: '#000',
                         paddingHorizontal: 10,
                     }}
-                    // onChangeText={(text)=>{form.password = text}}
-                      
+
                 />
 
             </View>
-           
-            <Button
-                style={styles.button}
-                color='#004AAD'
-                variant="primary"
-                title="Entrar"
-                onPress={handleLogin}
-            />
+    
 
-
-            <View>
-                <View style={styles.conta}>
-                    <Text>Ainda não tem uma conta</Text>
-                    <Text>Profissional <Text style={styles.helpText} >Help</Text><Text style={styles.houseText}>House</Text>? </Text>
-                </View>
-            </View>
-
+    
             <Button
                 style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
                 color='#004AAD'
                 variant="primary"
-                title="Cadastre-se"
+                title="Proximo"
 
-                onPress={() => navigation.navigate('cadastroEmail')}
+                onPress={dadosLogin}
             />
         </View>
     );
 };
 
-export default Login;
-function setError(arg0: string) {
-    throw new Error('Function not implemented.');
-}
+export default CadastroEmail;

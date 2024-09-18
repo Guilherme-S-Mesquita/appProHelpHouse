@@ -7,7 +7,8 @@ import Imagens from "../../img/img";
 import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
 
 
- function BemVindo({navigation}) {
+const BemVindo: React.FC<{ navigation: any }> = ({ navigation }) => {
+
   return (
     <ImageBackground 
       source={Imagens.fundoBemVindo}
@@ -26,7 +27,7 @@ import styles from '../css/bemVindoCss'; // Importa o arquivo de estilos
             <View style={styles.localFilho}>
                 <Text style={styles.text}>Nosso app utiliza sua</Text>
                 <Text style={styles.text}>localização para</Text>
-                <Text style={styles.text}>encontrar profissionais</Text>
+                <Text style={styles.text}>encontrar clintes</Text>
                 <Text style={styles.text}>perto de você</Text>
             </View>
         </View>

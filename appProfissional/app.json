@@ -3,6 +3,7 @@
     "name": "appProfissional",
     "slug": "appProfissional",
     "version": "1.0.0",
+    
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -17,11 +18,17 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "backgroundColor": "#ffffff",
+        "useCleartextTraffic": true
+      },
+ 
+
+      
+      "useCleartextTraffic": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
     }
+    
   }
 }

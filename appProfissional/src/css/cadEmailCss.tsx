@@ -8,19 +8,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
       },
 
-      title: {
-        width: '100%',
-        justifyContent: 'flex-end',
-        alignItems: 'center',    
-        height:'14%'
-      },
-      titulo: {
-        color: '#004AAD',
-        fontSize: 30,
-        fontWeight: '900',
-        top:20
-      },
-
       help:{
         width:300,
         height:300,
@@ -59,7 +46,7 @@ const styles = StyleSheet.create({
       color:'#FF8F49',
       },
       conta:{
-          marginTop:'39%'
+          marginTop:'10%'
       },
       helpText:{
         color:'#004AAD'
@@ -72,9 +59,13 @@ const styles = StyleSheet.create({
         width:160,
         color:'#004AAD'
       },
-      errorMessage:{
-        color:'#FF0000'
-      }
+      // branco:{
+      //   backgroundColor:'#F5FCFF',
+      //   left:'9%',
+      //   height:'8%',
+      //   width:'38%',
+      //   top:-55,
+      // },
   
 
 });

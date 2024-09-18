@@ -64,16 +64,16 @@ function Map() {
                 ref={mapRef}
                 provider='google'
             >
-                {myLocation.latitude && myLocation.longitude &&
+                {/* {myLocation.latitude && myLocation.longitude &&
                     <CustomMarker
                         coordinate={{
-                            latitude: myLocation.latitude,
-                            longitude: myLocation.longitude,
+                             latitude: myLocation.latitude,
+                             longitude: myLocation.longitude,
                         }}
                         title='My current location'
                         image={require('./clodo.png')}  // Defina o caminho correto para a imagem
                     />
-                }
+                } */}
 
             
             </MapView>

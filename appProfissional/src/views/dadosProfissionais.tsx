@@ -7,7 +7,7 @@ import Imagens from "../../img/img";
 import styles from '../css/dadosProfissionaisCss'; // Importa o arquivo de estilos
 
 
- function dadosProfissionais({navigation}) {
+const dadosProfissionais: React.FC<{ navigation: any }> = ({navigation}) => {
   return (
     <ImageBackground 
       source={Imagens.fundoBemVindo}

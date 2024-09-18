@@ -17,6 +17,26 @@ const styles = StyleSheet.create({
     fontSize: 30,
     fontWeight: '900',
   },
+  title3:{
+    fontSize:15,
+    marginTop:5,
+    color:'#fff',
+    fontWeight:'bold',
+    },
+    inputsCep:{
+      flexDirection:'row',
+    },
+    icon:{
+      color:'#fff',
+    },
+    title4:{
+      fontSize:20,
+      marginTop:5,
+      color:'#fff',
+      fontWeight:'bold',
+      marginLeft:150,
+      },
+ 
   legenda: {
     justifyContent: 'flex-end',
     alignItems: 'flex-start',
@@ -61,6 +81,11 @@ const styles = StyleSheet.create({
     top: 10,
     flexDirection: 'column',  // Esta linha pode ser removida se a direção for definida localmente
   },
+  buttonText2:{
+    color:'#fff',
+    fontSize:20,
+    fontWeight:'bold'
+  },
 
   inputRow: {
     flexDirection: 'row',  // Coloca os inputs em uma linha
@@ -86,9 +111,26 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   containerButton: {
-    position: 'relative',
-    bottom: '5%'
+    width:'100%',
+    height:'30%',
+  
+    display:'flex',
+    position:'relative',
+    top:'30%'
+  },
+  Buttons:{
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center',
+    flexDirection:'row'
+  },
+  
+  buttonEnviar: {
+  },
 
+  buttonEnviar1:{
+ 
+  
   },
   mapContainer: {
     flexDirection: 'column',
@@ -98,16 +140,6 @@ const styles = StyleSheet.create({
     height: '45%'
   },
 
-  buttonEnviar: {
-    position: 'relative',
-    top: 190
-  },
-
-  buttonEnviar1:{
-    position: 'relative',
-    top: 70,
-  
-  }
 });
 
 export default styles;
