@@ -44,9 +44,9 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
     return (
         <View style={styles.container}>
 
-            <View style={styles.title}>
+            {/* <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRE-SE</Text>
-            </View>
+            </View> */}
             <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
 
@@ -79,7 +79,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 color: '#fff',
                                 paddingHorizontal: 10,
                                 fontWeight: 'bold',
-                               
+
                             }}
                             onChangeText={value => setProfissaoContratado(value)}
                         />
@@ -149,9 +149,9 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
                     <View style={styles.sobrenome}>
                         <Text style={styles.textTitle}>Sobrenome</Text>
-                    </View> 
+                    </View>
                         <TextInput
-                            
+
                             value={sobrenomeContratado}
                             onChangeText={value => setSobrenomeContratado(value)}
                             style={{
@@ -170,7 +170,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         />
                     <View style={styles.nascimento}>
                         <Text style={styles.textTitle}>Data de Nascimento</Text>
-                    </View> 
+                    </View>
                         <TextInputMask
                             type={'datetime'}
                             options={{
@@ -226,7 +226,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                            withDDD: true,
                            dddMask: '(99) '
                          }}
-                        
+
                             value={telefoneContratado}
 
                             keyboardType="numeric"
@@ -248,7 +248,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
                         />
 
-      
+
 
                         <View style={styles.buttons}>
                             <Button
@@ -269,6 +269,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
 
     );
-    
+
 };
 export default Cadastro;

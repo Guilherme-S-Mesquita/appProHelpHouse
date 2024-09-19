@@ -5,7 +5,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#fff',
       },
 
       title: {
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
       inputFocused:{
      position:'absolute',
         fontSize:20,
-        color:'#FF8F49',
+        color:'#fff',
         margin:0,
         marginLeft:20,
         backgroundColor:'#000'
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
       label:{
       position:'relative',
       fontSize:18,
-      color:'#FF8F49',
+      color:'#fff',
       },
       conta:{
           marginTop:'39%'
