@@ -6,7 +6,54 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import config from '../../config/config.json';
 import styles from '../css/cad2Css';
 
-const Cadastro2: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
+
+
+// CHAMA FIO ESSA AQUI DEU CERTO 
+//  RO
+<<<<<<< HEAD
+const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) => {
+    const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
+    const [cep, setCep] = useState('');
+    const [bairro, setBairro] = useState('');
+    const [rua, setRua] = useState('');
+    const [numero, setNumero] = useState('');
+    const [tempoTrabalhado, setTempoTrabalhado] = useState('');
+
+//  async function cadastroContratado() {
+  
+    
+//         let reqs = await fetch(config.urlRootNode + 'create', {
+//             method: 'POST',
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 nomeContratado: nome,
+//                 sobrenome: sobrenome,
+//                 email: email,
+//                 nascimento: nascimento,
+//                 cpf: cpf,
+//                 telefone: telefone,
+//                 senha: senha,
+//                 cep: cep,
+//                 bairro: bairro,
+//                 rua: rua,
+//                 numero: numero,
+//             })
+//         });
+
+    
+        
+       
+      
+        
+//     } 
+=======
+>>>>>>> 8793f05fa0e7ad68c9114b5bb0980d1011156953
+
+
+const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, profissaoContratado, emailContratado, password, descContratado } = route.params;
     const [cepContratado, setCepContratado] = useState('');
     const [bairroContratado, setBairroContratado] = useState('');
@@ -34,14 +81,15 @@ const Cadastro2: React.FC<{ route: any; navigation: any }> = ({ route, navigatio
                     cepContratado,
                     bairroContratado,
                     ruaContratado,
-                    numCasaContratado,          
+                    numCasaContratado,
                     cidadeContratado,
                     descContratado
                 }),
             });
 
-            if (response.ok) {
-                console.log('Os dados foram inseridos com sucesso!');
+
+            if(response.ok){
+                console.log('Os dados foram inseridos com sucesso!')
             }
 
             const data = await response.json();
@@ -49,8 +97,30 @@ const Cadastro2: React.FC<{ route: any; navigation: any }> = ({ route, navigatio
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
+            console.log({
+                nomeContratado,
+                sobrenomeContratado,
+                profissaoContratado,
+                cpfContratado,
+                emailContratado,
+                telefoneContratado,
+                password,
+                nascContratado,
+                cepContratado,
+                bairroContratado,
+                ruaContratado,
+                numCasaContratado,           
+                cidadeContratado,
+                descContratado
+            });
         }
     };
+
+
+
+
+
+
 
     async function buscarCep() {
         if (cepContratado === "") {
@@ -81,58 +151,210 @@ const Cadastro2: React.FC<{ route: any; navigation: any }> = ({ route, navigatio
         setCepContratado(formatCep(text));
     };
 
+
+
+
+
+
+
     return (
         <View style={styles.container}>
             <View style={styles.containerCadastro}>
                 <View style={styles.title}>
                     <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
                 </View>
+                <View style={styles.legenda}>
+                    <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
+                    <Text style={styles.legendaTitle}>nessa área?</Text>
+                    <View style={styles.inputTempoTrabalhado}>
+                       
+                    </View>
+                </View>
                 <View style={styles.input}>
                     <View style={styles.inputsCep}>
-                        <Text style={styles.title3}>Buscar cep</Text>
-                        <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} />
+                        <Text style={styles.title3}>Buscar cep </Text>
+                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} /></Text>
                     </View>
+
+
+
                     <FloatingLabelInput
                         label="CEP"
                         value={cepContratado}
                         keyboardType="numeric"
                         maxLength={9}
                         onChangeText={handleCepChange}
-                        containerStyles={{ borderBottomWidth: 5, borderColor: '#fff', marginTop: 20, marginBottom: 10 }}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',  // Cor do label quando o input está em foco
+                            fontSizeFocused: 16,
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            fontWeight: 'bold',
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
                     />
                     <FloatingLabelInput
                         label="Cidade"
                         value={cidadeContratado}
-                        onChangeText={setCidadeContratado}
-                        containerStyles={{ borderBottomWidth: 5, borderColor: '#fff', marginTop: 20, marginBottom: 10 }}
+                        onChangeText={value => setCidadeContratado(value)}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
+                            fontSizeFocused: 16,
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            color: '#FF8F49',
+                            fontWeight: 'bold'
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
                     />
+
+
                     <FloatingLabelInput
                         label="Bairro"
                         value={bairroContratado}
-                        onChangeText={setBairroContratado}
-                        containerStyles={{ borderBottomWidth: 5, borderColor: '#fff', marginTop: 20, marginBottom: 10 }}
+                        onChangeText={value => setBairroContratado(value)}
+                        containerStyles={{
+                            borderBottomWidth: 5,
+                            borderColor: '#fff',
+                            marginTop: 20,
+                            marginBottom: 10,
+                        }}
+                        customLabelStyles={{
+                            topFocused: -20,
+                            colorFocused: '#fff',
+                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
+                            fontSizeFocused: 16,
+                        }}
+                        labelStyles={{
+                            paddingHorizontal: 5,
+                            color: '#FF8F49',
+                            fontWeight: 'bold'
+                        }}
+                        inputStyles={{
+                            color: '#fff',
+                            fontSize: 16,
+                        }}
                     />
-                    <FloatingLabelInput
-                        label="Rua"
-                        value={ruaContratado}
-                        onChangeText={setRuaContratado}
-                        containerStyles={{ borderBottomWidth: 5, borderColor: '#fff', marginTop: 20, marginBottom: 10 }}
-                    />
-                    <FloatingLabelInput
-                        label="Número"
-                        value={numCasaContratado}
-                        onChangeText={setNumCasaContratado}
-                        keyboardType="numeric"
-                        containerStyles={{ borderBottomWidth: 5, borderColor: '#fff', marginTop: 20, marginBottom: 10 }}
-                    />
+
+                    <View style={styles.inputRow}>
+                        {/* Rua */}
+                        <FloatingLabelInput
+                            label="Rua"
+                            value={ruaContratado}
+                            onChangeText={value => setRuaContratado(value)}
+                            containerStyles={{
+                                borderBottomWidth: 5,
+                                borderColor: '#fff',
+                                marginTop: 20,
+                                marginBottom: 10,
+
+
+                            }}
+                            customLabelStyles={{
+                                topFocused: -20,
+                                colorFocused: '#fff',
+                                fontSizeFocused: 16,
+                                colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
+                            }}
+                            labelStyles={{
+                                paddingHorizontal: 5,
+                                color: '#FF8F49',
+                                fontWeight: 'bold'
+
+                            }}
+                            inputStyles={{
+                                color: '#fff',
+                                fontSize: 16,
+                            }}
+                        />
+                        <View style={styles.inputNum}>
+
+                            {/* Numero */}
+                            <FloatingLabelInput
+                                label="Numero"
+                                value={numCasaContratado}
+
+                                onChangeText={value => setNumCasaContratado(value)}
+                                keyboardType="numeric"
+                                containerStyles={{
+                                    borderBottomWidth: 5,
+                                    borderColor: '#fff',
+                                    marginTop: 20,
+                                    marginBottom: 10,
+                                    marginLeft: 10,  // Espaçamento entre os inputs
+                                    width: 80,       // Largura fixa para o campo de número
+                                }}
+                                customLabelStyles={{
+                                    topFocused: -20,
+                                    colorFocused: '#fff',
+                                    fontSizeFocused: 16,
+                                    colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+
+                                }}
+                                labelStyles={{
+                                    paddingHorizontal: 5,
+                                    color: '#FF8F49',
+                                    fontWeight: 'bold'
+
+                                }}
+                                inputStyles={{
+                                    color: '#fff',
+                                    fontSize: 16,
+                                }}
+
+
+                            />
+
+
+
+                        </View>
+
+                    </View>
+
                 </View>
+         
+                {/* <View style={styles.mapContainer}>
+                    <View>
+                     
+
+                    </View>
+                </View> */}
+
                 <View style={styles.containerButton}>
-                    <TouchableOpacity style={styles.buttonEnviar1} onPress={async () => {
-                        await Verificar();
-                        navigation.navigate('login');
-                    }}>
-                        <Text style={styles.buttonText2}>Próximo</Text>
-                    </TouchableOpacity>
+                            <TouchableOpacity style={styles.buttonEnviar1}  
+                        onPress={async () => {
+                            await Verificar();// Aguarda a conclusão da verificação
+                            navigation.navigate('login'); // Navega para a tela 'login'
+                            }}>
+                <Text style={styles.buttonText2}>Próximo</Text>
+                </TouchableOpacity>
                 </View>
             </View>
         </View>
