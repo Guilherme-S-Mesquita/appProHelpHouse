@@ -10,11 +10,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import config from '../../config/config.json'
 import styles from '../css/cad2Css';
 
-
-
 // CHAMA FIO ESSA AQUI DEU CERTO 
 //  RO
-
 
 const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, profissaoContratado, emailContratado, password, descContratado } = route.params;
@@ -48,14 +45,14 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     cepContratado,
                     bairroContratado,
                     ruaContratado,
-                    numCasaContratado,          
+                    numCasaContratado,
                     cidadeContratado,
                     descContratado
                 }),
             });
 
 
-            if(response.ok){
+            if (response.ok) {
                 console.log('Os dados foram inseridos com sucesso!')
             }
             // Processa a resposta JSON
@@ -69,7 +66,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
             console.error('Erro:', error);
             console.log({
                 nomeContratado,
-                sobrenomeContratado,
                 profissaoContratado,
                 cpfContratado,
                 emailContratado,
@@ -79,17 +75,12 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 cepContratado,
                 bairroContratado,
                 ruaContratado,
-                numCasaContratado,           
+                numCasaContratado,
                 cidadeContratado,
                 descContratado
             });
         }
     };
-
-
-
-
-
 
 
     async function buscarCep() {
@@ -138,33 +129,27 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     };
 
 
-
-
-
-
-
     return (
         <View style={styles.container}>
 
             <View style={styles.containerCadastro}>
-                <View style={styles.title}>
-                    <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
-                </View>
-                <View style={styles.legenda}>
-                    <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
-                    <Text style={styles.legendaTitle}>nessa área?</Text>
-                    <View style={styles.inputTempoTrabalhado}>
-                       
-                    </View>
-                </View>
+
+                <Text style={styles.dados}>Dados <Text style={styles.profissionais}>Profissionais</Text></Text>
+
                 <View style={styles.input}>
 
                     <View style={styles.inputsCep}>
-                        <Text style={styles.title3}>Buscar cep </Text>
-                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} /></Text>
+                        <Text style={styles.title4}>
+                      
+                            <AntDesign style={styles.icon}
+                                name="search1"
+                                size={29}
+                                color="black"
+                                onPress={buscarCep}
+                            /> 
+                            Buscar Cep
+                        </Text>
                     </View>
-
-
 
                     <FloatingLabelInput
                         label="CEP"
@@ -173,24 +158,28 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         maxLength={9}
                         onChangeText={handleCepChange}
                         containerStyles={{
-                            borderBottomWidth: 5,
+                            borderBottomWidth: 2,
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
+                            marginHorizontal: 88,
+                            right: 85
                         }}
                         customLabelStyles={{
                             topFocused: -20,
                             colorFocused: '#fff',  // Cor do label quando o input está em foco
                             fontSizeFocused: 16,
-                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                            colorBlurred: '#fff',  // Cor do label quando o input não está em foco
                         }}
                         labelStyles={{
-                            paddingHorizontal: 5,
+                            paddingHorizontal: 2,
                             fontWeight: 'bold',
+
                         }}
                         inputStyles={{
                             color: '#fff',
                             fontSize: 16,
+
                         }}
                     />
                     <FloatingLabelInput
@@ -198,7 +187,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         value={cidadeContratado}
                         onChangeText={value => setCidadeContratado(value)}
                         containerStyles={{
-                            borderBottomWidth: 5,
+                            borderBottomWidth: 2,
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
@@ -206,7 +195,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         customLabelStyles={{
                             topFocused: -20,
                             colorFocused: '#fff',
-                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                            colorBlurred: '#fff',  // Cor do label quando o input não está em foco
 
                             fontSizeFocused: 16,
                         }}
@@ -227,7 +216,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         value={bairroContratado}
                         onChangeText={value => setBairroContratado(value)}
                         containerStyles={{
-                            borderBottomWidth: 5,
+                            borderBottomWidth: 2,
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
@@ -235,7 +224,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         customLabelStyles={{
                             topFocused: -20,
                             colorFocused: '#fff',
-                            colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                            colorBlurred: '#fff',  // Cor do label quando o input não está em foco
 
                             fontSizeFocused: 16,
                         }}
@@ -257,7 +246,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             value={ruaContratado}
                             onChangeText={value => setRuaContratado(value)}
                             containerStyles={{
-                                borderBottomWidth: 5,
+                                borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 marginTop: 20,
                                 marginBottom: 10,
@@ -268,7 +257,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 topFocused: -20,
                                 colorFocused: '#fff',
                                 fontSizeFocused: 16,
-                                colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                                colorBlurred: '#fff',  // Cor do label quando o input não está em foco
 
                             }}
                             labelStyles={{
@@ -292,18 +281,18 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 onChangeText={value => setNumCasaContratado(value)}
                                 keyboardType="numeric"
                                 containerStyles={{
-                                    borderBottomWidth: 5,
+                                    borderBottomWidth: 2,
                                     borderColor: '#fff',
                                     marginTop: 20,
                                     marginBottom: 10,
                                     marginLeft: 10,  // Espaçamento entre os inputs
-                                    width: 80,       // Largura fixa para o campo de número
+                                    width: 10,       // Largura fixa para o campo de número
                                 }}
                                 customLabelStyles={{
                                     topFocused: -20,
                                     colorFocused: '#fff',
                                     fontSizeFocused: 16,
-                                    colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
+                                    colorBlurred: '#fff',  // Cor do label quando o input não está em foco
 
                                 }}
                                 labelStyles={{
@@ -320,14 +309,12 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                             />
 
-
-
                         </View>
 
                     </View>
 
                 </View>
-         
+
                 {/* <View style={styles.mapContainer}>
                     <View>
                      
@@ -336,13 +323,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 </View> */}
 
                 <View style={styles.containerButton}>
-                            <TouchableOpacity style={styles.buttonEnviar1}  
+                    <TouchableOpacity style={styles.buttonEnviar1}
                         onPress={async () => {
                             await Verificar();// Aguarda a conclusão da verificação
                             navigation.navigate('login'); // Navega para a tela 'login'
-                            }}>
-                <Text style={styles.buttonText2}>Próximo</Text>
-                </TouchableOpacity>
+                        }}>
+                        <Text style={styles.buttonText2}>Próximo</Text>
+                    </TouchableOpacity>
                 </View>
 
 

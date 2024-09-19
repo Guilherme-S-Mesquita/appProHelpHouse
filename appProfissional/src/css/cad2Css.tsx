@@ -6,58 +6,41 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#004AAD',
   },
-  title: {
-    width: '100%',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    height: '9%'
-  },
   titulo: {
     color: '#fff',
     fontSize: 30,
     fontWeight: '900',
   },
-  title3:{
-    fontSize:15,
-    marginTop:5,
-    color:'#fff',
-    fontWeight:'bold',
-    },
-    inputsCep:{
-      flexDirection:'row',
-    },
-    icon:{
-      color:'#fff',
-    },
-    title4:{
-      fontSize:20,
-      marginTop:5,
-      color:'#fff',
-      fontWeight:'bold',
-      marginLeft:150,
-      },
- 
-  legenda: {
-    justifyContent: 'flex-end',
-    alignItems: 'flex-start',
-    width: '100%',
-    marginLeft: '20%',
-    marginTop: 15
-
-  },
-  legendaTitle: {
-    color: '#fff',
+  title3: {
     fontSize: 15,
-    fontWeight: '900',
-
-
+    marginTop: 5,
+    color: '#fff',
+    fontWeight: 'bold',
   },
-  inputTempoTrabalhado: {
-    display: 'flex',
-    width: '30%',
+  inputsCep: {
     flexDirection: 'row',
+  },
+  icon: {
+    color: '#fff',
+    zIndex:1,
+     
+  },
+  buscarCep:{
 
   },
+  title4: {
+    overflow: 'hidden',
+    fontSize: 18,
+    color: '#fff',
+    fontWeight: 'bold',
+     backgroundColor:'#FF914D',
+    left:150,
+    top:35,
+    borderRadius: 22,
+    width: 150,
+    height: 35,
+  },
+
   containerCadastro: {
     width: '100%',
     height: '100%',
@@ -65,27 +48,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
 
   },
-  titulo2: {
+  dados: {
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
+    top:70,
+    
 
   },
-  pessoais: {
+  profissionais: {
     color: '#FF914D'
   },
   input: {
     width: 280,
     height: 60,
     position: 'relative',
-    top: 10,
+    top:120,
     flexDirection: 'column',  // Esta linha pode ser removida se a direção for definida localmente
+    right:25
   },
-  buttonText2:{
-    color:'#fff',
-    fontSize:20,
-    fontWeight:'bold'
-  },
+  
 
   inputRow: {
     flexDirection: 'row',  // Coloca os inputs em uma linha
@@ -111,26 +93,44 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   containerButton: {
-    width:'100%',
-    height:'30%',
-  
-    display:'flex',
-    position:'relative',
-    top:'30%'
+    width: '100%',
+    height: '30%',
+
+    display: 'flex',
+    position: 'relative',
+    top: '30%'
   },
-  Buttons:{
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
-    flexDirection:'row'
+  Buttons: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row'
   },
-  
+
   buttonEnviar: {
   },
 
-  buttonEnviar1:{
- 
-  
+  buttonEnviar1: {
+    borderRadius: 22,
+    backgroundColor: '#FF914D',
+    width: 125,
+    height: 45,
+    top: 430,
+    left:150,
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 9 },
+    shadowOpacity: 0.3,
+    elevation: 5,
+
+  },
+  buttonText2: {
+    fontSize: 19,
+    fontWeight: 'bold',
+    position: 'relative',
+    color: '#fff',
+    left:24,
+    top:9
   },
   mapContainer: {
     flexDirection: 'column',

@@ -3,9 +3,7 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
-import styles from '../css/loginCss';
-
-
+import styles from '../css/inicioCadastroCss';
 
 
 const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
@@ -28,11 +26,12 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
         
         
         <View style={styles.title}>
-                <Text style={styles.titulo}>CADASTRO</Text>
+                <Text style={styles.titulo}>Primeiros <Text style={styles.titulo2}>passos</Text></Text>
             </View>
          
             <Image source={Imagens.helpHouse} style={styles.help} />
 
+<View style={styles.maeInput}>
             <View style={styles.input}>
            
                 <FloatingLabelInput
@@ -65,10 +64,6 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
                         paddingHorizontal: 5,
                         color: '#FF8F49',
                         height:'29%',
-                      
-                      
-                        
-             
 
                     }}
                     inputStyles={{
@@ -125,10 +120,10 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
 
             </View>
     
-
+            </View>
     
             <Button
-                style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
+                style={[styles.buttonCad, { backgroundColor: '#f6a059' }]} // Defina a cor de fundo desejada aqui
                 color='#004AAD'
                 variant="primary"
                 title="Proximo"
