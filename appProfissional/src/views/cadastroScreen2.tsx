@@ -10,16 +10,15 @@ import styles from '../css/cad2Css';
 
 // CHAMA FIO ESSA AQUI DEU CERTO 
 //  RO
-<<<<<<< HEAD
-const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) => {
-    const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
-    const [cep, setCep] = useState('');
-    const [bairro, setBairro] = useState('');
-    const [rua, setRua] = useState('');
-    const [numero, setNumero] = useState('');
-    const [tempoTrabalhado, setTempoTrabalhado] = useState('');
+// const Cadastro1: React.FC<{route: any, navigation: any }> = ({ route ,navigation }) => {
+//     const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
+//     const [cep, setCep] = useState('');
+//     const [bairro, setBairro] = useState('');
+//     const [rua, setRua] = useState('');
+//     const [numero, setNumero] = useState('');
+//     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
 
-//  async function cadastroContratado() {
+// //  async function cadastroContratado() {
   
     
 //         let reqs = await fetch(config.urlRootNode + 'create', {
@@ -49,8 +48,6 @@ const Cadastro1: React.FC<{route, navigation: any }> = ({ route ,navigation }) =
       
         
 //     } 
-=======
->>>>>>> 8793f05fa0e7ad68c9114b5bb0980d1011156953
 
 
 const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
