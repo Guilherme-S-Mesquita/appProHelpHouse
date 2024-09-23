@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 150,
     left: -75,
-    borderRadius:270,
+    borderRadius:2,
   },
 
   textTitle: {

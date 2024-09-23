@@ -17,7 +17,10 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
             <View style={styles.container2}>
                 <View style={styles.meioCirculo}>
                 </View>
-                <Text style={styles.emQuais}>Em quais <Text style={styles.areas}>áreas</Text> {'\n'} <Text style={styles.voce}>você atua?</Text></Text>
+                <Text style={styles.emQuais}>Em quais
+                    <Text style={styles.areas}> áreas</Text>
+                    {'\n'} <Text style={styles.voce}>você atua?</Text>
+                </Text>
 
                 <View style={styles.pesquisa}>
                     <Image source={Imagens.lupa} style={styles.lupa} />
@@ -26,7 +29,6 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                         style={styles.input}
                         placeholderTextColor='white'
                         keyboardType='default'
-
 
                     />
 
@@ -66,49 +68,37 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                     </View>
 
 
-                    <View style={styles.descricaoAreaTrabalhada}>
-                        <Text style={styles.aindaNao}>Ainda não encontrou uma {'\n'}profissão que te defina?</Text>
+                    <Text style={styles.aindaNao}>Ainda não encontrou uma {'\n'}profissão que te defina?</Text>
 
-                        <Text style={styles.descricaoBreve}>Descreva brevemente sua área de atuação...</Text>
+                    <Text style={styles.descricaoBreve}>Descreva brevemente sua área de atuação...</Text>
+                    <TextInput
+                        placeholder='Descreva brevemente..'
+                        style={styles.descricaoInput}
+                        placeholderTextColor='white'
+                        keyboardType='default'
+                        returnKeyType='done'
 
-                        <Text style={styles.melhor}>Não deixe de adicionar fotos e vídeos para sua {'\n'} área ser melhor descrita!</Text>
-                        <TextInput
-                            placeholder='Descreva brevemente..'
-                            style={styles.descricaoInput}
-                            placeholderTextColor='white'
-                            keyboardType='default'
-                            returnKeyType='done'
-                            
-                        />
-                    </View>
+                    />
+
                 </View>
 
-              
+
                 {/* </ScrollView> */}
             </View>
 
             <Button
-                    style={[styles.buttonEnviar, {
-                        backgroundColor: '#FF914D',
-                        shadowColor: 'black',
-                        shadowRadius: 4,
-                        shadowOffset: { width: 900, height: 350 },
-                        elevation: 5
-                    }]} // Defina a cor de fundo desejada aqui
-                    color='#FF914D'
-                    variant="primary"
-                    title="Próximo"
-                    onPress={() => navigation.navigate('ultimosPassos')}
-                />
+                style={[styles.buttonEnviar, {
+                    backgroundColor: '#FF914D',
+
+                }]} // Defina a cor de fundo desejada aqui
+                color='#FF914D'
+                variant="primary"
+                title="Próximo"
+                onPress={() => navigation.navigate('ultimosPassos')}
+            />
         </View>
 
     );
 };
 
 export default AreaAtuacao;
-
-
-
-
-
-

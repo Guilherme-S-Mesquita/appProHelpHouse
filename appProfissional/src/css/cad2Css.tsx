@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-     backgroundColor:'#FF914D',
+    //  backgroundColor:'#FF914D',
     left:150,
     top:35,
     borderRadius: 22,

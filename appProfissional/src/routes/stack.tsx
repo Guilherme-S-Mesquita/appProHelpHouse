@@ -35,7 +35,7 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="cadastro2">
+    <Stack.Navigator initialRouteName="ultimosPassos">
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />

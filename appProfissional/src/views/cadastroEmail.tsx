@@ -20,7 +20,6 @@ const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
         });
     }
 
-
     return (
         <View style={styles.container}>
         
