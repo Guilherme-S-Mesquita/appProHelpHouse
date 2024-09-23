@@ -77,7 +77,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
                     }}
                     labelStyles={{
-                        backgroundColor: '#F5FCFF',
+                        backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
                         height:'29%',
@@ -124,7 +124,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         fontSizeFocused: 12,
                     }}
                     labelStyles={{
-                        backgroundColor: '#F5FCFF',
+                        backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
 
