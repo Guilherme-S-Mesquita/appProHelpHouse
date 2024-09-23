@@ -7,13 +7,6 @@ import styles from '../css/loginCss';
 // axios e como se importasse a API da uma olhada la no arquivo axios.js
 import axios from '../../axios';
 
-
-
-
-
-
-
-
 const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
     const [password, setPassword] = useState('');
@@ -84,14 +77,10 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
                     }}
                     labelStyles={{
-                        backgroundColor: '#F5FCFF',
+                        backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
                         height:'29%',
-                      
-                      
-                        
-             
 
                     }}
                     inputStyles={{
@@ -135,7 +124,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
                         fontSizeFocused: 12,
                     }}
                     labelStyles={{
-                        backgroundColor: '#F5FCFF',
+                        backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
 

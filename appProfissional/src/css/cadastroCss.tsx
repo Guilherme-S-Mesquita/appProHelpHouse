@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     width: '140%',
     backgroundColor: '#004AAD',
     position: 'absolute',
-    top: '20%',
+    top: '10%',
     left: '-19%',
-    borderRadius: 310,
+    borderRadius: 290,
     zIndex: -1,
   },
   scrollContainer: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 15,
     fontWeight: '900',
-    bottom:35,
+    bottom:30,
   },
   title: {
     width: '100%',

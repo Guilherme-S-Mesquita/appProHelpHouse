@@ -1,19 +1,53 @@
 import React, { useState } from 'react';
 import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
-import { TextInputMask } from 'react-native-masked-text';
-import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
-import Map from '../../componentes/Map/map';  // Importe o componente Map
-import Api from '../../componentes/apiCep/api'
+import Api from '../../componentes/apiCep/api';
 import AntDesign from '@expo/vector-icons/AntDesign';
-
-import config from '../../config/config.json'
+import config from '../../config/config.json';
 import styles from '../css/cad2Css';
 
 
 
 // CHAMA FIO ESSA AQUI DEU CERTO 
 //  RO
+// const Cadastro1: React.FC<{route: any, navigation: any }> = ({ route ,navigation }) => {
+//     const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
+//     const [cep, setCep] = useState('');
+//     const [bairro, setBairro] = useState('');
+//     const [rua, setRua] = useState('');
+//     const [numero, setNumero] = useState('');
+//     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
+
+// //  async function cadastroContratado() {
+  
+    
+//         let reqs = await fetch(config.urlRootNode + 'create', {
+//             method: 'POST',
+//             headers: {
+//                 'Accept': 'application/json',
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 nomeContratado: nome,
+//                 sobrenome: sobrenome,
+//                 email: email,
+//                 nascimento: nascimento,
+//                 cpf: cpf,
+//                 telefone: telefone,
+//                 senha: senha,
+//                 cep: cep,
+//                 bairro: bairro,
+//                 rua: rua,
+//                 numero: numero,
+//             })
+//         });
+
+    
+        
+       
+      
+        
+//     } 
 
 
 const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
@@ -22,11 +56,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     const [bairroContratado, setBairroContratado] = useState('');
     const [ruaContratado, setRuaContratado] = useState('');
     const [numCasaContratado, setNumCasaContratado] = useState('');
-
     const [cidadeContratado, setCidadeContratado] = useState('');
-    // const [tempoTrabalhadoContratado, setTempoTrabalhadoContratado] = useState('');
-
-
 
     const Verificar = async () => {
         try {
@@ -48,7 +78,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     cepContratado,
                     bairroContratado,
                     ruaContratado,
-                    numCasaContratado,          
+                    numCasaContratado,
                     cidadeContratado,
                     descContratado
                 }),
@@ -58,13 +88,10 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
             if(response.ok){
                 console.log('Os dados foram inseridos com sucesso!')
             }
-            // Processa a resposta JSON
+
             const data = await response.json();
 
-            // Mostra uma mensagem de sucesso
-
         } catch (error) {
-            // Mostra uma mensagem de erro e imprime o erro no console
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
             console.log({
@@ -93,45 +120,29 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
 
     async function buscarCep() {
-        // Se Cep for vazio vai aparecer um alerta
-        if (cepContratado == "") {
-            Alert.alert('Cep inválido')
-            setCepContratado("")
+        if (cepContratado === "") {
+            Alert.alert('Cep inválido');
+            return;
         }
         try {
-            // await serve para esperar a resposta que vai ser passada
-            const response = await Api.get(`/${cepContratado}/json/`)
-            //Esse get, serve para puxar a info la do servidor da API 
-
-
-            //Os set São as infos que você vai pegar da API
-            setBairroContratado(response.data.bairro)
+            const response = await Api.get(`/${cepContratado}/json/`);
+            setBairroContratado(response.data.bairro);
             setRuaContratado(response.data.logradouro);
             setCidadeContratado(response.data.localidade);
-            // Caso não carregue retornara um erro
         } catch (error) {
-            console.log('ERROGAY' + error)
+            console.log('Erro ao buscar CEP:', error);
         }
     }
 
-
     const formatCep = (text: string) => {
-        // Remove todos os caracteres que não são números
         let cleaned = text.replace(/\D/g, '');
-
-        // Aplica a formatação para CEP
         if (cleaned.length > 5) {
-            // Formato completo: XXXXX-XXX
             cleaned = cleaned.replace(/(\d{5})(\d{3})/, '$1-$2');
         } else {
-            // Caso ainda não tenha 8 dígitos, apenas retorna os números sem formatação
             cleaned = cleaned.slice(0, 5);
         }
-
-        // Retorna o CEP formatado ou parcialmente formatado
         return cleaned;
     };
-
 
     const handleCepChange = (text: string) => {
         setCepContratado(formatCep(text));
@@ -145,7 +156,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
     return (
         <View style={styles.container}>
-
             <View style={styles.containerCadastro}>
                 <View style={styles.title}>
                     <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
@@ -158,7 +168,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     </View>
                 </View>
                 <View style={styles.input}>
-
                     <View style={styles.inputsCep}>
                         <Text style={styles.title3}>Buscar cep </Text>
                         <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} /></Text>
@@ -344,12 +353,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 <Text style={styles.buttonText2}>Próximo</Text>
                 </TouchableOpacity>
                 </View>
-
-
-
             </View>
-
-
         </View>
     );
 };
