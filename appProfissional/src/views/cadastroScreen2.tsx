@@ -8,47 +8,6 @@ import styles from '../css/cad2Css';
 
 
 
-// CHAMA FIO ESSA AQUI DEU CERTO 
-//  RO
-// const Cadastro1: React.FC<{route: any, navigation: any }> = ({ route ,navigation }) => {
-//     const { nome, sobrenome, nascimento, cpf, telefone, email, senha } = route.params;
-//     const [cep, setCep] = useState('');
-//     const [bairro, setBairro] = useState('');
-//     const [rua, setRua] = useState('');
-//     const [numero, setNumero] = useState('');
-//     const [tempoTrabalhado, setTempoTrabalhado] = useState('');
-
-// //  async function cadastroContratado() {
-  
-    
-//         let reqs = await fetch(config.urlRootNode + 'create', {
-//             method: 'POST',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//             },
-//             body: JSON.stringify({
-//                 nomeContratado: nome,
-//                 sobrenome: sobrenome,
-//                 email: email,
-//                 nascimento: nascimento,
-//                 cpf: cpf,
-//                 telefone: telefone,
-//                 senha: senha,
-//                 cep: cep,
-//                 bairro: bairro,
-//                 rua: rua,
-//                 numero: numero,
-//             })
-//         });
-
-    
-        
-       
-      
-        
-//     } 
-
 
 const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, profissaoContratado, emailContratado, password, descContratado } = route.params;
@@ -157,16 +116,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     return (
         <View style={styles.container}>
             <View style={styles.containerCadastro}>
-                <View style={styles.title}>
-                    <Text style={styles.titulo2}>Dados <Text style={styles.pessoais}>Profissionais</Text></Text>
-                </View>
-                <View style={styles.legenda}>
-                    <Text style={styles.legendaTitle}>Há qunato tempo você atua</Text>
-                    <Text style={styles.legendaTitle}>nessa área?</Text>
-                    <View style={styles.inputTempoTrabalhado}>
-                       
-                    </View>
-                </View>
+        
                 <View style={styles.input}>
                     <View style={styles.inputsCep}>
                         <Text style={styles.title3}>Buscar cep </Text>

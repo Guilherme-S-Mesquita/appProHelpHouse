@@ -11,5 +11,6 @@ const Imagens={
     jardineiro:require("../assets/jardineiro.png"),
     pedreiro:require("../assets/pedreiro.png"),
     eletricista:require("../assets/eletricista.png"),
+    iconEnviar:require("../assets/iconEnviar.png"),
 }
 export default Imagens;
