@@ -15,9 +15,7 @@ const styles = StyleSheet.create({
     left: '-19%',
     borderRadius: 290,
     zIndex: -1,
-    top: 150,
-    left: -75,
-    borderRadius:2,
+ 
   },
   scrollContainer: {
 
