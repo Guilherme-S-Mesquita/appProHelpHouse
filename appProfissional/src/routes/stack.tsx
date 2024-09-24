@@ -15,6 +15,7 @@ import HomeScreen from '../views/home';
 import PesquisaScreen from '../views/pesquisa';
 import PerfilScreen from '../views/perfil';
 import CadastroEmail from '../views/cadastroEmail';
+import Chat from '../views/chat';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -35,7 +36,8 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="ultimosPassos">
+    <Stack.Navigator initialRouteName="Chat">
+       <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />

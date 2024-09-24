@@ -42,14 +42,18 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     descContratado
                 }),
             });
-
-
-            if(response.ok){
-                console.log('Os dados foram inseridos com sucesso!')
+    
+            // Verifica se a resposta não é ok (caso 422)
+            if (!response.ok) {
+                const errorData = await response.json(); // tenta pegar o erro
+                console.error('Erro ao enviar os dados:', errorData); // Log do erro
+                Alert.alert('Erro', errorData.message || 'Erro ao enviar os dados.'); // Mensagem do erro
+                return; // Sai da função
             }
-
+    
             const data = await response.json();
-
+            console.log('Os dados foram inseridos com sucesso!', data); // Log da resposta de sucesso
+    
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
@@ -65,14 +69,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 cepContratado,
                 bairroContratado,
                 ruaContratado,
-                numCasaContratado,           
+                numCasaContratado,
                 cidadeContratado,
                 descContratado
             });
         }
     };
-
-
+    
 
 
 
@@ -116,14 +119,14 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     return (
         <View style={styles.container}>
             <View style={styles.containerCadastro}>
-        
+
                 <View style={styles.input}>
+
+
                     <View style={styles.inputsCep}>
                         <Text style={styles.title3}>Buscar cep </Text>
-                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="black" onPress={buscarCep} /></Text>
+                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="white" onPress={buscarCep} /></Text>
                     </View>
-
-
 
                     <FloatingLabelInput
                         label="CEP"
@@ -242,51 +245,41 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             }}
                         />
                         <View style={styles.inputNum}>
-
-                            {/* Numero */}
-                            <FloatingLabelInput
-                                label="Numero"
-                                value={numCasaContratado}
-
-                                onChangeText={value => setNumCasaContratado(value)}
-                                keyboardType="numeric"
-                                containerStyles={{
-                                    borderBottomWidth: 5,
-                                    borderColor: '#fff',
-                                    marginTop: 20,
-                                    marginBottom: 10,
-                                    marginLeft: 10,  // Espaçamento entre os inputs
-                                    width: 80,       // Largura fixa para o campo de número
-                                }}
-                                customLabelStyles={{
-                                    topFocused: -20,
-                                    colorFocused: '#fff',
-                                    fontSizeFocused: 16,
-                                    colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
-
-                                }}
-                                labelStyles={{
-                                    paddingHorizontal: 5,
-                                    color: '#FF8F49',
-                                    fontWeight: 'bold'
-
-                                }}
-                                inputStyles={{
-                                    color: '#fff',
-                                    fontSize: 16,
-                                }}
-
-
-                            />
-
-
-
-                        </View>
+            <FloatingLabelInput
+                label="Numero"
+                value={numCasaContratado}
+                onChangeText={value => setNumCasaContratado(value)}
+                keyboardType="numeric"
+                containerStyles={{
+                    borderBottomWidth: 5,
+                    borderColor: '#fff',
+                    marginTop: 20,
+                    marginBottom: 10,
+                    marginLeft: 10,
+                    width: '80%',
+                }}
+                customLabelStyles={{
+                    topFocused: -20,
+                    colorFocused: '#fff',
+                    fontSizeFocused: 16,
+                    colorBlurred: '#E5E1DA',
+                }}
+                labelStyles={{
+                    paddingHorizontal: 5,
+                    color: '#FF8F49',
+                    fontWeight: 'bold',
+                }}
+                inputStyles={{
+                    color: '#fff',
+                    fontSize: 16,
+                }}
+            />
+        </View>
 
                     </View>
 
                 </View>
-         
+
                 {/* <View style={styles.mapContainer}>
                     <View>
                      
@@ -295,13 +288,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                 </View> */}
 
                 <View style={styles.containerButton}>
-                            <TouchableOpacity style={styles.buttonEnviar1}  
+                    <TouchableOpacity style={styles.buttonEnviar1}
                         onPress={async () => {
                             await Verificar();// Aguarda a conclusão da verificação
                             navigation.navigate('login'); // Navega para a tela 'login'
-                            }}>
-                <Text style={styles.buttonText2}>Próximo</Text>
-                </TouchableOpacity>
+                        }}>
+                        <Text style={styles.buttonText2}>Próximo</Text>
+                    </TouchableOpacity>
                 </View>
             </View>
         </View>

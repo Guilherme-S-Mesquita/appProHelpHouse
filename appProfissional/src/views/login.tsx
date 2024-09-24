@@ -21,8 +21,8 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
             return;
         }
     
-        console.log("Email:", emailContratado);
-        console.log("Password:", password);
+        console.log("Login realizado com successo!");
+       
     
         try {
             const response = await axios.post('http://localhost:8000/api/authpro', {

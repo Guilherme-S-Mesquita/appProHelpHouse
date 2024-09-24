@@ -19,10 +19,13 @@ const styles = StyleSheet.create({
   },
   inputsCep: {
     flexDirection: 'row',
+
   },
   icon: {
     color: '#fff',
-    zIndex:1,
+
+
+   
      
   },
   buscarCep:{
@@ -33,12 +36,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-    //  backgroundColor:'#FF914D',
-    left:150,
-    top:35,
-    borderRadius: 22,
-    width: 150,
-    height: 35,
+    marginLeft:20
+
   },
 
   containerCadastro: {
