@@ -4,7 +4,7 @@ export const getPro = async (setData, setLoading, setError) =>{
 setLoading(true);
 
 try{
-    const response = await api.get("/pro");
+    const response = await api.get("/cli");
     setData(response?.data);
     setLoading(false)
 }catch (e){

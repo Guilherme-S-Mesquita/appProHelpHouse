@@ -1,5 +1,7 @@
 import styled from "styled-components/native";
 
 export const Body = styled.View`
-width
+    width: 100%;
+    align-items:center;
+    margin: 30px 0;
 `;
