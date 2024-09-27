@@ -17,6 +17,8 @@ import PerfilScreen from '../views/perfil';
 import CadastroEmail from '../views/cadastroEmail';
 import TelaServico from '../views/telaServico';
 import Chat from '../views/chat';
+import List from '../views/teste';
+
 
 
 const Stack = createNativeStackNavigator();
@@ -38,8 +40,10 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="telaServico">
+    <Stack.Navigator initialRouteName="List">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
+       <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
+
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />
