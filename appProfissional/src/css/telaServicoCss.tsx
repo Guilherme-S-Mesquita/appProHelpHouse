@@ -10,9 +10,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: 20,
+        backgroundColor:'#004AAD',
+        top:40,
+        borderRadius:45,
+        width:380,
+        left:5
       },
       ola: {
-        fontSize: 18,
+        fontSize: 24,
+        top:3,
       },
       nomeUsuario: {
         color: '#FFA500',
@@ -28,39 +34,68 @@ const styles = StyleSheet.create({
         backgroundColor: '#f0f0f0',
         borderRadius: 10,
         margin: 10,
+        top:55,
+        height:250
       },
       ganhos: {
         fontSize: 20,
         fontWeight: 'bold',
         color: '#4CAF50',
+        top:45
       },
       periodoGanhos: {
-        fontSize: 14,
-        color: '#666',
+        fontSize: 16,
+        color: 'black',
       },
       localizacao: {
-        marginTop: 10,
+        top:59,
+        fontSize:15,
+        left:5,
+        color:'black',
+        fontWeight:'bold'
+      },
+      km:{
+        top:59,
+        fontSize:15,
+        left:5,
+        color:'red',
+        fontWeight:'bold'
       },
       botaoAlterarRaio2: {
-        backgroundColor: '#1E90FF',
+        backgroundColor: '#004AAD',
         padding: 10,
-        borderRadius: 5,
-        marginTop: 10,
+        borderRadius: 65,
+        top:83,
+        width:150,
+        left:55
       },
       botaoAlterarRaio1: {
-        color: '#fff',
+        color: 'white',
         textAlign: 'center',
+        fontWeight:'bold',
+        
       },
       servicosPendentes: {
-        marginTop: 10,
+        top: 96,
+        left:44,
+        fontSize:18,
+        fontWeight:'bold'
       },
       containerNovosPedidos: {
         padding: 20,
+        top:95,  
+        backgroundColor:'#004AAD',
+        height:480,
+        width:350,
+        left:22,
+        borderRadius:25
       },
       tituloNovosPedidos: {
         fontSize: 18,
         fontWeight: 'bold',
-        marginBottom: 10,
+        color:'white',
+        bottom:10,
+        left:14
       },
       cartaoSolicitacao: {
         backgroundColor: '#f0f0f0',
@@ -71,18 +106,28 @@ const styles = StyleSheet.create({
       tituloSolicitacao: {
         fontSize: 16,
         fontWeight: 'bold',
+        color:'#004AAD'
       },
       clienteSolicitacao: {
-        marginTop: 5,
+        marginTop: 3,
+        color:'black',
+        fontWeight:'bold',
+        fontSize:15
       },
       localizacaoSolicitacao: {
-        color: '#666',
+        color: 'black',
+        fontWeight:'bold',
+        fontSize:13
       },
       precoSolicitacao: {
         color: '#4CAF50',
+        fontSize:13,
+        fontWeight:'bold'
       },
       prazoSolicitacao: {
-        fontStyle: 'italic',
+        color:'black',
+        fontWeight:'bold',
+        fontSize:13
       },
       barraNavegacao: {
         flexDirection: 'row',
@@ -91,6 +136,8 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: '#ddd',
         paddingVertical: 10,
+        top:24,
+        backgroundColor:'white'
       },
       itemNavegacao: {
         alignItems: 'center',

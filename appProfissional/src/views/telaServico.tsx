@@ -8,11 +8,12 @@ const TelaServico: React.FC <{ navigation: any }> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
-        <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>José Claúdio</Text></Text>
+        
         
       </View>
-
+       
       <View style={styles.containerGanhos}>
+      <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>José Claúdio</Text></Text>
         <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos 30 dias</Text></Text>
         <Text style={styles.localizacao}>São Paulo, raio de 8km</Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>

@@ -51,7 +51,7 @@ const AppNavigator = () => {
       <Stack.Screen name="cadastro2" component={Cadastro2} options={{ headerShown: false }} />
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
-      <Stack.Screen name="telaServico" component={UltimosPassos} options={{ headerShown: false }} />
+      <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
