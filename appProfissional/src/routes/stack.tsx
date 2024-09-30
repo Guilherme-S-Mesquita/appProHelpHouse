@@ -40,7 +40,7 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="List">
+    <Stack.Navigator initialRouteName="areaAtuacao">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />

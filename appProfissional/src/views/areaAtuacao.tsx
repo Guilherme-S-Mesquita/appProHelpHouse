@@ -4,12 +4,12 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
 import Imagens from '../../img/img';
-
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 
 
 import styles from '../css/areaAtuacaoCss';
 const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
-
+    const [checkboxState, setCheckboxState] = React.useState(false);
     return (
         <View style={styles.containerPrincipal}>
 
@@ -37,34 +37,168 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                 <View style={styles.trabalhos}>
 
                     <View style={styles.pedreiro}>
-                        <Text style={styles.name1}>Pedreiro</Text>
-                        <Image source={Imagens.pedreiro} style={styles.pedreiroImg} />
+                        <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/pedreiro.png')}
+                                    style={{
+                                        width: 70,
+                                        height: 100,
+                                        top: 10,
+                                        left: 2
+                                    }}
+                                />
+                            }
+                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            // text="Pedreiro"
+                            // textStyle={{
+                            //     fontFamily: "Bold",
+                            //     color: '#fff',
+                            //     fontSize: 150,
+                            //     fontWeight: '900',
+                            //     zIndex: 1
+                            // }}
+
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
                     </View>
 
                     <View style={styles.mecanico}>
+                        <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/mecanico.png')}
+                                    style={{
+                                        width: 55,
+                                        height: 75,
+                                    }}
+                                />
+                            }
+                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            // text="Mecanico"
+                            // textStyle={{
+                            //     fontFamily: "Bold",
+                            //     color: '#fff',
+                            //     fontSize: 15,
+                            //     fontWeight: '900',
+                            //     marginLeft: 10,
+                            //     top:5,
+                            //     zIndex:10
+                            // }}
+
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
                         <Text style={styles.name2}>Mecânico</Text>
-                        <Image source={Imagens.mecanico} style={styles.mecanicoImg} />
                     </View>
 
                     <View style={styles.eletricista}>
+                    <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/eletricista.png')}
+                                    style={{
+                                        width: 60,
+                                        height: 100,
+                                        top:19
+                                    }}
+                                />
+                            }
+    
+                            innerIconStyle={{ borderWidth: 4 }}
+                            textStyle={{ fontFamily: "JosefinSans-Regular", color:'red', zIndex:10, fontSize:15 }}
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
+
+
+
                         <Text style={styles.name3}>Eletricista</Text>
-                        <Image source={Imagens.eletricista} style={styles.eletricistaImg} />
                     </View>
 
                     <View style={styles.jadineiro}>
+                    <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/jardineiro.png')}
+                                    style={{
+                                        width: 81,
+                                        height: 92,
+                                        top:5
+                                    }}
+                                />
+                            }
+                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
                         <Text style={styles.name4}>Jadineiro</Text>
-                        <Image source={Imagens.jardineiro} style={styles.jardineiroImg} />
+        
                     </View>
 
 
                     <View style={styles.encanador}>
+                    <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/encanador.png')}
+                                    style={{
+                                        width: 60,
+                                        height: 92,
+                                        top:10
+                                    }}
+                                />
+                            }
+                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
                         <Text style={styles.name5}>Encanador</Text>
-                        <Image source={Imagens.encanador} style={styles.encanadorImg} />
+                     
                     </View>
 
                     <View style={styles.diarista}>
+                    <BouncyCheckbox
+                            size={95}
+                            fillColor="#F6A059"
+                            unFillColor="#588acd"
+                            isChecked={false} // Para garantir que o check está desmarcado
+                            iconComponent={
+                                <Image
+                                    source={require('../../assets/diarista.png')}
+                                    style={{
+                                        width: 50,
+                                        height: 75,
+                                        bottom:4
+                                    }}
+                                />
+                            }
+                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                        />
                         <Text style={styles.name6}>Diarista</Text>
-                        <Image source={Imagens.diarista} style={styles.diaristaImg} />
+                     
                     </View>
 
 

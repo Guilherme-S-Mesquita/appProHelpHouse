@@ -68,18 +68,8 @@ const styles = StyleSheet.create({
     pedreiro: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         marginTop: 77,
         left: '10%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
-    },
-    pedreiroImg: {
-        width: 70,
-        height: 100,
-        top: -15,
-        left: '10%'
     },
     name1: {
         color: '#fff',
@@ -93,44 +83,23 @@ const styles = StyleSheet.create({
     mecanico: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         left: '40%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
         top: -90,
-    },
-    mecanicoImg: {
-        width: 55,
-        height: 75,
-        top: -15,
-        left: '12%',
-
     },
     name2: {
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
-        top: 65,
-        left: '5%',
+        bottom:18,
+        left:10,
         zIndex: 1
     },
 
     eletricista: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         left: '69%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
         top: -180,
-    },
-    eletricistaImg: {
-        width: 60,
-        height: 100,
-        top: -7,
-        left: '10%'
     },
     name3: {
         color: '#fff',
@@ -143,18 +112,8 @@ const styles = StyleSheet.create({
     jadineiro: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         left: '10%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
         top: -159,
-    },
-    jardineiroImg: {
-        width: 74,
-        height: 90,
-        top: -15,
-        left: '5%'
     },
     name4: {
         color: '#fff',
@@ -167,18 +126,8 @@ const styles = StyleSheet.create({
     encanador: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         left: '40%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
         top: -249
-    },
-    encanadorImg: {
-        width: 60,
-        height: 92,
-        top: -10,
-        left: '12%'
     },
     name5: {
         color: '#fff',
@@ -197,19 +146,15 @@ const styles = StyleSheet.create({
     diarista: {
         width: 90,
         height: 90,
-        backgroundColor: '#588acd',
-        borderRadius: 150,
         left: '69%',
-        borderWidth: 4,
-        borderColor: '#F6A059',
         top: -339
     },
     name6: {
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
-        top: 65,
-        left: '12%',
+        bottom:18,
+        left: 17,
         zIndex: 1
     },
 
