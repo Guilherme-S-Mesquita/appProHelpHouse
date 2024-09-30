@@ -30,9 +30,9 @@ const Tab = createBottomTabNavigator();
  const Tabs = () => {
    return (
      <Tab.Navigator>
-       <Tab.Screen name="home" component={HomeScreen} />
-       <Tab.Screen name="pesquisa" component={PesquisaScreen}/>
-       <Tab.Screen name="perfil" component={PerfilScreen}/>
+       <Tab.Screen name="home" component={HomeScreen}options={{ headerShown: false }} />
+       <Tab.Screen name="pesquisa" component={PesquisaScreen}options={{ headerShown: false }}/>
+       <Tab.Screen name="perfil" component={PerfilScreen}options={{ headerShown: false }}/>
    </Tab.Navigator>
   );
  };
@@ -40,14 +40,12 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="areaAtuacao">
+    <Stack.Navigator initialRouteName="homeStack">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />
-
-
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
-      <Stack.Screen name="homeStack" component={HomeScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="homeStack" component={Tabs} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />
       <Stack.Screen name="cadastro" component={CadastroScreen} options={{ headerShown: false }} />
       <Stack.Screen name="cadastroEmail" component={CadastroEmail} options={{ headerShown: false }} />
