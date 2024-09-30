@@ -37,7 +37,6 @@ const Tab = createBottomTabNavigator();
   );
  };
  //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
-
 const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="homeStack">

@@ -3,7 +3,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f0f0f0',
       },
       cabecalho: {
         flexDirection: 'row',
@@ -13,16 +13,18 @@ const styles = StyleSheet.create({
         backgroundColor:'#004AAD',
         top:40,
         borderRadius:45,
-        width:380,
+        width:399,
         left:5
       },
       ola: {
         fontSize: 24,
-        top:3,
+        fontFamily:'bold',
+        fontWeight: '500',
       },
       nomeUsuario: {
         color: '#FFA500',
-        fontWeight: 'bold',
+        fontFamily:'bold',
+        fontWeight: '700',
       },
       fotoPerfil: {
         width: 50,
@@ -31,11 +33,13 @@ const styles = StyleSheet.create({
       },
       containerGanhos: {
         padding: 20,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#ffffff',
         borderRadius: 10,
         margin: 10,
         top:55,
-        height:250
+        height:250,
+        width:380,
+        alignContent:'center'
       },
       ganhos: {
         fontSize: 20,
@@ -46,6 +50,9 @@ const styles = StyleSheet.create({
       periodoGanhos: {
         fontSize: 16,
         color: 'black',
+      },
+      dias:{
+        color:'#FFA500'
       },
       localizacao: {
         top:59,

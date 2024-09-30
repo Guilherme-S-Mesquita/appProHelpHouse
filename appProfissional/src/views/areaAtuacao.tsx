@@ -46,24 +46,14 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/pedreiro.png')}
                                     style={{
-                                        width: 70,
+                                        width: 80,
                                         height: 100,
-                                        top: 10,
-                                        left: 2
+                                        top: 15,
+
                                     }}
                                 />
                             }
-                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
-                            innerIconStyle={{ borderWidth: 4 }}
-                            // text="Pedreiro"
-                            // textStyle={{
-                            //     fontFamily: "Bold",
-                            //     color: '#fff',
-                            //     fontSize: 150,
-                            //     fontWeight: '900',
-                            //     zIndex: 1
-                            // }}
-
+                            innerIconStyle={{ borderWidth: 4, }}
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
                     </View>
@@ -78,27 +68,15 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/mecanico.png')}
                                     style={{
-                                        width: 55,
-                                        height: 75,
+                                        width: 79,
+                                        height: 110,
+                                        top:19
                                     }}
                                 />
                             }
-                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
                             innerIconStyle={{ borderWidth: 4 }}
-                            // text="Mecanico"
-                            // textStyle={{
-                            //     fontFamily: "Bold",
-                            //     color: '#fff',
-                            //     fontSize: 15,
-                            //     fontWeight: '900',
-                            //     marginLeft: 10,
-                            //     top:5,
-                            //     zIndex:10
-                            // }}
-
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
-                        <Text style={styles.name2}>Mecânico</Text>
                     </View>
 
                     <View style={styles.eletricista}>
@@ -111,9 +89,9 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/eletricista.png')}
                                     style={{
-                                        width: 60,
-                                        height: 100,
-                                        top:19
+                                        width: 72,
+                                        height: 119,
+                                        top:15
                                     }}
                                 />
                             }
@@ -122,10 +100,6 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                             textStyle={{ fontFamily: "JosefinSans-Regular", color:'red', zIndex:10, fontSize:15 }}
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
-
-
-
-                        <Text style={styles.name3}>Eletricista</Text>
                     </View>
 
                     <View style={styles.jadineiro}>
@@ -138,17 +112,16 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/jardineiro.png')}
                                     style={{
-                                        width: 81,
-                                        height: 92,
-                                        top:5
+                                        width: 95,
+                                        height: 115,
+                                        top:25,
+                                        left:2
                                     }}
                                 />
                             }
-                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
                             innerIconStyle={{ borderWidth: 4 }}
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
-                        <Text style={styles.name4}>Jadineiro</Text>
         
                     </View>
 
@@ -163,17 +136,16 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/encanador.png')}
                                     style={{
-                                        width: 60,
-                                        height: 92,
-                                        top:10
+                                        width:72,
+                                        height: 152,
+                                        top:35
                                     }}
                                 />
                             }
-                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
                             innerIconStyle={{ borderWidth: 4 }}
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
-                        <Text style={styles.name5}>Encanador</Text>
+                 
                      
                     </View>
 
@@ -187,18 +159,15 @@ const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
                                 <Image
                                     source={require('../../assets/diarista.png')}
                                     style={{
-                                        width: 50,
-                                        height: 75,
-                                        bottom:4
+                                        width: 80,
+                                        height: 155,
+                                        top:35
                                     }}
                                 />
                             }
-                            // iconStyle={{ borderColor: "pink",  borderWidth: 15,}}
                             innerIconStyle={{ borderWidth: 4 }}
                             onPress={(isChecked: boolean) => { console.log(isChecked) }}
                         />
-                        <Text style={styles.name6}>Diarista</Text>
-                     
                     </View>
 
 
