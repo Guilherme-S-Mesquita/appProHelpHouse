@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
       },
 
   title: {
-    width: '100%',
+    width: 100,
     justifyContent: 'flex-end',
     alignItems: 'center',
     height: '14%'
