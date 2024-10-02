@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     help: {
         width: 110,
         height: 50,
-        right: 140,
-        top:30
+        right: 120,
+        top:45
     },
     input: {
         width: 280,
@@ -75,8 +75,7 @@ const styles = StyleSheet.create({
     },
     buttonCad: {
         top: 250,
-        width: 160,
-        color: '#004AAD',
+        width: 130,
         shadowColor: 'black',
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },

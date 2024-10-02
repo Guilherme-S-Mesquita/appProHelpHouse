@@ -1,9 +1,8 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageStyle } from 'react-native';
 const styles = StyleSheet.create({
 
 
     containerPrincipal: {
-
         height: 100,
         backgroundColor: '#004AAD',
         flex: 1,
@@ -14,6 +13,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
         fontWeight: '900',
         top: 95,
+        right:32
     },
     passos: {
         color: '#F6A059',
@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '900',
         top: 110,
+        right:25
     },
     circulo: {
         bottom: 15,
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
         marginTop: 145,
         borderWidth: 7,
         borderColor: '#F6A059',
-        left:50
+        
     },
     container2: {
 
@@ -55,7 +56,7 @@ const styles = StyleSheet.create({
         top: 80,
     },
     buttonEnviar: {
-        left:75,
+        left: 75,
         top: 275,
         height: 50,
         width: 160,
@@ -66,5 +67,20 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.3,
 
     },
+    button2: {
+        padding: 10,
+        backgroundColor: 'orange',
+        borderRadius: 5,
+        margin: 10,
+      },
+      buttonText2: {
+        color: 'white',
+        fontSize: 16,
+      },
+      image: {
+        width: 100,
+        height: 100,
+        borderRadius: 50,
+      } as ImageStyle,
 });
 export default styles;

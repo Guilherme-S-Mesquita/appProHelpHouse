@@ -138,7 +138,6 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             <Button
                 style={styles.button}
-                color='#004AAD'
                 variant="primary"
                 title="Entrar"
                 onPress={handleLogin}
@@ -154,7 +153,6 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             <Button
                 style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
-                color='#004AAD'
                 variant="primary"
                 title="Cadastre-se"
 
