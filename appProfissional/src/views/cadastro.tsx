@@ -3,7 +3,6 @@ import { View, Text, TextInput, ScrollView } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
-
 import styles from '../css/cadastroCss';
 
 const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
@@ -12,10 +11,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
     const [sobrenomeContratado, setSobrenomeContratado] = useState('');
     const [nascContratado, setNascContratado] = useState('');
     const [cpfContratado, setCpfContratado] = useState('');
-    const [profissaoContratado, setProfissaoContratado] = useState('');
     const [telefoneContratado, setTelefoneContratado] = useState('');
-    const [descContratado, setDescContratado] = useState('');
-
 
 
     // Ele leva para outra pagina e guarda as infos que foi inseridas aqui
@@ -26,12 +22,9 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
             nascContratado: nascContratado,
             cpfContratado: cpfContratado,
             telefoneContratado: telefoneContratado,
-            profissaoContratado: profissaoContratado,
             emailContratado: emailContratado,
             password: password,
-            descContratado: descContratado,
-
-
+    
         });
     };
 
@@ -100,7 +93,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         <TextInputMask
                             type={'datetime'} // Corrigido para uma string
                             options={{
-                                format: 'YYYY/MM/DD', // Formato desejado
+                                format: 'DD/MM/YYYY', // Formato desejado
                             }}
                             value={nascContratado}
                             onChangeText={text => setNascContratado(text)}

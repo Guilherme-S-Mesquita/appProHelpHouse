@@ -5,77 +5,37 @@ import Api from '../../componentes/apiCep/api';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import config from '../../config/config.json';
 import styles from '../css/cad2Css';
-
+import { Button } from "../../componentes/Button/Button";
 
 
 
 const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigation }) => {
-    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, profissaoContratado, emailContratado, password, descContratado } = route.params;
+    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password} = route.params;
     const [cepContratado, setCepContratado] = useState('');
     const [bairroContratado, setBairroContratado] = useState('');
     const [ruaContratado, setRuaContratado] = useState('');
     const [numCasaContratado, setNumCasaContratado] = useState('');
     const [cidadeContratado, setCidadeContratado] = useState('');
 
-    const Verificar = async () => {
-        try {
-            const response = await fetch('http://localhost:8000/api/proo', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    nomeContratado,
-                    sobrenomeContratado,
-                    profissaoContratado,
-                    cpfContratado,
-                    emailContratado,
-                    telefoneContratado,
-                    password,
-                    nascContratado,
-                    cepContratado,
-                    bairroContratado,
-                    ruaContratado,
-                    numCasaContratado,
-                    cidadeContratado,
-                    descContratado
-                }),
-            });
-    
-            // Verifica se a resposta não é ok (caso 422)
-            if (!response.ok) {
-                const errorData = await response.json(); // tenta pegar o erro
-                console.error('Erro ao enviar os dados:', errorData); // Log do erro
-                Alert.alert('Erro', errorData.message || 'Erro ao enviar os dados.'); // Mensagem do erro
-                return; // Sai da função
-            }
-    
-            const data = await response.json();
-            console.log('Os dados foram inseridos com sucesso!', data); // Log da resposta de sucesso
-    
-        } catch (error) {
-            Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
-            console.error('Erro:', error);
-            console.log({
-                nomeContratado,
-                sobrenomeContratado,
-                profissaoContratado,
-                cpfContratado,
-                emailContratado,
-                telefoneContratado,
-                password,
-                nascContratado,
-                cepContratado,
-                bairroContratado,
-                ruaContratado,
-                numCasaContratado,
-                cidadeContratado,
-                descContratado
-            });
-        }
+    const dadosCad = () => {
+        navigation.navigate('areaAtuacao', {
+            nomeContratado: nomeContratado,
+            sobrenomeContratado: sobrenomeContratado,
+            nascContratado: nascContratado,
+            cpfContratado: cpfContratado,
+            telefoneContratado: telefoneContratado,
+            emailContratado: emailContratado,
+            password: password,
+            cepContratado: cepContratado,
+            bairroContratado: bairroContratado,
+            ruaContratado: ruaContratado,
+            numCasaContratado: numCasaContratado,
+            cidadeContratado: cidadeContratado,
+
+        });
     };
-    
+
+
     async function buscarCep() {
         if (cepContratado === "") {
             Alert.alert('Cep inválido');
@@ -235,36 +195,39 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             }}
                         />
                         <View style={styles.inputNum}>
-            <FloatingLabelInput
-                label="Numero"
-                value={numCasaContratado}
-                onChangeText={value => setNumCasaContratado(value)}
-                keyboardType="numeric"
-                containerStyles={{
-                    borderBottomWidth: 5,
-                    borderColor: '#fff',
-                    marginTop: 20,
-                    marginBottom: 10,
-                    marginLeft: 10,
-                    width: '80%',
-                }}
-                customLabelStyles={{
-                    topFocused: -20,
-                    colorFocused: '#fff',
-                    fontSizeFocused: 16,
-                    colorBlurred: '#E5E1DA',
-                }}
-                labelStyles={{
-                    paddingHorizontal: 5,
-                    color: '#FF8F49',
-                    fontWeight: 'bold',
-                }}
-                inputStyles={{
-                    color: '#fff',
-                    fontSize: 16,
-                }}
-            />
-        </View>
+                            <FloatingLabelInput
+                                label="Numero"
+                                value={numCasaContratado}
+                                onChangeText={value => setNumCasaContratado(value)}
+                                keyboardType="numeric"
+                                containerStyles={{
+                                    borderBottomWidth: 5,
+                                    borderColor: '#fff',
+                                    marginTop: 20,
+                                    marginBottom: 10,
+                                    marginLeft: 10,
+                                    width: '80%',
+                                }}
+                                customLabelStyles={{
+                                    topFocused: -20,
+                                    colorFocused: '#fff',
+                                    fontSizeFocused: 16,
+                                    colorBlurred: '#E5E1DA',
+                                    
+                                }}
+                                labelStyles={{
+                                    paddingHorizontal: 5,
+                                    color: '#FF8F49',
+                                    fontWeight: 'bold',
+                                    
+                                }}
+                                inputStyles={{
+                                    color: '#fff',
+                                    fontSize: 16,
+                                }}
+                                 returnKeyType='done'
+                            />
+                        </View>
 
                     </View>
 
@@ -277,15 +240,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     </View>
                 </View> */}
 
-                <View style={styles.containerButton}>
-                    <TouchableOpacity style={styles.buttonEnviar1}
-                        onPress={async () => {
-                            await Verificar();// Aguarda a conclusão da verificação
-                            navigation.navigate('login'); // Navega para a tela 'login'
-                        }}>
-                        <Text style={styles.buttonText2}>Próximo</Text>
-                    </TouchableOpacity>
-                </View>
+                <Button
+                    style={[styles.buttonEnviar, { backgroundColor: '#FF914D' }]}
+                    variant="primary"
+                    title="Próximo"
+                    onPress={dadosCad}
+
+                />
             </View>
         </View>
     );

@@ -52,9 +52,13 @@ const styles = StyleSheet.create({
     },
     botaoAvancar:{
         marginTop:90,
-        width:200,
+        width:130,
         height:50,
-      
+        shadowColor: 'black',
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 9 },
+        shadowOpacity: 0.3,
+        elevation: 5,
     },
  
 });
