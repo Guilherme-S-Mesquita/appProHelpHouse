@@ -12,5 +12,6 @@ const Imagens={
     pedreiro:require("../assets/pedreiro.png"),
     eletricista:require("../assets/eletricista.png"),
     iconEnviar:require("../assets/iconEnviar.png"),
+    jesus:require("../assets/jesus.jpeg"),
 }
 export default Imagens;
