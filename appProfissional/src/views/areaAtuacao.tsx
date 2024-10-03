@@ -1,206 +1,200 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, Image } from 'react-native';
-import { FloatingLabelInput } from 'react-native-floating-label-input';
-import { TextInputMask } from 'react-native-masked-text';
+import { View, Text, TextInput, Image } from 'react-native';
+import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Button } from "../../componentes/Button/Button";
 import Imagens from '../../img/img';
-import BouncyCheckbox from "react-native-bouncy-checkbox";
-
-
 import styles from '../css/areaAtuacaoCss';
-const AreaAtuacao: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [checkboxState, setCheckboxState] = React.useState(false);
+
+const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
+    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado } = route.params;
+
+    const [profissoesSelecionadas, setProfissoesSelecionadas] = useState<string[]>([]); 
+    const [descContratado, setDescContratado] = useState<string>(''); 
+
+    const handleCheckboxChange = (profession: string, isChecked: boolean) => {
+        if (isChecked) {
+            setProfissoesSelecionadas(prevState => [...prevState, profession]);
+        } else {
+            setProfissoesSelecionadas(prevState => prevState.filter(item => item !== profession));
+        }
+    };
+
+    // Função para processar os dados e navegar para a próxima tela
+    const dadosCad = () => {
+        const profissaoContratado = profissoesSelecionadas.join(', '); // Concatena as profissões em uma string
+    
+        console.log("Profissões selecionadas: ", profissaoContratado);
+        console.log("Descrição: ", descContratado);
+    
+        navigation.navigate('ultimosPassos', {
+            nomeContratado,
+            sobrenomeContratado,
+            nascContratado,
+            cpfContratado,
+            telefoneContratado,
+            emailContratado,
+            password,
+            cepContratado,
+            bairroContratado,
+            ruaContratado,
+            numCasaContratado,
+            cidadeContratado,
+            profissaoContratado, 
+            descContratado       
+        });
+    };
     return (
         <View style={styles.containerPrincipal}>
-
-
             <View style={styles.container2}>
-                <View style={styles.meioCirculo}>
-                </View>
-                <Text style={styles.emQuais}>Em quais
+                <View style={styles.meioCirculo} />
+                <Text style={styles.emQuais}>
+                    Em quais
                     <Text style={styles.areas}> áreas</Text>
-                    {'\n'} <Text style={styles.voce}>você atua?</Text>
+                    {'\n'}
+                    <Text style={styles.voce}>você atua?</Text>
                 </Text>
 
                 <View style={styles.pesquisa}>
                     <Image source={Imagens.lupa} style={styles.lupa} />
                     <TextInput
-                        placeholder='buscar..'
+                        placeholder='buscar...'
                         style={styles.input}
                         placeholderTextColor='white'
                         keyboardType='default'
-
                     />
-
                 </View>
-                {/* <ScrollView> */}
-                <View style={styles.trabalhos}>
 
+                <View style={styles.trabalhos}>
+                    {/* Checkbox Pedreiro */}
                     <View style={styles.pedreiro}>
                         <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/pedreiro.png')}
-                                    style={{
-                                        width: 80,
-                                        height: 100,
-                                        top: 15,
-
-                                    }}
+                                    style={{ width: 80, height: 100, top: 15 }}
                                 />
                             }
-                            innerIconStyle={{ borderWidth: 4, }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            innerIconStyle={{ borderWidth: 4 }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('pedreiro', isChecked)}
                         />
                     </View>
 
+                    {/* Checkbox Mecânico */}
                     <View style={styles.mecanico}>
                         <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/mecanico.png')}
-                                    style={{
-                                        width: 79,
-                                        height: 110,
-                                        top:19
-                                    }}
+                                    style={{ width: 79, height: 110, top: 19 }}
                                 />
                             }
                             innerIconStyle={{ borderWidth: 4 }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('mecanico', isChecked)}
                         />
                     </View>
 
+                    {/* Checkbox Eletricista */}
                     <View style={styles.eletricista}>
-                    <BouncyCheckbox
+                        <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/eletricista.png')}
-                                    style={{
-                                        width: 72,
-                                        height: 119,
-                                        top:15
-                                    }}
+                                    style={{ width: 72, height: 119, top: 15 }}
                                 />
                             }
-    
                             innerIconStyle={{ borderWidth: 4 }}
-                            textStyle={{ fontFamily: "JosefinSans-Regular", color:'red', zIndex:10, fontSize:15 }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('eletricista', isChecked)}
                         />
                     </View>
 
+                    {/* Checkbox Jardineiro */}
                     <View style={styles.jadineiro}>
-                    <BouncyCheckbox
+                        <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/jardineiro.png')}
-                                    style={{
-                                        width: 95,
-                                        height: 115,
-                                        top:25,
-                                        left:2
-                                    }}
+                                    style={{ width: 95, height: 115, top: 25, left: 2 }}
                                 />
                             }
                             innerIconStyle={{ borderWidth: 4 }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('jardineiro', isChecked)}
                         />
-        
                     </View>
 
-
+                    {/* Checkbox Encanador */}
                     <View style={styles.encanador}>
-                    <BouncyCheckbox
+                        <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/encanador.png')}
-                                    style={{
-                                        width:72,
-                                        height: 152,
-                                        top:35
-                                    }}
+                                    style={{ width: 72, height: 152, top: 35 }}
                                 />
                             }
                             innerIconStyle={{ borderWidth: 4 }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('encanador', isChecked)}
                         />
-                 
-                     
                     </View>
 
+                    {/* Checkbox Diarista */}
                     <View style={styles.diarista}>
-                    <BouncyCheckbox
+                        <BouncyCheckbox
                             size={95}
                             fillColor="#F6A059"
                             unFillColor="#588acd"
-                            isChecked={false} // Para garantir que o check está desmarcado
                             iconComponent={
                                 <Image
                                     source={require('../../assets/diarista.png')}
-                                    style={{
-                                        width: 80,
-                                        height: 155,
-                                        top:35
-                                    }}
+                                    style={{ width: 80, height: 155, top: 35 }}
                                 />
                             }
                             innerIconStyle={{ borderWidth: 4 }}
-                            onPress={(isChecked: boolean) => { console.log(isChecked) }}
+                            onPress={(isChecked: boolean) => handleCheckboxChange('diarista', isChecked)}
                         />
                     </View>
 
+                    <Text style={styles.aindaNao}>
+                        Ainda não encontrou uma {'\n'}profissão que te defina?
+                    </Text>
 
-                    <Text style={styles.aindaNao}>Ainda não encontrou uma {'\n'}profissão que te defina?</Text>
+                    <Text style={styles.descricaoBreve}>
+                        Descreva brevemente sua área de atuação...
+                    </Text>
 
-                    <Text style={styles.descricaoBreve}>Descreva brevemente sua área de atuação...</Text>
+                    {/* Campo de entrada para a descrição do contratado */}
                     <TextInput
-                        placeholder='Descreva brevemente..'
-                        style={styles.descricaoInput}
-                        placeholderTextColor='white'
-                        keyboardType='default'
+                    style={styles.descricaoInput}
+                        value={descContratado}
+                        onChangeText={value => setDescContratado(value)}
+                        placeholder="Descreva brevemente sua área..."
+                        placeholderTextColor="#fff"
                         returnKeyType='done'
-
                     />
-
                 </View>
-
-
-                {/* </ScrollView> */}
             </View>
 
             <Button
-                style={[styles.buttonEnviar, {
-                    backgroundColor: '#FF914D',
-
-                }]} // Defina a cor de fundo desejada aqui
+                style={[styles.buttonEnviar, { backgroundColor: '#FF914D' }]}
                 color='#FF914D'
                 variant="primary"
                 title="Próximo"
-                onPress={() => navigation.navigate('ultimosPassos')}
+                onPress={dadosCad} // Chama diretamente a função
             />
         </View>
-
     );
 };
 

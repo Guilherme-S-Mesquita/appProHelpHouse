@@ -27,6 +27,7 @@ const Tab = createBottomTabNavigator();
 
 //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 // Definindo a função Tabs
+
  const Tabs = () => {
    return (
      <Tab.Navigator>
@@ -37,6 +38,7 @@ const Tab = createBottomTabNavigator();
   );
  };
  //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
+
 const AppNavigator = () => {
   return (
     <Stack.Navigator initialRouteName="loading">
@@ -54,6 +56,7 @@ const AppNavigator = () => {
       <Stack.Screen name="cadastro2" component={Cadastro2} options={{ headerShown: false }} />
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
+      <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

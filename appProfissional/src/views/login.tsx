@@ -25,7 +25,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
 
         try {
-            const response = await axios.post('http://localhost:8000/api/authpro', {
+            const response = await axios.post('http://127.0.0.1:8000/api/proo', {
                 emailContratado:emailContratado,
                 password:password,
             });
@@ -34,6 +34,7 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             if (response.data && response.data.status === 'Sucesso') {
                 navigation.navigate('homeStack', { screen: 'home' });
+                
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
@@ -138,7 +139,6 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             <Button
                 style={styles.button}
-                color='#004AAD'
                 variant="primary"
                 title="Entrar"
                 onPress={handleLogin}
@@ -154,7 +154,6 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             <Button
                 style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} // Defina a cor de fundo desejada aqui
-                color='#004AAD'
                 variant="primary"
                 title="Cadastre-se"
 

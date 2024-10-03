@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
         fontSize: 35,
         fontWeight: '900',
         top: 95,
+        right:45
     },
     passos: {
         color: '#F6A059',
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '900',
         top: 110,
+        right:35
     },
     circulo: {
         bottom: 15,
@@ -33,7 +35,7 @@ const styles = StyleSheet.create({
         marginTop: 145,
         borderWidth: 7,
         borderColor: '#F6A059',
-        left:50
+        left:5
     },
     container2: {
 
@@ -42,7 +44,8 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-        top: 35
+        top: 35,
+        right:55
     },
 
     container3: {
@@ -53,10 +56,10 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 18,
         top: 80,
+        right:20
     },
     buttonEnviar: {
-        left:75,
-        top: 275,
+        top: 175,
         height: 50,
         width: 160,
         borderRadius: 25,
@@ -64,7 +67,13 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },
         shadowOpacity: 0.3,
-
     },
+    buttonText:{
+        fontWeight: '500',
+        color: 'white',
+        fontSize: 15,
+        top: 140,
+        zIndex:10
+    }
 });
 export default styles;

@@ -107,7 +107,14 @@ const styles = StyleSheet.create({
   },
 
   buttonEnviar: {
-  },
+    width: 145,
+    top:655,
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 9 },
+    shadowOpacity: 0.3,
+    elevation: 5,
+},
 
   buttonEnviar1: {
     borderRadius: 22,
