@@ -9,16 +9,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: 20,
+        padding: 5.5,
         backgroundColor:'#004AAD',
         top:40,
-        borderRadius:45,
+        borderRadius:17,
         width:384,
         left:5
       },
+      filtroImg:{
+        width:20,
+        height: 25,
+        left:325
+      },
       ola: {
-        fontSize: 24,
-        top:3,
+        fontSize: 22,
+        top:5,
       },
       nomeUsuario: {
         color: '#FFA500',
@@ -36,8 +41,8 @@ const styles = StyleSheet.create({
       ganhos: {
         fontSize: 15,
         fontWeight: 'bold',
-        color: '#4CAF50',
-        top:19,
+        color: '#00BF63',
+        top:23,
       },
       periodoGanhos: {
         fontSize: 15,
@@ -47,13 +52,14 @@ const styles = StyleSheet.create({
         color:'F6A059'
       },
       jesusImg:{
-        width:60,
-        height:60,
+        width:75,
+        height:75,
         borderRadius:80,
-        left:260
+        left:254,
+        bottom:17
       },
       localizacao: {
-        top:-33,
+        top:-43,
         fontSize:14,
         left:5,
         color:'black',
@@ -64,9 +70,9 @@ const styles = StyleSheet.create({
       },
       botaoAlterarRaio2: {
         backgroundColor: '#004AAD',
-        padding: 10,
+        padding: 9,
         borderRadius: 65,
-        top:-3,
+        top:-11,
         width:150,
         left:55
       },
@@ -76,8 +82,8 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
       },
       servicosPendentes: {
-        top: 32,
-        left:31,
+        top: 17,
+        left:40,
         fontSize:18,
         fontWeight:'bold'
       },
@@ -130,8 +136,12 @@ const styles = StyleSheet.create({
       localizacaoSolicitacao: {
         color: 'black',
         fontWeight:'bold',
-        fontSize:12,
-        top:4
+        fontSize:13,
+        top:5
+      },
+      locImg:{
+        width:12,
+        height:16,
       },
       doisKm:{
         color: '#545454',
@@ -196,13 +206,52 @@ const styles = StyleSheet.create({
         borderTopWidth: 1,
         borderTopColor: '#ddd',
         paddingVertical: 10,
-        top:24,
+        top:13,
         backgroundColor:'white'
       },
       itemNavegacao: {
         alignItems: 'center',
+        bottom:12,
+        width:300
       },
-    
+      homeImg:{
+        width:30,
+        height: 33,
+        bottom:2,
+        left:6
+       },
+      chatImg:{
+        width:30,
+        height: 45,
+        left:8
+      },
+      maisImg:{
+        width:32,
+        height: 33,
+        bottom:1,
+        left:4
+      }, 
+      perfilImg:{
+        width:25,
+        height: 30,
+        bottom:2,
+        right:4
+      },
+      cartaoSolicitacao2: {
+        backgroundColor: '#f0f0f0',
+        padding: 15,
+        borderRadius: 10,
+        height:280,
+        bottom:175
+      }, 
+      tituloSolicitacao2: {
+        fontSize: 20,
+        fontWeight: 'bold',
+        color:'#004AAD',
+        bottom:6
+      },
+
+
 
 });
 export default styles;

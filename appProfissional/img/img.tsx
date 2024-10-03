@@ -13,5 +13,10 @@ const Imagens={
     eletricista:require("../assets/eletricista.png"),
     iconEnviar:require("../assets/iconEnviar.png"),
     jesus:require("../assets/jesus.jpeg"),
+    iconChat:require("../assets/iconChat.png"),
+    iconMais:require("../assets/iconMais.png"),
+    iconHome:require("../assets/iconHome.png"),
+    iconFiltro:require("../assets/iconFiltro.png"),
+    iconPerfil:require("../assets/iconPerfil.png"),
 }
 export default Imagens;

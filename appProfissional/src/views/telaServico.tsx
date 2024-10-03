@@ -9,6 +9,7 @@ const TelaServico: React.FC <{ navigation: any }> = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
+      <Image source={Imagens.iconFiltro} style={styles.filtroImg} />
       </View>
        
       <View style={styles.containerGanhos}>
@@ -30,7 +31,7 @@ const TelaServico: React.FC <{ navigation: any }> = ({navigation}) => {
             <Text style={styles.tituloSolicitacao}>Pintura de comôdos</Text>
            
                 <Text style={styles.clienteSolicitacao}>Mariana Silva</Text>
-                <Text style={styles.localizacaoSolicitacao}>São Paulo, Guaianases.<Text style={styles.doisKm}> Á 2km de você</Text></Text>
+                <Text style={styles.localizacaoSolicitacao}><Image source={Imagens.iconLocalizacao} style={styles.locImg}/>São Paulo, Guaianases.<Text style={styles.doisKm}> Á 2km de você</Text></Text>
                 <View style={styles.containerDesc}>
                   <Text style={styles.desc}>Descrição:</Text>
                   <Text style={styles.breveDesc}>Preciso de pintura na parte de fora de minha casa, gostaria do serviço realizado até dia 11/10.</Text>
@@ -43,20 +44,24 @@ const TelaServico: React.FC <{ navigation: any }> = ({navigation}) => {
                 </View>
               
           </View>
+          <View style={styles.cartaoSolicitacao2}>
+          <Text style={styles.tituloSolicitacao2}>Montar Guarda-roupa</Text>
+
+          </View>
       </View>
 
       <View style={styles.barraNavegacao}>
         <TouchableOpacity style={styles.itemNavegacao}>
-          <Text>Home</Text>
+        <Image source={Imagens.iconHome} style={styles.homeImg} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.itemNavegacao}>
-          <Text>+</Text>
+        <Image source={Imagens.iconMais} style={styles.maisImg} /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.itemNavegacao}>
-          <Text>Chat</Text>
+        <Image source={Imagens.iconChat} style={styles.chatImg} /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.itemNavegacao}>
-          <Text>Perfil</Text>
+        <Image source={Imagens.iconPerfil} style={styles.perfilImg} />
         </TouchableOpacity>
       </View>
     </View>
