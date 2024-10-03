@@ -57,7 +57,7 @@ const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
 
   const goToOutraTela = () => {
     if (imageUrl) {
-      navigation.navigate('perfilProfissional'); // Navegar para a tela desejada
+      navigation.navigate('home'); // Navegar para a tela desejada
     } else {
       Alert.alert('Erro', 'Nenhuma imagem para exibir.');
     }

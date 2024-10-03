@@ -64,11 +64,11 @@ const styles = StyleSheet.create({
 
     //a partir da parte Veja mais 
     vejaMais:{
-        fontSize:18,
+        fontSize:15,
         fontWeight:'bold',
         color:'black',
         bottom: 110,
-        marginTop:45,
+        marginTop:40,
         marginLeft:25
     },
 

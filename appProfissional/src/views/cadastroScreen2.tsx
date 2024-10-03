@@ -76,11 +76,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
         }
     };
     
-
-
-
-
-
     async function buscarCep() {
         if (cepContratado === "") {
             Alert.alert('Cep inválido');
@@ -109,11 +104,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     const handleCepChange = (text: string) => {
         setCepContratado(formatCep(text));
     };
-
-
-
-
-
 
 
     return (

@@ -8,58 +8,50 @@ const styles = StyleSheet.create({
   },
   fundo: {
     height: '100%',
-    width: '140%',
+    width: 620,
     backgroundColor: '#004AAD',
-    position: 'absolute',
-    // top: '10%',
-    // left: '-19%',
-    // borderRadius: 290,
-    zIndex: -1,
- 
+    zIndex: 1,
+    borderRadius: 300,
+    top: 40,
   },
   scrollContainer: {
 
   },
-  textTitle:{
+  textTitle: {
     color: '#fff',
     fontSize: 15,
     fontWeight: '900',
-    bottom:30,
+    bottom: 30,
   },
   title: {
-    width: '100%',
     justifyContent: 'flex-end',
     alignItems: 'center',
-    height: '14%'
+  height:90
   },
   titulo: {
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
-    top: 20
+    top:20
   },
   tituloDados: {
-    width: '100%',
-    height: '20%',
     top: 30,
     left: 2,
-    display:'flex',
+    display: 'flex',
     flexDirection: 'row',
   },
   tituloDados2: {
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
+    top:55
   },
   pessoais: {
     color: '#FF914D',
   },
   containerCadastro: {
-    width: '100%',
-    height: '100%',
     flexDirection: 'column',
     alignItems: 'center',
-
   },
   titulo2: {
     color: '#fff',
@@ -111,76 +103,46 @@ const styles = StyleSheet.create({
   },
   buttonEnviar: {
     position: 'relative',
-    width: 145,
-    left: 60,
-    top: 55
+    width: 130,
+    top:510,
+    shadowColor: 'black',
+    shadowRadius: 5,
+    shadowOffset: { width: 0, height: 9 },
+    shadowOpacity: 0.5,
+    elevation: 5,
   },
   profissao: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
+   top: 32,  // Ajuste a posição dos títulos
   },
   textProfissao: {
     fontSize: 17,
     color: 'white',
     fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
+   top: 25,  // Mantém o título próximo ao campo de entrada
   },
   nome: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
-  },
-  nome2: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
+   top: 15,  // Ajuste a posição dos títulos
   },
   sobrenome: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
-  },
-  sobrenome2: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
+    top:15,  // Ajuste a posição dos títulos
   },
   nascimento: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
-  },
-  nascimento2: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
+    top:25,  // Ajuste a posição dos títulos
+    
   },
   cpf: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
+    top:29,  // Ajuste a posição dos títulos
   },
-  cpf2: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
-  },
+
   telefone: {
     right: 18,
-    bottom: -15,  // Ajuste a posição dos títulos
-  },
-  telefone2: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-    bottom: -25,  // Mantém o título próximo ao campo de entrada
-  },
-  usuario: {
-    fontWeight: '700',
-    color: 'white',
-    fontSize: 18,
-    right: 20,
-    top: 65
+   top:29,  // Ajuste a posição dos títulos
+
   },
   senha: {
     fontWeight: '700',
@@ -189,15 +151,12 @@ const styles = StyleSheet.create({
     right: 20,
     top: 65
   },
-  roda: {
-
-  },
-  buttons:{
-    width:'100%',
-    height:'10%',
-    display:'flex',
-    alignItems:'flex-start',
-    justifyContent:'flex-end',
+  buttons: {
+    width: '100%',
+    height: '10%',
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
 
   }
 

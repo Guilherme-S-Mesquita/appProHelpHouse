@@ -1,82 +1,37 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, Image, TouchableOpacity, Modal, TextInput } from 'react-native';
-import { Entypo, AntDesign } from '@expo/vector-icons'; // Certifique-se de ter instalado o @expo/vector-icons
+import { View, Text, TextInput, ScrollView, Image } from 'react-native';
+import { FloatingLabelInput } from 'react-native-floating-label-input';
+import { TextInputMask } from 'react-native-masked-text';
+import { Button } from "../../componentes/Button/Button";
+import Imagens from '../../img/img';
+
+
+
 import styles from '../css/ultimosPassosCss';
+const UltimosPassos: React.FC<{ navigation: any }> = ({ navigation }) => {
 
-// Mock das funções para evitar erro
-const useImage = () => ({ imageUrl: null });
-const useUser = () => ({ userData: { nomeContratante: 'Cássio Ramos', bairroContratante: 'Bairro que trabalha' } });
-
-// Mock das imagens (substitua pelos paths corretos)
-const Imagens = {
-  fotoFundo: require('../../assets/eletricistaTrampando.png'),
-  perfil: require('../../assets/cassioPerfil.jpeg'),
-  mestreDeObra: require('../../assets/trampoEletricista2.jpg'),
-  mestreDeObra2: require('../../assets/trampoEletricista3.jpg'),
-  mestreDeObra3: require('../../assets/eletricistaTrampando.png')
-  
-};
-
-const PerfilProfissionalScreen: React.FC<{route: any, navigation: any }> = ({ route, navigation }) => {
-    const { imageUrl } = useImage(); // Obtém a URL da imagem do contexto
-    const { userData } = useUser(); // Altere para userData
-
-    // Estado para armazenar as áreas de atuação
-    const [areasAtuacao, setAreasAtuacao] = useState<string[]>(['Eletrica', 'Reparos']);
-    const [novaArea, setNovaArea] = useState('');
-    const [modalVisible, setModalVisible] = useState(false);
-
-    // Função para adicionar uma nova área
-    const adicionarAreaAtuacao = () => {
-        if (novaArea.trim() !== '') {
-            setAreasAtuacao([...areasAtuacao, novaArea.trim()]);
-            setNovaArea(''); // Limpa o campo de input
-            setModalVisible(false); // Fecha o modal após adicionar a área
-        }
-    };
-
-    // Função para remover uma área
-    const removerAreaAtuacao = (index: number) => {
-        const novasAreas = areasAtuacao.filter((_, i) => i !== index);
-        setAreasAtuacao(novasAreas);
-    };
 
     return (
-        <ScrollView>
-            <View style={styles.containerCapaFundo}>
-                <TouchableOpacity>
-                    <Image source={Imagens.fotoFundo} style={styles.capaFundo} />
-                </TouchableOpacity>
-            </View>
 
-            <View style={styles.containerImgPerfil}>
-                <TouchableOpacity style={styles.buttonEditarPerfil}>
-                    <Text style={styles.textButton}>Editar perfil</Text>
-                </TouchableOpacity>
-                
-                {/* Verifica se há uma URL de imagem e exibe-a, caso contrário, exibe a imagem padrão */}
-                <TouchableOpacity>
-                    <Image source={imageUrl ? { uri: imageUrl } : Imagens.perfil} style={styles.imgPerfil} />
-                </TouchableOpacity>
-                
-                <Text style={styles.nome}>
-                    {userData ? userData.nomeContratante : 'Nome não disponível'}
-                </Text>
-                <Text style={styles.textBiografia}>
-                    Trabalhando como eletricista a mais de{'\n'} 15 anos, formado em eletrotécnica.
-                </Text>
-                
-                <Text style={styles.textLocalizacao}>
-                    <Entypo name="location-pin" size={24} color="red" /> Atua em 
-                    {userData && userData.bairroContratante ? userData.bairroContratante : 'Localização não disponível'}
-                </Text>
-                
-                <Text style={styles.vejaMais}>Minhas áreas de atuação</Text>
-                
-                {/* Áreas de atuação e botão de adicionar */}
-                <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 25, marginTop: 30, marginBottom: 80,  }}>
-                    {/* Botão de adicionar área */}
-                    <TouchableOpacity
+
+
+        <View style={styles.containerPrincipal}>
+          
+                <ScrollView>
+                <Text style={styles.ultimo}>Últimos<Text style={styles.passos}> passos</Text></Text>
+               
+
+                <Text style={styles.acabando}>Já estamos acabando, adicione as {'\n'}últimas informações para criarmos a {'\n'}sua conta!</Text>
+              
+              
+
+                <View style={styles.circulo}>
+                </View>
+
+                <View style={styles.container2}>
+
+                    <Text style={styles.voce}>Fale um pouco sobre você</Text>
+                    <TextInput
                         style={{
                             backgroundColor: '#D3D3D3',
                             padding: 8,
@@ -146,26 +101,27 @@ const PerfilProfissionalScreen: React.FC<{route: any, navigation: any }> = ({ ro
                         <TouchableOpacity><Image source={Imagens.mestreDeObra3} style={styles.fotosRolagem2} /></TouchableOpacity>
                      </ScrollView>
                 </View>
+                <Button
+                    style={[styles.buttonEnviar, {
+                        backgroundColor: '#FF914D',
+                    }]} // Defina a cor de fundo desejada aqui
+                    color='#FF914D'
+                    variant="primary"
+                    title="Criar conta"
+                    onPress={() => navigation.navigate('ultimosPassos')}
 
-                {/* Seção de Avaliações */}
-                <Text style={styles.vejaMais}>Avaliações</Text>
-                
-                <View style={styles.containerBase}>
-                    <Image source={Imagens.perfil} style={styles.imgAvaliacao} />
-                    <Text style={styles.nomeAvaliador}>João Felipe</Text>
-                    <Text style={styles.textAvaliacao}>Ótimo profissional, entrega no prazo!</Text>
-                </View>
+                />
+            </ScrollView>
 
-                <View style={styles.margin}></View>
+        </View>
 
-                <View style={styles.containerBase}>
-                    <Image source={Imagens.perfil} style={styles.imgAvaliacao} />
-                    <Text style={styles.nomeAvaliador}>Lucas</Text>
-                    <Text style={styles.textAvaliacao}>Ótimo profissional!</Text>
-                </View>
-            </View>
-        </ScrollView>
     );
 };
 
-export default PerfilProfissionalScreen;
+export default UltimosPassos;
+
+
+
+
+
+
