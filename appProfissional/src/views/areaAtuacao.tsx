@@ -8,52 +8,41 @@ import styles from '../css/areaAtuacaoCss';
 const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado } = route.params;
 
-    // Estado para armazenar as profissões selecionadas e a descrição
     const [profissoesSelecionadas, setProfissoesSelecionadas] = useState<string[]>([]); 
     const [descContratado, setDescContratado] = useState<string>(''); 
 
-    // Função para alternar a profissão no array de selecionados
     const handleCheckboxChange = (profession: string, isChecked: boolean) => {
         if (isChecked) {
-            setProfissoesSelecionadas(prevState => [...prevState, profession]); // Adiciona profissão
+            setProfissoesSelecionadas(prevState => [...prevState, profession]);
         } else {
-            setProfissoesSelecionadas(prevState => prevState.filter(item => item !== profession)); // Remove profissão
+            setProfissoesSelecionadas(prevState => prevState.filter(item => item !== profession));
         }
     };
 
     // Função para processar os dados e navegar para a próxima tela
     const dadosCad = () => {
-        // if (profissoesSelecionadas.length === 0) {
-        //     alert("Selecione ao menos uma profissão!");
-        //     return;
-        // }
-
-
-        // Profissões estão dentro da função agora
-        const profissaoContratado = profissoesSelecionadas;
-        
+        const profissaoContratado = profissoesSelecionadas.join(', '); // Concatena as profissões em uma string
+    
         console.log("Profissões selecionadas: ", profissaoContratado);
         console.log("Descrição: ", descContratado);
-
-        // Navegação para a próxima tela com os dados
+    
         navigation.navigate('ultimosPassos', {
-            nomeContratado: nomeContratado,
-            sobrenomeContratado: sobrenomeContratado,
-            nascContratado: nascContratado,
-            cpfContratado: cpfContratado,
-            telefoneContratado: telefoneContratado,
-            emailContratado: emailContratado,
-            password: password,
-            cepContratado: cepContratado,
-            bairroContratado: bairroContratado,
-            ruaContratado: ruaContratado,
-            numCasaContratado: numCasaContratado,
-            cidadeContratado: cidadeContratado,
-            profissaoContratado:profissaoContratado, 
-            descContratado: descContratado       
+            nomeContratado,
+            sobrenomeContratado,
+            nascContratado,
+            cpfContratado,
+            telefoneContratado,
+            emailContratado,
+            password,
+            cepContratado,
+            bairroContratado,
+            ruaContratado,
+            numCasaContratado,
+            cidadeContratado,
+            profissaoContratado, 
+            descContratado       
         });
     };
-
     return (
         <View style={styles.containerPrincipal}>
             <View style={styles.container2}>

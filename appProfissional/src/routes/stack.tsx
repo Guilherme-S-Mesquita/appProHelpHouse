@@ -27,6 +27,7 @@ const Tab = createBottomTabNavigator();
 
 //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 // Definindo a função Tabs
+
  const Tabs = () => {
    return (
      <Tab.Navigator>

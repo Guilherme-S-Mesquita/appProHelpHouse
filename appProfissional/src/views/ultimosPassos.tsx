@@ -6,11 +6,10 @@ import { Button } from "../../componentes/Button/Button";
 import Imagens from '../../img/img';
 
 
-
 import styles from '../css/ultimosPassosCss';
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado } = route.params;
-
+    
     const Verificar = async () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/api/proo', {

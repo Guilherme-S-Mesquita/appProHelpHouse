@@ -93,7 +93,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                         <TextInputMask
                             type={'datetime'} // Corrigido para uma string
                             options={{
-                                format: 'DD/MM/YYYY', // Formato desejado
+                                format: 'YYYY-MM-DD', // Formato desejado
                             }}
                             value={nascContratado}
                             onChangeText={text => setNascContratado(text)}
