@@ -40,7 +40,7 @@ const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="homeStack">
+    <Stack.Navigator initialRouteName="bemvindo">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />
@@ -55,6 +55,7 @@ const AppNavigator = () => {
       <Stack.Screen name="cadastro2" component={Cadastro2} options={{ headerShown: false }} />
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
+      <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
