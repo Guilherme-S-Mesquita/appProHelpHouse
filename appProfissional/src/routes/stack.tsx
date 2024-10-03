@@ -39,7 +39,7 @@ const Tab = createBottomTabNavigator();
  //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="ultimosPassos">
+    <Stack.Navigator initialRouteName="loading">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />
