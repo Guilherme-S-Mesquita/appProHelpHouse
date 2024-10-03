@@ -6,12 +6,14 @@ import { Button } from "../../componentes/Button/Button"; // Verifique se o cami
 import styles from '../css/loginCss';
 // axios e como se importasse a API da uma olhada la no arquivo axios.js
 import axios from '../../axios';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage para armazenar o token
 
 const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage]= useState ('')
     const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
 
@@ -21,30 +23,35 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
             return;
         }
 
-        console.log("Login realizado com successo!");
 
-
+    setLoading(true)
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/proo', {
-                emailContratado:emailContratado,
-                password:password,
+            const response = await axios.post('http:///localhost:8000/api/authPro', {
+                emailContratado,
+                password,
             });
 
-            console.log("Resposta da API:", response.data);
+              // Verifica se o login foi bem-sucedido e se o token está presente
+        if (response.data && response.data.status === 'Sucesso' && response.data.token) {
+            console.log("Token recebido:", response.data.token);
+            console.log("Seja bem vindo novamente! ")
 
-            if (response.data && response.data.status === 'Sucesso') {
-                navigation.navigate('homeStack', { screen: 'home' });
-                
-            } else {
-                setMessage('Credenciais incorretas, tente novamente.');
-            }
+            // Armazena o token no AsyncStorage
+            await AsyncStorage.setItem('authToken', response.data.token);
 
-        } catch (error) {
-            console.error('Erro ao fazer login:', error);
-            setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
+            // Navega para a próxima tela após login bem-sucedido
+            navigation.navigate('homeStack', { screen: 'home' });
+        } else {
+            setMessage('Credenciais incorretas, tente novamente.');
         }
-    };
 
+    } catch (error) {
+        console.error('Erro ao fazer login:', error);
+        setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
+    } finally {
+        setLoading(false); // Desativa o estado de loading
+    }
+};
 
     return (
         <View style={styles.container}>
@@ -139,10 +146,13 @@ const Login: React.FC<{ navigation: any,  }> = ({ navigation }) => {
 
             <Button
                 style={styles.button}
+                color='#004AAD'
                 variant="primary"
-                title="Entrar"
-                onPress={handleLogin}
-            />
+                title="Entrar" 
+                //onPress={() => navigation.navigate('cadastro')} 
+
+                 onPress={handleLogin} 
+    />
 
 
             <View>

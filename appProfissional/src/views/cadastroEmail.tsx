@@ -6,7 +6,7 @@ import { Button } from "../../componentes/Button/Button"; // Verifique se o cami
 import styles from '../css/inicioCadastroCss';
 
 
-const CadastroEmail: React.FC<{ navigation: any }> = ({ navigation }) => {
+const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
     const [show, setShow] = useState(false);
     const [password, setPassword] = useState('');
