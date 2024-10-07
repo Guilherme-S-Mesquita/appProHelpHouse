@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import api from '../../axios'; // Importa a instância do Axios
+import { View, Text, ScrollView, Alert, ActivityIndicator } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import myContext from '../functions/authContext';
+import api from '../../axios';
 
-// Define o tipo Pedido
 interface Contratante {
   nomeContratante: string;
 }
@@ -15,74 +15,90 @@ interface Pedido {
 }
 
 const TelaServico: React.FC = () => {
-  const [pedidos, setPedidos] = useState<Pedido[]>([]); // Tipamos o estado pedidos como uma lista de Pedido
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-
-  // Acessando o contexto do usuário
+  const [pedidos, setPedidos] = useState<Pedido[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
   const { user } = useContext(myContext);
 
-  // Função para buscar pedidos pendentes
-  const fetchPedidosPendentes = async () => {
-    if (!user || !user.idContratado) {
-      // Tratamento de erro se idContratado não estiver definido
-      Alert.alert('Erro', 'ID do contratado não encontrado.');
-      console.error('ID do contratado não encontrado.');
-      return;
-    }
+  const [token, setToken] = useState<string | null>(null); // Adiciona um estado para o token
 
-    setLoading(true);
-    try {
-      const idContratado = user.idContratado;
-      const response = await api.get(`/profissional/${idContratado}/pedidos`);
-      setPedidos(response.data); 
-    } catch (error) {
-      console.error('Erro ao buscar pedidos pendentes:', error);
-      Alert.alert('Erro', 'Falha ao buscar pedidos.');
-      setError(true);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Chama a função ao montar o componente
+  // Busca o token armazenado no AsyncStorage
   useEffect(() => {
-    fetchPedidosPendentes();
-  }, [user]); // Chama a função sempre que o `user` mudar
+    const fetchToken = async () => {
+      try {
+        const savedToken = await AsyncStorage.getItem('authToken');
+        if (savedToken) {
+          setToken(savedToken); // Armazena o token
+          console.log('Token obtido do AsyncStorage:', savedToken);
+        } else {
+          console.log('Nenhum token encontrado no AsyncStorage');
+        }
+      } catch (error) {
+        console.error('Erro ao buscar o token:', error);
+      }
+    };
+    fetchToken();
+  }, []);
 
-  // Função para aceitar ou recusar o pedido
-  const responderPedido = async (idPedido: number, acao: string) => {
+  const getProPedidos = async (idContratado: string, token: string) => {
     try {
-      const response = await api.post(`/profissional/pedido/${idPedido}/responder`, { acao });
-      Alert.alert('Sucesso', `Pedido ${acao} com sucesso!`);
-      fetchPedidosPendentes(); // Atualiza a lista de pedidos após a resposta
-    } catch (error) {
-      console.error('Erro ao responder pedido:', error);
-      Alert.alert('Erro', `Falha ao ${acao} o pedido.`);
+      console.log('Fazendo requisição para ID:', idContratado);
+      const response = await api.get(`/profissional/${idContratado}/pedidos`, {
+        headers: {
+          Authorization: `Bearer ${setToken}`, // Use o token armazenado
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error: any) {
+      console.error('Erro ao buscar pedidos:', error.response ? error.response.data : error.message);
+      throw new Error(error.response?.data?.error || 'Erro ao buscar pedidos.');
     }
   };
+
+  useEffect(() => {
+    const fetchPedidos = async () => {
+      if (!user || !user.idContratado) {
+        Alert.alert('Erro', 'ID do contratado não encontrado ou usuário não autenticado.');
+        return;
+      }
+
+      if (!token) {
+        Alert.alert('Erro', 'Token de autenticação não encontrado.');
+        return;
+      }
+
+      setLoading(true);
+      try {
+        const pedidosData = await getProPedidos(user.idContratado, token); // Passa o token corretamente
+        setPedidos(pedidosData);
+      } catch (error: any) {
+        console.error('Erro ao buscar pedidos:', error);
+        setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPedidos();
+  }, [user, token]); // Dependências de user e token
 
   return (
     <ScrollView>
       {loading ? (
-        <Text>Carregando...</Text>
+        <ActivityIndicator size="large" color="#0000ff" />
+      ) : error ? (
+        <Text style={{ color: 'red' }}>{error}</Text>
       ) : pedidos.length === 0 ? (
-        <Text>Nenhum pedido pendente.</Text> // Feedback se não houver pedidos
+        <Text>Nenhum pedido pendente.</Text>
       ) : (
-        pedidos.map((pedido, i) => (
-          <View key={i}>
+        pedidos.map((pedido) => (
+          <View key={pedido.idSolicitarPedido}>
             <Text>{pedido.descricaoPedido}</Text>
-            <Text>{pedido.contratante.nomeContratante}</Text> {/* Agora o TypeScript reconhece contratante */}
-            <TouchableOpacity onPress={() => responderPedido(pedido.idSolicitarPedido, 'aceito')}>
-              <Text>Aceitar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => responderPedido(pedido.idSolicitarPedido, 'recusado')}>
-              <Text>Recusar</Text>
-            </TouchableOpacity>
+            <Text>{pedido.contratante.nomeContratante}</Text>
           </View>
         ))
       )}
-      {error && <Text style={{ color: 'red' }}>Ocorreu um erro ao carregar os pedidos.</Text>}
     </ScrollView>
   );
 };

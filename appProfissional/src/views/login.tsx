@@ -19,42 +19,46 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     const userContext = useContext(myContext);
 
-    const { user, setUser } = useContext(myContext); // Correto!
+    const { user, setUser } = useContext(myContext); 
 
     const handleLogin = async () => {
         if (!emailContratado || !password) {
             setMessage('Preencha todos os campos');
             return;
         }
-
-        setMessage(''); // Limpa a mensagem de erro
+    
+        setMessage(''); 
         setLoading(true);
-
+    
         try {
             const response = await axios.post('http://localhost:8000/api/authpro', {
                 emailContratado,
                 password,
             });
-
+    
             if (response.data && response.data.status === 'Sucesso' && response.data.token) {
                 console.log("Token recebido:", response.data.token);
                 console.log("Seja bem-vindo novamente!");
-
-                 setUser(response.data.user)
-                 console.log(response.data.user)
-
+    
+                setUser(response.data.user);
                 await AsyncStorage.setItem('authToken', response.data.token);
                 navigation.navigate('telaServico', { screen: 'telaServico' });
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
-        } catch (error) {
+        } catch (error: any) {
             console.error('Erro ao fazer login:', error);
-            setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
+    
+            if (error.response && error.response.status === 401) {
+                setMessage('Usuário ou senha incorretos.');
+            } else {
+                setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
+            }
         } finally {
             setLoading(false);
         }
     };
+    
 
     return (
         <View style={styles.container}>
