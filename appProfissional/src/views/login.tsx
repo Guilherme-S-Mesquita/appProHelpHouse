@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { View, Image, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
@@ -6,6 +6,9 @@ import { Button } from "../../componentes/Button/Button"; // Verifique se o cami
 import styles from '../css/loginCss';
 import axios from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage para armazenar o token
+import myContext from '../functions/authContext';
+
+
 
 const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
@@ -13,6 +16,10 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [message, setMessage] = useState('');
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
+
+    const userContext = useContext(myContext);
+
+    const { user, setUser } = useContext(myContext); // Correto!
 
     const handleLogin = async () => {
         if (!emailContratado || !password) {
@@ -32,6 +39,9 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
             if (response.data && response.data.status === 'Sucesso' && response.data.token) {
                 console.log("Token recebido:", response.data.token);
                 console.log("Seja bem-vindo novamente!");
+
+                 setUser(response.data.user)
+                 console.log(response.data.user)
 
                 await AsyncStorage.setItem('authToken', response.data.token);
                 navigation.navigate('telaServico', { screen: 'telaServico' });
