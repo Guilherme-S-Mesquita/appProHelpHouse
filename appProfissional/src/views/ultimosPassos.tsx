@@ -1,15 +1,59 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, ScrollView, Image, Alert, TouchableOpacity } from 'react-native';
-import { FloatingLabelInput } from 'react-native-floating-label-input';
-import { TextInputMask } from 'react-native-masked-text';
-import { Button } from "../../componentes/Button/Button";
-import Imagens from '../../img/img';
-
-
+import { View, Text, Image, Alert, TouchableOpacity, ImageBackground } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { storage } from '../../firebase';
+import { useImage } from '../imageContext';
+import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
+
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
-    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado } = route.params;
-    
+    const [uploading, setUploading] = useState<boolean>(false);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const { imageUrl, setImageUrl } = useImage();
+
+    const pickImage = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.All,
+            allowsEditing: true,
+            aspect: [4, 3],
+            quality: 1
+        });
+
+        if (!result.canceled) {
+            setSelectedImage(result.assets[0].uri);
+        }
+    };
+
+    const uploadMedia = async () => {
+        if (!selectedImage) {
+            Alert.alert('Erro', 'Nenhuma imagem selecionada.');
+            return;
+        }
+
+        setUploading(true);
+
+        try {
+            const response = await fetch(selectedImage);
+            const blob = await response.blob();
+            const filename = selectedImage.substring(selectedImage.lastIndexOf('/') + 1);
+            const storageRef = ref(storage, `images/${filename}`);
+            await uploadBytes(storageRef, blob);
+            const url = await getDownloadURL(storageRef);
+            setImageUrl(url);
+            setSelectedImage(null);
+            Alert.alert('Sucesso', 'Imagem enviada com sucesso!');
+        } catch (error) {
+            console.error('Erro ao enviar a imagem:', error);
+            Alert.alert('Erro', 'Falha ao enviar a imagem.');
+        } finally {
+            setUploading(false);
+        }
+    };
+
+    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado,
+        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado } = route.params;
+
     const Verificar = async () => {
         try {
             const response = await fetch('http://127.0.0.1:8000/api/proo', {
@@ -36,99 +80,56 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 }),
             });
 
-            // Verifica se a resposta não é ok (caso 422)
             if (!response.ok) {
-                const errorData = await response.json(); // tenta pegar o erro
-                console.error('Erro ao enviar os dados:', errorData); // Log do erro
-                Alert.alert('Erro', errorData.message || 'Erro ao enviar os dados.'); // Mensagem do erro
-                return; // Sai da função
+                const errorData = await response.json();
+                console.error('Erro ao enviar os dados:', errorData);
+                Alert.alert('Erro', errorData.message || 'Erro ao enviar os dados.');
+                return;
             }
 
             const data = await response.json();
-            console.log('Os dados foram inseridos com sucesso!', data); // Log da resposta de sucesso
-
+            console.log('Os dados foram inseridos com sucesso!', data);
+            Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
+            navigation.navigate('homeStack'); // Navegar para a tela de perfil
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
-            console.log({
-                nomeContratado,
-                sobrenomeContratado,
-                profissaoContratado,
-                cpfContratado,
-                emailContratado,
-                telefoneContratado,
-                password,
-                nascContratado,
-                cepContratado,
-                bairroContratado,
-                ruaContratado,
-                numCasaContratado,
-                cidadeContratado,
-                descContratado
-            });
         }
     };
 
     return (
-
-        <View style={styles.containerPrincipal}>
-                <Text style={styles.ultimo}>Últimos<Text style={styles.passos}> passos</Text></Text>
-
-
-                <Text style={styles.acabando}>Já estamos acabando, adicione as {'\n'}últimas informações para criarmos a {'\n'}sua conta!</Text>
-
-
-
-                <View style={styles.circulo}>
-                </View>
-
-              <View style={styles.container2}>
-
-                    <Text style={styles.voce}>Fale um pouco sobre você</Text>
-                    <TextInput
-                        style={{
-                            borderBottomWidth: 2,
-                            borderColor: '#fff',
-                            color: '#fff',
-                            fontSize: 16,
-                            top: 55,
-                            bottom: 37,
-                            marginBottom: 20,
-                            marginHorizontal: -49,
-                            right:8
-                        }}
-                        placeholder="Escreva um pouco sobre você..."
-                        placeholderTextColor="#fff"
-                        returnKeyType='done'>
-
-                    </TextInput>
-                </View> 
-                <View style={styles.container3}>
-                    <Text style={styles.promova}>Promova seu trabalho, e adicione {'\n'}fotos ao seu portfólio!</Text>
-                </View>
-
-
-           
-                <TouchableOpacity
-                    style={[styles.buttonEnviar, {
-                        backgroundColor: '#FF914D', // Define a cor de fundo
-                    }]}
-                    onPress={async () => {
-                        try {
-                            await Verificar(); // Aguarda a conclusão da verificação
-                            navigation.navigate('login'); // Navega para a tela 'login'
-                        } catch (error) {
-                            console.log("Erro durante a verificação:", error);
-                            // Aqui você pode adicionar uma lógica de erro, como exibir um alerta
-                        }
-                    }}
-                >
-                   
+        <ImageBackground 
+          style={styles.background}
+          resizeMode="cover"
+        >
+          <View style={styles.fundoAzul}>
+            <View style={styles.container}>
+              <Image source={selectedImage ? { uri: selectedImage } : { uri: imageUrl }} style={styles.imgPerfil} />
+              <View style={styles.cameraIcon}>
+                <TouchableOpacity onPress={pickImage}>
+                  <Entypo name="camera" size={24} color="white" />
                 </TouchableOpacity>
-                <Text style={styles.buttonText}>Criar conta</Text>
+              </View>
+            </View>
 
-        </View>
+            <View style={styles.container}>
+              <Text style={styles.nome}>Nome não disponível</Text>
+              <Text style={styles.textLocalizacao}>
+                <Entypo name="location-pin" size={24} color="red" /> 
+                Localização não disponível
+              </Text>
 
+              {selectedImage && (
+                <TouchableOpacity onPress={uploadMedia} style={styles.button} disabled={uploading}>
+                  <Text style={styles.buttonText}>{uploading ? 'Enviando...' : 'Enviar Imagem'}</Text>
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity onPress={Verificar} style={styles.button}>
+                <Text style={styles.buttonText}>Ir para Perfil Profissional</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </ImageBackground>
     );
 };
 
