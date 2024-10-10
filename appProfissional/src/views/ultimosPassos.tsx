@@ -90,7 +90,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             const data = await response.json();
             console.log('Os dados foram inseridos com sucesso!', data);
             Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-            navigation.navigate('homeStack'); // Navegar para a tela de perfil
+            navigation.navigate('home'); // Navegar para a tela de perfil
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
