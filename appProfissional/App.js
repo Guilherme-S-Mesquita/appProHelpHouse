@@ -7,11 +7,13 @@ import myContext from './src/functions/authContext';
 export default function App() {
 
     const [user, setUser]= useState('');
+    const [pedido, setPedido]= useState('');
 
 
     return (
         <myContext.Provider value={{
-            user,setUser
+            user,setUser,
+            pedido, setPedido
         }}>
 
             <ApplicationProvider {...eva} theme={eva.light}>            

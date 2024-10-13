@@ -19,8 +19,7 @@ const TelaServico: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
   const { user } = useContext(myContext);
-
-  const [token, setToken] = useState<string | null>(null); // Adiciona um estado para o token
+  const [token, setToken] = useState<string | null>(null);
 
   // Busca o token armazenado no AsyncStorage
   useEffect(() => {
@@ -28,7 +27,7 @@ const TelaServico: React.FC = () => {
       try {
         const savedToken = await AsyncStorage.getItem('authToken');
         if (savedToken) {
-          setToken(savedToken); // Armazena o token
+          setToken(savedToken);
           console.log('Token obtido do AsyncStorage:', savedToken);
         } else {
           console.log('Nenhum token encontrado no AsyncStorage');
@@ -40,15 +39,16 @@ const TelaServico: React.FC = () => {
     fetchToken();
   }, []);
 
-  const getProPedidos = async (idContratado: string, token: string) => {
+  const getProPedidos = async (idContratado: string) => {
     try {
       console.log('Fazendo requisição para ID:', idContratado);
       const response = await api.get(`/profissional/${idContratado}/pedidos`, {
         headers: {
-          Authorization: `Bearer ${setToken}`, // Use o token armazenado
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
       });
+      console.log(response.data)
       return response.data;
     } catch (error: any) {
       console.error('Erro ao buscar pedidos:', error.response ? error.response.data : error.message);
@@ -70,8 +70,10 @@ const TelaServico: React.FC = () => {
 
       setLoading(true);
       try {
-        const pedidosData = await getProPedidos(user.idContratado, token); // Passa o token corretamente
-        setPedidos(pedidosData);
+        const pedidosData = await getProPedidos(user.idContratado);
+       await console.log('Dados dos pedidos:', pedidosData);
+        setPedidos(Array.isArray(pedidosData) ? pedidosData : []);
+       
       } catch (error: any) {
         console.error('Erro ao buscar pedidos:', error);
         setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
@@ -81,7 +83,7 @@ const TelaServico: React.FC = () => {
     };
 
     fetchPedidos();
-  }, [user, token]); // Dependências de user e token
+  }, [user, token]);
 
   return (
     <ScrollView>
@@ -93,9 +95,9 @@ const TelaServico: React.FC = () => {
         <Text>Nenhum pedido pendente.</Text>
       ) : (
         pedidos.map((pedido) => (
-          <View key={pedido.idSolicitarPedido}>
+          <View key={pedido.idSolicitarPedido} style={{ padding: 10 }}>
             <Text>{pedido.descricaoPedido}</Text>
-            <Text>{pedido.contratante.nomeContratante}</Text>
+            {/* <Text>{pedido.contratante.nomeContratante}</Text> */}
           </View>
         ))
       )}
