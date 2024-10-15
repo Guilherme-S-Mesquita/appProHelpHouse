@@ -4,9 +4,12 @@ import Entypo from '@expo/vector-icons/Entypo';
 import Imagens from "../../img/img";
 import styles from '../css/perfilCss';
 import { useImage } from '../imageContext'; 
+import { useUser } from '../proContext';
 
 const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { imageUrl } = useImage();
+  const { userData } = useUser();
+  console.log('Dados do usuário:', userData);
   
   return (
     <ImageBackground 
@@ -25,7 +28,7 @@ const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View style={styles.container}>
             {/* Exibindo as informações do usuário */}
             <Text style={styles.nome}>
-              Nome não disponível
+              {userData ? userData.nomeContratado : 'nome indisponivel'}
             </Text>
             <Text style={styles.textLocalizacao}>
               <Entypo name="location-pin" size={24} color="red" /> 

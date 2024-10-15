@@ -6,11 +6,13 @@ import { storage } from '../../firebase';
 import { useImage } from '../imageContext';
 import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
+import { useUser } from '../proContext';
 
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [uploading, setUploading] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const { imageUrl, setImageUrl } = useImage();
+    const { setUserId, setUserData } = useUser();
 
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -87,15 +89,39 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 return;
             }
 
-            const data = await response.json();
-            console.log('Os dados foram inseridos com sucesso!', data);
-            Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
-            navigation.navigate('home'); // Navegar para a tela de perfil
+            //pegando os dados e tranformando em json
+            const result = await response.json();
+
+            //pegando id do profissional
+            const idPro = result.data.idContratado;
+            if(idPro){
+              setUserId(idPro);
+              await fetchDadosPro(idPro);
+            }
+            console.log('Os dados foram inseridos com sucesso!', result);
+            navigation.navigate('homeStack'); // Navegar para a tela de perfil
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
         }
     };
+
+    const fetchDadosPro = async (idPro: string) => {
+      try {
+          const response = await fetch(`http://localhost:8000/api/pro/${idPro}`);
+          const data = await response.json();
+  
+          if (response.ok) {
+              console.log('Dados recebidos:', data); // Adicione este log
+              setUserData(data); // Aqui você deve ter certeza de que 'data' contém os dados do usuário
+          } else {
+              console.error('Error fetching user data:', data.message);
+          }
+      } catch (error) {
+          console.error('Error:', error);
+      }
+  };
+  
 
     return (
         <ImageBackground 
@@ -121,7 +147,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
               {selectedImage && (
                 <TouchableOpacity onPress={uploadMedia} style={styles.button} disabled={uploading}>
-                  <Text style={styles.buttonText}>{uploading ? 'Enviando...' : 'Enviar Imagem'}</Text>
+                  <Text style={styles.buttonText}>{uploading ? 'Enviando...' : 'Confirmar imagem'}</Text>
                 </TouchableOpacity>
               )}
               <TouchableOpacity onPress={Verificar} style={styles.button}>
