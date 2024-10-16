@@ -19,6 +19,20 @@ const styles = StyleSheet.create({
     height:150,
     marginTop:30,
   },
+
+  mensagensContainer: {
+    flex: 1,
+    padding: 10,
+    marginBottom: 20, // Espaço para o input de mensagem
+    height:'100%'
+  },
+  mensagemItem: {
+    backgroundColor: '#f1f1f1',
+    padding: 10,
+    borderRadius: 8,
+    marginBottom: 10,
+    maxWidth: '80%',
+  },
   navbar:{
     backgroundColor:'#004aad',
     height:50,

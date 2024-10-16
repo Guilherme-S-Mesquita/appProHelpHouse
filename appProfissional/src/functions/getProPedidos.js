@@ -11,4 +11,5 @@ export const getPedidoPro = async (idContratado, setData, setLoading, setError) 
     } finally {
         setLoading(false);
     }
+    
 };

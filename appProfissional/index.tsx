@@ -1,7 +1,6 @@
 import {
     Pusher,
-    PusherMember,
-    PusherChannel,
+   
     PusherEvent,
   } from '@pusher/pusher-websocket-react-native';
   
