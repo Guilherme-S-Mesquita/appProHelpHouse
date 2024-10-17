@@ -31,7 +31,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
         setLoading(true);
     
         try {
-            const response = await axios.post('http://localhost:8000/api/authpro', {
+            const response = await axios.post('http://172.20.10.14/api/authpro', {
                 emailContratado,
                 password,
             });

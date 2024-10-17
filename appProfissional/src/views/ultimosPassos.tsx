@@ -58,7 +58,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
     const Verificar = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/proo', {
+            const response = await fetch('http://192.168.1.13:8000/api/proo', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
@@ -108,7 +108,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
     const fetchDadosPro = async (idPro: string) => {
       try {
-          const response = await fetch(`http://localhost:8000/api/pro/${idPro}`);
+          const response = await fetch(`http://172.20.10.14:8000/api/pro/${idPro}`);
           const data = await response.json();
   
           if (response.ok) {
