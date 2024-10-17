@@ -126,14 +126,6 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
   
 
 
-
-
-
-
-
-
-
-
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
