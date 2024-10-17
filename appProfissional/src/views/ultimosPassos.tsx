@@ -101,7 +101,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
               await fetchDadosPro(idPro);
             }
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('telaServico'); // Navegar para a tela de perfil
+            navigation.navigate('Home'); // Navegar para a tela de perfil
         } catch (error) {
             Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:',error);
