@@ -6,7 +6,8 @@ import Imagens from '../../img/img';
 import styles from '../css/areaAtuacaoCss';
 
 const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
-    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado } = route.params;
+    const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password,
+         cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, regiaoContratado } = route.params;
 
     const [profissoesSelecionadas, setProfissoesSelecionadas] = useState<string[]>([]); 
     const [descContratado, setDescContratado] = useState<string>(''); 
@@ -40,7 +41,8 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
             numCasaContratado,
             cidadeContratado,
             profissaoContratado, 
-            descContratado       
+            descContratado, 
+            regiaoContratado  
         });
     };
     return (

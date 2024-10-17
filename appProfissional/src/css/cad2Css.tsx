@@ -23,10 +23,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: '#fff',
-
-
-   
-     
   },
   buscarCep:{
 
@@ -108,7 +104,7 @@ const styles = StyleSheet.create({
 
   buttonEnviar: {
     width: 145,
-    top:655,
+    top:525,
     shadowColor: 'black',
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 9 },
@@ -146,6 +142,13 @@ const styles = StyleSheet.create({
     height: '45%'
   },
 
+  localidades:{
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '900',
+    top: 415,
+    marginRight:25
+  },
 });
 
 export default styles;
