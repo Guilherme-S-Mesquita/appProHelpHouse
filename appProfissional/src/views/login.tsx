@@ -42,7 +42,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     
                 setUser(response.data.user);
                 await AsyncStorage.setItem('authToken', response.data.token);
-                navigation.navigate('Home');
+                navigation.navigate('homeStack');
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
