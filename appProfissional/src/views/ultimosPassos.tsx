@@ -7,13 +7,16 @@ import { useImage } from '../imageContext';
 import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
 import { useUser } from '../proContext';
+import api from '../../axios';
 
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [uploading, setUploading] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const { imageUrl, setImageUrl } = useImage();
     const { setUserId, setUserData } = useUser();
+    const [loading, setLoading] = useState<boolean>(false); // New state for data submission loading
 
+    // Pick Image Function
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -27,6 +30,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
         }
     };
 
+    // Upload Image to Firebase
     const uploadMedia = async () => {
         if (!selectedImage) {
             Alert.alert('Erro', 'Nenhuma imagem selecionada.');
@@ -53,108 +57,101 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
         }
     };
 
+    // Extracting route params
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado,
         bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado } = route.params;
 
+    // Submit Professional Data
     const Verificar = async () => {
+        setLoading(true); // Start the loading state
         try {
-            const response = await fetch('http://127.0.0.1:8000/api/proo', {
-                method: 'POST',
-                headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    nomeContratado,
-                    sobrenomeContratado,
-                    profissaoContratado,
-                    cpfContratado,
-                    emailContratado,
-                    telefoneContratado,
-                    password,
-                    nascContratado,
-                    cepContratado,
-                    bairroContratado,
-                    ruaContratado,
-                    numCasaContratado,
-                    cidadeContratado,
-                    descContratado
-                }),
+            const response = await api.post('/proo', {
+                nomeContratado,
+                sobrenomeContratado,
+                profissaoContratado,
+                cpfContratado,
+                emailContratado,
+                telefoneContratado,
+                password,
+                nascContratado,
+                cepContratado,
+                bairroContratado,
+                ruaContratado,
+                numCasaContratado,
+                cidadeContratado,
+                descContratado,
             });
 
-            if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Erro ao enviar os dados:', errorData);
-                Alert.alert('Erro', errorData.message || 'Erro ao enviar os dados.');
-                return;
-            }
+            const result = response.data;
 
-            //pegando os dados e tranformando em json
-            const result = await response.json();
-
-            //pegando id do profissional
+            // Pegando id do profissional
             const idPro = result.data.idContratado;
-            if(idPro){
-              setUserId(idPro);
-              await fetchDadosPro(idPro);
+            if (idPro) {
+                setUserId(idPro);
+                await fetchDadosPro(idPro); // Fetch professional data
             }
+
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('homeStack'); // Navegar para a tela de perfil
+            navigation.navigate('homeStack'); // Navigate to profile page
+
+        } catch (error: any) {
+            if (error.response) {
+                console.error('Erro:', error.response.data);
+                Alert.alert('Erro', error.response.data.message || 'Ocorreu um erro ao enviar os dados.');
+            } else {
+                console.error('Erro:', error.message);
+                Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
+            }
+        } finally {
+            setLoading(false); // End the loading state
+        }
+    };
+
+    // Fetch Professional Data
+    const fetchDadosPro = async (idPro: string) => {
+        try {
+            const response = await api.get(`/pro/${idPro}`);
+            const data = response.data;
+
+            if (response.status === 200) {
+                console.log('Dados recebidos:', data);
+                setUserData(data);
+            } else {
+                console.error('Erro ao buscar os dados do profissional:', data.message);
+            }
         } catch (error) {
-            Alert.alert('Erro', 'Ocorreu um erro ao enviar os dados.');
             console.error('Erro:', error);
         }
     };
 
-    const fetchDadosPro = async (idPro: string) => {
-      try {
-          const response = await fetch(`http://localhost:8000/api/pro/${idPro}`);
-          const data = await response.json();
-  
-          if (response.ok) {
-              console.log('Dados recebidos:', data); // Adicione este log
-              setUserData(data); // Aqui você deve ter certeza de que 'data' contém os dados do usuário
-          } else {
-              console.error('Error fetching user data:', data.message);
-          }
-      } catch (error) {
-          console.error('Error:', error);
-      }
-  };
-  
-
     return (
-        <ImageBackground 
-          style={styles.background}
-          resizeMode="cover"
-        >
-          <View style={styles.fundoAzul}>
-            <View style={styles.container}>
-              <Image source={selectedImage ? { uri: selectedImage } : { uri: imageUrl }} style={styles.imgPerfil} />
-              <View style={styles.cameraIcon}>
-                <TouchableOpacity onPress={pickImage}>
-                  <Entypo name="camera" size={24} color="white" />
-                </TouchableOpacity>
-              </View>
-            </View>
+        <ImageBackground style={styles.background} resizeMode="cover">
+            <View style={styles.fundoAzul}>
+                <View style={styles.container}>
+                    <Image source={selectedImage ? { uri: selectedImage } : { uri: imageUrl }} style={styles.imgPerfil} />
+                    <View style={styles.cameraIcon}>
+                        <TouchableOpacity onPress={pickImage}>
+                            <Entypo name="camera" size={24} color="white" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
-            <View style={styles.container}>
-              <Text style={styles.nome}>Nome não disponível</Text>
-              <Text style={styles.textLocalizacao}>
-                <Entypo name="location-pin" size={24} color="red" /> 
-                Localização não disponível
-              </Text>
+                <View style={styles.container}>
+                    <Text style={styles.nome}>Nome não disponível</Text>
+                    <Text style={styles.textLocalizacao}>
+                        <Entypo name="location-pin" size={24} color="red" /> Localização não disponível
+                    </Text>
 
-              {selectedImage && (
-                <TouchableOpacity onPress={uploadMedia} style={styles.button} disabled={uploading}>
-                  <Text style={styles.buttonText}>{uploading ? 'Enviando...' : 'Confirmar imagem'}</Text>
-                </TouchableOpacity>
-              )}
-              <TouchableOpacity onPress={Verificar} style={styles.button}>
-                <Text style={styles.buttonText}>Ir para Perfil Profissional</Text>
-              </TouchableOpacity>
+                    {selectedImage && (
+                        <TouchableOpacity onPress={uploadMedia} style={styles.button} disabled={uploading}>
+                            <Text style={styles.buttonText}>{uploading ? 'Enviando...' : 'Confirmar imagem'}</Text>
+                        </TouchableOpacity>
+                    )}
+                    <TouchableOpacity onPress={Verificar} style={styles.button} disabled={loading}>
+                        <Text style={styles.buttonText}>{loading ? 'Salvando...' : 'Ir para Perfil Profissional'}</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-          </View>
         </ImageBackground>
     );
 };

@@ -141,10 +141,10 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
       </View>
 
       <View style={styles.containerGanhos}>
-        <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>José Claúdio</Text></Text>
+        <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
         <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
         <Image source={Imagens.jesus} style={styles.jesusImg} />
-        <Text style={styles.localizacao}>São Paulo, raio de <Text style={styles.oitoKm}>8km</Text></Text>
+        <Text style={styles.localizacao}>{user.estadoContratado} <Text style={styles.oitoKm}>8km</Text></Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
           <Text style={styles.botaoAlterarRaio1}>Alterar raio</Text>
         </TouchableOpacity>

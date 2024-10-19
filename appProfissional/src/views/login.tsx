@@ -4,7 +4,7 @@ import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
 import styles from '../css/loginCss';
-import axios from '../../axios';
+import api from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage para armazenar o token
 import myContext from '../functions/authContext';
 
@@ -31,7 +31,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
         setLoading(true);
     
         try {
-            const response = await axios.post('http://localhost:8000/api/authpro', {
+            const response = await api.post('/authpro', {
                 emailContratado,
                 password,
             });
