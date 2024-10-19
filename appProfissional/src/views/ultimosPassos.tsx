@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, Alert, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
@@ -8,6 +8,8 @@ import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
 import { useUser } from '../proContext';
 import api from '../../axios';
+import { Button } from "../../componentes/Button/Button";
+
 
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [uploading, setUploading] = useState<boolean>(false);
@@ -40,26 +42,26 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
         setUploading(true);
 
         try {
-            const response = await fetch(selectedImage);
-            const blob = await response.blob();
-            const filename = selectedImage.substring(selectedImage.lastIndexOf('/') + 1);
-            const storageRef = ref(storage, `images/${filename}`);
-            await uploadBytes(storageRef, blob);
-            const url = await getDownloadURL(storageRef);
-            setImageUrl(url);
-            setSelectedImage(null);
-            Alert.alert('Sucesso', 'Imagem enviada com sucesso!');
-        } catch (error) {
-            console.error('Erro ao enviar a imagem:', error);
-            Alert.alert('Erro', 'Falha ao enviar a imagem.');
-        } finally {
-            setUploading(false);
-        }
-    };
+          const response = await fetch(selectedImage);
+          const blob = await response.blob();
+          const filename = selectedImage.substring(selectedImage.lastIndexOf('/') + 1);
+          const storageRef = ref(storage, `images/${filename}`);
+          await uploadBytes(storageRef, blob);
+          const url = await getDownloadURL(storageRef);
+          setImageUrl(url);
+          setSelectedImage(null);
+          Alert.alert('Sucesso', 'Imagem enviada com sucesso!');
+      } catch (error) {
+          console.error('Erro ao enviar a imagem:', error);
+          Alert.alert('Erro', 'Falha ao enviar a imagem.');
+      } finally {
+          setUploading(false);
+      }
+  };
 
     // Extracting route params
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado,
-        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado } = route.params;
+        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado, regiaoContratado} = route.params;
 
     // Submit Professional Data
     const Verificar = async () => {

@@ -1,26 +1,17 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import { MMKV } from 'react-native-mmkv';
-
-// Crie uma instância do MMKV
-const storage = new MMKV();
+import React, { createContext, useState, useContext } from 'react';
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [userId, setUserId] = useState(() => storage.getString('userId') || null);
-  const [userData, setUserData] = useState(() => {
-    const data = storage.getString('userData');
-    return data ? JSON.parse(data) : null;
-  });
+  const [userId, setUserId] = useState(null);
+  const [userData, setUserData] = useState(null);
 
   const handleSetUserId = (id) => {
     setUserId(id);
-    storage.set('userId', id); // Salva no MMKV
   };
 
   const handleSetUserData = (data) => {
     setUserData(data);
-    storage.set('userData', JSON.stringify(data)); // Salva no MMKV
   };
 
   return (

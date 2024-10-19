@@ -80,7 +80,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
         const pedidosData = await getProPedidos(user.idContratado);
         await console.log('Dados dos pedidos:', pedidosData);
         setPedidos(Array.isArray(pedidosData) ? pedidosData : []);
-
+        
       } catch (error: any) {
         console.error('Erro ao buscar pedidos:', error);
         setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
@@ -91,8 +91,6 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     fetchPedidos();
   }, [user, token]);
-
-
 
 
   const createChatRoom = async (idContratante: string, idContratado: string, navigation: any) => {
@@ -124,14 +122,6 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
     }
   };
   
-
-
-
-
-
-
-
-
 
 
   return (
