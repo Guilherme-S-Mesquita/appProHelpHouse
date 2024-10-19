@@ -35,10 +35,10 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 emailContratado,
                 password,
             });
-    
+           
             if (response.data && response.data.status === 'Sucesso' && response.data.token) {
                 console.log("Token recebido:", response.data.token);
-                console.log("Seja bem-vindo novamente!");
+                console.log("Seja bem-vindo novamente!", user.nomeContratado);
     
                 setUser(response.data.user);
                 await AsyncStorage.setItem('authToken', response.data.token);

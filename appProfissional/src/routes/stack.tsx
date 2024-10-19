@@ -43,7 +43,7 @@ const AppNavigator = () => {
     <Stack.Navigator initialRouteName="loading">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
-       <Stack.Screen name="telaServico" component={TelaServico} options={{ headerShown: false }} />
+       <Stack.Screen name="Home" component={TelaServico} options={{ headerShown: false }} />
       {/* <Stack.Screen name="map" component={mapScreen} options={{headerShown: false}} />  */}
       <Stack.Screen name="homeStack" component={Tabs} options={{ headerShown: false }} />
       <Stack.Screen name="bemvindo" component={BemVindoScreen} options={{ headerShown: false }} />

@@ -8,7 +8,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
 import { useUser } from '../proContext';
 import api from '../../axios';
-import { Button } from "../../componentes/Button/Button";
+
 
 
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
@@ -82,6 +82,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 numCasaContratado,
                 cidadeContratado,
                 descContratado,
+                regiaoContratado
             });
 
             const result = response.data;
@@ -90,11 +91,11 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             const idPro = result.data.idContratado;
             if (idPro) {
                 setUserId(idPro);
-                await fetchDadosPro(idPro); // Fetch professional data
+                await fetchDadosPro(idPro);
             }
 
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('homeStack'); // Navigate to profile page
+            navigation.navigate('login'); // Navigate to profile page
 
         } catch (error: any) {
             if (error.response) {
