@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
 import Imagens from "../../img/img";
 import styles from '../css/perfilCss';
 import { useImage } from '../imageContext'; 
-import { useUser } from '../proContext';
+import myContext from '../functions/authContext';
 
 const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   const { imageUrl } = useImage();
-  const { userData } = useUser();
-  console.log('Dados do usuário:', userData);
+  const { user } = useContext(myContext)
+  console.log('Dados do usuário:', user);
   
   return (
     <ImageBackground 
@@ -28,11 +28,11 @@ const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
           <View style={styles.container}>
             {/* Exibindo as informações do usuário */}
             <Text style={styles.nome}>
-              {userData ? userData.nomeContratado : 'nome indisponivel'}
+              {user ? user.nomeContratado : 'nome indisponivel'}
             </Text>
             <Text style={styles.textLocalizacao}>
               <Entypo name="location-pin" size={24} color="red" /> 
-              {userData ? userData.bairroContratado : 'localização indisponivel'}
+              {user ? user.bairroContratado : 'localização indisponivel'}
             </Text>
           </View>
         </View>
