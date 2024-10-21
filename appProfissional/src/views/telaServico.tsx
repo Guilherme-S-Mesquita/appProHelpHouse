@@ -100,7 +100,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
     }
 
     try {
-        // Fazer a requisição para criar ou obter a sala de chat
+        console.log('Criando sala de chat para:', { idContratante, idContratado });
         const response = await api.post(`/chat-room/${idContratante}`, null, {
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -108,13 +108,14 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
             },
         });
 
-        const roomId = response.data.chat_room?.id;  // Obter o roomId da resposta da API
+        const roomId = response.data?.chat_room?.id;  // Certifique-se de que a estrutura está correta
 
-        // Navegar para a tela de chat com o roomId
         if (roomId) {
-            navigation.navigate('Chat', { roomId });  // Passa o roomId ao navegar para o chat
+            console.log('Sala de chat criada, Room ID:', roomId);
+            navigation.navigate('Chat', { roomId });  
         } else {
             Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
+            console.log('Resposta da API não contém roomId:', response.data);
         }
     } catch (error: any) {
         console.error('Erro ao criar ou buscar a sala de chat:', error.response ? error.response.data : error.message);
