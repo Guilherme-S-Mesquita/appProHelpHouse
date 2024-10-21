@@ -112,7 +112,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
 
         // Navegar para a tela de chat com o roomId
         if (roomId) {
-            navigation.navigate('Chat', { roomId });  // Passa o roomId ao navegar para o chat
+            navigation.navigate('Chat', { roomId, idContratante });  // Passa o roomId ao navegar para o chat
         } else {
             Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
         }

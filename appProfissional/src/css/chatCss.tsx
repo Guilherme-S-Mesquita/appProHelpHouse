@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#efefef',
+    backgroundColor: '#efefef',
   },
   navChat: {
     width: '100%',
@@ -17,6 +17,20 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 150,
     marginTop: 30,
+  },
+  botaoPDF: {
+    backgroundColor: '#4CAF50', // Verde
+    paddingVertical: 10, // Use paddingVertical para ajustar a altura do botão
+    paddingHorizontal: 15, // Ajusta o padding lateral
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 3,
+  },
+  textoBotao: {
+    color: '#FFFFFF', // Branco
+    fontSize: 16,
+    fontWeight: 'bold',
   },
   mensagensContainer: {
     flex: 1, // Ocupa todo o espaço disponível
@@ -34,9 +48,10 @@ const styles = StyleSheet.create({
     height: 50,
     width: '100%',
     borderRadius: 10,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between', // Alinha itens com espaço entre
     flexDirection: 'row',
     alignItems: 'center',
+    paddingHorizontal: 10, // Adiciona padding horizontal para dar espaço
   },
   textNav: {
     fontSize: 25,
