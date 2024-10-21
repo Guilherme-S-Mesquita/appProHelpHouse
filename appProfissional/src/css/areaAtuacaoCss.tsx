@@ -23,6 +23,13 @@ const styles = StyleSheet.create({
     voce: {
 
     },
+    selecione: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: '900',
+        left: 50,
+        bottom: 25
+    },
     container2: {
 
     },
@@ -36,13 +43,13 @@ const styles = StyleSheet.create({
     pesquisa: {
         justifyContent: 'center',
         height: '3.8%',
-        bottom:45,
+        bottom: 45,
 
     },
     input: {
         left: 65,
         height: 40,
-        width:315,
+        width: 315,
         borderColor: 'white',
         fontSize: 16,
         top: 5,
@@ -58,43 +65,43 @@ const styles = StyleSheet.create({
         position: 'absolute',
         display: 'flex',
         zIndex: 1,
-        bottom:4,
+        bottom: 4,
         left: 80,
     },
     trabalhos: {
         bottom: 55
     },
- 
+
     pedreiro: {
         width: 90,
         height: 90,
         marginTop: 77,
-        left: '10%',
+        left: '2%',
     },
 
     mecanico: {
         width: 90,
         height: 90,
-        left: '40%',
-        top: -90,
+        left: '5%',
+        top: 75
     },
     eletricista: {
         width: 90,
         height: 90,
-        left: '69%',
-        top: -180,
+        left: '9%',
+        top: 72,
     },
     jadineiro: {
         width: 90,
         height: 90,
-        left: '10%',
-        top: -159,
+        right: '25%',
+        top: 179,
     },
     encanador: {
         width: 90,
         height: 90,
-        left: '40%',
-        top: -249
+        right: '22%',
+        top: 179
     },
     diaristaImg: {
         width: 50,
@@ -105,14 +112,14 @@ const styles = StyleSheet.create({
     diarista: {
         width: 90,
         height: 90,
-        left: '69%',
-        top: -339
+        right: '18%',
+        top: 180
     },
     aindaNao: {
         color: '#fff',
         fontSize: 20,
         fontWeight: '900',
-        bottom:278,
+        bottom: 678,
         textAlign: 'center'
 
     },
@@ -121,7 +128,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 14,
         fontWeight: '900',
-       bottom:250,
+        bottom: 650,
         left: 58,
 
     },
@@ -130,7 +137,7 @@ const styles = StyleSheet.create({
         borderRadius: 19,
         height: 70,
         width: 350,
-        bottom: 225,
+        bottom: 625,
         left: 50,
         paddingHorizontal: 15,
         paddingBottom: 25,
@@ -138,13 +145,13 @@ const styles = StyleSheet.create({
     },
     buttonEnviar: {
         width: 145,
-        bottom: 230,
+        bottom: 390,
         shadowColor: 'black',
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },
         shadowOpacity: 0.3,
         elevation: 5,
- 
+
 
     },
 
