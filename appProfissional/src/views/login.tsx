@@ -45,7 +45,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 await AsyncStorage.setItem('authToken', response.data.token);
     
                 // Navega para a tela inicial
-                navigation.navigate('Home');
+                navigation.navigate('homeStack');
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
