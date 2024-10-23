@@ -27,37 +27,42 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
             return;
         }
     
-        setMessage(''); 
-        setLoading(true);
+        setMessage(''); // Limpa a mensagem anterior
+        setLoading(true);  // Exibe o indicador de carregamento
     
         try {
             const response = await api.post('/authpro', {
                 emailContratado,
                 password,
             });
-           
+    
+            // Se login bem-sucedido
             if (response.data && response.data.status === 'Sucesso' && response.data.token) {
                 console.log("Token recebido:", response.data.token);
-                console.log("Seja bem-vindo novamente!", user.nomeContratado);
     
+                // Armazena o usuário e o token
                 setUser(response.data.user);
                 await AsyncStorage.setItem('authToken', response.data.token);
-                navigation.navigate('homeStack');
+    
+                // Navega para a tela inicial
+                navigation.navigate('Home');
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
         } catch (error: any) {
             console.error('Erro ao fazer login:', error);
     
+            // Mensagem de erro apropriada
             if (error.response && error.response.status === 401) {
                 setMessage('Usuário ou senha incorretos.');
             } else {
                 setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
             }
         } finally {
-            setLoading(false);
+            setLoading(false); // Esconde o indicador de carregamento
         }
     };
+
     
 
     return (
