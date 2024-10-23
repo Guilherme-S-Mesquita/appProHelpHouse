@@ -28,12 +28,47 @@ const styles = StyleSheet.create({
         width: 110,
         height: 50,
         right: 120,
-        top:45
+        top: 45
     },
     input: {
         width: 280,
         height: 60,
         marginBottom: 40,
+    },
+    // códigos input 
+    title3: {
+        fontWeight: '900',
+        color: '#004AAD',
+        marginBottom: 10,
+        fontSize: 20,
+        right: 2,
+        top: 9,
+        marginTop: 10,
+    },
+    input3: {
+        backgroundColor:'#ffff',
+        borderBottomWidth:5,
+        borderColor: '#004AAD',
+        borderRadius:150,
+        height: 40,
+        marginBottom: 5,
+        fontSize: 16,
+        color: 'FF8F49',
+        paddingHorizontal: 10,
+    },
+    passwordContainer: {
+        position: 'relative',
+        width: '100%',
+    },
+
+    eyeIcon: {
+        position: 'absolute',
+        right: 10,
+        top: 5,
+        zIndex: 1,
+    },
+    errorText:{
+        
     },
     button: {
         position: 'relative',

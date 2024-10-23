@@ -1,13 +1,20 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    containerPrincipal: {
 
+        height: 100,
+        backgroundColor: '#004AAD',
+        flex: 1,
+        alignItems: 'center',
+    },
     ultimos: {
         color: '#fff',
         fontSize: 35,
         fontWeight: '900',
         top: 95,
-        left: 25
+        zIndex:1,
+        right:45
     },
     passos: {
         color: '#FF914D',
@@ -16,8 +23,9 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 15,
         fontWeight: '900',
-        top: 110,
-        left: 25
+        top: 100,
+        right: 35,
+        zIndex:2
     },
     background: {
         flex: 1,
@@ -29,7 +37,8 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         marginTop: '40%',
         marginLeft: 33,
-        flex: 1
+        flex: 1,
+        top:35
     },
     container: {
         justifyContent: 'center',
@@ -38,7 +47,7 @@ const styles = StyleSheet.create({
     imgPerfil: {
         borderRadius: 100,
         width: 190,
-        height: 180,
+        height: 190,
         justifyContent: 'center',
         bottom: 45,
         borderColor: '#fff',  // Borda branca para destacar o perfil
@@ -58,7 +67,7 @@ const styles = StyleSheet.create({
     },
     button: {
         width: 145,
-        height: 45,
+        height: 50,
         backgroundColor: '#FF914D',
         padding: 10,
         borderRadius: 25,
@@ -67,8 +76,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },
         shadowOpacity: 0.3,
-        bottom: 85,
-        left:120
+        bottom: 95,
     },
     buttonText: {
         color: '#FFFF',
@@ -80,9 +88,9 @@ const styles = StyleSheet.create({
     },
     cameraIcon: {
         position: 'absolute',
-        top: 92,
+        top: 99,
         right: 25,
-        backgroundColor: 'rgba(0, 0, 0, 0.4)',
+        backgroundColor: 'rgba(0, 0, 0, 0.3)',
         borderRadius: 20,
         padding: 5,
         marginRight: 100
@@ -94,7 +102,7 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-        left: 15
+        right:6
     },
     container3: {
         bottom: 150,

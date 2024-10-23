@@ -24,7 +24,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
             telefoneContratado: telefoneContratado,
             emailContratado: emailContratado,
             password: password,
-    
+
         });
     };
 
@@ -91,9 +91,9 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             <Text style={styles.textTitle}>Data de Nascimento</Text>
                         </View>
                         <TextInputMask
-                            type={'datetime'} // Corrigido para uma string
+                            type={'datetime'}
                             options={{
-                                format: 'YYYY-MM-DD', // Formato desejado
+                                format: 'DD/MM/YYYY'
                             }}
                             value={nascContratado}
                             onChangeText={text => setNascContratado(text)}
@@ -112,8 +112,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             placeholderTextColor="#fff"
                             returnKeyType='done'
                         />
-
-
 
                         <View style={styles.cpf}>
                             <Text style={styles.textTitle}>CPF</Text>
@@ -187,7 +185,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 fontSize: 16,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
-                                marginTop:5,
+                                marginTop: 5,
                                 right: 5,
                                 top: 25
                             }}

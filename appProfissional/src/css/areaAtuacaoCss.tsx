@@ -77,6 +77,7 @@ const styles = StyleSheet.create({
         height: 90,
         marginTop: 77,
         left: '2%',
+        bottom:2
     },
 
     mecanico: {
@@ -91,11 +92,35 @@ const styles = StyleSheet.create({
         left: '9%',
         top: 72,
     },
+    chaveiro:{
+        width: 90,
+        height: 90,
+        right: '23%',
+        top: 72,  
+    },
+    costureira:{
+        width: 90,
+        height: 90,
+        right: '19%',
+        top: 72,  
+    },
+    professor:{
+        width: 90,
+        height: 90,
+        right: '23%',
+        top: 72,  
+    },
+    personalOrg:{
+        width: 90,
+        height: 90,
+        right: '19%',
+        top: 72
+    },
     jadineiro: {
         width: 90,
         height: 90,
         right: '25%',
-        top: 179,
+        top: 180,
     },
     encanador: {
         width: 90,
@@ -103,18 +128,37 @@ const styles = StyleSheet.create({
         right: '22%',
         top: 179
     },
-    diaristaImg: {
-        width: 50,
-        height: 70,
-        top: -17,
-        left: '15%'
-    },
     diarista: {
         width: 90,
         height: 90,
         right: '18%',
         top: 180
     },
+    baba:{
+        width: 90,
+        height: 90,
+        right: '14%',
+        top: 179
+    },
+    instalador:{
+        width: 90,
+        height: 90,
+        right: '28%',
+        top: 179
+    },
+    cozinheiro:{
+        width: 90,
+        height: 90,
+        right: '41%',
+        top: 179
+    },
+    montador:{
+        width: 90,
+        height: 90,
+        right: '37%',
+        top: 179
+    },
+
     aindaNao: {
         color: '#fff',
         fontSize: 20,

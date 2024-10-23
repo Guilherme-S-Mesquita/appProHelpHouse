@@ -48,8 +48,6 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: '900',
     top:70,
-    
-
   },
   profissionais: {
     color: '#FF914D'
@@ -103,12 +101,12 @@ const styles = StyleSheet.create({
   },
 
   buttonEnviar: {
-    width: 145,
-    top:525,
+    width: 144,
+    top:420,
     shadowColor: 'black',
-    shadowRadius: 5,
+    shadowRadius: 4.5,
     shadowOffset: { width: 0, height: 9 },
-    shadowOpacity: 0.3,
+    shadowOpacity: 0.35,
     elevation: 5,
 },
 
@@ -146,9 +144,28 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '900',
-    top: 415,
+    top: 350,
     marginRight:25
   },
+
+  atua:{
+    color: '#FFF',
+    fontSize: 35,
+    fontWeight: '900',
+    top:90
+  },
+  atua1:{
+    color: '#FF914D',
+  },
+  acabando:{
+    top:95,
+    color: '#fff',
+    fontSize: 17,
+    fontWeight: '800',
+    marginRight:25,
+    right:32,
+  },
+
 });
 
 export default styles;

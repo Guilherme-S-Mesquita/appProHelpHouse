@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     backgroundColor: '#000'
   },
+  
   label: {
     position: 'relative',
     fontSize: 18,

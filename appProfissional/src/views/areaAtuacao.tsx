@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Image, ScrollView } from 'react-native';
+import { View, Text, TextInput, Image, ScrollView, Alert } from 'react-native';
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { Button } from "../../componentes/Button/Button";
 import Imagens from '../../img/img';
@@ -23,6 +23,13 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
     // Função para processar os dados e navegar para a próxima tela
     const dadosCad = () => {
         const profissaoContratado = profissoesSelecionadas.join(', '); // Concatena as profissões em uma string
+
+        if (profissaoContratado.length === 0) {
+            Alert.alert('Selecione pelo menos uma Profissão.');
+            console.log("Nenhuma região selecionada");
+            return;
+        }
+        
 
         console.log("Profissões selecionadas: ", profissaoContratado);
         console.log("Descrição: ", descContratado);
@@ -172,103 +179,140 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                             />
                         </View>
 
-                        <View style={styles.diarista}>
+                        <View style={styles.baba}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/diarista.png')}
-                                        style={{ width: 80, height: 155, top: 35 }}
+                                        source={require('../../assets/baba.png')}
+                                        style={{ width: 82, height: 155, top: 25, left:1 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('diarista', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('baba', isChecked)}
                             />
                         </View>
 
 
-                        <View style={styles.diarista}>
+                        <View style={styles.chaveiro}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/diarista.png')}
-                                        style={{ width: 80, height: 155, top: 35 }}
+                                        source={require('../../assets/chaveiro.png')}
+                                        style={{ width: 85, height: 155, top: 20,
+                                            
+                                         }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('diarista', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('chaveiro', isChecked)}
                             />
                         </View>
 
 
-                        <View style={styles.diarista}>
+                        <View style={styles.costureira}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/diarista.png')}
-                                        style={{ width: 80, height: 155, top: 35 }}
+                                        source={require('../../assets/costureira.png')}
+                                        style={{ width: 82, height: 155, top: 21 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('diarista', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('costureira', isChecked)}
                             />
                         </View>
 
 
-                        <View style={styles.mecanico}>
+                        <View style={styles.instalador}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/mecanico.png')}
-                                        style={{ width: 79, height: 110, top: 19 }}
+                                        source={require('../../assets/instalador.png')}
+                                        style={{ width: 85, height: 110, top: 16, right:3
+                                         }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('mecanico', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('instalador', isChecked)}
                             />
                         </View>
-                        <View style={styles.mecanico}>
+                        <View style={styles.professor}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/mecanico.png')}
-                                        style={{ width: 79, height: 110, top: 19 }}
+                                        source={require('../../assets/professor.png')}
+                                        style={{ width: 92, height: 110, top: 19 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('mecanico', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('professor', isChecked)}
+                            />
+                        </View>
+
+                        <View style={styles.personalOrg}>
+                            <BouncyCheckbox
+                                size={95}
+                                fillColor="#F6A059"
+                                unFillColor="#588acd"
+                                iconComponent={
+                                    <Image
+                                        source={require('../../assets/personalOrg.png')}
+                                        style={{ width: 75, height: 100, top: 18 }}
+                                    />
+                                }
+                                innerIconStyle={{ borderWidth: 4 }}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Personal Organizer', isChecked)}
                             />
                         </View>
                         
-                        <View style={styles.mecanico}>
+                        <View style={styles.cozinheiro}>
                             <BouncyCheckbox
                                 size={95}
                                 fillColor="#F6A059"
                                 unFillColor="#588acd"
                                 iconComponent={
                                     <Image
-                                        source={require('../../assets/mecanico.png')}
-                                        style={{ width: 79, height: 110, top: 19 }}
+                                        source={require('../../assets/cozinheiro.png')}
+                                        style={{ width: 85, height: 110, top: 15 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('mecanico', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('cozinheiro', isChecked)}
                             />
                         </View>
+
+                        <View style={styles.montador}>
+                            <BouncyCheckbox
+                                size={95}
+                                fillColor="#F6A059"
+                                unFillColor="#588acd"
+                                iconComponent={
+                                    <Image
+                                        source={require('../../assets/montador.png')}
+                                        style={{ width: 80, height: 110, top: 19}}
+                                    />
+                                }
+                                innerIconStyle={{ borderWidth: 4 }}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Montador de Móveis', isChecked)}
+                            />
+                        </View>
+
+
 
                     </ScrollView>
                     <Text style={styles.aindaNao}>

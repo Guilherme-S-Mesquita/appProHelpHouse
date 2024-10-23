@@ -15,8 +15,6 @@ const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigat
         navigation.navigate('cadastro', {
             emailContratado: emailContratado,
             password: password
-
-
         });
     }
 
