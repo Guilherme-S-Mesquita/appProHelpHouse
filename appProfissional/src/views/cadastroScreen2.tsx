@@ -276,7 +276,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         top: 455
                     }}
                     
-                    onPress={(isChecked: boolean) => handleCheckboxChange('zonaSul', isChecked)}
+                    onPress={(isChecked: boolean) => handleCheckboxChange('Zona Sul', isChecked)}
                 />
 
 
@@ -292,7 +292,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         marginLeft: 220,
                         top: 420
                     }}
-                    onPress={(isChecked: boolean) => handleCheckboxChange('zonaNorte', isChecked)}
+                    onPress={(isChecked: boolean) => handleCheckboxChange('Zona Norte', isChecked)}
                 />
 
 
@@ -310,7 +310,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         marginLeft: 50,
                         top: 455
                     }}
-                    onPress={(isChecked: boolean) => handleCheckboxChange('zonaLeste', isChecked)}
+                    onPress={(isChecked: boolean) => handleCheckboxChange('Zona Leste', isChecked)}
                 />
 
 
@@ -328,7 +328,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         marginLeft: 220,
                         top: 415
                     }}
-                    onPress={(isChecked: boolean) => handleCheckboxChange('zonaOeste', isChecked)}
+                    onPress={(isChecked: boolean) => handleCheckboxChange('Zona Oeste', isChecked)}
                 />
 
 
