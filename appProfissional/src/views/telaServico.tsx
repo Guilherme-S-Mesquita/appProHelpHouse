@@ -112,7 +112,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
 
         if (roomId) {
             console.log('Sala de chat criada, Room ID:', roomId);
-            navigation.navigate('Chat', { roomId });  
+            navigation.navigate('Chat', { roomId, idContratante});  
         } else {
             Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
             console.log('Resposta da API não contém roomId:', response.data);
