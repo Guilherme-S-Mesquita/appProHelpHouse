@@ -6,7 +6,7 @@ import {
   const pusher = Pusher.getInstance();
   
     await pusher.init({
-      apiKey: "c58eb1455bc63e559d2c",
+      apiKey: "6aef362f6c720f776c8b",
       cluster: "sa1"
     });
       

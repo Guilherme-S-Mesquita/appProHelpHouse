@@ -7,6 +7,7 @@ import styles from '../css/loginCss';
 import api from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage para armazenar o token
 import myContext from '../functions/authContext';
+import Pusher from 'pusher-js/react-native'; // Importando Pusher
 
 
 
@@ -21,47 +22,70 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
 
     const { user, setUser } = useContext(myContext); 
 
-    const handleLogin = async () => {
-        if (!emailContratado || !password) {
-            setMessage('Preencha todos os campos');
-            return;
-        }
+   // Função para lidar com o login
+   const handleLogin = async () => {
+    if (!emailContratado || !password) {
+        setMessage('Preencha todos os campos');
+        return;
+    }
+
+    setLoading(true); // Ativa o estado de loading
+    setMessage(''); // Limpa mensagens anteriores
+
+
+    //  app_id = "1884925"
+    //  key = "6aef362f6c720f776c8b"
+    //  secret = "e42c65596b0d56e57f72"
+    //  cluster = "sa1"
+
     
-        setMessage(''); // Limpa a mensagem anterior
-        setLoading(true);  // Exibe o indicador de carregamento
-    
-        try {
+    try {
+        // Inicializa o Pusher sem a necessidade de armazená-lo no estado
+        const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
+            cluster: 'sa1',
+            authEndpoint: 'http://10.0.0.161:8000/api/pusher/authpro', // Endpoint de autenticação
+        });
+
+        // Conecta ao Pusher e aguarda o evento de conexão
+        pusherInstance.connect();
+
+        pusherInstance.connection.bind('connected', async () => {
+            const socketId = pusherInstance.connection.socket_id; // Obtém o socket_id
+
+            if (!socketId) {
+                setMessage('Erro ao obter socket_id. Tente novamente.');
+                setLoading(false);
+                return;
+            }
+
+            // Faz a requisição de login com o socket_id
             const response = await api.post('/authpro', {
                 emailContratado,
                 password,
+                socket_id: socketId, // Passa o socket_id do Pusher
+                channel_name: 'private-my-channel', // Define o canal privado
             });
-    
-            // Se login bem-sucedido
+
             if (response.data && response.data.status === 'Sucesso' && response.data.token) {
-                console.log("Token recebido:", response.data.token);
-    
-                // Armazena o usuário e o token
-                setUser(response.data.user);
+                // Armazena o usuário e o token no AsyncStorage
                 await AsyncStorage.setItem('authToken', response.data.token);
-    
-                // Navega para a tela inicial
-                navigation.navigate('homeStack');
+                
+                // Armazena o usuário autenticado no contexto, incluindo o Pusher
+                setUser({ ...response.data.user, pusher: pusherInstance });
+                
+                // Redireciona para a página principal
+                navigation.navigate('homeStack', { screen: 'home' });
             } else {
                 setMessage('Credenciais incorretas, tente novamente.');
             }
-        } catch (error: any) {
-            console.error('Erro ao fazer login:', error);
-    
-            // Mensagem de erro apropriada
-            if (error.response && error.response.status === 401) {
-                setMessage('Usuário ou senha incorretos.');
-            } else {
-                setMessage('Erro ao fazer login. Verifique suas credenciais e tente novamente.');
-            }
-        } finally {
-            setLoading(false); // Esconde o indicador de carregamento
-        }
-    };
+        });
+    } catch (error: any) {
+        const errorMessage = error.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.';
+        setMessage(errorMessage);
+    } finally {
+        setLoading(false); // Desativa o estado de loading
+    }
+};
 
     
 

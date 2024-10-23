@@ -108,11 +108,12 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
             },
         });
 
-        const roomId = response.data?.chat_room?.id;  // Certifique-se de que a estrutura está correta
+        const roomId = response.data?.chat_room?.id;
 
-        if (roomId) {
+        // Verifica se a resposta foi bem-sucedida
+        if (response.status === 200 && roomId) {
             console.log('Sala de chat criada, Room ID:', roomId);
-            navigation.navigate('Chat', { roomId, idContratante});  
+            navigation.navigate('Chat', { roomId, idContratante });
         } else {
             Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
             console.log('Resposta da API não contém roomId:', response.data);
@@ -122,6 +123,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
         Alert.alert('Erro', 'Houve um problema ao criar a sala.');
     }
 };
+
 
   
 
