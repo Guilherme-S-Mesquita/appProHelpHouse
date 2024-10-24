@@ -5,6 +5,7 @@ import Imagens from '../../img/img';
 import myContext from '../functions/authContext';
 import api from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 interface Contratante {
   nomeContratante: string;
@@ -131,18 +132,18 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
-        <Image source={Imagens.iconFiltro} style={styles.filtroImg} />
+      <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} /> 
       </View>
 
       <View style={styles.containerGanhos}>
         <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
         <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
-        <Image source={Imagens.jesus} style={styles.jesusImg} />
+        <Image source={Imagens.imgPerfil} style={styles.jesusImg} />
         <Text style={styles.localizacao}>{user.cidadeContratado} <Text style={styles.oitoKm}>8km</Text></Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
           <Text style={styles.botaoAlterarRaio1}>Alterar raio</Text>
         </TouchableOpacity>
-        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>7 serviços</Text> para hoje</Text>
+        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>1 serviço</Text> para hoje</Text>
       </View>
       <ScrollView>
   {loading ? (
@@ -150,7 +151,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
   ) : error ? (
     <Text style={{ color: 'red' }}>{error}</Text>
   ) : pedidos.length === 0 ? (
-    <Text>Nenhum pedido pendente.</Text>
+    <Text style={{marginTop:60, marginLeft:20, fontWeight:'bold',fontSize: 20}}>Nenhum pedido pendente.</Text>
   ) : (
     pedidos.map((pedido) => (
       <View key={pedido.idSolicitarPedido} style={styles.containerNovosPedidos}>
