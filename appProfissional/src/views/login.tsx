@@ -9,8 +9,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa
 import myContext from '../functions/authContext';
 import Pusher from 'pusher-js/react-native'; // Importando Pusher
 
-
-
 const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
     const [password, setPassword] = useState('');
@@ -43,7 +41,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
         // Inicializa o Pusher sem a necessidade de armazená-lo no estado
         const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
             cluster: 'sa1',
-            authEndpoint: 'http://10.0.0.161:8000/api/pusher/authpro', // Endpoint de autenticação
+            authEndpoint: 'http://192.168.1.194:8000/api/pusher/authpro', // Endpoint de autenticação
         });
 
         // Conecta ao Pusher e aguarda o evento de conexão
@@ -92,8 +90,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     return (
         <View style={styles.container}>
             <Image source={Imagens.helpHouse} style={styles.help} />
-
-            <View style={styles.input}>
+            <View style={[styles.input, { width: 350, height: 60 }]}>
                 <FloatingLabelInput
                     label=" Email "
                     value={emailContratado}
@@ -111,6 +108,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         borderRightWidth: 5,
                         borderBottomWidth: 5,
                         position: 'relative',
+                        
                     }}
                     customLabelStyles={{
                         colorFocused: '#FF8F49',
@@ -120,19 +118,21 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
-                        height: '29%',
+                        fontSize: 18
                     }}
                     inputStyles={{
+                        fontSize:18,
                         color: '#000',
                         paddingHorizontal: 10,
                         height: 49,
+    
                     }}
                     onChangeText={setEmailContratado}
                 />
                 <Text style={styles.errorMessage}>{message}</Text>
             </View>
 
-            <View style={styles.input}>
+            <View style={[styles.input, { width: 350, height:60}]}>
                 <FloatingLabelInput
                     label="Senha"
                     isPassword
@@ -152,19 +152,26 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         borderLeftWidth: 5,
                         borderRightWidth: 5,
                         borderBottomWidth: 5,
+                    
                     }}
                     customLabelStyles={{
                         colorFocused: '#FF8F49',
-                        fontSizeFocused: 12,
+                        fontSizeFocused: 5,
+                    
+                        
                     }}
                     labelStyles={{
                         backgroundColor: '#fefefe',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
+                        fontSize: 18
                     }}
                     inputStyles={{
+                        fontSize:18,
                         color: '#000',
                         paddingHorizontal: 10,
+                       
+                        
                     }}
                 />
             </View>

@@ -6,6 +6,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
+    width: '100%', // Ocupa 80% da largura do contêiner pai
+
   },
 
   title: {
@@ -76,6 +78,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     elevation: 5,
     borderRadius: 150,
+    bottom:25
 
   },
   errorMessage: {

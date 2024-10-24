@@ -16,7 +16,12 @@ const Imagens={
     iconChat:require("../assets/iconChat.png"),
     iconMais:require("../assets/iconMais.png"),
     iconHome:require("../assets/iconHome.png"),
-    iconFiltro:require("../assets/iconFiltro.png"),
-    iconPerfil:require("../assets/iconPerfil.png"),
+    // iconFiltro:require("../assets/iconFiltro.png"),
+
+
+    //imgs tab bar
+   iconTab: require("../assets/iconTab.png"),
+   iconTab2: require("../assets/iconTab2.png"),
+   iconTab3: require("../assets/iconTab3.png"),
 }
 export default Imagens;

@@ -93,7 +93,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             }
 
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('login'); // Navigate to profile page
+            navigation.navigate('Home'); // Navigate to profile page
 
         } catch (error: any) {
             if (error.response) {
@@ -153,34 +153,21 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         borderBottomWidth: 2,
                         borderColor: '#fff',
                         color: '#fff',
-                        fontSize: 16,
+                        fontSize: 18,
                         top: 30,
                         paddingHorizontal: 5,
                         width:351,
                         right:9
                     }}
+                     returnKeyType='done'
                     placeholder="Escreva um pouco sobre você..."
                     placeholderTextColor="#fff"
-                    returnKeyType='done'
+                
                     >
 
                 </TextInput>
             </View>
 
-            {/* <View style={styles.container3}>
-                <Text style={styles.promova}>Promova seu trabalho, e adicione {'\n'}fotos ao seu portfólio!</Text>
-            </View> */}
-
-            {/* <Button
-                style={[styles.buttonEnviar, {
-                    backgroundColor: '#FF914D',
-                }]} // Defina a cor de fundo desejada aqui
-                color='#FF914D'
-                variant="primary"
-                title="Criar conta"
-                onPress={() => navigation.navigate('ultimosPassos')}
-
-            /> */}
             <View style={styles.container}>
                 {selectedImage && (
                     <TouchableOpacity onPress={uploadMedia} style={styles.button} disabled={uploading}>

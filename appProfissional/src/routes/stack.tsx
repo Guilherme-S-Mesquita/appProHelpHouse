@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-
+import Imagens from "../../img/img";
 // import mapScreen from '/github/appProHelpHouse/appProfissional/componentes/Map/map';
 import BemVindoScreen from '../views/bemVindo';
 import CadastroScreen from '../views/cadastro';
@@ -18,29 +18,88 @@ import CadastroEmail from '../views/cadastroEmail';
 import TelaServico from '../views/telaServico';
 import Chat from '../views/chat';
 import List from '../functions/index';
-
+import { Image } from 'react-native';
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+// Componente Tabs
+// const Tabs = () => {
+//   return (
+//     <Tab.Navigator
+//       screenOptions={{
+//         tabBarStyle: {
+//           backgroundColor: '#e9e9e7',
+//           height: 80,
+//         },
+//         tabBarShowLabel: false,  // Oculta os rótulos das abas
+//       }}
+//     >
+//       <Tab.Screen
+//         name="Home" 
+//         component={TelaServico}
+//         options={{
+//           headerShown: false,
+//           tabBarIcon: ({ focused }) => ( // esse focused está importada para não aparecer o titulo
+//             <Image 
+//             source={Imagens.iconTab} 
+//             style={{
+//               width: 44, 
+//               height: 44,
+            
+//             }} 
+//           />
+//           ),
+//         }}
+//       />
+//       {/* <Tab.Screen
+//         name="PerfilScreen"
+//         component={TelaPerfilScreen}
+//         options={{
+//           headerShown: false,
+//           tabBarIcon: ({ focused }) => (
+//             <Image 
+//               source={Imagens.iconTab3} 
+//               style={{
+//                 width: 46, 
+//                 height: 46, 
+               
+//               }} 
+//             />
+//           ),
+//         }}
+//       /> */}
+//        <Tab.Screen 
+//         name="Chat" 
+//         component={Chat} 
+//         options={{
+//           headerShown: false,
+//           tabBarIcon: () => (
+//             <Image source={Imagens.iconTab2} style={{ width: 44, height: 40 }} />
+//           ),
+//         }} 
+//       />
 
+//     </Tab.Navigator>
+//   );
+// };
 
 //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 // Definindo a função Tabs
 
- const Tabs = () => {
-   return (
-     <Tab.Navigator>
-       <Tab.Screen name="Home" component={TelaServico}options={{ headerShown: false }} />
-       <Tab.Screen name="Perfil" component={PerfilScreen}options={{ headerShown: false }}/>
-   </Tab.Navigator>
-  );
- };
+  const Tabs = () => {
+    return (
+      <Tab.Navigator>
+        <Tab.Screen name="Home" component={TelaServico}options={{ headerShown: false }} />
+        <Tab.Screen name="Perfil" component={PerfilScreen}options={{ headerShown: false }}/>
+    </Tab.Navigator>
+   );
+  };
  //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="bemvindo">
+    <Stack.Navigator initialRouteName="loading">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="Home" component={TelaServico} options={{ headerShown: false }} />

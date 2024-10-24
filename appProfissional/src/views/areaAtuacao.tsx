@@ -63,16 +63,6 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                     <Text style={styles.voce}>você atua?</Text>
                 </Text>
 
-                {/* <View style={styles.pesquisa}>
-                    <Image source={Imagens.lupa} style={styles.lupa} />
-                    <TextInput
-                        placeholder='buscar...'
-                        style={styles.input}
-                        placeholderTextColor='white'
-                        keyboardType='default'
-                    />
-                </View> */}
-
                 <Text style={styles.selecione}>Selecione as suas profissões:</Text>
 
                 <View style={styles.trabalhos}>
