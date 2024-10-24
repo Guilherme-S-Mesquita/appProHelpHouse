@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext,useState } from 'react';
 import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
@@ -8,6 +8,7 @@ import Entypo from '@expo/vector-icons/Entypo';
 import styles from '../css/ultimosPassosCss';
 import { useUser } from '../proContext';
 import api from '../../axios';
+import myContext from '../functions/authContext';
 
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [uploading, setUploading] = useState<boolean>(false);
@@ -15,6 +16,9 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
     const { imageUrl, setImageUrl } = useImage();
     const { setUserId, setUserData } = useUser();
     const [loading, setLoading] = useState<boolean>(false); // New state for data submission loading
+    const userContext = useContext(myContext);
+    const { user, setUser } = useContext(myContext);
+
 
     // Pick Image Function
     const pickImage = async () => {
@@ -93,7 +97,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             }
 
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('login'); // Navigate to profile page
+            navigation.navigate('homeStack'); // Navigate to profile page
 
         } catch (error: any) {
             if (error.response) {
@@ -117,6 +121,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             if (response.status === 200) {
                 console.log('Dados recebidos:', data);
                 setUserData(data);
+                setUser(data);
             } else {
                 console.error('Erro ao buscar os dados do profissional:', data.message);
             }
