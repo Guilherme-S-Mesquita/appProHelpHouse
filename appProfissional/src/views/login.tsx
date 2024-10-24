@@ -179,14 +179,12 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
             {loading ? (
                 <ActivityIndicator size="large" color="#004AAD" />
             ) : (
-                <Button
-                    style={styles.button}
-                    color='#004AAD'
-                    variant="primary"
-                    title="Entrar"
-                    onPress={handleLogin}
-                />
+                <TouchableOpacity style={styles.button3} onPress={handleLogin} disabled={loading}>
+                <Text style={styles.buttonText2}>Entrar</Text>
+            </TouchableOpacity>
             )}
+
+            
 
             <View>
                 <View style={styles.conta}>
@@ -195,14 +193,16 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                 </View>
             </View>
 
-            <Button
-                style={[styles.buttonCad, { backgroundColor: '#004AAD' }]}
-                variant="primary"
-                title="Cadastre-se"
-                onPress={() => navigation.navigate('cadastroEmail')}
-            />
+            {loading ? (
+                <ActivityIndicator size="large" color="#004AAD" />
+            ) : (
+                <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('cadastroEmail')} disabled={loading}>
+                <Text style={styles.buttonText2}>Cadastre-se</Text>
+            </TouchableOpacity>
+            )}
         </View>
     );
 };
+
 
 export default Login;
