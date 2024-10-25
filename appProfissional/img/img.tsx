@@ -16,7 +16,7 @@ const Imagens={
     iconChat:require("../assets/iconChat.png"),
     iconMais:require("../assets/iconMais.png"),
     iconHome:require("../assets/iconHome.png"),
-    // iconFiltro:require("../assets/iconFiltro.png"),
+    iconFiltro:require("../assets/iconFiltro.png"),
 
 
     //imgs tab bar

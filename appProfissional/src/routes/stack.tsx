@@ -19,6 +19,7 @@ import TelaServico from '../views/telaServico';
 import Chat from '../views/chat';
 import List from '../functions/index';
 import { Image } from 'react-native';
+import PedidosAgendados from '../views/pedidosAgendados';
 
 
 const Stack = createNativeStackNavigator();
@@ -95,6 +96,7 @@ const AppNavigator = () => {
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
       <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
+      <Stack.Screen name="pedidosAgendados" component={PedidosAgendados} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
