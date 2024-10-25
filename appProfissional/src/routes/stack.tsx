@@ -53,6 +53,24 @@ const Tabs = () => {
         }}
       />
 
+      <Tab.Screen
+        name="pedidosAgendados"
+        component={PedidosAgendados}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={Imagens.iconTab3} 
+              style={{
+                width: 46, 
+                height: 46, 
+               
+              }} 
+            />
+          ),
+        }}
+      />
+
       
       <Tab.Screen
         name="PerfilScreen"
