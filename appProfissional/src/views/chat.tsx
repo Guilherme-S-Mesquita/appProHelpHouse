@@ -281,7 +281,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 };
 
 export default Chat;
-
 function setReload(arg0: (prevReload: any) => boolean) {
     throw new Error('Function not implemented.');
 }
+

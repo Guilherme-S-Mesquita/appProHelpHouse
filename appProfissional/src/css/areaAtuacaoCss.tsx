@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingBottom: 25,
         color: 'white',
+        fontSize: 18,
     },
     buttonEnviar: {
         width: 145,

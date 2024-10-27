@@ -19,20 +19,20 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     color: '#fff',
-    fontSize: 15,
+    fontSize: 17,
     fontWeight: '900',
     bottom: 30,
   },
   title: {
     justifyContent: 'flex-end',
     alignItems: 'center',
-  height:90
+    height: 90
   },
   titulo: {
     color: '#004AAD',
     fontSize: 30,
     fontWeight: '900',
-    top:20
+    top: 20
   },
   tituloDados: {
     top: 30,
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 35,
     fontWeight: '900',
-    top:55
+    top: 55
   },
   pessoais: {
     color: '#FF914D',
@@ -82,67 +82,37 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 20,
   },
-  textInput: {
-    width: 60,
-    borderBottomWidth: 2,
-    borderColor: '#fff',
-    textAlign: 'center',
-    fontSize: 20,
-  },
-  separator: {
-    marginHorizontal: 8,
-    fontSize: 28,
-    color: '#fff',
-  },
-  phoneSeparator: {
-    fontSize: 30,
-    color: '#fff',
-  },
-  phoneInput: {
-    width: 30,
-  },
   buttonEnviar: {
     position: 'relative',
     width: 130,
-    top:510,
+    top: 510,
     shadowColor: 'black',
     shadowRadius: 5,
     shadowOffset: { width: 0, height: 9 },
     shadowOpacity: 0.5,
     elevation: 5,
   },
-  profissao: {
-    right: 18,
-   top: 32,  // Ajuste a posição dos títulos
-  },
-  textProfissao: {
-    fontSize: 17,
-    color: 'white',
-    fontWeight: 'bold',
-   top: 25,  // Mantém o título próximo ao campo de entrada
-  },
   nome: {
     right: 18,
-   top: 15,  // Ajuste a posição dos títulos
+    top: 15,  
   },
   sobrenome: {
     right: 18,
-    top:15,  // Ajuste a posição dos títulos
+    top: 15, 
   },
   nascimento: {
     right: 18,
-    top:25,  // Ajuste a posição dos títulos
-    
+    top: 25, 
+
   },
   cpf: {
     right: 18,
-    top:29,  // Ajuste a posição dos títulos
+    top: 29, 
   },
 
   telefone: {
     right: 18,
-   top:29,  // Ajuste a posição dos títulos
-
+    top: 29, 
   },
   senha: {
     fontWeight: '700',

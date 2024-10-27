@@ -53,7 +53,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                fontSize: 16,
+                                fontSize: 18,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 bottom: 3,
@@ -75,7 +75,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                fontSize: 16,
+                                fontSize: 18,
                                 marginTop: -10,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
@@ -102,7 +102,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                fontSize: 16,
+                                fontSize: 18,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 top: 18,
@@ -126,7 +126,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                fontSize: 16,
                                 marginTop: 5,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
@@ -137,29 +136,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             returnKeyType='done'
                             onChangeText={text => setCpfContratado(text)}
                         />
-
-                        {/* <View style={styles.profissao}>
-                            <Text style={styles.textTitle}>Profissão</Text>
-                        </View>
-
-                        <TextInput
-                            value={profissaoContratado}
-                            onChangeText={value => setProfissaoContratado(value)}
-                            style={{
-                                opacity: 0.7,
-                                borderBottomWidth: 2,
-                                borderColor: '#fff',
-                                color: '#fff',
-                                fontSize: 16,
-                                marginTop: -10,
-                                marginBottom: 37,
-                                marginHorizontal: -20,
-                                top: 32
-                            }}
-                            placeholder="Digite sua Profissão..."
-                            placeholderTextColor="#fff"
-                            returnKeyType='done'
-                        /> */}
 
                         <View style={styles.telefone}>
                             <Text style={styles.textTitle}>Telefone</Text>
@@ -182,7 +158,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                fontSize: 16,
+                               fontSize: 18,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 marginTop: 5,

@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import React from 'react';
-
+import Imagens from "../../img/img";
 // import mapScreen from '/github/appProHelpHouse/appProfissional/componentes/Map/map';
 import BemVindoScreen from '../views/bemVindo';
 import CadastroScreen from '../views/cadastro';
@@ -18,29 +18,87 @@ import CadastroEmail from '../views/cadastroEmail';
 import TelaServico from '../views/telaServico';
 import Chat from '../views/chat';
 import List from '../functions/index';
-
+import { Image } from 'react-native';
+import PedidosAgendados from '../views/pedidosAgendados';
 
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
+const Tabs = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: {
+          backgroundColor: '#e9e9e7',
+          height: 80,
+        },
+        tabBarShowLabel: false,  // Oculta os rótulos das abas
+      }}
+    >
+      <Tab.Screen
+        name="HomeScreen" 
+        component={TelaServico}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => ( // esse focused está importada para não aparecer o titulo
+            <Image 
+              source={Imagens.iconTab} 
+              style={{
+                width: 44, 
+                height: 44,
+              
+              }} 
+            />
+          ),
+        }}
+      />
 
+      <Tab.Screen
+        name="pedidosAgendados"
+        component={PedidosAgendados}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={Imagens.iconTab3} 
+              style={{
+                width: 46, 
+                height: 46, 
+               
+              }} 
+            />
+          ),
+        }}
+      />
 
-//NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
-// Definindo a função Tabs
+      
+      <Tab.Screen
+        name="PerfilScreen"
+        component={TelaServico}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={Imagens.iconTab2} 
+              style={{
+                width: 46, 
+                height: 46, 
+               
+              }} 
+            />
+          ),
+        }}
+      />
+       
 
- const Tabs = () => {
-   return (
-     <Tab.Navigator>
-       <Tab.Screen name="Home" component={TelaServico}options={{ headerShown: false }} />
-       <Tab.Screen name="Perfil" component={PerfilScreen}options={{ headerShown: false }}/>
-   </Tab.Navigator>
+    </Tab.Navigator>
   );
- };
+};
  //NAO MEXER ==== NAO MEXER ==== NAO MEXER === NAO MEXER
 
 const AppNavigator = () => {
   return (
-    <Stack.Navigator initialRouteName="bemvindo">
+    <Stack.Navigator initialRouteName="homeStack">
        <Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
        <Stack.Screen name="List" component={List} options={{ headerShown: false }} />
        <Stack.Screen name="Home" component={TelaServico} options={{ headerShown: false }} />
@@ -56,6 +114,7 @@ const AppNavigator = () => {
       <Stack.Screen name="areaAtuacao" component={AreaAtuacao} options={{ headerShown: false }} />
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
       <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
+      <Stack.Screen name="pedidosAgendados" component={PedidosAgendados} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

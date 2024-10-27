@@ -3,7 +3,6 @@ import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import Api from '../../componentes/apiCep/api';
 import AntDesign from '@expo/vector-icons/AntDesign';
-import config from '../../config/config.json';
 import styles from '../css/cad2Css';
 import { Button } from "../../componentes/Button/Button";
 import BouncyCheckbox from "react-native-bouncy-checkbox";
@@ -98,8 +97,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
 
                     <View style={styles.inputsCep}>
-                        <Text style={styles.title3}>Buscar cep </Text>
-                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={24} color="white" onPress={buscarCep} /></Text>
+                        {/* <Text style={styles.title3}>Buscar cep </Text> */}
+                        <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={30} color="white" onPress={buscarCep} /></Text>
                     </View>
 
                     <FloatingLabelInput
@@ -126,7 +125,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         }}
                         inputStyles={{
                             color: '#fff',
-                            fontSize: 16,
+                           fontSize: 19,
                         }}
                     />
                     <FloatingLabelInput
@@ -138,6 +137,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
+                            
                         }}
                         customLabelStyles={{
                             topFocused: -20,
@@ -149,11 +149,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         labelStyles={{
                             paddingHorizontal: 5,
                             color: '#FF8F49',
-                            fontWeight: 'bold'
+                            fontWeight: 'bold',
+                            
                         }}
                         inputStyles={{
                             color: '#fff',
-                            fontSize: 16,
+                          fontSize: 19,
+                          
                         }}
                     />
 
@@ -182,7 +184,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         }}
                         inputStyles={{
                             color: '#fff',
-                            fontSize: 16,
+                          fontSize: 19,
                         }}
                     />
 
@@ -215,7 +217,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             }}
                             inputStyles={{
                                 color: '#fff',
-                                fontSize: 16,
+                              fontSize: 19,
                             }}
                         />
                         <View style={styles.inputNum}>
@@ -247,7 +249,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 }}
                                 inputStyles={{
                                     color: '#fff',
-                                    fontSize: 16,
+                                  fontSize: 19,
                                 }}
                                 returnKeyType='done'
                             />

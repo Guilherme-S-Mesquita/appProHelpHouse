@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         color: '#004AAD',
         fontSize: 30,
         fontWeight: '900',
-        top: 100
+        top: 140
     },
     titulo2: {
         color: '#f6a059',
@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
         height: 60,
         marginBottom: 40,
     },
+
     // códigos input 
     title3: {
         fontWeight: '900',
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
         color: '#F6A059'
     },
     buttonCad: {
-        top: 250,
+        top: 340,
         width: 130,
         shadowColor: 'black',
         shadowRadius: 5,
@@ -121,7 +122,7 @@ const styles = StyleSheet.create({
         color: '#FF0000'
     },
     maeInput: {
-        top: 200
+        top: 240
     },
 
 });

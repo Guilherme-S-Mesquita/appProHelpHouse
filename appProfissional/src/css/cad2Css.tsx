@@ -13,9 +13,10 @@ const styles = StyleSheet.create({
   },
   title3: {
     fontSize: 15,
-    marginTop: 5,
+    marginTop: 15,
     color: '#fff',
     fontWeight: 'bold',
+    left:185
   },
   inputsCep: {
     flexDirection: 'row',
@@ -23,6 +24,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     color: '#fff',
+    
   },
   buscarCep:{
 
@@ -32,8 +34,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
-    marginLeft:20
-
+    marginLeft:300,
+    top:18,
+    zIndex:2
   },
 
   containerCadastro: {
@@ -53,12 +56,12 @@ const styles = StyleSheet.create({
     color: '#FF914D'
   },
   input: {
-    width: 280,
+    width: 350,
     height: 60,
     position: 'relative',
     top:120,
     flexDirection: 'column',  // Esta linha pode ser removida se a direção for definida localmente
-    right:25
+    right:5
   },
   
 

@@ -57,21 +57,11 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
             <View style={styles.container2}>
                 <View style={styles.meioCirculo} />
                 <Text style={styles.emQuais}>
-                    Em quais
+                      Em quais
                     <Text style={styles.areas}> áreas</Text>
                     {'\n'}
-                    <Text style={styles.voce}>você atua?</Text>
+                    <Text style={styles.voce}>      você atua?</Text>
                 </Text>
-
-                {/* <View style={styles.pesquisa}>
-                    <Image source={Imagens.lupa} style={styles.lupa} />
-                    <TextInput
-                        placeholder='buscar...'
-                        style={styles.input}
-                        placeholderTextColor='white'
-                        keyboardType='default'
-                    />
-                </View> */}
 
                 <Text style={styles.selecione}>Selecione as suas profissões:</Text>
 

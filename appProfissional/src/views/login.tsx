@@ -9,15 +9,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import myContext from '../functions/authContext';
 import Pusher from 'pusher-js/react-native';
 
-
-const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
+const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
     const [emailContratado, setEmailContratado] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [loading, setLoading] = useState<boolean>(false);
-    const { setUser } = useContext(myContext);
+    const { setUser } = useContext(myContext); // Importando contexto do usuário
     const [show, setShow] = useState(false);
-
 
     const handleLogin = async () => {
         if (!emailContratado || !password) {
@@ -70,7 +68,8 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
     return (
         <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <Image source={Imagens.helpHouse} style={styles.help} />
-            <View style={styles.input}>
+            
+            <View style={[styles.input, { width: 350, height: 60 }]}>
                 <FloatingLabelInput
                     label=" Email "
                     value={emailContratado}
@@ -83,10 +82,7 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',
                         borderRadius: 50,
-                        borderTopWidth: 5,
-                        borderLeftWidth: 5,
-                        borderRightWidth: 5,
-                        borderBottomWidth: 5,
+                        position: 'relative',
                     }}
                     customLabelStyles={{
                         colorFocused: '#FF8F49',
@@ -96,8 +92,10 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
+                        fontSize: 18,
                     }}
                     inputStyles={{
+                        fontSize: 18,
                         color: '#000',
                         paddingHorizontal: 10,
                         height: 49,
@@ -107,7 +105,7 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
                 <Text style={styles.errorMessage}>{message}</Text>
             </View>
 
-            <View style={styles.input}>
+            <View style={[styles.input, { width: 350, height: 60 }]}>
                 <FloatingLabelInput
                     label="Senha"
                     isPassword
@@ -123,10 +121,6 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',
                         borderRadius: 50,
-                        borderTopWidth: 5,
-                        borderLeftWidth: 5,
-                        borderRightWidth: 5,
-                        borderBottomWidth: 5,
                     }}
                     customLabelStyles={{
                         colorFocused: '#FF8F49',
@@ -136,8 +130,10 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fefefe',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
+                        fontSize: 18,
                     }}
                     inputStyles={{
+                        fontSize: 18,
                         color: '#000',
                         paddingHorizontal: 10,
                     }}
@@ -147,10 +143,21 @@ const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
             {loading ? (
                 <ActivityIndicator size="large" color="#004AAD" />
             ) : (
-                <Button style={styles.button} color='#004AAD' variant="primary" title="Entrar" onPress={handleLogin} />
+                <TouchableOpacity style={styles.button3} onPress={handleLogin} disabled={loading}>
+                    <Text style={styles.buttonText2}>Entrar</Text>
+                </TouchableOpacity>
             )}
 
-            <Button style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} variant="primary" title="Cadastre-se" onPress={() => navigation.navigate('cadastroEmail')} />
+            <View>
+                <View style={styles.conta}>
+                    <Text>Ainda não tem uma conta</Text>
+                    <Text>Profissional <Text style={styles.helpText}>Help</Text><Text style={styles.houseText}>House</Text>? </Text>
+                </View>
+            </View>
+
+            <TouchableOpacity style={styles.button2} onPress={() => navigation.navigate('cadastroEmail')}>
+                <Text style={styles.buttonText2}>Cadastre-se</Text>
+            </TouchableOpacity>
         </KeyboardAvoidingView>
     );
 };

@@ -6,7 +6,7 @@ import { Button } from "../../componentes/Button/Button"; // Verifique se o cami
 import styles from '../css/inicioCadastroCss';
 
 
-const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigation }) => {
+const CadastroEmail: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [emailContratado, setEmailContratado] = useState('');
     const [show, setShow] = useState(false);
     const [password, setPassword] = useState('');
@@ -29,7 +29,7 @@ const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigat
             <Image source={Imagens.helpHouse} style={styles.help} />
 
             <View style={styles.maeInput}>
-                <View style={styles.input}>
+                <View style={[styles.input, { width: 350, height: 60 }]}>
 
                     <FloatingLabelInput
                         label=" Usuário ou Email "
@@ -61,9 +61,10 @@ const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigat
                             paddingHorizontal: 5,
                             color: '#FF8F49',
                             height: '29%',
-
+                            fontSize: 18,
                         }}
                         inputStyles={{
+                            fontSize: 18,
                             color: '#000',
                             paddingHorizontal: 10,
 
@@ -76,7 +77,7 @@ const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigat
                     {/* <Text style={styles.branco}></Text>  */}
                 </View>
 
-                <View style={styles.input}>
+                <View style={[styles.input, { width: 350, height: 60 }]}>
                     <FloatingLabelInput
                         label="Senha"
                         isPassword
@@ -106,9 +107,11 @@ const CadastroEmail: React.FC<{route: any, navigation: any }> = ({route, navigat
                             backgroundColor: '#F5FCFF',
                             paddingHorizontal: 5,
                             color: '#FF8F49',
+                            fontSize: 18,
 
                         }}
                         inputStyles={{
+                            fontSize: 18,
                             color: '#000',
                             paddingHorizontal: 10,
                         }}
