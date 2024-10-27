@@ -1,21 +1,46 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableOpacity, Text, View, TextInput, Image, Pressable, Animated, ScrollView, Alert } from 'react-native';
+import { TouchableOpacity, Text, View, TextInput, Image, Pressable, Animated, ScrollView, Alert, } from 'react-native';
 import styles from '../css/chatCss';
 import Imagens from "../../img/img";
 import api from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import myContext from '../functions/authContext'; // Usando o contexto para acessar o Pusher
+import Pusher from 'pusher-js';
+import myContext from '../functions/authContext';
+
+//imports para gerar e compartilhar PDF
+import * as Print from 'expo-print';
+import * as Sharing from 'expo-sharing';
+
 
 const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
-    const [mensagem, setMensagem] = useState('');
-    const [mensagens, setMensagens] = useState<any[]>([]);
-    const { roomId } = route.params;
-    const { user } = useContext(myContext); // Acessa o contexto do usuário, incluindo o Pusher
-    const scrollViewRef = useRef<ScrollView>(null);
+
+    //chat
+    const [mensagem, setMensagem] = useState('');  // Armazena a mensagem atual
+    const [mensagens, setMensagens] = useState<any[]>([]);  // Armazena todas as mensagens
+    const { roomId, idContratante } = route.params;  // Recebe o roomId da rota
+    const { user } = useContext(myContext);  // Pega o usuário autenticado (o profissional) do contexto
+    const [token, setToken] = useState<string | null>(null);  // Token de autenticação
     const [buttonScale] = useState(new Animated.Value(1));
+    const scrollViewRef = useRef<ScrollView>(null);  // Ref para ScrollView
+
+    //PDF
+    const [dataContratante, setDataContratante] = useState<any>(null);
+    const [dataContratado, setDataContratado] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
     // Função para buscar mensagens da sala
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setReload(prevReload => !prevReload); // Toggle state to force reload
+        }, 2000); // Reload every 5 seconds
+      
+        return () => clearInterval(interval); // Cleanup on component unmount
+      }, []);
+      
+
     const fetchMensagens = async () => {
         try {
             const token = await AsyncStorage.getItem('authToken');
@@ -29,68 +54,48 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
             setMensagens(response.data.messages);
         } catch (error) {
             console.error('Erro ao buscar mensagens:', error);
-            Alert.alert('Erro', 'Não foi possível buscar mensagens.');
         }
     };
 
     // Função para enviar mensagem
     const enviarMensagem = async () => {
-        if (!mensagem.trim()) return;
+        if (!mensagem.trim()) return;  // Evita enviar mensagens vazias
         try {
             const token = await AsyncStorage.getItem('authToken');
             if (!token) {
                 console.error('Token não encontrado');
-                Alert.alert('Erro', 'Token de autenticação não encontrado.');
                 return;
             }
-            await api.post('/chat/send', {
-                roomId,
-                message: mensagem,
+            const response = await api.post('/chat/send', {
+                roomId,  // ID da sala de chat
+                message: mensagem,  // Mensagem a ser enviada
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                     'Content-Type': 'application/json',
                 },
             });
-            setMensagens((prevMensagens) => [
-                ...prevMensagens,
-                { message: mensagem, senderId: user?.idContratado }
-            ]);
-            setMensagem('');
+            setMensagens([...mensagens, response.data.message]);  // Atualiza as mensagens
+            setMensagem('');  // Limpa a mensagem
         } catch (error) {
             console.error('Erro ao enviar mensagem:', error);
-            Alert.alert('Erro', 'Houve um problema ao enviar a mensagem.');
         }
     };
-
-    // Usa o Pusher do contexto
+    // Configuração do Pusher para receber mensagens em tempo real
     useEffect(() => {
-        if (user?.pusher) {
-            const channel = user.pusher.subscribe(`channel.${roomId}`);
+        const pusher = new Pusher('c58eb1455bc63e559d2c', {
+            cluster: 'sa1',
+        });
 
-            channel.bind('pusher:subscription_succeeded', () => {
-                console.log('Inscrição no canal bem-sucedida!');
-            });
+        const channel = pusher.subscribe(`chat-room-${roomId}`);
+        channel.bind('new-message', (data: { message: any; }) => {
+            setMensagens((prevMensagens) => [...prevMensagens, data.message]);  // Atualiza as mensagens
+        });
 
-            channel.bind('SendRealTimeMessage', (data: { message: string; senderId: string }) => {
-                if (data && data.message && data.senderId) {
-                    setMensagens((prevMensagens) => [
-                        ...prevMensagens,
-                        { message: data.message, senderId: data.senderId },
-                    ]);
-                } else {
-                    console.error('Dados recebidos não estão no formato esperado:', data);
-                }
-            });
-
-            return () => {
-                channel.unbind_all();
-                user.pusher.unsubscribe(`channel.${roomId}`);
-            };
-        } else {
-            console.error('Pusher não foi inicializado corretamente.');
-        }
-    }, [user, roomId]);
+        return () => {
+            pusher.unsubscribe(`chat-room-${roomId}`);
+        };
+    }, [roomId]);
 
     // Carregar mensagens da sala ao montar o componente
     useEffect(() => {
@@ -102,16 +107,117 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
         scrollViewRef.current?.scrollToEnd({ animated: true });
     }, [mensagens]);
 
-    const logoutUser = () => {
-        if (user?.pusher) {
-            const channel = user.pusher.subscribe(`channel.${roomId}`);
-            channel.unbind_all();
-            channel.unsubscribe();
-        }
-        AsyncStorage.removeItem('authToken');
-        navigation.navigate('Login');
+    // Animação do botão de envio
+    const onPressIn = () => {
+        Animated.spring(buttonScale, { toValue: 0.9, useNativeDriver: true }).start();
     };
 
+    const onPressOut = () => {
+        Animated.spring(buttonScale, { toValue: 1, useNativeDriver: true }).start();
+    };
+
+
+    // Buscar dados do contratado
+    useEffect(() => {
+        const fetchDataContratado = async () => {
+            setLoading(true);
+            try {
+                const response = await api.get(`/pro/${user.idContratado}`);
+                setDataContratado(response.data);
+            } catch (err: any) {
+                setError(err.message);
+                Alert.alert('Erro ao buscar dados do Contratado', err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDataContratado();
+    }, [user.idContratado]);
+
+    // Buscar dados do contratante
+    useEffect(() => {
+        const fetchDataContratante = async () => {
+            setLoading(true);
+            try {
+                const response = await api.get(`/cli/${idContratante}`);
+                setDataContratante(response.data);
+            } catch (err: any) {
+                setError(err.message);
+                Alert.alert('Erro ao buscar dados do Contratante', err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchDataContratante();
+    }, [idContratante]);
+
+    const createPDF = async () => {
+        if (!dataContratante || !dataContratado) {
+          Alert.alert('Erro', 'Nenhum dado disponível para gerar o PDF.');
+          return;
+        }
+      
+        // Extraindo os campos específicos
+        const { nomeContratante, cpfContratante } = dataContratante;
+        const { nomeContratado, cpfContratado } = dataContratado;
+      
+        // HTML reduzido do contrato sem assinatura
+        const html = `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Contrato</title>
+            <style>
+              body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
+              h1 { text-align: center; color: navy; font-size: 18px; }
+              h2 { color: navy; font-size: 16px; margin-bottom: 5px; }
+              p { margin: 5px 0; }
+              .section { margin-bottom: 10px; }
+            </style>
+          </head>
+          <body>
+            <h1>Contrato de Serviços</h1>
+      
+            <div class="section">
+              <h2>Contratante</h2>
+              <p><strong>Nome:</strong> ${nomeContratante}</p>
+              <p><strong>CPF:</strong> ${cpfContratante}</p>
+            </div>
+      
+            <div class="section">
+              <h2>Contratado</h2>
+              <p><strong>Nome:</strong> ${nomeContratado}</p>
+              <p><strong>CPF:</strong> ${cpfContratado}</p>
+            </div>
+      
+            <div class="section">
+              <h2>Serviços</h2>
+              <p>O contratante solicita os serviços do contratado conforme acordado entre as partes.</p>
+            </div>
+      
+            <div class="section">
+              <h2>Termos</h2>
+              <p>1. O contratado prestará os serviços conforme descrito.</p>
+              <p>2. O contratante pagará o valor acordado pelos serviços.</p>
+            </div>
+          </body>
+          </html>
+        `;
+      
+        try {
+          // Gera o PDF
+          const { uri } = await Print.printToFileAsync({ html });
+      
+          // Compartilha o PDF gerado
+          await Sharing.shareAsync(uri);
+          Alert.alert('PDF gerado e compartilhado com sucesso!');
+        } catch (err) {
+          // Usar asserção de tipo para acessar a mensagem do erro
+          const error = err as Error;  // Asserindo que err é do tipo Error
+          Alert.alert('Erro ao gerar o PDF', error.message);
+        }
+      };
+      
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -119,44 +225,52 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                 <View style={styles.navContent}>
                     <View style={styles.navbar}>
                         <Text style={styles.textNav}>Chat</Text>
+                        <TouchableOpacity onPress={createPDF} style={styles.botaoPDF}>
+                            <Text style={styles.textoBotao}>Gerar PDF</Text>
+                        </TouchableOpacity>
                     </View>
-
-                    <TouchableOpacity onPress={logoutUser}>
-                        <Text style={{ color: 'red', fontWeight: 'bold' }}>Sair</Text>
-                    </TouchableOpacity>
                 </View>
             </View>
 
+            {/* Exibe as mensagens do chat */}
             <ScrollView style={styles.mensagensContainer} ref={scrollViewRef}>
                 {mensagens.map((msg, index) => {
-                    const isContratado = msg.senderId === user?.idContratado;
-
+                    const isCurrentUser = msg.senderId === user?.idContratado;  // Verifica se a mensagem foi enviada pelo profissional autenticado
                     return (
                         <View
                             key={index}
-                            style={[styles.mensagemItem, {
-                                alignSelf: isContratado ? 'flex-end' : 'flex-start',
-                                backgroundColor: isContratado ? '#87CEFA' : '#f1f1f1',
-                                borderRadius: 10,
-                                padding: 10,
-                                maxWidth: '70%',
-                            }]}>
+                            style={[
+                                styles.mensagemItem,
+                                { 
+                                  alignSelf: isCurrentUser ? 'flex-end' : 'flex-start',  // Mensagem do usuário (profissional) à direita
+                                  backgroundColor: isCurrentUser ? '#87CEFA' : '#f1f1f1',  // Diferenciar cor entre mensagens
+                                  borderRadius: 10, 
+                                  padding: 10,
+                                  maxWidth: '70%'  // Limitar a largura da mensagem
+                                }
+                            ]}
+                        >
                             <Text>{msg.message}</Text>
                         </View>
                     );
                 })}
             </ScrollView>
 
+            {/* Input para enviar mensagem */}
             <View style={styles.enviarMensagem}>
                 <View style={styles.inputContent}>
                     <TextInput
                         style={styles.input}
                         placeholder="Digite sua mensagem..."
                         value={mensagem}
-                        onChangeText={setMensagem}
+                        onChangeText={setMensagem}  // Atualiza o estado com o valor digitado
                     />
                     <Animated.View style={[styles.enviar, { transform: [{ scale: buttonScale }] }]}>
-                        <Pressable onPress={enviarMensagem}>
+                        <Pressable
+                            onPress={enviarMensagem}
+                            onPressIn={onPressIn}  // Animação ao pressionar
+                            onPressOut={onPressOut}  // Animação ao soltar
+                        >
                             <Image source={Imagens.iconEnviar} style={styles.icon} />
                         </Pressable>
                     </Animated.View>
@@ -167,3 +281,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 };
 
 export default Chat;
+
+function setReload(arg0: (prevReload: any) => boolean) {
+    throw new Error('Function not implemented.');
+}

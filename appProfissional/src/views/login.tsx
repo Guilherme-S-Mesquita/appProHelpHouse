@@ -1,98 +1,75 @@
 import React, { useContext, useState } from 'react';
-import { View, Image, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { View, Image, Text, TouchableOpacity, ActivityIndicator, KeyboardAvoidingView, Platform } from 'react-native';
 import Imagens from "../../img/img";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
-import { Button } from "../../componentes/Button/Button"; // Verifique se o caminho está correto
+import { Button } from "../../componentes/Button/Button";
 import styles from '../css/loginCss';
 import api from '../../axios';
-import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage para armazenar o token
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import myContext from '../functions/authContext';
-import Pusher from 'pusher-js/react-native'; // Importando Pusher
+import Pusher from 'pusher-js/react-native';
 
 
-
-const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
-    const [emailContratado, setEmailContratado] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
+const Login:  React.FC<{  navigation: any }> = ({ navigation }) => {
+    const [emailContratado, setEmailContratado] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
+    const [loading, setLoading] = useState<boolean>(false);
+    const { setUser } = useContext(myContext);
     const [show, setShow] = useState(false);
-    const [loading, setLoading] = useState(false);
-
-    const userContext = useContext(myContext);
-
-    const { user, setUser } = useContext(myContext); 
-
-   // Função para lidar com o login
-   const handleLogin = async () => {
-    if (!emailContratado || !password) {
-        setMessage('Preencha todos os campos');
-        return;
-    }
-
-    setLoading(true); // Ativa o estado de loading
-    setMessage(''); // Limpa mensagens anteriores
 
 
-    //  app_id = "1884925"
-    //  key = "6aef362f6c720f776c8b"
-    //  secret = "e42c65596b0d56e57f72"
-    //  cluster = "sa1"
+    const handleLogin = async () => {
+        if (!emailContratado || !password) {
+            setMessage('Preencha todos os campos');
+            return;
+        }
 
-    
-    try {
-        // Inicializa o Pusher sem a necessidade de armazená-lo no estado
-        const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
-            cluster: 'sa1',
-            authEndpoint: 'http://10.0.0.161:8000/api/pusher/authpro', // Endpoint de autenticação
-        });
+        setLoading(true);
+        setMessage('');
 
-        // Conecta ao Pusher e aguarda o evento de conexão
-        pusherInstance.connect();
-
-        pusherInstance.connection.bind('connected', async () => {
-            const socketId = pusherInstance.connection.socket_id; // Obtém o socket_id
-
-            if (!socketId) {
-                setMessage('Erro ao obter socket_id. Tente novamente.');
-                setLoading(false);
-                return;
-            }
-
-            // Faz a requisição de login com o socket_id
-            const response = await api.post('/authpro', {
-                emailContratado,
-                password,
-                socket_id: socketId, // Passa o socket_id do Pusher
-                channel_name: 'private-my-channel', // Define o canal privado
+        try {
+            const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
+                cluster: 'sa1',
+                authEndpoint: 'http://10.0.0.121:8000/api/pusher/authpro',
             });
 
-            if (response.data && response.data.status === 'Sucesso' && response.data.token) {
-                // Armazena o usuário e o token no AsyncStorage
-                await AsyncStorage.setItem('authToken', response.data.token);
-                
-                // Armazena o usuário autenticado no contexto, incluindo o Pusher
-                setUser({ ...response.data.user, pusher: pusherInstance });
-                
-                // Redireciona para a página principal
-                navigation.navigate('homeStack', { screen: 'home' });
-            } else {
-                setMessage('Credenciais incorretas, tente novamente.');
-            }
-        });
-    } catch (error: any) {
-        const errorMessage = error.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.';
-        setMessage(errorMessage);
-    } finally {
-        setLoading(false); // Desativa o estado de loading
-    }
-};
+            pusherInstance.connect();
 
-    
+            pusherInstance.connection.bind('connected', async () => {
+                const socketId = pusherInstance.connection.socket_id;
+                if (!socketId) {
+                    setMessage('Erro ao obter socket_id. Tente novamente.');
+                    setLoading(false);
+                    return;
+                }
+
+                const response = await api.post('/authpro', {
+                    emailContratado,
+                    password,
+                    socket_id: socketId,
+                    channel_name: 'private-my-channel',
+                });
+
+                if (response.data && response.data.status === 'Sucesso' && response.data.token) {
+                    await AsyncStorage.setItem('authToken', response.data.token);
+                    setUser({ ...response.data.user, pusher: pusherInstance });
+                    navigation.navigate('homeStack', { screen: 'home' });
+                } else {
+                    setMessage('Credenciais incorretas, tente novamente.');
+                }
+            });
+        } catch (error: any) {
+            const errorMessage = error.response?.data?.message || 'Erro ao fazer login. Verifique suas credenciais.';
+            setMessage(errorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
             <Image source={Imagens.helpHouse} style={styles.help} />
-
             <View style={styles.input}>
                 <FloatingLabelInput
                     label=" Email "
@@ -110,7 +87,6 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         borderLeftWidth: 5,
                         borderRightWidth: 5,
                         borderBottomWidth: 5,
-                        position: 'relative',
                     }}
                     customLabelStyles={{
                         colorFocused: '#FF8F49',
@@ -120,7 +96,6 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                         backgroundColor: '#fff',
                         paddingHorizontal: 5,
                         color: '#FF8F49',
-                        height: '29%',
                     }}
                     inputStyles={{
                         color: '#000',
@@ -172,29 +147,11 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
             {loading ? (
                 <ActivityIndicator size="large" color="#004AAD" />
             ) : (
-                <Button
-                    style={styles.button}
-                    color='#004AAD'
-                    variant="primary"
-                    title="Entrar"
-                    onPress={handleLogin}
-                />
+                <Button style={styles.button} color='#004AAD' variant="primary" title="Entrar" onPress={handleLogin} />
             )}
 
-            <View>
-                <View style={styles.conta}>
-                    <Text>Ainda não tem uma conta</Text>
-                    <Text>Profissional <Text style={styles.helpText}>Help</Text><Text style={styles.houseText}>House</Text>? </Text>
-                </View>
-            </View>
-
-            <Button
-                style={[styles.buttonCad, { backgroundColor: '#004AAD' }]}
-                variant="primary"
-                title="Cadastre-se"
-                onPress={() => navigation.navigate('cadastroEmail')}
-            />
-        </View>
+            <Button style={[styles.buttonCad, { backgroundColor: '#004AAD' }]} variant="primary" title="Cadastre-se" onPress={() => navigation.navigate('cadastroEmail')} />
+        </KeyboardAvoidingView>
     );
 };
 
