@@ -5,6 +5,7 @@ import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
 import styles from '../css/cadastroCss';
 
+
 const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const { emailContratado, password } = route.params;
     const [nomeContratado, setNomeContratado] = useState('');
