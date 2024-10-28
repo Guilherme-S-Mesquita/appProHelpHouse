@@ -138,7 +138,11 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
       <View style={styles.containerGanhos}>
         <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
         <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
-        <Image source={Imagens.imgPerfil} style={styles.jesusImg} />
+        <Image 
+  source={{ uri: user.imagemContratado }} 
+  style={styles.jesusImg} 
+/>
+
         <Text style={styles.localizacao}>{user.cidadeContratado} <Text style={styles.oitoKm}>8km</Text></Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
           <Text style={styles.botaoAlterarRaio1}>Alterar raio</Text>
