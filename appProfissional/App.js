@@ -3,7 +3,7 @@ import Index from './src/routes/index';
 import * as eva from '@eva-design/eva';
 import { ApplicationProvider } from '@ui-kitten/components';
 import myContext from './src/functions/authContext';
-import Pusher from 'pusher-js';
+
 
 
 export default function App() {

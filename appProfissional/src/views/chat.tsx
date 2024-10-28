@@ -54,6 +54,16 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
   
 
     // Função para buscar mensagens da sala
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setReload(prevReload => !prevReload); // Toggle state to force reload
+        }, 2000); // Reload every 5 seconds
+      
+        return () => clearInterval(interval); // Cleanup on component unmount
+      }, []);
+      
+
     const fetchMensagens = async () => {
         try {
             const token = await AsyncStorage.getItem('authToken');
@@ -377,3 +387,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 };
 
 export default Chat;
+function setReload(arg0: (prevReload: any) => boolean) {
+    throw new Error('Function not implemented.');
+}
+
