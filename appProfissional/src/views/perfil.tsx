@@ -19,8 +19,8 @@ const TelaPerfilScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
     >
       <View style={styles.fundoBranco}>
         <View style={styles.container}>
-          {imageUrl ? (
-            <Image source={{ uri: imageUrl }} style={styles.imgPerfil} />
+          {user.imagemContratado ? (
+            <Image source={{ uri: user.imagemContratado }} style={styles.imgPerfil} />
           ) : (
             <Image style={styles.imgPerfil} />
           )}
