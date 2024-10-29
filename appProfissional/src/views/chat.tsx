@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { TouchableOpacity, Text, View, TextInput, Image, Pressable, Animated, ScrollView, Alert, } from 'react-native';
+import { TouchableOpacity, Text, View, TextInput, Image, Pressable, Animated, ScrollView, Alert, Modal } from 'react-native';
 import styles from '../css/chatCss';
 import Imagens from "../../img/img";
 import api from '../../axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Pusher from 'pusher-js';
 import myContext from '../functions/authContext';
+import { TextInputMask } from 'react-native-masked-text';
+
 
 //imports para gerar e compartilhar PDF
 import * as Print from 'expo-print';
 import * as Sharing from 'expo-sharing';
+
 
 
 const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
@@ -30,7 +33,37 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
+
+
+    //MODAL
+    const [isModalVisible, setModalVisible] = useState(false); // Estado do modal
+    const [tipoServico, setTipoServico] = useState('');
+    const [dataMarcada, setDataMarcada] = useState('');
+    const [valorCobrado, setValorCobrado] = useState('');
+    const [formaPagamento, setFormaPagamento] = useState('');
+    const [showPaymentOptions, setShowPaymentOptions] = useState(false);
+    
+
+  
+
+  // Toggle para exibir ou esconder o modal
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  
+
     // Função para buscar mensagens da sala
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+          setReload(prevReload => !prevReload); // Toggle state to force reload
+        }, 2000); // Reload every 5 seconds
+      
+        return () => clearInterval(interval); // Cleanup on component unmount
+      }, []);
+      
+
     const fetchMensagens = async () => {
         try {
             const token = await AsyncStorage.getItem('authToken');
@@ -153,6 +186,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
       
         // HTML reduzido do contrato sem assinatura
         const html = `
+<<<<<<< HEAD
           <!DOCTYPE html>
           <html>
           <head>
@@ -192,6 +226,50 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
             </div>
           </body>
           </html>
+=======
+              <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Contrato</title>
+        <style>
+          body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
+          h1 { text-align: center; color: navy; font-size: 18px; }
+          h2 { color: navy; font-size: 16px; margin-bottom: 5px; }
+          p { margin: 5px 0; }
+          .section { margin-bottom: 10px; }
+        </style>
+      </head>
+      <body>
+        <h1>Contrato de Serviços</h1>
+
+        <div class="section">
+          <h2>Contratante</h2>
+          <p><strong>Nome:</strong> ${nomeContratante}</p>
+          <p><strong>CPF:</strong> ${cpfContratante}</p>
+        </div>
+
+        <div class="section">
+          <h2>Contratado</h2>
+          <p><strong>Nome:</strong> ${nomeContratado}</p>
+          <p><strong>CPF:</strong> ${cpfContratado}</p>
+        </div>
+
+        <div class="section">
+          <h2>Detalhes do Serviço</h2>
+          <p><strong>Tipo de Serviço:</strong> ${tipoServico}</p>
+          <p><strong>Data Marcada:</strong> ${dataMarcada}</p>
+          <p><strong>Valor Cobrado:</strong> ${valorCobrado}</p>
+          <p><strong>Forma de Pagamento:</strong> ${formaPagamento}</p>
+        </div>
+
+        <div class="section">
+          <h2>Termos</h2>
+          <p>1. O contratado prestará os serviços conforme descrito.</p>
+          <p>2. O contratante pagará o valor acordado pelos serviços.</p>
+        </div>
+      </body>
+      </html>
+>>>>>>> 2290fa3041b5bc14ce0a3c683ae8b1b9e8e69447
         `;
       
         try {
@@ -215,12 +293,92 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                 <View style={styles.navContent}>
                     <View style={styles.navbar}>
                         <Text style={styles.textNav}>Chat</Text>
-                        <TouchableOpacity onPress={createPDF} style={styles.botaoPDF}>
+                        <TouchableOpacity onPress={toggleModal} style={styles.botaoPDF}>
                             <Text style={styles.textoBotao}>Gerar PDF</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
             </View>
+
+            <Modal visible={isModalVisible} animationType="slide" transparent={true}>
+    <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Detalhes do Serviço</Text>
+
+            <ScrollView style={styles.modalForm} showsVerticalScrollIndicator={false}>
+                <Text style={styles.modalLabel}>Tipo de Serviço:</Text>
+                <TextInput
+                    style={styles.modalInput}
+                    placeholder="Digite o tipo de serviço"
+                    value={tipoServico}
+                    onChangeText={setTipoServico}
+                />
+
+                <Text style={styles.modalLabel}>Data Marcada:</Text>
+                <TextInputMask
+                    type={'datetime'}
+                    options={{
+                        format: 'DD/MM/YYYY', // Ajuste o formato da data conforme necessário
+                    }}
+                    value={dataMarcada}
+                    onChangeText={text => setDataMarcada(text)}
+                    style={styles.modalInput}
+                    placeholder="Digite a data marcada"
+                    placeholderTextColor="#999"
+                    returnKeyType='done'
+                />
+
+                <Text style={styles.modalLabel}>Valor Cobrado:</Text>
+                <TextInput
+                    style={styles.modalInput}
+                    placeholder="Digite o valor cobrado"
+                    value={valorCobrado}
+                    onChangeText={setValorCobrado}
+                    keyboardType="numeric"
+                />
+
+                <Text style={styles.modalLabel}>Forma de Pagamento:</Text>
+                <TouchableOpacity
+                    style={styles.selectContainer}
+                    onPress={() => setShowPaymentOptions(!showPaymentOptions)}
+                >
+                    <Text style={styles.selectText}>
+                        {formaPagamento ? formaPagamento : "Selecione uma opção"}
+                    </Text>
+                </TouchableOpacity>
+
+                {showPaymentOptions && (
+                    <View style={styles.optionsContainer}>
+                        {["Pix", "Cartão de Crédito", "Cartão de Débito"].map((option) => (
+                            <TouchableOpacity
+                                key={option}
+                                style={styles.optionButton}
+                                onPress={() => {
+                                    setFormaPagamento(option);
+                                    setShowPaymentOptions(false);
+                                }}
+                            >
+                                <Text style={styles.optionText}>{option}</Text>
+                            </TouchableOpacity>
+                        ))}
+                    </View>
+                )}
+            </ScrollView>
+
+            <View style={styles.modalButtons}>
+                <TouchableOpacity onPress={createPDF} style={styles.confirmButton}>
+                    <Text style={styles.buttonText}>Confirmar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={toggleModal} style={styles.cancelButton}>
+                    <Text style={styles.buttonText}>Cancelar</Text>
+                </TouchableOpacity>
+            </View>
+        </View>
+    </View>
+</Modal>
+
+
+
 
             {/* Exibe as mensagens do chat */}
             <ScrollView style={styles.mensagensContainer} ref={scrollViewRef}>
@@ -271,3 +429,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 };
 
 export default Chat;
+function setReload(arg0: (prevReload: any) => boolean) {
+    throw new Error('Function not implemented.');
+}
+

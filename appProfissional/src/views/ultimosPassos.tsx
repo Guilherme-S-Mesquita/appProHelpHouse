@@ -84,7 +84,8 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 numCasaContratado,
                 cidadeContratado,
                 descContratado,
-                regiaoContratado
+                regiaoContratado,
+                imagemContratado:imageUrl
             });
 
             const result = response.data;

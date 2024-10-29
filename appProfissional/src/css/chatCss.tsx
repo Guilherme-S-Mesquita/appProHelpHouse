@@ -5,6 +5,110 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#efefef',
   },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',  // Fundo semitransparente
+    justifyContent: 'center',
+    alignItems: 'center',
+},
+modalContent: {
+    width: '85%',
+    backgroundColor: '#fff',
+    padding: 20,
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+},
+modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#4A90E2',  // Cor de destaque no título
+    marginBottom: 15,
+    textAlign: 'center',
+},
+modalForm: {
+    maxHeight: '70%',
+},
+modalLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: 5,
+},
+modalInput: {
+    height: 40,
+    backgroundColor: '#f0f0f0',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    marginBottom: 15,
+    fontSize: 16,
+    color: '#333',
+},
+modalButtons: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+},
+confirmButton: {
+    backgroundColor: '#4A90E2',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    flex: 1,
+    alignItems: 'center',
+    marginRight: 10,
+},
+cancelButton: {
+    backgroundColor: '#d9534f',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    flex: 1,
+    alignItems: 'center',
+},
+buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+},
+
+selectContainer: {
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 5,
+  padding: 10,
+  marginBottom: 10,
+  backgroundColor: '#fff',
+},
+selectText: {
+  color: '#333',
+},
+optionsContainer: {
+  borderWidth: 1,
+  borderColor: '#ccc',
+  borderRadius: 5,
+  marginBottom: 10,
+  backgroundColor: '#fff',
+},
+optionButton: {
+  padding: 10,
+},
+optionText: {
+  color: '#333',
+},
+selectedDate: {
+  fontSize: 14,
+  color: '#333',
+},
+placeholder: {
+  fontSize: 14,
+  color: '#aaa',
+},
+
+
   navChat: {
     width: '100%',
     height: 230,
