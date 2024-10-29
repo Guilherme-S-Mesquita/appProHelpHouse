@@ -186,47 +186,6 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
       
         // HTML reduzido do contrato sem assinatura
         const html = `
-<<<<<<< HEAD
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Contrato</title>
-            <style>
-              body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
-              h1 { text-align: center; color: navy; font-size: 18px; }
-              h2 { color: navy; font-size: 16px; margin-bottom: 5px; }
-              p { margin: 5px 0; }
-              .section { margin-bottom: 10px; }
-            </style>
-          </head>
-          <body>
-            <h1>Contrato de Serviços</h1>   
-      
-            <div class="section">
-              <h2>Contratante</h2>
-              <p><strong>Nome:</strong> ${nomeContratante}</p>
-              <p><strong>CPF:</strong> ${cpfContratante}</p>
-            </div>
-      
-            <div class="section">
-              <h2>Contratado</h2>
-              <p><strong>Nome:</strong> ${nomeContratado}</p>
-              <p><strong>CPF:</strong> ${cpfContratado}</p>
-            </div>
-      
-            <div class="section">
-              <h2>Serviços</h2>
-              <p>O contratante solicita os serviços do contratado conforme acordado entre as partes.</p>
-            </div>
-      
-            <div class="section">
-              <h2>Termos</h2>
-              <p>1. O contratado prestará os serviços conforme descrito.</p>
-              <p>2. O contratante pagará o valor acordado pelos serviços.</p>
-            </div>
-          </body>
-          </html>
-=======
               <!DOCTYPE html>
       <html>
       <head>
@@ -269,7 +228,6 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
         </div>
       </body>
       </html>
->>>>>>> 2290fa3041b5bc14ce0a3c683ae8b1b9e8e69447
         `;
       
         try {
