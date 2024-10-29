@@ -166,7 +166,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
             </style>
           </head>
           <body>
-            <h1>Contrato de Serviços</h1>
+            <h1>Contrato de Serviços</h1>   
       
             <div class="section">
               <h2>Contratante</h2>
