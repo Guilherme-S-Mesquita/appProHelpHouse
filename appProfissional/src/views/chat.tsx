@@ -55,13 +55,9 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
     // Função para buscar mensagens da sala
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-          setReload(prevReload => !prevReload); // Toggle state to force reload
-        }, 2000); // Reload every 5 seconds
+
       
-        return () => clearInterval(interval); // Cleanup on component unmount
-      }, []);
+    
       
 
     const fetchMensagens = async () => {
@@ -243,7 +239,16 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
           Alert.alert('Erro ao gerar o PDF', error.message);
         }
       };
-      
+           // Recarregar as mensagens a cada 5 segundos
+     useEffect(() => {
+        fetchMensagens(); // Busca inicial de mensagens
+        const intervalId = setInterval(() => {
+            fetchMensagens(); // Recarregar mensagens a cada 5 segundos
+        }, 1000);
+
+        return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
+    }, [roomId]);
+    
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
