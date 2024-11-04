@@ -21,7 +21,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
     //chat
     const [mensagem, setMensagem] = useState('');  // Armazena a mensagem atual
     const [mensagens, setMensagens] = useState<any[]>([]);  // Armazena todas as mensagens
-    const { roomId, idContratante } = route.params;  // Recebe o roomId da rota
+    const { roomId, idContratante, idSolicitarPedido } = route.params;  // Recebe o roomId da rota
     const { user } = useContext(myContext);  // Pega o usuário autenticado (o profissional) do contexto
     const [token, setToken] = useState<string | null>(null);  // Token de autenticação
     const [buttonScale] = useState(new Animated.Value(1));
@@ -32,33 +32,34 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
     const [dataContratado, setDataContratado] = useState<any>(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isSharing, setIsSharing] = useState(false); // novo estado
 
 
 
     //MODAL
     const [isModalVisible, setModalVisible] = useState(false); // Estado do modal
-    const [tipoServico, setTipoServico] = useState('');
+    const [descServico, setDescServico] = useState('');
     const [dataMarcada, setDataMarcada] = useState('');
+    const [horaMarcada, setHoraMarcada] = useState('')
     const [valorCobrado, setValorCobrado] = useState('');
     const [formaPagamento, setFormaPagamento] = useState('');
     const [showPaymentOptions, setShowPaymentOptions] = useState(false);
-    
 
-  
 
-  // Toggle para exibir ou esconder o modal
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
 
-  
+
+    // Toggle para exibir ou esconder o modal
+    const toggleModal = () => {
+        setModalVisible(!isModalVisible);
+    };
+
+
 
     // Função para buscar mensagens da sala
 
 
-      
-    
-      
+
+
 
     const fetchMensagens = async () => {
         try {
@@ -175,75 +176,101 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
     const createPDF = async () => {
         if (!dataContratante || !dataContratado) {
-          Alert.alert('Erro', 'Nenhum dado disponível para gerar o PDF.');
-          return;
+            Alert.alert('Erro', 'Nenhum dado disponível para gerar o PDF.');
+            return;
         }
-      
-        // Extraindo os campos específicos
+
+        
+    
         const { nomeContratante, cpfContratante } = dataContratante;
         const { nomeContratado, cpfContratado } = dataContratado;
-      
-        // HTML reduzido do contrato sem assinatura
+    
         const html = `
-              <!DOCTYPE html>
-      <html>
-      <head>
-        <title>Contrato</title>
-        <style>
-          body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
-          h1 { text-align: center; color: navy; font-size: 18px; }
-          h2 { color: navy; font-size: 16px; margin-bottom: 5px; }
-          p { margin: 5px 0; }
-          .section { margin-bottom: 10px; }
-        </style>
-      </head>
-      <body>
-        <h1>Contrato de Serviços</h1>
-
-        <div class="section">
-          <h2>Contratante</h2>
-          <p><strong>Nome:</strong> ${nomeContratante}</p>
-          <p><strong>CPF:</strong> ${cpfContratante}</p>
-        </div>
-
-        <div class="section">
-          <h2>Contratado</h2>
-          <p><strong>Nome:</strong> ${nomeContratado}</p>
-          <p><strong>CPF:</strong> ${cpfContratado}</p>
-        </div>
-
-        <div class="section">
-          <h2>Detalhes do Serviço</h2>
-          <p><strong>Tipo de Serviço:</strong> ${tipoServico}</p>
-          <p><strong>Data Marcada:</strong> ${dataMarcada}</p>
-          <p><strong>Valor Cobrado:</strong> ${valorCobrado}</p>
-          <p><strong>Forma de Pagamento:</strong> ${formaPagamento}</p>
-        </div>
-
-        <div class="section">
-          <h2>Termos</h2>
-          <p>1. O contratado prestará os serviços conforme descrito.</p>
-          <p>2. O contratante pagará o valor acordado pelos serviços.</p>
-        </div>
-      </body>
-      </html>
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <title>Contrato</title>
+                <style>
+                    body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
+                    h1 { text-align: center; color: navy; font-size: 18px; }
+                    .section { margin-bottom: 10px; }
+                </style>
+            </head>
+            <body>
+                <h1>Contrato de Serviços</h1>
+                <div class="section">
+                    <h2>Contratante</h2>
+                    <p><strong>Nome:</strong> ${nomeContratante}</p>
+                    <p><strong>CPF:</strong> ${cpfContratante}</p>
+                </div>
+                <div class="section">
+                    <h2>Contratado</h2>
+                    <p><strong>Nome:</strong> ${nomeContratado}</p>
+                    <p><strong>CPF:</strong> ${cpfContratado}</p>
+                </div>
+                <div class="section">
+                    <h2>Detalhes do Serviço</h2>
+                    <p><strong>Descrição de Serviço:</strong> ${descServico}</p>
+                    <p><strong>Data Marcada:</strong> ${dataMarcada}</p>
+                    <p><strong>Hora Marcada:</strong> ${horaMarcada}</p>
+                    <p><strong>Valor Cobrado:</strong> ${valorCobrado}</p>
+                    <p><strong>Forma de Pagamento:</strong> ${formaPagamento}</p>
+                </div>
+            </body>
+            </html>
         `;
-      
+    
         try {
-          // Gera o PDF
-          const { uri } = await Print.printToFileAsync({ html });
-      
-          // Compartilha o PDF gerado
-          await Sharing.shareAsync(uri);
-          Alert.alert('PDF gerado e compartilhado com sucesso!');
-        } catch (err) {
-          // Usar asserção de tipo para acessar a mensagem do erro
-          const error = err as Error;  // Asserindo que err é do tipo Error
-          Alert.alert('Erro ao gerar o PDF', error.message);
+            const valorNumericoString = valorCobrado.replace(/[R$\s]/g, '').replace(',', '.');
+            const dataISO = dataMarcada.split('/').reverse().join('-');
+            const { uri } = await Print.printToFileAsync({ html });
+
+
+
+            console.log("Dados enviados ao backend:", {
+                valor: valorNumericoString,
+                data: dataISO,
+                hora: horaMarcada,
+                desc_servicoRealizado: descServico,
+                forma_pagamento: formaPagamento,
+            });
+        
+            const response = await api.post(`/pedidos/${idSolicitarPedido}/contrato`, {
+                valor: valorNumericoString,
+                data: dataISO,
+                hora: horaMarcada,
+                desc_servicoRealizado: descServico,
+                forma_pagamento: formaPagamento,
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+        
+            if (response.status === 201) {
+                Alert.alert('Sucesso', 'PDF gerado e contrato criado com sucesso!');
+
+            await Sharing.shareAsync(uri);
+            navigation.navigate('pedidosAgendados', );
+
+
+            } else {
+                Alert.alert('Erro', 'Não foi possível criar o contrato. Verifique os dados e tente novamente.');
+            }
+        } catch (error: any) {
+            console.error("Erro ao criar contrato:", error.response?.data);
+            if (error.response && error.response.status === 422) {
+                Alert.alert('Erro de Validação', JSON.stringify(error.response.data.error));
+            } else {
+                Alert.alert('Erro', 'Não foi possível gerar o PDF ou criar o contrato.');
+            }
         }
-      };
-           // Recarregar as mensagens a cada 5 segundos
-     useEffect(() => {
+    };        
+
+    // Recarregar as mensagens a cada 5 segundos
+    useEffect(() => {
         fetchMensagens(); // Busca inicial de mensagens
         const intervalId = setInterval(() => {
             fetchMensagens(); // Recarregar mensagens a cada 5 segundos
@@ -251,7 +278,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
         return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
     }, [roomId]);
-    
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
@@ -267,81 +294,98 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
             </View>
 
             <Modal visible={isModalVisible} animationType="slide" transparent={true}>
-    <View style={styles.modalOverlay}>
-        <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Detalhes do Serviço</Text>
+                <View style={styles.modalOverlay}>
+                    <View style={styles.modalContent}>
+                        <Text style={styles.modalTitle}>Detalhes do Serviço</Text>
 
-            <ScrollView style={styles.modalForm} showsVerticalScrollIndicator={false}>
-                <Text style={styles.modalLabel}>Tipo de Serviço:</Text>
-                <TextInput
-                    style={styles.modalInput}
-                    placeholder="Digite o tipo de serviço"
-                    value={tipoServico}
-                    onChangeText={setTipoServico}
-                />
+                        <ScrollView style={styles.modalForm} showsVerticalScrollIndicator={false}>
+                            <Text style={styles.modalLabel}>Tipo de Serviço:</Text>
+                            <TextInput
+                                style={styles.modalInput}
+                                placeholder="Digite o tipo de serviço"
+                                value={descServico}
+                                onChangeText={setDescServico}
+                            />
 
-                <Text style={styles.modalLabel}>Data Marcada:</Text>
-                <TextInputMask
-                    type={'datetime'}
-                    options={{
-                        format: 'DD/MM/YYYY', // Ajuste o formato da data conforme necessário
-                    }}
-                    value={dataMarcada}
-                    onChangeText={text => setDataMarcada(text)}
-                    style={styles.modalInput}
-                    placeholder="Digite a data marcada"
-                    placeholderTextColor="#999"
-                    returnKeyType='done'
-                />
-
-                <Text style={styles.modalLabel}>Valor Cobrado:</Text>
-                <TextInput
-                    style={styles.modalInput}
-                    placeholder="Digite o valor cobrado"
-                    value={valorCobrado}
-                    onChangeText={setValorCobrado}
-                    keyboardType="numeric"
-                />
-
-                <Text style={styles.modalLabel}>Forma de Pagamento:</Text>
-                <TouchableOpacity
-                    style={styles.selectContainer}
-                    onPress={() => setShowPaymentOptions(!showPaymentOptions)}
-                >
-                    <Text style={styles.selectText}>
-                        {formaPagamento ? formaPagamento : "Selecione uma opção"}
-                    </Text>
-                </TouchableOpacity>
-
-                {showPaymentOptions && (
-                    <View style={styles.optionsContainer}>
-                        {["Pix", "Cartão de Crédito", "Cartão de Débito"].map((option) => (
-                            <TouchableOpacity
-                                key={option}
-                                style={styles.optionButton}
-                                onPress={() => {
-                                    setFormaPagamento(option);
-                                    setShowPaymentOptions(false);
+                            <Text style={styles.modalLabel}>Data Marcada:</Text>
+                            <TextInputMask
+                                type={'datetime'}
+                                options={{
+                                    format: 'DD/MM/YYYY', // Ajuste o formato da data conforme necessário
                                 }}
-                            >
-                                <Text style={styles.optionText}>{option}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
-                )}
-            </ScrollView>
+                                value={dataMarcada}
+                                onChangeText={text => setDataMarcada(text)}
+                                style={styles.modalInput}
+                                placeholder="Digite a data marcada"
+                                placeholderTextColor="#999"
+                                returnKeyType='done'
+                            />
+                            <Text style={styles.modalLabel}>Hora Marcada:</Text>
+                            <TextInputMask
+                                type={'datetime'}
+                                options={{
+                                    format: 'HH:mm',
+                                }}
+                                value={horaMarcada}  // Corrigido para horaMarcada
+                                onChangeText={text => setHoraMarcada(text)}
+                                style={styles.modalInput}
+                                placeholder="Digite a hora marcada"
+                                placeholderTextColor="#999"
+                                returnKeyType='done'
+                            />
 
-            <View style={styles.modalButtons}>
-                <TouchableOpacity onPress={createPDF} style={styles.confirmButton}>
-                    <Text style={styles.buttonText}>Confirmar</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={toggleModal} style={styles.cancelButton}>
-                    <Text style={styles.buttonText}>Cancelar</Text>
-                </TouchableOpacity>
-            </View>
-        </View>
-    </View>
-</Modal>
+
+                            <Text style={styles.modalLabel}>Valor Cobrado:</Text>
+                            <TextInputMask
+                                type={'money'}
+
+                                value={valorCobrado}
+                                onChangeText={text => setValorCobrado(text)}
+                                style={styles.modalInput}
+                                placeholder="Digite a data marcada"
+                                placeholderTextColor="#999"
+                                returnKeyType='done'
+                            />
+
+                            <Text style={styles.modalLabel}>Forma de Pagamento:</Text>
+                            <TouchableOpacity
+                                style={styles.selectContainer}
+                                onPress={() => setShowPaymentOptions(!showPaymentOptions)}
+                            >
+                                <Text style={styles.selectText}>
+                                    {formaPagamento ? formaPagamento : "Selecione uma opção"}
+                                </Text>
+                            </TouchableOpacity>
+
+                            {showPaymentOptions && (
+                                <View style={styles.optionsContainer}>
+                                    {["Pix", "Cartão de Crédito", "Cartão de Débito"].map((option) => (
+                                        <TouchableOpacity
+                                            key={option}
+                                            style={styles.optionButton}
+                                            onPress={() => {
+                                                setFormaPagamento(option);
+                                                setShowPaymentOptions(false);
+                                            }}
+                                        >
+                                            <Text style={styles.optionText}>{option}</Text>
+                                        </TouchableOpacity>
+                                    ))}
+                                </View>
+                            )}
+                        </ScrollView>
+
+                        <View style={styles.modalButtons}>
+                            <TouchableOpacity onPress={createPDF} style={styles.confirmButton}>
+                                <Text style={styles.buttonText}>Confirmar</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={toggleModal} style={styles.cancelButton}>
+                                <Text style={styles.buttonText}>Cancelar</Text>
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </View>
+            </Modal>
 
 
 
@@ -355,12 +399,12 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                             key={index}
                             style={[
                                 styles.mensagemItem,
-                                { 
-                                  alignSelf: isCurrentUser ? 'flex-end' : 'flex-start',  // Mensagem do usuário (profissional) à direita
-                                  backgroundColor: isCurrentUser ? '#87CEFA' : '#f1f1f1',  // Diferenciar cor entre mensagens
-                                  borderRadius: 10, 
-                                  padding: 10,
-                                  maxWidth: '70%'  // Limitar a largura da mensagem
+                                {
+                                    alignSelf: isCurrentUser ? 'flex-end' : 'flex-start',  // Mensagem do usuário (profissional) à direita
+                                    backgroundColor: isCurrentUser ? '#87CEFA' : '#f1f1f1',  // Diferenciar cor entre mensagens
+                                    borderRadius: 10,
+                                    padding: 10,
+                                    maxWidth: '70%'  // Limitar a largura da mensagem
                                 }
                             ]}
                         >

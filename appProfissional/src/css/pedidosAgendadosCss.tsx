@@ -1,11 +1,12 @@
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 
-container:{
-    flex: 1,
-    alignItems: 'center',
-    backgroundColor: '#E9E9E7',
-},
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#E9E9E7',
+        paddingTop: 20,
+    },
 cabeçalhoPedido:{
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -28,103 +29,88 @@ height:25,
 width:25,
 right:20
 },
-agendamentos:{
+
+agendamentos: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
     alignItems: 'center',
     padding: 9,
-    backgroundColor:'white',
-    top:88,
-    borderRadius:17,
-    width:404,
-    right:-1
+    backgroundColor: 'white',
+    borderRadius: 17,
+    width: 380,
+    marginBottom: 20,
 },
-textoAgendamento:{
-    color:'#F8C64F',
-    fontSize:20,
-    fontWeight:'bold',
-    left:9,
-    top:12
-},
-cartaoSolicitação:{
-    backgroundColor:'#fff',
-    borderRadius:15,
-    width:374,
-    height:210,
-    top:135,
-    left:16
-},
-tituloSolicitação:{
-    fontSize: 24.5,
+textoAgendamento: {
+    color: '#004AAD',
+    fontSize: 24,
     fontWeight: 'bold',
-    color:'#004AAD',
-    top:14,
-    left:60
 },
-cliente:{
-    fontSize: 17,
+cartaoSolicitação: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 15,
+    padding: 15,
+    marginBottom: 20,
+    width: 360,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 5,
+},
+tituloSolicitação: {
+    fontSize: 20,
     fontWeight: 'bold',
-    color:'#FF8F49',
-    top:19,
-    left:39
+    color: '#004AAD',
+    marginBottom: 8,
 },
-nomeCliente:{
-    fontSize: 17,
+cliente: {
+    fontSize: 16,
     fontWeight: 'bold',
-    color:'black',
-    top:20,
+    color: '#FF8F49',
+    marginBottom: 4,
 },
-localizacao:{
+nomeCliente: {
+    color: '#000',
+},
+localizacao: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 4,
+},
+doisKm: {
+    color: '#FF8F49',
+},
+data: {
     fontSize: 14,
     fontWeight: 'bold',
-    color:'black',
-    top:28,
-    left:40
+    color: '#004AAD',
+    marginBottom: 4,
 },
-doisKm:{
+diaHora: {
+    color: '#000',
+},
+situaçãoPagamento: {
     fontSize: 14,
     fontWeight: 'bold',
-    color:'#FF8F49',
-    top:28,
-    left:40
+    color: '#004AAD',
+    marginBottom: 10,
 },
-data:{
-    fontSize: 14,
-    fontWeight: 'bold',
-    color:'#004AAD',
-    top:38,
-    left:40
-},
-diaHora:{
-    fontSize: 14,
-    fontWeight: 'bold',
-    color:'black',
-},
-situaçãoPagamento:{
-    fontSize: 14,
-    fontWeight: 'bold',
-    color:'#004AAD',
-    top:47,
-    left:40
-},
-sinal:{
-    fontSize: 14,
-    fontWeight: 'bold',
-    color:'black',
+sinal: {
+    color: '#000',
 },
 botaoConversar: {
     backgroundColor: '#004AAD',
-    padding: 7,
-    borderRadius: 65,
-    top:63,
-    width:100,
-    left:132
-  },
-  conversar:{
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 20,
+    alignSelf: 'center',
+    marginTop: 15,
+},
+conversar: {
     color: 'white',
+    fontWeight: 'bold',
+    fontSize: 14,
     textAlign: 'center',
-    fontWeight:'bold',
-    fontSize:14
-  },
+},
 });
 export default styles;
