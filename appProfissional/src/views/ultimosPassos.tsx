@@ -18,6 +18,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
     const [loading, setLoading] = useState<boolean>(false); // New state for data submission loading
     const userContext = useContext(myContext);
     const { user, setUser } = useContext(myContext);
+    const [descricao, setDescricao] = useState('');
 
 
     // Pick Image Function
@@ -53,6 +54,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             setImageUrl(url);
             setSelectedImage(null);
             Alert.alert('Sucesso', 'Imagem enviada com sucesso!');
+            console.log(response)
         } catch (error) {
             console.error('Erro ao enviar a imagem:', error);
             Alert.alert('Erro', 'Falha ao enviar a imagem.');
@@ -155,6 +157,8 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
                 <Text style={styles.voce}>Fale um pouco sobre você</Text>
                 <TextInput
+                 value={descricao}
+                 onChangeText={setDescricao}
                     style={{
                         borderBottomWidth: 2,
                         borderColor: '#fff',

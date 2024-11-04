@@ -9,19 +9,20 @@ import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 interface Contratante {
   nomeContratante: string;
-  bairroContratante:string;
-  cidadeContratante:string;
-  idContratante:string;
+  bairroContratante: string;
+  cidadeContratante: string;
+  idContratante: string;
 }
 
 interface Pedido {
   idSolicitarPedido: number;
   descricaoPedido: string;
-  tituloPedido:string;
+  tituloPedido: string;
   contratante: Contratante;
 }
 
-const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
+const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
+
   const [pedidos, setPedidos] = useState<Pedido[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
@@ -81,7 +82,7 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
         const pedidosData = await getProPedidos(user.idContratado);
         await console.log('Dados dos pedidos:', pedidosData);
         setPedidos(Array.isArray(pedidosData) ? pedidosData : []);
-        
+
       } catch (error: any) {
         console.error('Erro ao buscar pedidos:', error);
         setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
@@ -94,54 +95,54 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
   }, [user, token]);
 
 
-  const createChatRoom = async (idContratante: string, idContratado: string, navigation: any) => {
+  const createChatRoom = async (idContratante: string, idContratado: string, navigation: any, idSolicitarPedido: number) => {
     if (!idContratante || !idContratado) {
-        Alert.alert('Erro', 'ID do contratante ou contratado não encontrado.');
-        return;
+      Alert.alert('Erro', 'ID do contratante ou contratado não encontrado.');
+      return;
     }
 
     try {
-        console.log('Criando sala de chat para:', { idContratante, idContratado });
-        const response = await api.post(`/chat-room/${idContratante}`, null, {
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-        });
+      console.log('Criando sala de chat para:', { idContratante, idContratado, idSolicitarPedido });
+      const response = await api.post(`/chat-room/${idContratante}`, null, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+      });
 
-        const roomId = response.data?.chat_room?.id;
+      const roomId = response.data?.chat_room?.id;
 
-        // Verifica se a resposta foi bem-sucedida
-        if (response.status === 200 && roomId) {
-            console.log('Sala de chat criada, Room ID:', roomId);
-            navigation.navigate('Chat', { roomId, idContratante });
-        } else {
-            Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
-            console.log('Resposta da API não contém roomId:', response.data);
-        }
+      // Verifica se a resposta foi bem-sucedida
+      if (response.status === 200 && roomId) {
+        console.log('Sala de chat criada, Room ID:', roomId);
+        navigation.navigate('Chat', { roomId, idContratante, idSolicitarPedido });
+      } else {
+        Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
+        console.log('Resposta da API não contém roomId:', response.data);
+      }
     } catch (error: any) {
-        console.error('Erro ao criar ou buscar a sala de chat:', error.response ? error.response.data : error.message);
-        Alert.alert('Erro', 'Houve um problema ao criar a sala.');
+      console.error('Erro ao criar ou buscar a sala de chat:', error.response ? error.response.data : error.message);
+      Alert.alert('Erro', 'Houve um problema ao criar a sala.');
     }
-};
+  };
 
 
-  
+
 
 
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
-      <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} /> 
+        <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} />
       </View>
 
       <View style={styles.containerGanhos}>
         <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
         <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
-        <Image 
-  source={{ uri: user.imagemContratado }} 
-  style={styles.jesusImg} 
-/>
+        <Image
+          source={{ uri: user.imagemContratado }}
+          style={styles.jesusImg}
+        />
 
         <Text style={styles.localizacao}>{user.cidadeContratado} <Text style={styles.oitoKm}>8km</Text></Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
@@ -150,53 +151,60 @@ const TelaServico: React.FC<{ navigation: any }> = ({ navigation }) => {
         <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>1 serviço</Text> para hoje</Text>
       </View>
       <ScrollView>
-  {loading ? (
-    <ActivityIndicator size="large" color="#0000ff" />
-  ) : error ? (
-    <Text style={{ color: 'red' }}>{error}</Text>
-  ) : pedidos.length === 0 ? (
-    <Text style={{marginTop:60, marginLeft:20, fontWeight:'bold',fontSize: 20}}>Nenhum pedido pendente.</Text>
-  ) : (
-    pedidos.map((pedido) => (
-      <View key={pedido.idSolicitarPedido} style={styles.containerNovosPedidos}>
-        <View style={styles.azul}>
-          <Text style={styles.tituloNovosPedidos}>Novos Pedidos</Text>
-        </View>
+        {loading ? (
+          <ActivityIndicator size="large" color="#0000ff" />
+        ) : error ? (
+          <Text style={{ color: 'red' }}>{error}</Text>
+        ) : pedidos.length === 0 ? (
+          <Text style={{ marginTop: 60, marginLeft: 20, fontWeight: 'bold', fontSize: 20 }}>Nenhum pedido pendente.</Text>
+        ) : (
+          pedidos.map((pedido) => (
+            <View key={pedido.idSolicitarPedido} style={styles.containerNovosPedidos}>
+              <View style={styles.azul}>
+                <Text style={styles.tituloNovosPedidos}>Novos Pedidos</Text>
+              </View>
 
-        <View style={styles.cartaoSolicitacao}>
-          
-        <Text style={styles.tituloSolicitacao}> {pedido.tituloPedido} </Text>
-          <Text style={styles.clienteSolicitacao}>
-            {pedido.contratante?.nomeContratante ?? 'Nome do contratante não disponível'}
-          </Text>
-          <Text style={styles.localizacaoSolicitacao}>
-            <Image source={Imagens.iconLocalizacao} style={styles.locImg}/>
-            {pedido.contratante?.cidadeContratante ?? 'Estado não disponível'},{pedido.contratante?.bairroContratante ?? 'Bairro não disponível'}
-          </Text>
+              <View style={styles.cartaoSolicitacao}>
 
-          <View style={styles.containerDesc}>
-            <Text style={styles.desc}>Descrição:</Text>
-            <Text style={styles.breveDesc}>
-              {pedido.descricaoPedido}
-            </Text>
+                <Text style={styles.tituloSolicitacao}> {pedido.tituloPedido} </Text>
+                <Text style={styles.clienteSolicitacao}>
+                  {pedido.contratante?.nomeContratante ?? 'Nome do contratante não disponível'}
+                </Text>
+                <Text style={styles.localizacaoSolicitacao}>
+                  <Image source={Imagens.iconLocalizacao} style={styles.locImg} />
+                  {pedido.contratante?.cidadeContratante ?? 'Estado não disponível'},{pedido.contratante?.bairroContratante ?? 'Bairro não disponível'}
+                </Text>
 
-            <TouchableOpacity style={styles.botaoConversar} 
-            onPress={()=>createChatRoom(pedido.contratante?.idContratante, user.idContratado, navigation )}>
-              <Text style={styles.conversar}>Conversar</Text>
-            </TouchableOpacity>
+                <View style={styles.containerDesc}>
+                  <Text style={styles.desc}>Descrição:</Text>
+                  <Text style={styles.breveDesc}>
+                    {pedido.descricaoPedido}
+                  </Text>
+
+                  <TouchableOpacity
+                    style={styles.botaoConversar}
+                    onPress={() => createChatRoom(
+                      pedido.contratante?.idContratante,
+                      user.idContratado,
+                      navigation,
+                      pedido.idSolicitarPedido // Corrected order
+                    )}
+                  >
+                    <Text style={styles.conversar}>Conversar</Text>
+                  </TouchableOpacity>
 
 
-            <TouchableOpacity style={styles.botaoNegar}>
-              <Text style={styles.negar}>Negar</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    ))
-  )}
-</ScrollView>
+                  <TouchableOpacity style={styles.botaoNegar}>
+                    <Text style={styles.negar}>Negar</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </View>
+          ))
+        )}
+      </ScrollView>
 
-    
+
     </View>
 
   );
