@@ -12,16 +12,24 @@ interface Contratante {
     idContratante: string;
 }
 
+interface Contrato {
+    idSolicitarPedido: number;
+    valor: string;
+    data: string;
+    hora: string;
+    desc_servicoRealizado: string;
+    forma_pagamento: string;
+}
+
 interface Pedido {
     idSolicitarPedido: number;
     descricaoPedido: string;
     tituloPedido: string;
     contratante: Contratante;
+    contrato?: Contrato;
 }
 
 const PedidosAgendados: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) => {
-    // Recebe os parâmetros da rota
-    const {  tipoServico, dataMarcada, valorCobrado, formaPagamento } = route.params;  
     const [pedidos, setPedidos] = useState<Pedido[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -53,7 +61,7 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any }> = ({ route, na
 
     return (
         <View style={styles.container}>
-            <ScrollView>
+       
                 <View style={styles.agendamentos}>
                     <Text style={styles.textoAgendamento}>Agendamentos</Text>
                     <View style={styles.cabeçalhoPedido}>
@@ -63,31 +71,34 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any }> = ({ route, na
                 </View>
 
                 {pedidos.map((pedido) => (
-                    <View key={pedido.idSolicitarPedido} style={styles.cartaoSolicitação}>
-                        <Text style={styles.tituloSolicitação}>{pedido.tituloPedido}</Text>
-                        <Text style={styles.cliente}>
-                        <Text style={styles.data}>
-                          Tipo de Serviço: {tipoServico || "Informação não disponível"}
-                            </Text>
-                            Cliente: <Text style={styles.nomeCliente}>{pedido.contratante.nomeContratante}</Text>
-                        </Text>
-                        <Text style={styles.localizacao}>
-                            Localização: {pedido.contratante.cidadeContratante}, {pedido.contratante.bairroContratante}
-                            <Text style={styles.doisKm}> À 2 km de você</Text>
-                        </Text>
-                        <Text style={styles.data}>
-                            Data e hora: <Text style={styles.diaHora}>{dataMarcada}</Text>
-                        </Text>
-                        <Text style={styles.situaçãoPagamento}>
-                            Situação do Pagamento: <Text style={styles.sinal}>{formaPagamento}</Text>
-                            <Text style={styles.sinal}> Sinal R$ {valorCobrado}</Text>
-                        </Text>
-                        <TouchableOpacity style={styles.botaoConversar}>
-                            <Text style={styles.conversar}>Conversar</Text>
-                        </TouchableOpacity>
-                    </View>
-                ))}
-            </ScrollView>
+    <View key={pedido.idSolicitarPedido} style={styles.cartaoSolicitação}>
+        <Text style={styles.tituloSolicitação}>{pedido.tituloPedido}</Text>
+        <Text style={styles.cliente}>
+            Cliente: <Text style={styles.nomeCliente}>{pedido.contratante.nomeContratante}</Text>
+        </Text>
+        <Text style={styles.localizacao}>
+            {pedido.contratante.cidadeContratante}, {pedido.contratante.bairroContratante}
+            <Text style={styles.doisKm}> À 2 km de você</Text>
+        </Text>
+        
+        {pedido.contrato && (
+            <>
+                <Text style={styles.data}>
+                    Data e hora: <Text style={styles.diaHora}>{pedido.contrato.data} às {pedido.contrato.hora}</Text>
+                </Text>
+                <Text style={styles.situaçãoPagamento}>
+                    Situação do Pagamento: <Text style={styles.sinal}>{pedido.contrato.forma_pagamento}</Text> - R$ {pedido.contrato.valor}
+                </Text>
+            </>
+        )}
+        
+        <TouchableOpacity style={styles.botaoConversar}>
+            <Text style={styles.conversar}>Iniciar</Text>
+        </TouchableOpacity>
+    </View>
+))}
+
+          
         </View>
     );
 };

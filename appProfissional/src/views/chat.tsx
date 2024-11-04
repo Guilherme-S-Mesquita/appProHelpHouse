@@ -247,10 +247,10 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
         
             if (response.status === 201) {
-                
-            await Sharing.shareAsync(uri);
-            
                 Alert.alert('Sucesso', 'PDF gerado e contrato criado com sucesso!');
+
+            await Sharing.shareAsync(uri);
+            navigation.navigate('pedidosAgendados', );
 
 
             } else {
