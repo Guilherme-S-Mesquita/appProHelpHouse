@@ -79,13 +79,14 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
     // Função para enviar mensagem
     const enviarMensagem = async () => {
-        if (!mensagem.trim()) return;  // Evita enviar mensagens vazias
+        if (!mensagem.trim()) return; // Evita enviar mensagens vazias
         try {
             const token = await AsyncStorage.getItem('authToken');
             if (!token) {
                 console.error('Token não encontrado');
                 return;
             }
+            
             const response = await api.post('/chat/send', {
                 roomId,  // ID da sala de chat
                 message: mensagem,  // Mensagem a ser enviada
@@ -95,8 +96,10 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                     'Content-Type': 'application/json',
                 },
             });
-            setMensagens([...mensagens, response.data.message]);  // Atualiza as mensagens
-            setMensagem('');  // Limpa a mensagem
+            
+            setMensagens((prevMensagens) => [...prevMensagens, response.data.message]);  // Atualiza as mensagens usando o estado anterior
+            await setMensagem('');  // Limpa o campo de entrada
+            
         } catch (error) {
             console.error('Erro ao enviar mensagem:', error);
         }

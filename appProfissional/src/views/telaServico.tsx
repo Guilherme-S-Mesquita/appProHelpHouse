@@ -73,7 +73,6 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
       }
 
       if (!token) {
-        Alert.alert('Erro', 'Token de autenticação não encontrado.');
         return;
       }
 

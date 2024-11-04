@@ -80,7 +80,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('pedreiro', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Pedreiro', isChecked)}
                             />
                         </View>
 
@@ -97,7 +97,9 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
+
                                 onPress={(isChecked: boolean) => handleCheckboxChange('mecânico', isChecked)}
+
                             />
                         </View>
 
@@ -114,7 +116,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('eletricista', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Eletricista', isChecked)}
                             />
                         </View>
 
@@ -131,7 +133,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('jardineiro', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Jardineiro', isChecked)}
                             />
                         </View>
 
@@ -148,7 +150,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('encanador', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Encanador', isChecked)}
                             />
                         </View>
 
@@ -165,7 +167,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('diarista', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Diarista', isChecked)}
                             />
                         </View>
 
@@ -181,7 +183,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('baba', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Babá', isChecked)}
                             />
                         </View>
 
@@ -200,7 +202,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('chaveiro', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Chaveiro', isChecked)}
                             />
                         </View>
 
@@ -217,7 +219,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('costureira', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Costureira', isChecked)}
                             />
                         </View>
 
@@ -235,7 +237,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('instalador', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Instalador', isChecked)}
                             />
                         </View>
                         <View style={styles.professor}>
@@ -250,7 +252,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('professor', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Professor', isChecked)}
                             />
                         </View>
 
@@ -282,7 +284,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
-                                onPress={(isChecked: boolean) => handleCheckboxChange('cozinheiro', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Cozinheiro', isChecked)}
                             />
                         </View>
 
