@@ -17,17 +17,14 @@ const BemVindo: React.FC<{ navigation: any }> = ({ navigation }) => {
     >
       <View style={styles.container}>
 
-      
         <Text style={styles.title}>SEJA <Text style={styles.voce}>BEM-VINDO</Text></Text>
         
-
-
         <Image source={Imagens.iconLocalizacao} style={styles.iconLocaliza}/>
         <View style={styles.local}>
             <View style={styles.localFilho}>
                 <Text style={styles.text}>Nosso app utiliza sua</Text>
                 <Text style={styles.text}>localização para</Text>
-                <Text style={styles.text}>encontrar clintes</Text>
+                <Text style={styles.text}>encontrar clientes</Text>
                 <Text style={styles.text}>perto de você</Text>
             </View>
         </View>
@@ -35,7 +32,6 @@ const BemVindo: React.FC<{ navigation: any }> = ({ navigation }) => {
         <View style={styles.botaoAvancar}>
             
         <Button
-            
             color='#fff'
             variant="primary"
             title="Continuar" 

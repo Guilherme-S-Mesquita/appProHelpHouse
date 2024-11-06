@@ -17,7 +17,7 @@ const Loading: React.FC<{ navigation: any }> = ({navigation}) => {
     return () => clearTimeout(timer);
   }, [navigation]);
 
- 
+
   return (
     <ImageBackground 
       source={Imagens.fundoLoading}

@@ -61,44 +61,53 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any }> = ({ route, na
 
     return (
         <View style={styles.container}>
-       
+
+            <View style={styles.container2}>
                 <View style={styles.agendamentos}>
-                    <Text style={styles.textoAgendamento}>Agendamentos</Text>
-                    <View style={styles.cabeçalhoPedido}>
-                        <Text style={styles.pedido}>Pedidos</Text>
-                        <Image source={Imagens.iconFiltro} style={styles.filtro} />
-                    </View>
+                    <TouchableOpacity>
+                        <Text style={styles.textoAgendamento}>Agendados</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity>
+                        <Text style={styles.textAndamento}>Em andamento</Text>
+                    </TouchableOpacity>
                 </View>
+                <View style={styles.cabeçalhoPedido}>
+                    <Text style={styles.pedido}>Pedidos</Text>
+                    <Image source={Imagens.iconFiltro} style={styles.filtro} />
+                </View>
+            </View>
 
+            <ScrollView>
                 {pedidos.map((pedido) => (
-    <View key={pedido.idSolicitarPedido} style={styles.cartaoSolicitação}>
-        <Text style={styles.tituloSolicitação}>{pedido.tituloPedido}</Text>
-        <Text style={styles.cliente}>
-            Cliente: <Text style={styles.nomeCliente}>{pedido.contratante.nomeContratante}</Text>
-        </Text>
-        <Text style={styles.localizacao}>
-            {pedido.contratante.cidadeContratante}, {pedido.contratante.bairroContratante}
-            <Text style={styles.doisKm}> À 2 km de você</Text>
-        </Text>
-        
-        {pedido.contrato && (
-            <>
-                <Text style={styles.data}>
-                    Data e hora: <Text style={styles.diaHora}>{pedido.contrato.data} às {pedido.contrato.hora}</Text>
-                </Text>
-                <Text style={styles.situaçãoPagamento}>
-                    Situação do Pagamento: <Text style={styles.sinal}>{pedido.contrato.forma_pagamento}</Text> - R$ {pedido.contrato.valor}
-                </Text>
-            </>
-        )}
-        
-        <TouchableOpacity style={styles.botaoConversar}>
-            <Text style={styles.conversar}>Iniciar</Text>
-        </TouchableOpacity>
-    </View>
-))}
+                    <View key={pedido.idSolicitarPedido} style={styles.cartaoSolicitação}>
+                        <Text style={styles.tituloSolicitação}>{pedido.tituloPedido}</Text>
+                        <Text style={styles.cliente}>
+                            Cliente: <Text style={styles.nomeCliente}>{pedido.contratante.nomeContratante}</Text>
+                        </Text>
+                        <Text style={styles.localizacao}>
+                            {pedido.contratante.cidadeContratante}, {pedido.contratante.bairroContratante}
+                            <Text style={styles.doisKm}> À 2 km de você</Text>
+                        </Text>
 
-          
+                        {pedido.contrato && (
+                            <>
+                                <Text style={styles.data}>
+                                    Data e hora: <Text style={styles.diaHora}>{pedido.contrato.data} às {pedido.contrato.hora}</Text>
+                                </Text>
+                                <Text style={styles.situaçãoPagamento}>
+                                    Situação do Pagamento: <Text style={styles.sinal}>{pedido.contrato.forma_pagamento}</Text> - R$ {pedido.contrato.valor}
+                                </Text>
+                            </>
+                        )}
+
+                        <TouchableOpacity style={styles.botaoConversar}>
+                            <Text style={styles.conversar}>Iniciar</Text>
+                        </TouchableOpacity>
+                    </View>
+                ))}
+            </ScrollView>
+
         </View>
     );
 };

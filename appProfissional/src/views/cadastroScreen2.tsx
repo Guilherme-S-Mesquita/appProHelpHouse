@@ -14,7 +14,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
     const [ruaContratado, setRuaContratado] = useState('');
     const [numCasaContratado, setNumCasaContratado] = useState('');
     const [cidadeContratado, setCidadeContratado] = useState('');
-    const [regiaoSelecionadas, setRegiaoSelecionadas] = useState<string[]>([]); 
+    const [regiaoSelecionadas, setRegiaoSelecionadas] = useState<string[]>([]);
 
 
 
@@ -34,8 +34,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
             console.log("Nenhuma região selecionada");
             return;
         }
-        
-       console.log("Regiões selecionadas para envio: ", regiaoSelecionadas);
+
+        console.log("Regiões selecionadas para envio: ", regiaoSelecionadas);
 
         navigation.navigate('areaAtuacao', {
             nomeContratado: nomeContratado,
@@ -54,8 +54,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
         });
     };
-
-
     async function buscarCep() {
         if (cepContratado === "") {
             Alert.alert('Cep inválido');
@@ -89,8 +87,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
     return (
         <View style={styles.container}>
-            <Text style={styles.atua}>Dados <Text  style={styles.atua1}>Profissionais</Text></Text>
- 
+            <Text style={styles.atua}>Dados <Text style={styles.atua1}>Profissionais</Text></Text>
+
             <View style={styles.containerCadastro}>
 
                 <View style={styles.input}>
@@ -108,7 +106,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         maxLength={9}
                         onChangeText={handleCepChange}
                         containerStyles={{
-                            borderBottomWidth:1.5,
+                            borderBottomWidth: 1.5,
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
@@ -125,7 +123,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         }}
                         inputStyles={{
                             color: '#fff',
-                           fontSize: 19,
+                            fontSize: 19,
+                            fontWeight: '500'
                         }}
                     />
                     <FloatingLabelInput
@@ -133,11 +132,11 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         value={cidadeContratado}
                         onChangeText={value => setCidadeContratado(value)}
                         containerStyles={{
-                            borderBottomWidth:1.5,
+                            borderBottomWidth: 1.5,
                             borderColor: '#fff',
                             marginTop: 20,
                             marginBottom: 10,
-                            
+
                         }}
                         customLabelStyles={{
                             topFocused: -20,
@@ -150,12 +149,12 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             paddingHorizontal: 5,
                             color: '#FF8F49',
                             fontWeight: 'bold',
-                            
+
                         }}
                         inputStyles={{
                             color: '#fff',
-                          fontSize: 19,
-                          
+                            fontSize: 19,
+                            fontWeight: '500'
                         }}
                     />
 
@@ -184,7 +183,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         }}
                         inputStyles={{
                             color: '#fff',
-                          fontSize: 19,
+                            fontSize: 19,
+                            fontWeight: '500'
                         }}
                     />
 
@@ -217,7 +217,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             }}
                             inputStyles={{
                                 color: '#fff',
-                              fontSize: 19,
+                                fontSize: 19,
+                                fontWeight: '500'
                             }}
                         />
                         <View style={styles.inputNum}>
@@ -249,7 +250,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 }}
                                 inputStyles={{
                                     color: '#fff',
-                                  fontSize: 19,
+                                    fontSize: 19,
+                                    fontWeight: '500'
                                 }}
                                 returnKeyType='done'
                             />
@@ -273,13 +275,13 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     unFillColor="#588acd"
                     text="Zona Sul"
                     innerIconStyle={{ borderWidth: 2, }}
-                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff',fontWeight: 'bold', }}
+                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff', fontWeight: 'bold', }}
 
                     style={{
                         marginLeft: 50,
                         top: 365
                     }}
-                    
+
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Sul', isChecked)}
                 />
 
@@ -294,7 +296,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                     style={{
                         marginLeft: 220,
-                        top:330
+                        top: 330
                     }}
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Norte', isChecked)}
                 />
@@ -308,7 +310,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     unFillColor="#588acd"
                     text="Zona Leste"
                     innerIconStyle={{ borderWidth: 2, }}
-                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff',fontWeight: 'bold' }}
+                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff', fontWeight: 'bold' }}
 
                     style={{
                         marginLeft: 50,
@@ -326,7 +328,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                     unFillColor="#588acd"
                     text="Zona Oeste"
                     innerIconStyle={{ borderWidth: 2, }}
-                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff',fontWeight: 'bold', }}
+                    textStyle={{ right: 10, fontFamily: "JosefinSans-Regular", textDecorationLine: 'none', color: '#ffff', fontWeight: 'bold', }}
 
                     style={{
                         marginLeft: 220,

@@ -10,7 +10,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
         cepContratado, bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, regiaoContratado } = route.params;
 
     const [profissoesSelecionadas, setProfissoesSelecionadas] = useState<string[]>([]);
-    const [descContratado, setDescContratado] = useState<string>('');
+    const [descProfissaoContratado, setDescProfissaoContratado] = useState<string>('');
 
     const handleCheckboxChange = (profession: string, isChecked: boolean) => {
         if (isChecked) {
@@ -29,10 +29,10 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
             console.log("Nenhuma região selecionada");
             return;
         }
-        
+
 
         console.log("Profissões selecionadas: ", profissaoContratado);
-        console.log("Descrição: ", descContratado);
+        console.log("Descrição: ", descProfissaoContratado);
 
         navigation.navigate('ultimosPassos', {
             nomeContratado,
@@ -48,7 +48,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
             numCasaContratado,
             cidadeContratado,
             profissaoContratado,
-            descContratado,
+            descProfissaoContratado,
             regiaoContratado
         });
     };
@@ -57,7 +57,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
             <View style={styles.container2}>
                 <View style={styles.meioCirculo} />
                 <Text style={styles.emQuais}>
-                      Em quais
+                    Em quais
                     <Text style={styles.areas}> áreas</Text>
                     {'\n'}
                     <Text style={styles.voce}>      você atua?</Text>
@@ -179,7 +179,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 iconComponent={
                                     <Image
                                         source={require('../../assets/baba.png')}
-                                        style={{ width: 82, height: 155, top: 25, left:1 }}
+                                        style={{ width: 82, height: 155, top: 25, left: 1 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
@@ -196,9 +196,10 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 iconComponent={
                                     <Image
                                         source={require('../../assets/chaveiro.png')}
-                                        style={{ width: 85, height: 155, top: 20,
-                                            
-                                         }}
+                                        style={{
+                                            width: 85, height: 155, top: 20,
+
+                                        }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
@@ -232,8 +233,9 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 iconComponent={
                                     <Image
                                         source={require('../../assets/instalador.png')}
-                                        style={{ width: 85, height: 110, top: 16, right:3
-                                         }}
+                                        style={{
+                                            width: 85, height: 110, top: 16, right: 3
+                                        }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
@@ -271,7 +273,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 onPress={(isChecked: boolean) => handleCheckboxChange('Personal Organizer', isChecked)}
                             />
                         </View>
-                        
+
                         <View style={styles.cozinheiro}>
                             <BouncyCheckbox
                                 size={95}
@@ -296,15 +298,13 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 iconComponent={
                                     <Image
                                         source={require('../../assets/montador.png')}
-                                        style={{ width: 80, height: 110, top: 19}}
+                                        style={{ width: 80, height: 110, top: 19 }}
                                     />
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
                                 onPress={(isChecked: boolean) => handleCheckboxChange('Montador de Móveis', isChecked)}
                             />
                         </View>
-
-
 
                     </ScrollView>
                     <Text style={styles.aindaNao}>
@@ -316,10 +316,11 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                     </Text>
 
                     {/* Campo de entrada para a descrição do contratado */}
+                    
                     <TextInput
                         style={styles.descricaoInput}
-                        value={descContratado}
-                        onChangeText={value => setDescContratado(value)}
+                        value={descProfissaoContratado}
+                        onChangeText={value => setDescProfissaoContratado(value)}
                         placeholder="Descreva brevemente sua área..."
                         placeholderTextColor="#fff"
                         returnKeyType='done'

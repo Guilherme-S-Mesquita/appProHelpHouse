@@ -29,7 +29,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
         try {
             const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
                 cluster: 'sa1',
-                authEndpoint: 'http://192.168.15.119:8000/api/pusher/authpro',
+                authEndpoint: 'http://172.20.10.3:8000/api/pusher/authpro',
             });
 
             pusherInstance.connect();
@@ -77,7 +77,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     hintTextColor={'#aaa'}
                     hint="exemple@exemple.com"
                     containerStyles={{
-                        borderWidth: 2,
+                        borderWidth: 4.5,
                         paddingHorizontal: 10,
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',
@@ -116,7 +116,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
-                        borderWidth: 2,
+                        borderWidth: 4.5,
                         paddingHorizontal: 10,
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',

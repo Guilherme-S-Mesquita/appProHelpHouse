@@ -35,7 +35,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRE-SE</Text>
             </View>
-            <View style={styles.fundo}>
+            <ScrollView style={styles.fundo}>
                 <View style={styles.containerCadastro}>
 
 
@@ -58,6 +58,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 bottom: 3,
+                                fontWeight: '700'
                             }}
                             placeholder="Digite seu nome..."
                             placeholderTextColor="#fff"
@@ -81,7 +82,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 top: 10,
-
+                                fontWeight: '700'
                             }}
                             placeholder="Digite seu sobrenome..."
                             placeholderTextColor="#fff"
@@ -107,7 +108,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 top: 18,
-
+                                fontWeight: '700'
                             }}
                             placeholder="Digite a data em que nasceu..."
                             placeholderTextColor="#fff"
@@ -131,6 +132,8 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 top: 17,
+                                fontSize: 18,
+                                fontWeight: '700'
                             }}
                             placeholder="Digite o seu CPF..."
                             placeholderTextColor="#fff"
@@ -159,12 +162,12 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                               fontSize: 18,
+                                fontSize: 18,
                                 marginBottom: 37,
                                 marginHorizontal: -20,
                                 marginTop: 5,
-                                right: 5,
-                                top: 25
+                                top: 25,
+                                fontWeight: '700'
                             }}
                             placeholder="(XX) XXXXX-XXXX"
                             placeholderTextColor="#fff"
@@ -187,7 +190,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
 
                 </View>
-            </View>
+            </ScrollView>
         </View>
 
 

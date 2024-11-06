@@ -125,10 +125,6 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
     }
   };
 
-
-
-
-
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
@@ -149,6 +145,8 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
         </TouchableOpacity>
         <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>1 serviço</Text> para hoje</Text>
       </View>
+
+      
       <ScrollView>
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
