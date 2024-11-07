@@ -112,5 +112,60 @@ conversar: {
     fontSize: 14,
     textAlign: 'center',
 },
+ // Estilos do Modal
+ modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo com transparência
+},
+modalContent: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    padding: 16,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+},
+modalTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#005EB8',
+    marginBottom: 8,
+},
+modalCliente: {
+    fontSize: 16,
+    color: '#ff6600',
+    marginBottom: 4,
+},
+modalLocalizacao: {
+    fontSize: 14,
+    color: '#666',
+    marginBottom: 4,
+},
+modalSituacao: {
+    fontSize: 14,
+    color: '#333',
+    marginBottom: 8,
+},
+modalStatus: {
+    fontSize: 16,
+    color: '#005EB8',
+    fontWeight: 'bold',
+    marginBottom: 16,
+},
+botaoFechar: {
+    backgroundColor: '#005EB8',
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+},
+textoBotaoFechar: {
+    color: '#fff',
+    fontWeight: 'bold',
+},
 });
 export default styles;
