@@ -62,30 +62,55 @@ const styles = StyleSheet.create({
       profissoesUser:{
         color: 'black',
         fontFamily:'bold',
-        fontWeight: '400',
+        fontWeight: '500',
         fontSize: 15,
         top:110,
         left:53,
-      },
+        },
       area:{
         color: 'black',
         fontFamily:'bold',
         fontWeight: '700',
-        fontSize: 15,
+        fontSize: 12,
         top:100,
         left:55
       },
       zonaUser:{
-        top:150,
-        left:55
+        top:132,
+        left:55,
+        color: 'black',
+        fontFamily:'bold',
+        fontWeight: '500',
       },
       zona:{
         color: 'black',
         fontFamily:'bold',
-        fontWeight: '700',
+        fontWeight: '600',
         fontSize: 15,
+        top:125,
+        left:75
+      },
+      mim:{
+        color: 'black',
+        fontFamily:'bold',
+        fontWeight: '700',
+        fontSize: 12,
         top:130,
-        left:55
+        left:55 
+      },
+      descUser:{
+        color: 'black',
+        fontFamily:'bold',
+        fontWeight: '500',
+        fontSize: 15,
+        top:139,
+        left:55 
+      },
+      localiza:{
+        height:35,
+        width:25,
+        left:50,
+        top:152
       },
 });
 export default styles;

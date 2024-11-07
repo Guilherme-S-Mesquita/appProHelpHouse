@@ -21,6 +21,7 @@ import List from '../functions/index';
 import { Image } from 'react-native';
 import PedidosAgendados from '../views/pedidosAgendados';
 import TelaPerfil from '../views/telaPerfil';
+import TelaConfiguracao from './configuracao';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -118,6 +119,7 @@ const AppNavigator = () => {
       <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
       <Stack.Screen name="pedidosAgendados" component={PedidosAgendados} options={{ headerShown: false }} />
       <Stack.Screen name="perfil" component={TelaPerfil} options={{ headerShown: false }} />
+      <Stack.Screen name="configuracao" component={TelaConfiguracao} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };
