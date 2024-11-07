@@ -37,8 +37,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
             </View>
             <ScrollView style={styles.fundo}>
                 <View style={styles.containerCadastro}>
-
-
+                    
                     <Text style={styles.tituloDados2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
 
                     <View style={styles.input}>
