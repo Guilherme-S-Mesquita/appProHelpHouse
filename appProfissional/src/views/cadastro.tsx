@@ -4,6 +4,7 @@ import { FloatingLabelInput } from 'react-native-floating-label-input';
 import { TextInputMask } from 'react-native-masked-text';
 import { Button } from "../../componentes/Button/Button";
 import styles from '../css/cadastroCss';
+import moment from 'moment';
 
 
 const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
@@ -28,6 +29,15 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
         });
     };
+    const handleDateChange = (text : any) => {
+        setNascContratado(text);
+        
+        // Convertendo a data para o formato do backend (YYYY-MM-DD)
+        const formattedDate = moment(text, 'DD/MM/YYYY').format('YYYY-MM-DD');
+        
+        // Aqui você pode usar 'formattedDate' para enviar para o backend
+        console.log('Data formatada para o backend:', formattedDate);
+    };
 
     return (
         <View style={styles.container}>
@@ -35,7 +45,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
             <View style={styles.title}>
                 <Text style={styles.titulo}>CADASTRE-SE</Text>
             </View>
-            <ScrollView style={styles.fundo}>
+            <View style={styles.fundo}>
                 <View style={styles.containerCadastro}>
 
 
@@ -93,12 +103,12 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             <Text style={styles.textTitle}>Data de Nascimento</Text>
                         </View>
                         <TextInputMask
-                            type={'datetime'}
-                            options={{
-                                format: 'YYYY/MM/DD'
-                            }}
+                              type={'datetime'}
+                              options={{
+                                  format: 'DD/MM/YYYY'  // Alterado para o formato brasileiro
+                              }}
                             value={nascContratado}
-                            onChangeText={text => setNascContratado(text)}
+                            onChangeText={handleDateChange}
                             style={{
                                 opacity: 0.7,
                                 borderBottomWidth: 2,
@@ -190,7 +200,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
 
                 </View>
-            </ScrollView>
+            </View>
         </View>
 
 
