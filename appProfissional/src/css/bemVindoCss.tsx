@@ -9,17 +9,16 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
-
         marginTop: 140,
         backgroundColor: 'rgba(0, 0, 0, 0.0)',
         paddingHorizontal: 20,
     },
     title: {
-        fontSize: 33,
+        fontSize: 40,
         fontWeight: 'bold',
         color: '#fff',
-        marginBottom: 10,
         textAlign: 'center',
+        top:19
     },
     voce: {
         color: '#FF914D',
@@ -40,19 +39,21 @@ const styles = StyleSheet.create({
         
     },
     text:{
-        fontSize:23,
-        color:'rgba(0, 0, 0, 0.5);'
+        color:'rgba(0, 0, 0, 0.5);',
+        fontWeight: 'bold',
+        fontSize: 25,
+        top:8
     },
     iconLocaliza: {
-        width: 90,
-        height: 90,
+        width: 71,
+        height: 99,
         position: 'relative',
-        top: 90,
+        top: 99,
         zIndex: 1,
     },
     botaoAvancar:{
-        marginTop:90,
-        width:130,
+        marginTop:155,
+        width:150,
         height:50,
         shadowColor: 'black',
         shadowRadius: 5,

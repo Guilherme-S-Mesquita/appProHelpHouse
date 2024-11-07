@@ -77,7 +77,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     hintTextColor={'#aaa'}
                     hint="exemple@exemple.com"
                     containerStyles={{
-                        borderWidth: 2,
+                        borderWidth: 4.5,
                         paddingHorizontal: 10,
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',
@@ -116,7 +116,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
                     customShowPasswordComponent={<Text>Mostrar</Text>}
                     customHidePasswordComponent={<Text>Esconder</Text>}
                     containerStyles={{
-                        borderWidth: 2,
+                        borderWidth: 4.5,
                         paddingHorizontal: 10,
                         backgroundColor: '#fff',
                         borderColor: '#004AAD',

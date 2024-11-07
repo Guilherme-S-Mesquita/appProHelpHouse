@@ -3,7 +3,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: '#fff',
+        backgroundColor: '#f2f2f2',
       },
       cabecalho: {
         flexDirection: 'row',
@@ -11,15 +11,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 5.5,
         backgroundColor:'#004AAD',
-        top:40,
+        top:55,
         borderRadius:17,
-        width:384,
+        width:402,
+        height:42,
         left:5
       },
       filtroImg:{
-        width:20,
+        width:25,
         height: 25,
-        left:325
+        left:355
       },
       ola: {
         fontSize: 22,
@@ -32,11 +33,13 @@ const styles = StyleSheet.create({
       },
       containerGanhos: {
         padding: 20,
-        backgroundColor: '#f0f0f0',
-        borderRadius: 10,
+        backgroundColor: '#ffffff',
+        borderRadius: 32,
         margin: 10,
         top:55,
-        height:250
+        height:230,
+        width:'90%',
+        left:10
       },
       ganhos: {
         fontSize: 15,
@@ -82,7 +85,6 @@ const styles = StyleSheet.create({
         fontWeight:'bold',
       },
       servicosPendentes: {
-        top: 17,
         left:40,
         fontSize:18,
         fontWeight:'bold'

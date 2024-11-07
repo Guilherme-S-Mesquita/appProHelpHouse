@@ -38,7 +38,7 @@ const CadastroEmail: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         hintTextColor={'#aaa'}
                         hint="exemple@exemple.com"
                         containerStyles={{
-                            borderWidth: 2,
+                            borderWidth: 4.5,
                             paddingHorizontal: 10,
                             backgroundColor: '#F5FCFF',
                             borderColor: '#004AAD',
@@ -88,7 +88,7 @@ const CadastroEmail: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         customShowPasswordComponent={<Text>Mostrar</Text>}
                         customHidePasswordComponent={<Text>Esconder</Text>}
                         containerStyles={{
-                            borderWidth: 2,
+                            borderWidth:4.5,
                             paddingHorizontal: 10,
                             backgroundColor: '#F5FCFF',
                             borderColor: '#004AAD',

@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
         left: 80,
     },
     trabalhos: {
-        bottom: 55
+        bottom: 55,
     },
 
     pedreiro: {
@@ -77,86 +77,100 @@ const styles = StyleSheet.create({
         height: 90,
         marginTop: 77,
         left: '2%',
-        bottom:2
+        bottom:2,
+        marginRight:2
     },
 
     mecanico: {
         width: 90,
         height: 90,
-        left: '5%',
-        top: 75
+        left: '4%',
+        top: 75,
+        marginRight:2
     },
     eletricista: {
         width: 90,
         height: 90,
         left: '9%',
         top: 72,
+        marginRight:2
     },
     chaveiro:{
         width: 90,
         height: 90,
         right: '23%',
         top: 72,  
+        marginRight:2
     },
     costureira:{
         width: 90,
         height: 90,
         right: '19%',
-        top: 72,  
+        top: 72, 
+        marginRight:2 
     },
     professor:{
         width: 90,
         height: 90,
         right: '23%',
-        top: 72,  
+        top: 72, 
+        marginRight:2 
     },
     personalOrg:{
         width: 90,
         height: 90,
         right: '19%',
-        top: 72
+        top: 72,
+        marginRight:2
     },
     jadineiro: {
         width: 90,
         height: 90,
         right: '25%',
         top: 180,
+        marginRight:2
     },
     encanador: {
         width: 90,
         height: 90,
         right: '22%',
-        top: 179
+        top: 179,
+        marginRight:2
     },
     diarista: {
         width: 90,
         height: 90,
         right: '18%',
-        top: 180
+        top: 180,
+        marginRight:2
     },
     baba:{
         width: 90,
         height: 90,
         right: '14%',
-        top: 179
+        top: 179,
+        marginRight:2
     },
     instalador:{
         width: 90,
         height: 90,
         right: '28%',
-        top: 179
+        top: 179,
+        marginRight:2
     },
     cozinheiro:{
         width: 90,
         height: 90,
         right: '41%',
-        top: 179
+        top: 179,
+        marginRight:2
     },
     montador:{
         width: 90,
         height: 90,
         right: '37%',
-        top: 179
+        top: 179,
+        marginRight:2
     },
 
     aindaNao: {
@@ -187,6 +201,7 @@ const styles = StyleSheet.create({
         paddingBottom: 25,
         color: 'white',
         fontSize: 18,
+         fontWeight: '600'
     },
     buttonEnviar: {
         width: 145,

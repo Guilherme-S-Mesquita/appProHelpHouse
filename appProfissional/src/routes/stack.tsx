@@ -20,7 +20,7 @@ import Chat from '../views/chat';
 import List from '../functions/index';
 import { Image } from 'react-native';
 import PedidosAgendados from '../views/pedidosAgendados';
-
+import TelaPerfil from '../views/telaPerfil';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -74,7 +74,7 @@ const Tabs = () => {
       
       <Tab.Screen
         name="PerfilScreen"
-        component={TelaServico}
+        component={TelaPerfil}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -117,6 +117,7 @@ const AppNavigator = () => {
       <Stack.Screen name="ultimosPassos" component={UltimosPassos} options={{ headerShown: false }} />
       <Stack.Screen name="PerfilScreen" component={UltimosPassos} options={{ headerShown: false }} />
       <Stack.Screen name="pedidosAgendados" component={PedidosAgendados} options={{ headerShown: false }} />
+      <Stack.Screen name="perfil" component={TelaPerfil} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

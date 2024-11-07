@@ -1,5 +1,5 @@
 import React, { useContext,useState } from 'react';
-import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, } from 'react-native';
+import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, ScrollView} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
@@ -10,6 +10,7 @@ import { useUser } from '../proContext';
 import api from '../../axios';
 import myContext from '../functions/authContext';
 
+
 const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navigation }) => {
     const [uploading, setUploading] = useState<boolean>(false);
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -18,7 +19,8 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
     const [loading, setLoading] = useState<boolean>(false); // New state for data submission loading
     const userContext = useContext(myContext);
     const { user, setUser } = useContext(myContext);
-    const [descricao, setDescricao] = useState('');
+    // const [descricao, setDescricao] = useState('');
+    const[descContratado, setDescContratado] = useState('');
 
 
     // Pick Image Function
@@ -65,7 +67,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
     // Extracting route params
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado,
-        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, descContratado, regiaoContratado } = route.params;
+        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, regiaoContratado,descProfissaoContratado } = route.params;
 
     // Submit Professional Data
     const Verificar = async () => {
@@ -87,6 +89,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 cidadeContratado,
                 descContratado,
                 regiaoContratado,
+                descProfissaoContratado,
                 imagemContratado:imageUrl
             });
 
@@ -157,8 +160,8 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
                 <Text style={styles.voce}>Fale um pouco sobre você</Text>
                 <TextInput
-                 value={descricao}
-                 onChangeText={setDescricao}
+                 value={descContratado}
+                 onChangeText={setDescContratado}
                     style={{
                         borderBottomWidth: 2,
                         borderColor: '#fff',
@@ -167,14 +170,13 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         top: 30,
                         paddingHorizontal: 5,
                         width:351,
-                        right:9
+                        right:9,
+                        fontWeight:'600'
                     }}
                      returnKeyType='done'
                     placeholder="Escreva um pouco sobre você..."
                     placeholderTextColor="#fff"
-                
                     >
-
                 </TextInput>
             </View>
 
