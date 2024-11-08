@@ -33,6 +33,7 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
                     <Text style={styles.nomeUsuario}>{user.nomeContratado} <Text style={styles.nomeUsuario}>{user.sobrenomeContratado}</Text></Text>
 
                     <Text style={styles.area}>Minhas áreas de atuação</Text>
+                    
                     <Text style={styles.profissoesUser}>{user.profissaoContratado}</Text>
                     
                     <Text style={styles.mim}>Sobre mim</Text>
