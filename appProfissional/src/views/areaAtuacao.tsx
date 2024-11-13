@@ -98,7 +98,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                 }
                                 innerIconStyle={{ borderWidth: 4 }}
 
-                                onPress={(isChecked: boolean) => handleCheckboxChange('mecânico', isChecked)}
+                                onPress={(isChecked: boolean) => handleCheckboxChange('Mecânico', isChecked)}
 
                             />
                         </View>
