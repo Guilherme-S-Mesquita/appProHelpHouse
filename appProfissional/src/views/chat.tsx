@@ -390,29 +390,34 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
 
 
 
-            {/* Exibe as mensagens do chat */}
             <ScrollView style={styles.mensagensContainer} ref={scrollViewRef}>
-                {mensagens.map((msg, index) => {
-                    const isCurrentUser = msg.senderId === user?.idContratado;  // Verifica se a mensagem foi enviada pelo profissional autenticado
-                    return (
-                        <View
-                            key={index}
-                            style={[
-                                styles.mensagemItem,
-                                {
-                                    alignSelf: isCurrentUser ? 'flex-end' : 'flex-start',  // Mensagem do usuário (profissional) à direita
-                                    backgroundColor: isCurrentUser ? '#87CEFA' : '#f1f1f1',  // Diferenciar cor entre mensagens
-                                    borderRadius: 10,
-                                    padding: 10,
-                                    maxWidth: '70%'  // Limitar a largura da mensagem
-                                }
-                            ]}
-                        >
-                            <Text>{msg.message}</Text>
-                        </View>
-                    );
-                })}
-            </ScrollView>
+  {mensagens.map((msg, index) => {
+    // Verificar se a mensagem foi enviada pelo contratante ou pelo contratado
+    const isContratado = msg.idContratado === user.idContratado;
+    const cor = isContratado ? "#ADD8E6" : "#FFD580";
+    const alinhamento = isContratado ? "flex-end" : "flex-start";
+
+    return (
+      <View
+        key={index}
+        style={[
+          styles.mensagemItem,
+          {
+            alignSelf: alinhamento,
+            backgroundColor: cor,
+            borderRadius: 10,
+            padding: 10,
+            maxWidth: '70%',
+          },
+        ]}
+      >
+        <Text>{msg.message}</Text>
+      </View>
+    );
+  })}
+</ScrollView>
+
+
 
             {/* Input para enviar mensagem */}
             <View style={styles.enviarMensagem}>
