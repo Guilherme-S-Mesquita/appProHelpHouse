@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#E9E9E7',
         paddingTop: 20,
+        
     },
 cabeçalhoPedido:{
     flexDirection: 'row',
@@ -35,15 +36,18 @@ agendamentos: {
     justifyContent: 'center',
     alignItems: 'center',
     padding: 9,
-    backgroundColor: 'white',
     borderRadius: 17,
     width: 380,
     marginBottom: 20,
+    left:65,
+    top:55
 },
 textoAgendamento: {
     color: '#004AAD',
     fontSize: 24,
     fontWeight: 'bold',
+    left:25,
+    top:10
 },
 cartaoSolicitação: {
     backgroundColor: '#FFFFFF',
@@ -56,6 +60,7 @@ cartaoSolicitação: {
     shadowOpacity: 0.1,
     shadowRadius: 5,
     elevation: 5,
+    top:150
 },
 tituloSolicitação: {
     fontSize: 20,
@@ -117,7 +122,8 @@ conversar: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo com transparência
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Fundo com transparência,
+    
 },
 modalContent: {
     width: '80%',
