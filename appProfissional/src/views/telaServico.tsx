@@ -133,7 +133,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
       <View style={styles.containerGanhos}>
         <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
-        <Text style={styles.ganhos}>R$1250 <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
+        <Text style={styles.ganhos}>R${user.valorTotalRecebido} <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
         <Image
           source={{ uri: user.imagemContratado }}
           style={styles.jesusImg}
