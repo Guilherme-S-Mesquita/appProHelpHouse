@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#E9E9E7',
         paddingTop: 20,
+        
     },
     cabecalhoPedido: {
         flexDirection: 'row',

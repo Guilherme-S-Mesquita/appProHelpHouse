@@ -28,5 +28,44 @@ const styles = StyleSheet.create({
     left:24,
     top:24
   },
+  cep:{
+    color: '#004aad',
+    fontFamily:'bold',
+    fontWeight: '700',
+    fontSize:17,
+    left:24,
+    top:24
+  },
+  email:{
+    color: '#004aad',
+    fontFamily:'bold',
+    fontWeight: '700',
+    fontSize:17,
+    left:24,
+    top:24
+  },
+  fone:{
+    color: '#004aad',
+    fontFamily:'bold',
+    fontWeight: '700',
+    fontSize:17,
+    left:24,
+    top:24
+  },
+  senha:{ color: '#004aad',
+    fontFamily:'bold',
+    fontWeight: '700',
+    fontSize:17,
+    left:24,
+    top:24
+  },
+input:{
+  borderColor: '#ddd',
+  borderWidth: 1,
+  padding: 10,
+  borderRadius: 5,
+  flex: 1,
+  top:6
+},
 });
 export default styles;
