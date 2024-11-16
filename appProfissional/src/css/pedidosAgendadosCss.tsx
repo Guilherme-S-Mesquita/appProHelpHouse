@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
         bottom: 35,
         borderRadius: 17,
         width: 404,
-        right: 153
+        right: 153,
+        marginLeft:145,
     },
     pedido: {
         color: '#fff',
@@ -39,12 +40,15 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 17,
         width: 380,
-        marginBottom: 20,
+        marginBottom: 50,
+        marginTop:60,
     },
     textoAgendamento: {
         color: '#004AAD',
         fontSize: 24,
         fontWeight: 'bold',
+       left:190,
+       top:10
     },
     cartaoSolicitacao: {
         backgroundColor: '#FFFFFF',

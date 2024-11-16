@@ -61,7 +61,7 @@ const Tabs = () => {
           headerShown: false,
           tabBarIcon: ({ focused }) => (
             <Image 
-              source={Imagens.iconTab3} 
+              source={Imagens.imgPedido} 
               style={{
                 width: 46, 
                 height: 46, 
@@ -72,6 +72,7 @@ const Tabs = () => {
         }}
       />
 
+ 
       
       <Tab.Screen
         name="PerfilScreen"

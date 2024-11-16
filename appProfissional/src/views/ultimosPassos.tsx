@@ -103,7 +103,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             }
 
             console.log('Os dados foram inseridos com sucesso!', result);
-            navigation.navigate('homeStack'); // Navigate to profile page
+            navigation.navigate('login'); // Navigate to profile page
 
         } catch (error: any) {
             if (error.response) {
