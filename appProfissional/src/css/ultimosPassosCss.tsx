@@ -8,6 +8,44 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
     },
+     containerProtifolio: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 70,
+  },
+  portfolioItem: {
+    width: 110,
+    height: 120,
+    margin: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e0e0e0',
+    borderRadius: 10,
+    overflow: 'hidden',
+    elevation: 5, // Shadow for Android
+    shadowColor: '#000', // Shadow for iOS
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 3,
+  },
+  imgPortifilio: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+
+  IconPor: {
+    position: 'absolute',
+    top: 90,
+    right: 10,
+    zIndex: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
     ultimos: {
         color: '#fff',
         fontSize: 35,
