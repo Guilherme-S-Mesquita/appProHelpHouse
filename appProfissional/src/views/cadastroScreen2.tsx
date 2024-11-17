@@ -95,7 +95,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
 
                     <View style={styles.inputsCep}>
-                        {/* <Text style={styles.title3}>Buscar cep </Text> */}
+                       <Text style={styles.title3}>Buscar-cep</Text>  
                         <Text style={styles.title4}> <AntDesign style={styles.icon} name="search1" size={30} color="white" onPress={buscarCep} /></Text>
                     </View>
 
