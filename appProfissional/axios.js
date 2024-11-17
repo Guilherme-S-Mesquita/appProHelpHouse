@@ -3,7 +3,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const api = axios.create({
 
+
     baseURL:'http://10.0.0.121:8000/api',
+
+
 });
 
 // Adiciona o interceptor para incluir o token em todas as requisições

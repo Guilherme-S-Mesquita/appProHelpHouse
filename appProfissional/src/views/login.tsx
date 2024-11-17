@@ -29,7 +29,7 @@ const Login: React.FC<{ navigation: any }> = ({ navigation }) => {
         try {
             const pusherInstance = new Pusher('6aef362f6c720f776c8b', {
                 cluster: 'sa1',
-                authEndpoint: 'http://10.0.0.121:8000/api/pusher/authpro',
+                authEndpoint: 'http://172.20.10.5:8000/api/pusher/authpro',
             });
 
             pusherInstance.connect();
