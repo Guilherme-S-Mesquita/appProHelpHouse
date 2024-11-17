@@ -1,71 +1,87 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-  fundo:{
-    flex: 1,
+    background: {
+        flex: 1,
+
+    },
+    fundoBranco:{
+        backgroundColor:'#fff',
+        width:350,
+        borderRadius:25,
+        
+        marginLeft:33,
+        height:680
+    },
+    
+    container:{
+    marginLeft:30,
+    marginTop:20,
+    },
+    Textconfiguracao:{
+        fontSize:32,
+        fontWeight:'bold',
+        color:'#004aad',
+        marginLeft:65,
+        bottom:35,
+    },
+    TextmeuDados:{
+        fontSize:27,
+        fontWeight:'bold',
+        color:'#004aad',
+        marginBottom:20
+    },
+    cep:{
+        fontSize:15,
+        color:'black',
+    },
+    dados:{
+        fontSize:20,
+        fontWeight:'bold',
+        color:'#004aad',
+        marginTop:10,
+    },
+    dadosCli:{
+        marginTop:5,
+        fontSize:16,
+    },
+    cartao:{
+       
+    },
+    nomeCartao:{
+        fontSize:16,
+        fontWeight:'bold',
+        top:3,
+        marginLeft:10
+    },
+    numeroCartao:{
+        marginLeft:50,
+        bottom:20
+    },
+    adicionar:{
+        fontWeight:'bold',
+    },
+    // styles.input e styles.saveButton
+input: {
+    borderColor: '#ddd',
+    borderWidth: 1,
+    padding: 10,
+    borderRadius: 5,
+    flex: 1
   },
-  branco:{ 
-    backgroundColor: '#ffff',
-    width:'89%',
-    height: '95%',
-    borderRadius: 33,
-    top:135,
-    left:24
+  saveButton: {
+    backgroundColor: '#004aad',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+    marginTop: 20
   },
-  config:{
-    color: '#FFF',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:35,
-    top:98,
-    left:78
-  },
-  meus:{
-    color: '#004aad',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:23,
-    left:24,
-    top:24
-  },
-  cep:{
-    color: '#004aad',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:17,
-    left:24,
-    top:24
-  },
-  email:{
-    color: '#004aad',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:17,
-    left:24,
-    top:24
-  },
-  fone:{
-    color: '#004aad',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:17,
-    left:24,
-    top:24
-  },
-  senha:{ color: '#004aad',
-    fontFamily:'bold',
-    fontWeight: '700',
-    fontSize:17,
-    left:24,
-    top:24
-  },
-input:{
-  borderColor: '#ddd',
-  borderWidth: 1,
-  padding: 10,
-  borderRadius: 5,
-  flex: 1,
-  top:6
-},
+  saveButtonText: {
+    color: '#fff',
+    fontWeight: 'bold'
+  }
+  
+
 });
+
 export default styles;
