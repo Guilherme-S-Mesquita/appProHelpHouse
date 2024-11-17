@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 70,
+    top:47
   },
   portfolioItem: {
     width: 110,
@@ -39,8 +40,8 @@ const styles = StyleSheet.create({
 
   IconPor: {
     position: 'absolute',
-    top: 90,
-    right: 10,
+    top: 45,
+    right: 37,
     zIndex: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -59,10 +60,10 @@ const styles = StyleSheet.create({
     },
     acabando: {
         color: '#fff',
-        fontSize: 15,
+        fontSize: 16,
         fontWeight: '900',
-        top: 100,
-        right: 35,
+        top: 120,
+        right: 27,
         zIndex:2
     },
     background: {
@@ -114,7 +115,7 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },
         shadowOpacity: 0.3,
-        bottom: 95,
+        bottom: 60,
     },
     buttonText: {
         color: '#FFFF',
@@ -126,32 +127,34 @@ const styles = StyleSheet.create({
     },
     cameraIcon: {
         position: 'absolute',
-        top: 99,
-        right: 25,
+        top: 92,
+        right: 20,
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        borderRadius: 20,
+        borderRadius: 25,
         padding: 5,
         marginRight: 100
     },
     container2: {
-        bottom: 250
+        bottom: -72,
     },
     voce: {
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-        right:6
+        right:6,
+        top:5,
     },
     container3: {
         bottom: 150,
 
 
     },
-    promova: {
+    textPromova: {
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-
+        right:30,
+        marginBottom:60
     },
     buttonEnviar: {
         left: 75,
