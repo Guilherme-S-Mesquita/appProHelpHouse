@@ -25,6 +25,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
   const [pedidos, setPedidos] = useState<Pedido[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
+  const [contadorPedidos, setContadorPedidos] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
   const { user } = useContext(myContext);
   const [token, setToken] = useState<string | null>(null);
@@ -79,11 +80,9 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
       setLoading(true);
       try {
         const pedidosData = await getProPedidos(user.idContratado);
-        await console.log('Dados dos pedidos:', pedidosData);
-        setPedidos(Array.isArray(pedidosData) ? pedidosData : []);
-
+        setPedidos(pedidosData.pedidos || []);
+        setContadorPedidos(pedidosData.contadorPedidos || 0);
       } catch (error: any) {
-        console.error('Erro ao buscar pedidos:', error);
         setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
       } finally {
         setLoading(false);
@@ -124,10 +123,14 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
       Alert.alert('Erro', 'Houve um problema ao criar a sala.');
     }
   };
+  const meuHistorico = () => {
+    navigation.navigate('meuHistorico');
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.cabecalho}>
+        <Text style={styles.tituloHome}>Meus Pedidos Pendentes</Text>
         <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} />
       </View>
 
@@ -141,9 +144,9 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
         <Text style={styles.localizacao}>{user.cidadeContratado} <Text style={styles.oitoKm}>8km</Text></Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
-          <Text style={styles.botaoAlterarRaio1}>Alterar raio</Text>
+          <Text style={styles.botaoAlterarRaio1}  onPress={meuHistorico}>historico dos serviços</Text>
         </TouchableOpacity>
-        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>1 serviço</Text> para hoje</Text>
+        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>{contadorPedidos}</Text>pedidos para hoje</Text>
       </View>
 
       

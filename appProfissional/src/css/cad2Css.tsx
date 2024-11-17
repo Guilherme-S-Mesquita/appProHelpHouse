@@ -16,7 +16,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
     color: '#fff',
     fontWeight: 'bold',
-    left:185
+    left:220,
+    bottom:10
   },
   inputsCep: {
     flexDirection: 'row',
@@ -26,17 +27,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     
   },
-  buscarCep:{
 
-  },
   title4: {
     overflow: 'hidden',
     fontSize: 18,
     color: '#fff',
     fontWeight: 'bold',
     marginLeft:300,
-    top:18,
-    zIndex:2
+    zIndex:2,
+    position:'absolute'
   },
 
   containerCadastro: {

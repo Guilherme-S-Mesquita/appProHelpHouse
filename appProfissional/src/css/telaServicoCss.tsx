@@ -20,7 +20,13 @@ const styles = StyleSheet.create({
       filtroImg:{
         width:25,
         height: 25,
-        left:355
+        left:355,
+        position:'absolute'
+      },
+      tituloHome:{
+        fontWeight:'700',
+        fontSize:20,
+        color:'#fff'
       },
       ola: {
         fontSize: 22,
