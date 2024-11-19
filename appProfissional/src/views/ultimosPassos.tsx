@@ -352,6 +352,10 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                     placeholderTextColor="#fff"
                     >
                 </TextInput>
+
+
+                <Text style={styles.textPromova}>Promova o seu trabalho,adicione {'\n'}fotos no seu portifólio!</Text>
+
             </View>
 
 
@@ -361,7 +365,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
 
             <View style={styles.containerProtifolio}>
-                <Text style={styles.textPromova}>Promova o seu trabalho,adicione {'\n'}fotos no seu portifólio!</Text>
+              
         <View style={styles.portfolioItem}>
             <Image 
                 source={selectedImagePor ? { uri: selectedImagePor } : { uri: portifolio1 }} 

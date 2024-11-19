@@ -18,9 +18,9 @@ const styles = StyleSheet.create({
     top:47
   },
   portfolioItem: {
-    width: 110,
-    height: 120,
-    margin: 10,
+    width: 95,
+    height: 105,
+    margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#e0e0e0',
@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.3,
     shadowRadius: 3,
+    marginTop:20,
   },
   imgPortifilio: {
     width: '100%',
@@ -40,8 +41,8 @@ const styles = StyleSheet.create({
 
   IconPor: {
     position: 'absolute',
-    top: 45,
-    right: 37,
+    top: 37,
+    right: 30,
     zIndex: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
     },
     cameraIcon: {
         position: 'absolute',
-        top: 92,
+        top: 67,
         right: 20,
         backgroundColor: 'rgba(0, 0, 0, 0.3)',
         borderRadius: 25,
@@ -135,17 +136,17 @@ const styles = StyleSheet.create({
         marginRight: 100
     },
     container2: {
-        bottom: -72,
+        bottom: -100,
     },
     voce: {
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
         right:6,
-        top:5,
+        top:25,
     },
     container3: {
-        bottom: 150,
+        bottom: 95,
 
 
     },
@@ -153,8 +154,8 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-        right:30,
-        marginBottom:60
+        right:10,
+        marginTop:50
     },
     buttonEnviar: {
         left: 75,
