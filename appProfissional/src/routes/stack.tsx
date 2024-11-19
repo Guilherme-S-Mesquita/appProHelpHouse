@@ -21,7 +21,7 @@ import List from '../functions/index';
 import { Image } from 'react-native';
 import PedidosAgendados from '../views/pedidosAgendados';
 import TelaPerfil from '../views/telaPerfil';
-import TelaConfiguracao from './configuracao';
+import TelaConfiguracao from '../views/configuracao';
 import MeuHistorico from '../views/meuHistorico';
 
 const Stack = createNativeStackNavigator();

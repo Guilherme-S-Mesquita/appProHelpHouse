@@ -6,11 +6,10 @@ import Imagens from '../../img/img';
 import styles from '../css/telaPerfilCss';
 import UltimosPassos from './ultimosPassos';
 import myContext from '../functions/authContext';
-import TelaConfiguracao from '../routes/configuracao';
+import TelaConfiguracao from './configuracao';
 
 
 const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
-     // Função para processar os dados e navegar para a próxima tela
      const navegar = () => {
         navigation.navigate('configuracao', {
         

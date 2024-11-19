@@ -6,7 +6,8 @@ import api from '../../axios';
 import myContext from '../functions/authContext';
 import Staps from '../../componentes/staps/staps';
 import { QrCodePix } from '../../componentes/pix';
-
+import AntDesign from '@expo/vector-icons/AntDesign';
+import TelaConfiguracao from './configuracao';
 
 
 
@@ -37,7 +38,7 @@ interface Pedido {
     contrato?: Contrato;
 }
 
-const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition: number, onClose: () => void }> = () => {
+const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition: number, onClose: () => void }> =  ({ navigation })=> {
     const [pedidos, setPedidos] = useState<Pedido[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -66,11 +67,6 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
     }, [user?.idContratado]);
 
 
-
-
-    
-
-
     const iniciarPedido = async (idSolicitarPedido: number) => {
         try {
             const response = await api.patch(`/pedidos/${idSolicitarPedido}/pendente`);
@@ -93,6 +89,16 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
 
     return (
         <View style={styles.container}>
+    
+      <TouchableOpacity>
+        <AntDesign
+          name="leftcircle"
+          size={55}
+          color="#0000"
+          style={{ marginLeft: 1,left: 1, zIndex:10}}
+         onPress={() => navigation.navigate('perfil')}
+        />
+        </TouchableOpacity>
             <View style={styles.agendamentos}>
                 <Text style={styles.textoAgendamento}>Agendamentos</Text>
                 <View style={styles.cabecalhoPedido}>

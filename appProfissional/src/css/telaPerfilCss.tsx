@@ -57,7 +57,8 @@ const styles = StyleSheet.create({
         fontWeight: '700',
         fontSize: 25,
         top:70,
-        left:60
+        left:60,
+        padding: 2, 
       },
       profissoesUser:{
         color: 'black',
@@ -66,12 +67,13 @@ const styles = StyleSheet.create({
         fontSize: 15,
         top:110,
         left:53,
+        padding: 2, 
         },
       area:{
         color: 'black',
         fontFamily:'bold',
         fontWeight: '700',
-        fontSize: 12,
+        fontSize: 15,
         top:100,
         left:55
       },
@@ -86,15 +88,15 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily:'bold',
         fontWeight: '600',
-        fontSize: 15,
-        top:125,
+        fontSize: 16,
+        top:115,
         left:75
       },
       mim:{
         color: 'black',
         fontFamily:'bold',
         fontWeight: '700',
-        fontSize: 12,
+        fontSize: 15,
         top:130,
         left:55 
       },
@@ -102,15 +104,16 @@ const styles = StyleSheet.create({
         color: 'black',
         fontFamily:'bold',
         fontWeight: '500',
-        fontSize: 15,
-        top:139,
-        left:55 
+        fontSize: 16,
+        top:119,
+        left:35,
+        padding:20
       },
       localiza:{
         height:35,
         width:25,
         left:50,
-        top:152
+        top:142
       },
 });
 export default styles;

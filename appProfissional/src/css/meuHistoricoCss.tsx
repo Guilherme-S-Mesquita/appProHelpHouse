@@ -72,14 +72,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems:'flex-start',
-    width:180,
+    width:200,
     height:60,
-    backgroundColor: 'red',
+    backgroundColor: '#f6a059',
     padding: 8,
     borderRadius: 13,
     marginRight:150,
-   
-    bottom:20
+    bottom:20,
   },
   tab2: {
     flexDirection: 'row',
@@ -100,14 +99,18 @@ const styles = StyleSheet.create({
     fontSize: 20,
     top:20,
     fontWeight:'bold',
-
   },
-  Texttab: {
-    color: '#004aad',
+  Texttab1: {
+    color: '#ffff',
     fontSize: 20,
     top:20,
     fontWeight:'bold',
-
+  },
+  Texttab:{
+    color: '#f6a059',
+    fontSize: 20,
+    top:20,
+    fontWeight:'bold',
   },
   tab1:{
    position:'relative',

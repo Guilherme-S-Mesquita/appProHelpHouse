@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold',
-        left: 9
+        left: 59
     },
     filtro: {
         height: 25,
