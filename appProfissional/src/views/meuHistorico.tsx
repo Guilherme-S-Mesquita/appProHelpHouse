@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Alert,ImageBackground } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView, ActivityIndicator, Alert, ImageBackground } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import api from '../../axios';
@@ -51,11 +51,7 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
   }, [user]);
 
   return (
-    <ImageBackground
-    source={Imagens.fundoBemVindo}
-    style={styles.background}
-    resizeMode="cover"
-  >
+
     <View style={styles.container}>
       <View style={styles.navContent}>
         <View style={styles.navbar}>
@@ -70,12 +66,12 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
           </TouchableOpacity>
           <Text style={styles.textNav}>Pedidos</Text>
         </View>
-        <View style={styles.tabs}>
-          <Text style={styles.Texttab}>Contratos</Text>
-        </View>
-        <View style={styles.tab2}>
+        <TouchableOpacity style={styles.tabs}>
+          <Text style={styles.Texttab1}>Contratos</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tab2}>
           <Text style={styles.Texttab}>Finalizados</Text>
-        </View>
+        </TouchableOpacity>
       </View>
 
       {loading ? (
@@ -103,7 +99,7 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
         </ScrollView>
       )}
     </View>
-    </ImageBackground>
+
 
   );
 };

@@ -30,10 +30,13 @@ const styles = StyleSheet.create({
       },
       ola: {
         fontSize: 22,
-        top:5,
+        top:95,
+        fontFamily:'bold',
+        fontWeight: '600',
+        left:29
       },
       nomeUsuario: {
-        color: '#FFA500',
+        color: '#ff914d',
         fontFamily:'bold',
         fontWeight: '700',
       },
@@ -43,19 +46,20 @@ const styles = StyleSheet.create({
         borderRadius: 32,
         margin: 10,
         top:55,
-        height:230,
+        height:209,
         width:'90%',
         left:10
       },
       ganhos: {
-        fontSize: 15,
+        fontSize: 16,
         fontWeight: 'bold',
         color: '#00BF63',
-        top:23,
+        top:20,
       },
       periodoGanhos: {
-        fontSize: 15,
+        fontSize: 17,
         color: 'black',
+        fontWeight: 'bold',
       },
       trintaDias:{
         color:'F6A059'
@@ -64,15 +68,15 @@ const styles = StyleSheet.create({
         width:75,
         height:75,
         borderRadius:80,
-        left:254,
-        bottom:17
+        left:290,
+       top:50
       },
       localizacao: {
-        top:-43,
-        fontSize:14,
-        left:5,
+        fontSize:16,
+        left:2,
         color:'black',
-        fontWeight:'bold'
+        fontWeight:'bold',
+        top:25
       },
       oitoKm:{
         color:'#E60012'
@@ -81,19 +85,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#004AAD',
         padding: 9,
         borderRadius: 65,
-        top:-11,
-        width:150,
-        left:55
+        width:190,
+        left:55,
+        top:55
       },
       botaoAlterarRaio1: {
-        color: 'white',
-        textAlign: 'center',
+        color: '#ffff',
         fontWeight:'bold',
+        height:20,
+        left:10,
       },
       servicosPendentes: {
-        left:40,
+        left:20,
         fontSize:18,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        top:71
       },
       seteServicos:{
         color:'#F6A059',

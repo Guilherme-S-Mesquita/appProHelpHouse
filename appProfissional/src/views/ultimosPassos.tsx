@@ -1,5 +1,5 @@
 import React, { useContext,useState } from 'react';
-import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, ScrollView} from 'react-native';
+import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, ScrollView,KeyboardAvoidingView} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
@@ -348,10 +348,14 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         fontWeight:'600'
                     }}
                      returnKeyType='done'
-                    placeholder="Escreva um pouco sobre você..."
+                    placeholder=""
                     placeholderTextColor="#fff"
                     >
                 </TextInput>
+
+
+                <Text style={styles.textPromova}>Promova o seu trabalho,adicione {'\n'}fotos no seu portifólio!</Text>
+
             </View>
 
 
@@ -361,6 +365,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
 
             <View style={styles.containerProtifolio}>
+              
         <View style={styles.portfolioItem}>
             <Image 
                 source={selectedImagePor ? { uri: selectedImagePor } : { uri: portifolio1 }} 

@@ -134,19 +134,19 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
         <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} />
       </View>
 
-      <View style={styles.containerGanhos}>
+      
         <Text style={styles.ola}>Olá, <Text style={styles.nomeUsuario}>{user.nomeContratado}</Text></Text>
-        <Text style={styles.ganhos}>R${user.valorTotalRecebido} <Text style={styles.periodoGanhos}>Nos últimos <Text style={styles.trintaDias}>30 dias</Text></Text></Text>
         <Image
           source={{ uri: user.imagemContratado }}
           style={styles.jesusImg}
         />
-
-        <Text style={styles.localizacao}>{user.cidadeContratado} <Text style={styles.oitoKm}>8km</Text></Text>
+        <View style={styles.containerGanhos}>
+        <Text style={styles.periodoGanhos}>Seu faturamento: <Text style={styles.ganhos}>R${user.valorTotalRecebido} </Text></Text>
+        <Text style={styles.localizacao}>Atuando em {user.cidadeContratado}</Text>
         <TouchableOpacity style={styles.botaoAlterarRaio2}>
           <Text style={styles.botaoAlterarRaio1}  onPress={meuHistorico}>historico dos serviços</Text>
         </TouchableOpacity>
-        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}>{contadorPedidos}</Text>pedidos para hoje</Text>
+        <Text style={styles.servicosPendentes}>Você tem <Text style={styles.seteServicos}> {contadorPedidos}</Text>  pedidos para hoje</Text>
       </View>
 
       
@@ -156,7 +156,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
         ) : error ? (
           <Text style={{ color: 'red' }}>{error}</Text>
         ) : pedidos.length === 0 ? (
-          <Text style={{ marginTop: 60, marginLeft: 20, fontWeight: 'bold', fontSize: 20 }}>Nenhum pedido pendente.</Text>
+          <Text style={{ marginTop: 60, marginLeft: 20, fontWeight: 'bold', fontSize: 20, top:18}}>Nenhum pedido pendente.</Text>
         ) : (
           pedidos.map((pedido) => (
             <View key={pedido.idSolicitarPedido} style={styles.containerNovosPedidos}>
