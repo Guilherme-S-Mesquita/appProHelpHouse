@@ -4,6 +4,10 @@ const styles = StyleSheet.create({
   fundo: {
     flex: 1,
   },
+  container:{
+    marginLeft:30,
+    marginTop:20,
+    },
   branco: {
     backgroundColor: '#ffff',
     width: '89%',

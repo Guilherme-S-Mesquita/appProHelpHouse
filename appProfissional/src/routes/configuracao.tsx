@@ -54,22 +54,22 @@ const { user } = useContext(myContext);
     return (
       <ImageBackground 
       source={Imagens.fundoBemVindo}
-      style={styles.background}
+      style={styles.fundo}
       resizeMode="cover"
     >
       <View style={{ marginTop: 70 }}>
         <TouchableOpacity>
           <AntDesign name="leftcircle" size={35} color='#004aad' style={{ marginLeft: 24 }} onPress={perfilNav} />
         </TouchableOpacity>
-        <Text style={styles.Textconfiguracao}> Configurações</Text>
+        <Text style={styles.config}> Configurações</Text>
       </View>
 
-      <View style={styles.fundoBranco}>
+      <View style={styles.branco}>
         <View style={styles.container}>
-          <Text style={styles.TextmeuDados}>Meus dados</Text> 
+          <Text style={styles.meus}>Meus dados</Text> 
 
           {/* Campo para editar o CEP */}
-          <Text style={styles.dados}>CEP</Text>
+          <Text style={styles.cep}>CEP</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
@@ -82,7 +82,7 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Campo para editar o email */}
-          <Text style={styles.dados}>Email</Text>
+          <Text style={styles.email}>Email</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
@@ -95,7 +95,7 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Campo para editar o telefone */}
-          <Text style={styles.dados}>Telefone</Text>
+          <Text style={styles.fone}>Telefone</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
@@ -108,8 +108,8 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Botão de salvar */}
-          <TouchableOpacity style={styles.saveButton} onPress={update}>
-            <Text style={styles.saveButtonText}>Salvar</Text>
+          <TouchableOpacity style={styles.salvar} onPress={update}>
+            <Text style={styles.textoSalvar}>Salvar</Text>
           </TouchableOpacity>
 
         </View>
