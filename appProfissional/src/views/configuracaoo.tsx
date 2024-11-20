@@ -1,19 +1,21 @@
 import React, { useState, useContext } from 'react';
-import { View, Text, Image, ScrollView, TouchableOpacity, ImageBackground, TextInput, Alert } from 'react-native';
-import Imagens from '../../img/img';
-import styles from '../css/configuracaoCss';
-import myContext from '../functions/authContext';
+import { View, Text, ImageBackground, TouchableOpacity, TextInput, Alert } from 'react-native';
 import Entypo from '@expo/vector-icons/Entypo';
-import api from '../../axios';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import Imagens from "../../img/img";
+import styles from '../css/configuracaoCss';
+import { useUser } from '../proContext';
+import myContext from '../functions/authContext';
+import api from '../../axios';
 
-const TelaConfiguracao: React.FC<{ navigation: any, route: any }> = ({ navigation, route }) => {
-const { user } = useContext(myContext);
-   
+const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
+  const { userData } = useUser(); 
+  const { user } = useContext(myContext);
+
   // Estados para os dados do formulário
-  const [telefone, setTelefoneContratado] = useState(user ? user.telefoneContratado : '');
-  const [email, setEmailContratado] = useState(user ? user.emailContratado : '');
-  const [cep, setCepContratado] = useState(user ? user.cepContratado : '');
+  const [telefone, setTelefone] = useState(user ? user.telefoneContratado : '');
+  const [email, setEmail] = useState(user ? user.emailContratado : '');
+  const [cep, setCep] = useState(user ? user.cepContratado : '');
 
   // Função para atualizar o usuário
   async function update() {
@@ -27,9 +29,9 @@ const { user } = useContext(myContext);
     const cepFormatado = cep.replace(/\D/g, '');
 
     try {
+        console.log
       // Chama a API com os dados atualizados
-      const response = await api.put(`/pro/${user.idContratado}`, {
-        
+      const response = await api.post(`/proUp/${user.idContratado}`, {
         telefoneContratado: telefoneFormatado,
         emailContratado: email,
         cepContratado: cepFormatado
@@ -40,41 +42,42 @@ const { user } = useContext(myContext);
       } else {
         Alert.alert("Erro", "Houve um problema ao atualizar. Tente novamente.");
       }
-    } catch (error: any) {
-      console.log(telefoneFormatado, cepFormatado )
+    } catch (error : any) {
       console.error("Erro ao atualizar:", error.response?.data);
       const errorMsg = error.response?.data?.message || "Erro ao atualizar os dados. Tente novamente.";
       const errorDetails = error.response?.data?.errors ? JSON.stringify(error.response.data.errors) : '';
       Alert.alert("Erro", `${errorMsg}\n${errorDetails}`);
     }
   }
+
   const perfilNav = () => {
     navigation.navigate('perfil');
   };
-    return (
-      <ImageBackground 
+
+  return (
+    <ImageBackground 
       source={Imagens.fundoBemVindo}
-      style={styles.fundo}
+      style={styles.background}
       resizeMode="cover"
     >
       <View style={{ marginTop: 70 }}>
         <TouchableOpacity>
           <AntDesign name="leftcircle" size={35} color='#004aad' style={{ marginLeft: 24 }} onPress={perfilNav} />
         </TouchableOpacity>
-        <Text style={styles.config}> Configurações</Text>
+        <Text style={styles.Textconfiguracao}> Configurações</Text>
       </View>
 
-      <View style={styles.branco}>
+      <View style={styles.fundoBranco}>
         <View style={styles.container}>
-          <Text style={styles.meus}>Meus dados</Text> 
+          <Text style={styles.TextmeuDados}>Meus dados</Text> 
 
           {/* Campo para editar o CEP */}
-          <Text style={styles.cep}>CEP</Text>
+          <Text style={styles.dados}>CEP</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
               value={cep}
-              onChangeText={setCepContratado}
+              onChangeText={setCep}
               keyboardType="numeric"
               placeholder="Digite o CEP"
             />
@@ -82,12 +85,12 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Campo para editar o email */}
-          <Text style={styles.email}>Email</Text>
+          <Text style={styles.dados}>Email</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
               value={email}
-              onChangeText={setEmailContratado}
+              onChangeText={setEmail}
               keyboardType="email-address"
               placeholder="Digite o email"
             />
@@ -95,12 +98,12 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Campo para editar o telefone */}
-          <Text style={styles.fone}>Telefone</Text>
+          <Text style={styles.dados}>Telefone</Text>
           <View style={{ flexDirection: 'row' }}>
             <TextInput
               style={styles.input}
               value={telefone}
-              onChangeText={setTelefoneContratado}
+              onChangeText={setTelefone}
               keyboardType="phone-pad"
               placeholder="Digite o telefone"
             />
@@ -108,8 +111,8 @@ const { user } = useContext(myContext);
           </View>
 
           {/* Botão de salvar */}
-          <TouchableOpacity style={styles.salvar} onPress={update}>
-            <Text style={styles.textoSalvar}>Salvar</Text>
+          <TouchableOpacity style={styles.saveButton} onPress={update}>
+            <Text style={styles.saveButtonText}>Salvar</Text>
           </TouchableOpacity>
 
         </View>
@@ -117,6 +120,5 @@ const { user } = useContext(myContext);
     </ImageBackground>
   );
 };
-export default TelaConfiguracao;
 
-
+export default Configuracao;
