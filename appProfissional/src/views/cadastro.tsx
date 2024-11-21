@@ -64,7 +64,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 18,
-                                marginBottom: 37,
+                                marginBottom: 15,
                                 marginHorizontal: -20,
                                 bottom: 3,
                                 fontWeight: '700'
@@ -88,7 +88,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 color: '#fff',
                                 fontSize: 18,
                                 marginTop: -10,
-                                marginBottom: 37,
+                                marginBottom: 15,
                                 marginHorizontal: -20,
                                 top: 10,
                                 fontWeight: '700'
@@ -114,7 +114,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 18,
-                                marginBottom: 37,
+                                marginBottom: 15,
                                 marginHorizontal: -20,
                                 top: 18,
                                 fontWeight: '700'
@@ -137,12 +137,13 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
-                                marginTop: 5,
-                                marginBottom: 37,
+                                marginBottom: 13,
                                 marginHorizontal: -20,
-                                top: 17,
+                                marginTop: 5,
+                                top: 20,
                                 fontSize: 18,
-                                fontWeight: '700'
+                                fontWeight: '700',
+                                padding:10
                             }}
                             placeholder="Digite o seu CPF..."
                             placeholderTextColor="#fff"
@@ -172,11 +173,12 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                                 borderColor: '#fff',
                                 color: '#fff',
                                 fontSize: 18,
-                                marginBottom: 37,
+                                marginBottom: 14,
                                 marginHorizontal: -20,
                                 marginTop: 5,
-                                top: 25,
-                                fontWeight: '700'
+                                top: 30,
+                                fontWeight: '700',
+                                padding:10
                             }}
                             placeholder="(XX) XXXXX-XXXX"
                             placeholderTextColor="#fff"

@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 70,
-    top:47
+    top:57
   },
   portfolioItem: {
     width: 95,

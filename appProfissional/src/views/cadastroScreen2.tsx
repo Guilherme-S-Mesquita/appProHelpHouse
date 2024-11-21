@@ -108,7 +108,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         containerStyles={{
                             borderBottomWidth: 1.5,
                             borderColor: '#fff',
-                            marginTop: 20,
+                            marginTop: 8,
                             marginBottom: 10,
                         }}
                         customLabelStyles={{
@@ -124,7 +124,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         inputStyles={{
                             color: '#fff',
                             fontSize: 19,
-                            fontWeight: '500'
+                            fontWeight: '500',
+                            top:13
                         }}
                     />
                     <FloatingLabelInput
@@ -134,7 +135,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         containerStyles={{
                             borderBottomWidth: 1.5,
                             borderColor: '#fff',
-                            marginTop: 20,
+                            marginTop: 8,
                             marginBottom: 10,
 
                         }}
@@ -142,7 +143,6 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             topFocused: -20,
                             colorFocused: '#fff',
                             colorBlurred: '#E5E1DA',  // Cor do label quando o input não está em foco
-
                             fontSizeFocused: 16,
                         }}
                         labelStyles={{
@@ -154,7 +154,8 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         inputStyles={{
                             color: '#fff',
                             fontSize: 19,
-                            fontWeight: '500'
+                            fontWeight: '500',
+                            top:13
                         }}
                     />
 
@@ -166,7 +167,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         containerStyles={{
                             borderBottomWidth: 1.5,
                             borderColor: '#fff',
-                            marginTop: 20,
+                            marginTop: 5,
                             marginBottom: 10,
                         }}
                         customLabelStyles={{
@@ -177,14 +178,15 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             fontSizeFocused: 16,
                         }}
                         labelStyles={{
-                            paddingHorizontal: 5,
+                            paddingHorizontal: 10,
                             color: '#FF8F49',
                             fontWeight: 'bold'
                         }}
                         inputStyles={{
                             color: '#fff',
                             fontSize: 19,
-                            fontWeight: '500'
+                            fontWeight: '500',
+                            top:13
                         }}
                     />
 
@@ -197,10 +199,9 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             containerStyles={{
                                 borderBottomWidth: 1.5,
                                 borderColor: '#fff',
-                                marginTop: 20,
+                                marginTop: 1,
                                 marginBottom: 10,
-
-
+                                top:6
                             }}
                             customLabelStyles={{
                                 topFocused: -20,
@@ -212,13 +213,14 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             labelStyles={{
                                 paddingHorizontal: 5,
                                 color: '#FF8F49',
-                                fontWeight: 'bold'
-
+                                fontWeight: 'bold',
+                                top:10
                             }}
                             inputStyles={{
                                 color: '#fff',
                                 fontSize: 19,
-                                fontWeight: '500'
+                                fontWeight: '500',
+                                top:13
                             }}
                         />
                         <View style={styles.inputNum}>
@@ -230,10 +232,11 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 containerStyles={{
                                     borderBottomWidth: 1.5,
                                     borderColor: '#fff',
-                                    marginTop: 20,
+                                    marginTop: 8,
                                     marginBottom: 10,
                                     marginLeft: 10,
                                     width: '80%',
+                                    top:6
                                 }}
                                 customLabelStyles={{
                                     topFocused: -20,
@@ -243,15 +246,17 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                                 }}
                                 labelStyles={{
-                                    paddingHorizontal: 5,
+                                    paddingHorizontal: 1,
                                     color: '#FF8F49',
                                     fontWeight: 'bold',
+                                    top:5
 
                                 }}
                                 inputStyles={{
                                     color: '#fff',
                                     fontSize: 19,
-                                    fontWeight: '500'
+                                    fontWeight: '500',
+                                    top:13
                                 }}
                                 returnKeyType='done'
                             />
