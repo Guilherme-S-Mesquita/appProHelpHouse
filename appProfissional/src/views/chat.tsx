@@ -316,15 +316,17 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
         return () => clearInterval(intervalId); // Limpa o intervalo ao desmontar
     }, [roomId]);
 
+    const nomeContratante = dataContratante ? dataContratante.nomeContratante : 'Chat';
+
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
             <View style={styles.navChat}>
                 <View style={styles.navContent}>
                     <View style={styles.navbar}>
-                        <Text style={styles.textNav}>Chat</Text>
+                        <Text style={styles.textNav}>{nomeContratante}</Text>
                         <TouchableOpacity onPress={toggleModal} style={styles.botaoPDF}>
-                            <Text style={styles.textoBotao}>Gerar PDF</Text>
+                            <Text style={styles.textoBotao}>Fechar negócio.</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

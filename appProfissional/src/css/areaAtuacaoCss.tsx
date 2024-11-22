@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: '900',
         top: -95,
-        left: '25%'
+        left: '25.6%',
     },
     areas: {
         color: '#F6A059',
@@ -84,92 +84,92 @@ const styles = StyleSheet.create({
     mecanico: {
         width: 90,
         height: 90,
-        left: '4%',
+        left: '3.5%',
         top: 75,
         marginRight:2
     },
     eletricista: {
         width: 90,
         height: 90,
-        left: '9%',
-        top: 72,
+        left: '5%',
+        top: 76,
         marginRight:2
     },
     chaveiro:{
         width: 90,
         height: 90,
-        right: '23%',
-        top: 72,  
+        right: '22%',
+        top: 77,  
         marginRight:2
     },
     costureira:{
         width: 90,
         height: 90,
-        right: '19%',
-        top: 72, 
+        right: '20.3%',
+        top: 77, 
         marginRight:2 
     },
     professor:{
         width: 90,
         height: 90,
-        right: '23%',
-        top: 72, 
+        right: '25.7%',
+        top: 77, 
         marginRight:2 
     },
     personalOrg:{
         width: 90,
         height: 90,
-        right: '19%',
-        top: 72,
+        right: '23.6%',
+        top: 77,
         marginRight:2
     },
     jadineiro: {
         width: 90,
         height: 90,
-        right: '25%',
+        right: '20%',
         top: 180,
         marginRight:2
     },
     encanador: {
         width: 90,
         height: 90,
-        right: '22%',
-        top: 179,
+        right: '18.6%',
+        top: 180,
         marginRight:2
     },
     diarista: {
         width: 90,
         height: 90,
-        right: '18%',
+        right: '17%',
         top: 180,
         marginRight:2
     },
     baba:{
         width: 90,
         height: 90,
-        right: '14%',
-        top: 179,
-        marginRight:2
+        right: '15.5%',
+        top: 180,
+        marginRight:1
     },
     instalador:{
         width: 90,
         height: 90,
         right: '28%',
-        top: 179,
+        top: 180,
         marginRight:2
     },
     cozinheiro:{
         width: 90,
         height: 90,
-        right: '41%',
-        top: 179,
+        right: '40.5%',
+        top: 180,
         marginRight:2
     },
     montador:{
         width: 90,
         height: 90,
-        right: '37%',
-        top: 179,
+        right: '38.6%',
+        top: 180,
         marginRight:2
     },
 

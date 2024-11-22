@@ -60,7 +60,6 @@ const CadastroEmail: React.FC<{ route: any, navigation: any }> = ({ route, navig
                             backgroundColor: '#F5FCFF',
                             paddingHorizontal: 5,
                             color: '#FF8F49',
-                            height: '29%',
                             fontSize: 18,
                         }}
                         inputStyles={{
