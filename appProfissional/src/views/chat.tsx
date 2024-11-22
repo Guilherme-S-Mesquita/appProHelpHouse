@@ -290,7 +290,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                 Alert.alert('Sucesso', 'PDF gerado e contrato criado com sucesso!');
 
             await Sharing.shareAsync(uri);
-            navigation.navigate('pedidosAgendados', );
+                navigation.navigate('pedidosAgendadosTab', );
 
 
             } else {
