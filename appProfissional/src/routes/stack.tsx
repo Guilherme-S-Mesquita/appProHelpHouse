@@ -56,7 +56,7 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="pedidosAgendados"
+        name="pedidosAgendadosTab"
         component={PedidosAgendados}
         options={{
           headerShown: false,
