@@ -338,10 +338,10 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                         <Text style={styles.modalTitle}>Detalhes do Serviço</Text>
 
                         <ScrollView style={styles.modalForm} showsVerticalScrollIndicator={false}>
-                            <Text style={styles.modalLabel}>Tipo de Serviço:</Text>
+                            <Text style={styles.modalLabel}>Descrição de Serviço:</Text>
                             <TextInput
                                 style={styles.modalInput}
-                                placeholder="Digite o tipo de serviço"
+                                placeholder="Descrição do serviço que será realizado"
                                 value={descServico}
                                 onChangeText={setDescServico}
                             />

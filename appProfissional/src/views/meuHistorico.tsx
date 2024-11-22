@@ -37,7 +37,7 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
           throw new Error('ID de usuário não encontrado.');
         }
 
-        const response = await api.get(`/pedidos/finalizados/${user.idContratado}`);
+        const response = await api.get(`/pedidos/finalizados/${userId}`);
         setPedidos(response.data);
       } catch (err) {
         setError('Erro ao carregar pedidos finalizados.');

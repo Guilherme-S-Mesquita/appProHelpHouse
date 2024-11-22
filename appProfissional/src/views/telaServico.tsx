@@ -49,6 +49,8 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
     fetchToken();
   }, []);
 
+
+
   const getProPedidos = async (idContratado: string) => {
     try {
       console.log('Fazendo requisição para ID:', idContratado);
@@ -67,31 +69,46 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
   };
 
   useEffect(() => {
-    const fetchPedidos = async () => {
-      if (!user || !user.idContratado) {
-        Alert.alert('Erro', 'ID do contratado não encontrado ou usuário não autenticado.');
-        return;
-      }
-
-      if (!token) {
-        return;
-      }
-
-      setLoading(true);
+    let isMounted = true; //ESSA VARIVAEL SERVER PARA VERIFICAR SE HÁ ALGUM PEDIDO
+    let delay = 1000; // Começa com 1 segundo
+  
+    const fetchPedidosComPollingExponencial = async () => {
+      if (!user || !user.idContratado || !token) return;
+  
       try {
-        const pedidosData = await getProPedidos(user.idContratado);
-        setPedidos(pedidosData.pedidos || []);
-        setContadorPedidos(pedidosData.contadorPedidos || 0);
-      } catch (error: any) {
-        setError(error.message || 'Ocorreu um erro ao carregar os pedidos.');
+        const response = await api.get(`/profissional/${user.idContratado}/pedidos`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+  
+        //SE REQUISIÇÃO FOR IGUAL A TRUE, ENTÃO BUSQUE DO BANCO E ATUALIZE AS INFO
+        if (isMounted) {
+          setPedidos(response.data.pedidos || []);// ATUALIZAÇÃO PEDIDO
+          setContadorPedidos(response.data.contadorPedidos || 0);//ATUALIZAÇÃO CONTADOR
+  
+          // DELEY POSSIVEL DE UM PEDIDO AO OUTRO
+          delay = 1000;
+        }
+      } catch (error:any) {
+        console.error("Erro ao buscar pedidos:", error.message || error);
+  
+        // Incrementa o atraso ao ocorrer erro
+        delay = Math.min(delay * 2, 30000); // Máximo de 30 segundos
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setTimeout(fetchPedidosComPollingExponencial, delay);
+        }
       }
     };
-
-    fetchPedidos();
+  
+    fetchPedidosComPollingExponencial();
+  
+    return () => {
+      isMounted = false; // Limpa a montagem ao desmontar o componente
+    };
   }, [user, token]);
-
+  
 
   const createChatRoom = async (idContratante: string, idContratado: string, navigation: any, idSolicitarPedido: number) => {
     if (!idContratante || !idContratado) {

@@ -111,6 +111,15 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginTop: 15,
     },
+    botaoIniciar: {
+        backgroundColor: '#004AAD',
+        paddingVertical: 8,
+        paddingHorizontal: 20,
+        borderRadius: 20,
+        alignSelf: 'center',
+        marginTop: 15,
+       
+    },
     conversar: {
         color: 'white',
         fontWeight: 'bold',
