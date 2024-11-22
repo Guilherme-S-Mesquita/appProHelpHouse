@@ -51,22 +51,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
 
 
-  const getProPedidos = async (idContratado: string) => {
-    try {
-      console.log('Fazendo requisição para ID:', idContratado);
-      const response = await api.get(`/profissional/${idContratado}/pedidos`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          'Content-Type': 'application/json',
-        },
-      });
-      console.log(response.data)
-      return response.data;
-    } catch (error: any) {
-      console.error('Erro ao buscar pedidos:', error.response ? error.response.data : error.message);
-      throw new Error(error.response?.data?.error || 'Erro ao buscar pedidos.');
-    }
-  };
+
 
   useEffect(() => {
     let isMounted = true; //ESSA VARIVAEL SERVER PARA VERIFICAR SE HÁ ALGUM PEDIDO
