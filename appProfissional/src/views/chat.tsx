@@ -186,38 +186,75 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
         const { nomeContratado, cpfContratado } = dataContratado;
     
         const html = `
-            <!DOCTYPE html>
-            <html>
-            <head>
-                <title>Contrato</title>
-                <style>
-                    body { font-family: Arial, sans-serif; margin: 10px; font-size: 14px; }
-                    h1 { text-align: center; color: navy; font-size: 18px; }
-                    .section { margin-bottom: 10px; }
-                </style>
-            </head>
-            <body>
-                <h1>Contrato de Serviços</h1>
-                <div class="section">
-                    <h2>Contratante</h2>
-                    <p><strong>Nome:</strong> ${nomeContratante}</p>
-                    <p><strong>CPF:</strong> ${cpfContratante}</p>
-                </div>
-                <div class="section">
-                    <h2>Contratado</h2>
-                    <p><strong>Nome:</strong> ${nomeContratado}</p>
-                    <p><strong>CPF:</strong> ${cpfContratado}</p>
-                </div>
-                <div class="section">
-                    <h2>Detalhes do Serviço</h2>
-                    <p><strong>Descrição de Serviço:</strong> ${descServico}</p>
-                    <p><strong>Data Marcada:</strong> ${dataMarcada}</p>
-                    <p><strong>Hora Marcada:</strong> ${horaMarcada}</p>
-                    <p><strong>Valor Cobrado:</strong> ${valorCobrado}</p>
-                    <p><strong>Forma de Pagamento:</strong> ${formaPagamento}</p>
-                </div>
-            </body>
-            </html>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Contrato de Prestação de Serviços</title>
+            <style>
+                body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+                h1 { text-align: center; color: navy; }
+                h2 { color: darkblue; margin-top: 20px; }
+                p { margin-bottom: 10px; }
+                .section { margin-bottom: 15px; }
+            </style>
+        </head>
+        <body>
+            <h1>Contrato de Prestação de Serviços</h1>
+        
+            <div class="section">
+                <h2>1. Partes</h2>
+                <p><strong>Contratante:</strong> ${nomeContratante}</p>
+                <p><strong>CPF do Contratante:</strong> ${cpfContratante}</p>
+                <p><strong>Contratado:</strong> ${nomeContratado}</p>
+                <p><strong>CPF do Contratado:</strong> ${cpfContratado}</p>
+            </div>
+        
+            <div class="section">
+                <h2>2. Objeto do Contrato</h2>
+                <p>O presente contrato tem como objeto a prestação do serviço descrito a seguir: ${descServico}.</p>
+                <p><strong>Data e Hora da Execução:</strong> ${dataMarcada}, às ${horaMarcada}.</p>
+            </div>
+        
+            <div class="section">
+                <h2>3. Valor e Forma de Pagamento</h2>
+                <p><strong>Valor Total:</strong> ${valorCobrado}</p>
+                <p><strong>Forma de Pagamento:</strong> ${formaPagamento}</p>
+            </div>
+        
+            <div class="section">
+                <h2>4. Obrigações do Contratante</h2>
+                <ul>
+                    <li>Efetuar o pagamento conforme estipulado.</li>
+                    <li>Fornecer informações precisas e completas para a execução do serviço.</li>
+                    <li>Garantir acesso ao local e condições adequadas para a realização do serviço.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>5. Obrigações do Contratado</h2>
+                <ul>
+                    <li>Realizar o serviço com diligência, competência e dentro do prazo combinado.</li>
+                    <li>Respeitar as normas de segurança e conduta aplicáveis.</li>
+                    <li>Notificar o contratante sobre qualquer situação que possa impedir a execução do serviço.</li>
+                </ul>
+            </div>
+        
+            <div class="section">
+                <h2>6. Cancelamento e Penalidades</h2>
+                <p>Em caso de cancelamento pelo contratante sem aviso prévio de 24 horas, será aplicada uma multa de 20% do valor total.</p>
+                <p>O contratado pode cancelar o serviço por motivos de força maior, devendo comunicar o contratante imediatamente e, se necessário, reembolsar valores pagos antecipadamente.</p>
+            </div>
+        
+            <div class="section">
+                <h2>7. Disposições Finais</h2>
+                <p>Este contrato é regido pelas leis aplicáveis e reflete a vontade das partes, sendo assinado eletronicamente e com valor legal.</p>
+                <p>Quaisquer alterações a este contrato devem ser feitas por escrito e assinadas por ambas as partes.</p>
+            </div>
+        
+           
+        </body>
+        </html>
+        
         `;
     
         try {
