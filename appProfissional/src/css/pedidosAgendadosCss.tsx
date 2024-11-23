@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
         bottom: 35,
         borderRadius: 17,
         width: 404,
-        right: 153,
+        right: 163,
         marginLeft:145,
     },
     pedido: {
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 17,
         width: 380,
         marginBottom: 50,
-        marginTop:60,
+        marginTop:10,
     },
     textoAgendamento: {
         color: '#004AAD',
