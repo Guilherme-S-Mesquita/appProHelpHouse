@@ -13,6 +13,16 @@ const styles = StyleSheet.create({
         top: 95,
         zIndex:1
     },
+    containerVerical:{
+      justifyContent:'center',
+      flexDirection:'row',
+      bottom: 90,
+      },
+      fotosRolagem:{
+        width:150,
+        height:150,
+        marginLeft:15
+    },  
     botao1: {
         alignItems: 'center',
         backgroundColor: '#00126f',
