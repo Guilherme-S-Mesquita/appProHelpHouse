@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 17,
     fontWeight: '900',
-    bottom: 30,
+    bottom: 25,
   },
   title: {
     justifyContent: 'flex-end',
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   },
   nome: {
     right: 18,
-    top: 15,  
+    top: 10,  
   },
   sobrenome: {
     right: 18,
@@ -102,17 +102,17 @@ const styles = StyleSheet.create({
   },
   nascimento: {
     right: 18,
-    top: 25, 
+    top: 28, 
 
   },
   cpf: {
     right: 18,
-    top: 29, 
+    top: 38, 
   },
 
   telefone: {
     right: 18,
-    top: 29, 
+    top: 44, 
   },
   senha: {
     fontWeight: '700',

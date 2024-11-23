@@ -21,7 +21,7 @@ import List from '../functions/index';
 import { Image } from 'react-native';
 import PedidosAgendados from '../views/pedidosAgendados';
 import TelaPerfil from '../views/telaPerfil';
-import TelaConfiguracao from '../views/configuracao';
+import TelaConfiguracao from '../views/configuracaoo';
 import MeuHistorico from '../views/meuHistorico';
 
 const Stack = createNativeStackNavigator();
@@ -56,7 +56,7 @@ const Tabs = () => {
       />
 
       <Tab.Screen
-        name="pedidosAgendados"
+        name="pedidosAgendadosTab"
         component={PedidosAgendados}
         options={{
           headerShown: false,

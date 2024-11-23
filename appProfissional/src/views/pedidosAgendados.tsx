@@ -8,16 +8,17 @@ import Staps from '../../componentes/staps/staps';
 import { QrCodePix } from '../../componentes/pix';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import TelaConfiguracao from './configuracao';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 
 interface Contratante {
+
     nomeContratante: string;
     bairroContratante: string;
     cidadeContratante: string;
-    emailContratante:string;
-    cepContratante:string;
+    emailContratante: string;
+    cepContratante: string;
     idContratante: string;
 }
 
@@ -28,6 +29,7 @@ interface Contrato {
     hora: string;
     desc_servicoRealizado: string;
     forma_pagamento: string;
+    status: string
 }
 
 interface Pedido {
@@ -38,32 +40,64 @@ interface Pedido {
     contrato?: Contrato;
 }
 
-const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition: number, onClose: () => void }> =  ({ navigation })=> {
+const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition: number, onClose: () => void }> = ({ navigation }) => {
     const [pedidos, setPedidos] = useState<Pedido[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [modalVisible, setModalVisible] = useState(false);
     const [pedidoSelecionado, setPedidoSelecionado] = useState<Pedido | null>(null);
-    const [currentPosition, setCurrentPosition] = React.useState<number>(0);
     const { user } = useContext(myContext);
+    const [token, setToken] = useState<string | null>(null);
 
-    
+
+    useEffect(() => {
+        const fetchToken = async () => {
+            try {
+                const savedToken = await AsyncStorage.getItem('authToken');
+                if (savedToken) {
+                    setToken(savedToken);
+                    console.log('Token obtido do AsyncStorage:', savedToken);
+                } else {
+                    console.log('Nenhum token encontrado no AsyncStorage');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar o token:', error);
+            }
+        };
+        fetchToken();
+    }, []);
+
     useEffect(() => {
         if (!user?.idContratado) return;
+
+        let isMounted = true; //ESSA VARIVAEL SERVER PARA VERIFICAR SE HÁ ALGUM PEDIDO
+        let delay = 1000; // Começa com 1 segundo
 
         const fetchPedidos = async () => {
             try {
                 const response = await api.get(`/pedidos/aceitos/${user.idContratado}`);
+                
+                
+                if (isMounted) {
                 setPedidos(response.data || []);
+                // DELEY POSSIVEL DE UM PEDIDO AO OUTRO
+                delay = 1000;
+                }
             } catch (err) {
                 setError('Erro ao carregar pedidos');
                 console.error('Erro ao carregar pedidos:', err);
             } finally {
+                if (isMounted) {
+                    setTimeout(fetchPedidos, delay);
+                  }
                 setLoading(false);
             }
         };
 
         fetchPedidos();
+        return () => {
+            isMounted = false; // Limpa a montagem ao desmontar o componente
+          };
     }, [user?.idContratado]);
 
 
@@ -78,7 +112,7 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
         }
     };
 
-  
+
     if (loading) {
         return <ActivityIndicator size="large" color="#0000ff" />;
     }
@@ -87,18 +121,50 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
         return <Text style={{ color: 'red' }}>{error}</Text>;
     }
 
+    const createChatRoom = async (idContratante: string, idContratado: string, navigation: any, idSolicitarPedido: number) => {
+        if (!idContratante || !idContratado) {
+            Alert.alert('Erro', 'ID do contratante ou contratado não encontrado.');
+            return;
+        }
+
+        try {
+            console.log('Criando sala de chat para:', { idContratante, idContratado, idSolicitarPedido });
+            const response = await api.post(`/chat-room/${idContratante}`, null, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const roomId = response.data?.chat_room?.id;
+
+            // Verifica se a resposta foi bem-sucedida
+            if (response.status === 200 && roomId) {
+                console.log('Sala de chat criada, Room ID:', roomId);
+                navigation.navigate('Chat', { roomId, idContratante, idSolicitarPedido });
+            } else {
+                Alert.alert('Erro', 'Não foi possível criar ou encontrar a sala de chat.');
+                console.log('Resposta da API não contém roomId:', response.data);
+            }
+        } catch (error: any) {
+            console.error('Erro ao criar ou buscar a sala de chat:', error.response ? error.response.data : error.message);
+            Alert.alert('Erro', 'Houve um problema ao criar a sala.');
+        }
+    };
+
+
     return (
         <View style={styles.container}>
-    
-      <TouchableOpacity>
-        <AntDesign
-          name="leftcircle"
-          size={55}
-          color="#0000"
-          style={{ marginLeft: 1,left: 1, zIndex:10}}
-         onPress={() => navigation.navigate('perfil')}
-        />
-        </TouchableOpacity>
+
+            <TouchableOpacity>
+                <AntDesign
+                    name="leftcircle"
+                    size={55}
+                    color="#0000"
+                    style={{ marginLeft: 1, left: 1, zIndex: 10 }}
+                    onPress={() => navigation.navigate('perfil')}
+                />
+            </TouchableOpacity>
             <View style={styles.agendamentos}>
                 <Text style={styles.textoAgendamento}>Agendamentos</Text>
                 <View style={styles.cabecalhoPedido}>
@@ -130,12 +196,31 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
                                 </>
                             )}
 
+
+                            {pedido.contrato?.status === 'aceito' && (
+                                <TouchableOpacity
+                                    style={styles.botaoIniciar}
+                                    onPress={() => iniciarPedido(pedido.idSolicitarPedido)}
+                                >
+
+                                    <Text style={styles.conversar}>Iniciar</Text>
+                                </TouchableOpacity>
+                            )}
                             <TouchableOpacity
                                 style={styles.botaoConversar}
-                                onPress={() => iniciarPedido(pedido.idSolicitarPedido)}
+                                onPress={() =>
+                                    createChatRoom(
+                                        pedido.contratante.idContratante,
+                                        user.idContratado,
+                                        navigation,
+                                        pedido.idSolicitarPedido
+                                    )
+                                }
                             >
-                                <Text style={styles.conversar}>Iniciar</Text>
+                                <Text style={styles.conversar}>Conversar</Text>
                             </TouchableOpacity>
+
+
                         </View>
                     ))
                 ) : (
@@ -163,9 +248,9 @@ const PedidosAgendados: React.FC<{ route: any; navigation: any; currentPosition:
                                     Situação do pagamento: {pedidoSelecionado.contrato?.forma_pagamento || "Indisponível"} - R$ {pedidoSelecionado.contrato?.valor || "0.00"}
                                 </Text>
 
-                                <Staps pedido={pedidoSelecionado}/>
+                                <Staps pedido={pedidoSelecionado} />
 
-                         
+
 
                                 <TouchableOpacity style={styles.botaoAction} onPress={() => setModalVisible(false)}>
                                     <Text style={styles.textoBotaoFechar}>Fechar</Text>
