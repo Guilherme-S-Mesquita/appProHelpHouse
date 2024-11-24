@@ -10,13 +10,14 @@ const styles = StyleSheet.create({
         width:350,
         borderRadius:25,
         
-        marginLeft:33,
+        marginLeft:39,
         height:680
     },
     
     container:{
     marginLeft:30,
-    marginTop:20,
+    marginTop:30,
+    right:15
     },
     Textconfiguracao:{
         fontSize:32,

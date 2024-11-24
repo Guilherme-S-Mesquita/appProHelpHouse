@@ -49,7 +49,9 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
 
 
 
-
+                    <View style={styles.meuPort}>
+                        <Text style={styles.meu}>Meu Portifólio</Text>
+                    </View>
 
                     <View style={styles.containerVerical}>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>

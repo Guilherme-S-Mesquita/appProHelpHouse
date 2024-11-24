@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold',
-        left: 59
+        left: 20
     },
     filtro: {
         height: 25,
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#333',
         marginBottom: 4,
+        fontWeight:'500'
     },
     doisKm: {
         color: '#FF8F49',

@@ -13,15 +13,25 @@ const styles = StyleSheet.create({
         top: 95,
         zIndex:1
     },
+    meuPort:{
+      marginLeft:60,
+      marginTop:110,
+    },
+    meu:{
+      fontSize:24,
+      fontWeight:500,
+    },
     containerVerical:{
       justifyContent:'center',
       flexDirection:'row',
-      bottom: 90,
+      marginLeft:35,
+      top: 20,
       },
       fotosRolagem:{
-        width:150,
-        height:150,
-        marginLeft:15
+        width:120,
+        height:120,
+        marginLeft:20,
+        borderRadius:20,
     },  
     botao1: {
         alignItems: 'center',
@@ -99,7 +109,7 @@ const styles = StyleSheet.create({
         fontFamily:'bold',
         fontWeight: '600',
         fontSize: 16,
-        top:115,
+        top:85,
         left:75
       },
       mim:{
@@ -123,7 +133,7 @@ const styles = StyleSheet.create({
         height:35,
         width:25,
         left:50,
-        top:142
+        top:112
       },
 });
 export default styles;
