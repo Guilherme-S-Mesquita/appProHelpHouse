@@ -131,6 +131,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
   return (
     <View style={styles.container}>
+      <ScrollView>
       <View style={styles.cabecalho}>
         <Text style={styles.tituloHome}>Meus Pedidos Pendentes</Text>
         <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} />
@@ -152,7 +153,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
       </View>
 
       
-      <ScrollView>
+      
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : error ? (

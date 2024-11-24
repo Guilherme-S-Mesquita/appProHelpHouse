@@ -70,9 +70,6 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
     <TouchableOpacity style={styles.tabs}>
       <Text style={styles.Texttab1}>Finalizados</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.tab2}>
-      <Text style={styles.Texttab}>Finalizados</Text>
-    </TouchableOpacity>
   </View>
 
   {loading ? (
