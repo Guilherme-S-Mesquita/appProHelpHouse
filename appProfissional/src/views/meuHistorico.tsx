@@ -16,8 +16,8 @@ interface Pedido {
     valor: string;
     data: string;
     hora: string;
-    desc_servicoRealizado: string;
     forma_pagamento: string;
+    status: string;
   };
 }
 
@@ -94,7 +94,7 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
             <>
               <Text style={styles.cardText}>Valor: R$ {pedido.contrato.valor}</Text>
               <Text style={styles.cardText}>Data: {pedido.contrato.data} às {pedido.contrato.hora}</Text>
-              <Text style={styles.cardText}>Descrição: {pedido.contrato.desc_servicoRealizado}</Text>
+              <Text style={styles.cardText}>Descrição: {pedido.descricaoPedido}</Text>
               <Text style={styles.cardText}>Forma de pagamento: {pedido.contrato.forma_pagamento}</Text>
             </>
           )}
