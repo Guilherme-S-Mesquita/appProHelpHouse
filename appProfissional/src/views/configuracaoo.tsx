@@ -7,9 +7,10 @@ import styles from '../css/configuracaoCss';
 import { useUser } from '../proContext';
 import myContext from '../functions/authContext';
 import api from '../../axios';
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const { userData } = useUser(); 
+  const { userData } = useUser();
   const { user } = useContext(myContext);
 
   // Estados para os dados do formulário
@@ -29,7 +30,7 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
     const cepFormatado = cep.replace(/\D/g, '');
 
     try {
-        console.log
+      console.log
       // Chama a API com os dados atualizados
       const response = await api.post(`/proUp/${user.idContratado}`, {
         telefoneContratado: telefoneFormatado,
@@ -42,7 +43,7 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
       } else {
         Alert.alert("Erro", "Houve um problema ao atualizar. Tente novamente.");
       }
-    } catch (error : any) {
+    } catch (error: any) {
       console.error("Erro ao atualizar:", error.response?.data);
       const errorMsg = error.response?.data?.message || "Erro ao atualizar os dados. Tente novamente.";
       const errorDetails = error.response?.data?.errors ? JSON.stringify(error.response.data.errors) : '';
@@ -51,26 +52,26 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
   }
 
   const perfilNav = () => {
-    navigation.navigate('perfil');
+    navigation.navigate('homeStack');
   };
 
   return (
-    <ImageBackground 
+    <ImageBackground
       source={Imagens.fundoBemVindo}
       style={styles.background}
       resizeMode="cover"
     >
       <View style={{ marginTop: 70 }}>
         <TouchableOpacity>
-          <AntDesign name="leftcircle" size={35} color='#004aad' style={{ marginLeft: 24 }} onPress={perfilNav} />
+          <AntDesign name="leftcircle" size={35} color='#fff' style={{ marginLeft: 20, top: 12 }} onPress={perfilNav} />
         </TouchableOpacity>
         <Text style={styles.Textconfiguracao}> Configurações</Text>
       </View>
 
       <View style={styles.fundoBranco}>
+      <Text style={styles.TextmeuDados}>Meus dados</Text>
         <View style={styles.container}>
-          <Text style={styles.TextmeuDados}>Meus dados</Text> 
-
+        
           {/* Campo para editar o CEP */}
           <Text style={styles.dados}>CEP</Text>
           <View style={{ flexDirection: 'row' }}>
@@ -81,9 +82,10 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
               keyboardType="numeric"
               placeholder="Digite o CEP"
             />
-            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, top: 5 }} />
+            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, top: 9, right: 55 }} />
           </View>
-
+          <Text style={styles.endereco}> {user.cidadeContratado} {user.bairroContratado}</Text>
+          <Text style={styles.endereco}> {user.ruaContratado}, {user.numCasaContratado}</Text>
           {/* Campo para editar o email */}
           <Text style={styles.dados}>Email</Text>
           <View style={{ flexDirection: 'row' }}>
@@ -94,7 +96,7 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
               keyboardType="email-address"
               placeholder="Digite o email"
             />
-            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, bottom: 6 }} />
+            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, top: 9, right: 55 }} />
           </View>
 
           {/* Campo para editar o telefone */}
@@ -107,9 +109,19 @@ const Configuracao: React.FC<{ navigation: any }> = ({ navigation }) => {
               keyboardType="phone-pad"
               placeholder="Digite o telefone"
             />
-            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, bottom: 6 }} />
+            <Entypo name="edit" size={22} color="black" style={{ marginLeft: 20, top: 9, right: 55 }} />
           </View>
+          <Text style={styles.dados}>Senha</Text>
+          <TouchableOpacity><Text style={styles.endereco}>Trocar minha senha </Text> </TouchableOpacity>
 
+          <Text style={styles.dados}>CPF</Text>
+          <Text style={styles.endereco}>{user.cpfContratado}</Text>
+
+          <Text style={styles.dados}>Métodos de pagamentos aceito</Text>
+          <View style={{ flexDirection: 'row', marginTop: 10 }}>
+            <Ionicons name="card" size={45} color="black" style={styles.cartao} />
+          </View>
+          
           {/* Botão de salvar */}
           <TouchableOpacity style={styles.saveButton} onPress={update}>
             <Text style={styles.saveButtonText}>Salvar</Text>

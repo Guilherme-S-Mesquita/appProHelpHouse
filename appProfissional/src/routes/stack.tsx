@@ -64,8 +64,9 @@ const Tabs = () => {
             <Image 
               source={Imagens.imgPedido} 
               style={{
-                width: 46, 
-                height: 46, 
+                width: 59, 
+                height: 59, 
+                top:6
                
               }} 
             />
