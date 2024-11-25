@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: '900',
-    top: 350,
+    top: 380,
     marginRight:25
   },
 

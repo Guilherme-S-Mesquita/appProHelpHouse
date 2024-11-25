@@ -46,7 +46,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                 <Text style={styles.titulo}>CADASTRE-SE</Text>
             </View>
             <View style={styles.fundo}>
-                
+                <ScrollView>
                 <View style={styles.containerCadastro}>
                     
                     <Text style={styles.tituloDados2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>
@@ -60,7 +60,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             value={nomeContratado}
                             onChangeText={value => setNomeContratado(value)}
                             style={{
-                                opacity: 0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -83,7 +82,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             value={sobrenomeContratado}
                             onChangeText={value => setSobrenomeContratado(value)}
                             style={{
-                                opacity: 0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -110,7 +108,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             value={nascContratado}
                             onChangeText={handleDateChange}
                             style={{
-                                opacity: 0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -134,7 +131,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             keyboardType="numeric"
                             maxLength={14}
                             style={{
-                                opacity: 0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -169,7 +165,6 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                             keyboardType="numeric"
                             maxLength={15}
                             style={{
-                                opacity: 0.7,
                                 borderBottomWidth: 2,
                                 borderColor: '#fff',
                                 color: '#fff',
@@ -202,6 +197,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
 
 
                 </View>
+                </ScrollView>
             </View>
         </View>
 

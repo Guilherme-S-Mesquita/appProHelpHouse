@@ -89,7 +89,21 @@ const styles = StyleSheet.create({
         bottom:2,
         marginRight:2
     },
-
+    linhaFisio:{
+        width: 90,
+        height: 90,
+        marginTop: 77,
+        right: 690,
+        bottom:2,
+        marginRight:2
+    },
+    linhaPersonal:{
+        width: 90,
+        height: 90,
+        right: 789,
+        top: 150,  
+        marginRight:2
+    },
     linhaBaixo:{
         width: 90,
         height: 90,

@@ -29,15 +29,13 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
         { id: '12', label: 'Personal Organizer', icon: require('../../assets/personalOrg.png'), style: styles.linhaBaixo, width: 90, height: 159, top: 15 },
         { id: '13', label: 'Cozinheiro', icon: require('../../assets/cozinheiro.png'), style: styles.linhaBaixo, width: 90, height: 180, top: 15 },
         { id: '14', label: 'Montador de Móveis', icon: require('../../assets/montador.png'), style: styles.linhaBaixo, width: 90, height: 180, top: 19 },
+        { id: '15', label: 'Fisioterapeuta', icon: require('../../assets/fisio.png'), style: styles.linhaFisio, width: 90, height:160, top: 20,},
+        { id: '16', label: 'Personal trainer', icon: require('../../assets/personal.png'), style: styles.linhaPersonal, width: 90, height: 290, top: 19 }
     ];
     //aqui ta pegando a quantidade total de itens que tem no array e dividindo por dois
     const halfwayIndex = Math.ceil(profissoes.length / 2);
     //aqui tem as duas partes do array  que  dividimos na const acima, dividi por dois porque só quero duas bolinhas de marcação
-    const paginas = [
-        profissoes.slice(0, halfwayIndex),
-        profissoes.slice(halfwayIndex),
-    ];
-
+   
     const handleCheckboxChange = (profession: string, isChecked: boolean) => {
         if (isChecked) {
             setProfissoesSelecionadas(prevState => [...prevState, profession]);
@@ -148,7 +146,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                                         key={i}
                                         style={[
                                             styles.ponto,
-                                            { backgroundColor: i === pontinho ? '#fff' : 'grey' },
+                                            { backgroundColor: i === pontinho ? '#F6A059' : '#fff' },
                                         ]}
                                     />
                                 ))}

@@ -11,6 +11,8 @@ const Imagens={
     jardineiro:require("../assets/jardineiro.png"),
     pedreiro:require("../assets/pedreiro.png"),
     eletricista:require("../assets/eletricista.png"),
+    fisio:require("../assets/fisio.png"),
+    personal:require("../assets/personal.png"),
     iconEnviar:require("../assets/iconEnviar.png"),
     jesus:require("../assets/jesus.jpeg"),
     iconChat:require("../assets/iconChat.png"),
