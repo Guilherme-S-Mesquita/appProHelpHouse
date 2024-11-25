@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     width:393,
     height:50,
-    marginTop:110,
+    marginTop:80,
     marginRight:15,
     
     
