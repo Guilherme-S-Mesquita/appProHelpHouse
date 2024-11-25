@@ -55,7 +55,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
   useEffect(() => {
     let isMounted = true; //ESSA VARIVAEL SERVER PARA VERIFICAR SE HÁ ALGUM PEDIDO
-    let delay = 1000; // Começa com 1 segundo
+    let delay = 2000; 
   
     const fetchPedidosComPollingExponencial = async () => {
       if (!user || !user.idContratado || !token) return;
@@ -73,7 +73,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
           setContadorPedidos(response.data.contadorPedidos || 0);//ATUALIZAÇÃO CONTADOR
   
           // DELEY POSSIVEL DE UM PEDIDO AO OUTRO
-          delay = 1000;
+          delay = 2000;
         }
       } catch (error:any) {
         console.error("Erro ao buscar pedidos:", error.message || error);
@@ -131,6 +131,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
   return (
     <View style={styles.container}>
+      <ScrollView>
       <View style={styles.cabecalho}>
         <Text style={styles.tituloHome}>Meus Pedidos Pendentes</Text>
         <MaterialIcons name="filter-list-alt" size={24} color="white" style={styles.filtroImg} />
@@ -152,7 +153,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
       </View>
 
       
-      <ScrollView>
+      
         {loading ? (
           <ActivityIndicator size="large" color="#0000ff" />
         ) : error ? (

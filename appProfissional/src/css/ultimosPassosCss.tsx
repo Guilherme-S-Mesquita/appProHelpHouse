@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 70,
-    top:57
+    bottom:55
   },
   portfolioItem: {
     width: 95,
@@ -25,13 +25,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#e0e0e0',
     borderRadius: 10,
-    overflow: 'hidden',
-    elevation: 5, // Shadow for Android
-    shadowColor: '#000', // Shadow for iOS
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 3,
-    marginTop:20,
+    marginTop:1,
   },
   imgPortifilio: {
     width: '100%',
@@ -54,7 +48,7 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         top: 95,
         zIndex:1,
-        right:45
+        left:20
     },
     passos: {
         color: '#FF914D',
@@ -63,8 +57,8 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontSize: 16,
         fontWeight: '900',
-        top: 120,
-        right: 27,
+        top: 110,
+       left: 27,
         zIndex:2
     },
     background: {
@@ -89,7 +83,7 @@ const styles = StyleSheet.create({
         width: 190,
         height: 190,
         justifyContent: 'center',
-        bottom: 45,
+        bottom: 77,
         borderColor: '#fff',  // Borda branca para destacar o perfil
         borderWidth: 5,
         right: 25
@@ -105,7 +99,33 @@ const styles = StyleSheet.create({
         bottom: 65,
         color: '#fff'  // Texto de localização branco
     },
-    button: {
+    button2:{
+        width: 190,
+        height: 50,
+        backgroundColor: '#FF914D',
+        padding: 10,
+        borderRadius: 25,
+        marginTop: 20,
+        shadowColor: 'black',
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 9 },
+        shadowOpacity: 0.3,
+        bottom: 215,
+    },
+    button:{
+        width: 190,
+        height: 50,
+        backgroundColor: '#FF914D',
+        padding: 10,
+        borderRadius: 25,
+        marginTop: 20,
+        shadowColor: 'black',
+        shadowRadius: 5,
+        shadowOffset: { width: 0, height: 9 },
+        shadowOpacity: 0.3,
+        bottom: 455,
+    },
+    buttonCriarPerf: {
         width: 145,
         height: 50,
         backgroundColor: '#FF914D',
@@ -136,7 +156,8 @@ const styles = StyleSheet.create({
         marginRight: 100
     },
     container2: {
-        bottom: -100,
+        bottom: 100,
+        left:22
     },
     voce: {
         fontWeight: '900',
@@ -154,8 +175,8 @@ const styles = StyleSheet.create({
         fontWeight: '900',
         color: 'white',
         fontSize: 18,
-        right:10,
-        marginTop:50
+        left:22,
+       bottom:15
     },
     buttonEnviar: {
         left: 75,

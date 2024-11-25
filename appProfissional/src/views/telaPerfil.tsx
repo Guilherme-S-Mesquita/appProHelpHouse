@@ -42,17 +42,9 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
                     <Text style={styles.zona}>Atua em  <Text style={styles.zonaUser}>{user.regiaoContratado}</Text></Text>
                 
 
-
-
-
-
-
-
-
-                    <View style={styles.meuPort}>
-                        <Text style={styles.meu}>Meu Portifólio</Text>
-                    </View>
-
+                    
+                 <Text style={styles.meu}>Meu Portifólio</Text>
+           
                     <View style={styles.containerVerical}>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                         <TouchableOpacity><Image source={user.portifilioPro1 ? {uri: user.portifilioPro1} : Imagens.jesus} style={styles.fotosRolagem}/></TouchableOpacity>
@@ -60,14 +52,6 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
                         <TouchableOpacity><Image source={user.portifilioPro3 ? {uri: user.portifilioPro3} : Imagens.jesus} style={styles.fotosRolagem}/></TouchableOpacity>
                     </ScrollView>
                  </View>
-
-
-
-
-
-
-
-
 
                 </ScrollView>
             </View>

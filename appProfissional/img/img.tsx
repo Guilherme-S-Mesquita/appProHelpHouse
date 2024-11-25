@@ -11,6 +11,8 @@ const Imagens={
     jardineiro:require("../assets/jardineiro.png"),
     pedreiro:require("../assets/pedreiro.png"),
     eletricista:require("../assets/eletricista.png"),
+    fisio:require("../assets/fisio.png"),
+    personal:require("../assets/personal.png"),
     iconEnviar:require("../assets/iconEnviar.png"),
     jesus:require("../assets/jesus.jpeg"),
     iconChat:require("../assets/iconChat.png"),
@@ -24,6 +26,7 @@ const Imagens={
    iconTab2: require("../assets/iconTab2.png"),
    iconTab3: require("../assets/iconTab3.png"),
    imgPerfil:require("../assets/imgPerfil.png"),
-   imgPedido:require("../assets/iconPedido.png")
+   imgPedido:require("../assets/iconPedido.png"),
+   iconSuporte:require("../assets/suporte.png")
 }
 export default Imagens;

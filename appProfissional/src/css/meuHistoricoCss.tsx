@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
     width:393,
     height:50,
-    marginTop:110,
+    marginTop:80,
     marginRight:15,
     
     
@@ -73,12 +73,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems:'flex-start',
-    width:200,
+    width:250,
     height:60,
     backgroundColor: '#f6a059',
     padding: 8,
     borderRadius: 13,
-    marginRight:90,
+    marginLeft:7,
     bottom:20,
   },
   tab2: {
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 4,
-    bottom:10
+    bottom:-20
   },
   cardTitle: {
     fontSize: 20,

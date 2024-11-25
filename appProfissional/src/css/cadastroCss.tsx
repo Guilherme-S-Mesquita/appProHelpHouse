@@ -76,6 +76,7 @@ const styles = StyleSheet.create({
     height: 60,
     top: 120,
     position: 'relative',
+    
   },
   inputContainer: {
     flexDirection: 'row',

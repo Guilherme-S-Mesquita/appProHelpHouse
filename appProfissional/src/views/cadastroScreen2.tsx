@@ -106,7 +106,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         maxLength={9}
                         onChangeText={handleCepChange}
                         containerStyles={{
-                            borderBottomWidth: 1.5,
+                            borderBottomWidth: 2.5,
                             borderColor: '#fff',
                             marginTop: 8,
                             marginBottom: 10,
@@ -133,7 +133,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         value={cidadeContratado}
                         onChangeText={value => setCidadeContratado(value)}
                         containerStyles={{
-                            borderBottomWidth: 1.5,
+                            borderBottomWidth: 2.5,
                             borderColor: '#fff',
                             marginTop: 8,
                             marginBottom: 10,
@@ -165,7 +165,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                         value={bairroContratado}
                         onChangeText={value => setBairroContratado(value)}
                         containerStyles={{
-                            borderBottomWidth: 1.5,
+                            borderBottomWidth: 2.5,
                             borderColor: '#fff',
                             marginTop: 5,
                             marginBottom: 10,
@@ -197,7 +197,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                             value={ruaContratado}
                             onChangeText={value => setRuaContratado(value)}
                             containerStyles={{
-                                borderBottomWidth: 1.5,
+                                borderBottomWidth: 2.5,
                                 borderColor: '#fff',
                                 marginTop: 1,
                                 marginBottom: 10,
@@ -230,7 +230,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
                                 onChangeText={value => setNumCasaContratado(value)}
                                 keyboardType="numeric"
                                 containerStyles={{
-                                    borderBottomWidth: 1.5,
+                                    borderBottomWidth: 2.5,
                                     borderColor: '#fff',
                                     marginTop: 8,
                                     marginBottom: 10,
@@ -284,7 +284,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                     style={{
                         marginLeft: 50,
-                        top: 365
+                        top: 395
                     }}
 
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Sul', isChecked)}
@@ -301,7 +301,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                     style={{
                         marginLeft: 220,
-                        top: 330
+                        top: 360
                     }}
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Norte', isChecked)}
                 />
@@ -319,7 +319,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                     style={{
                         marginLeft: 50,
-                        top: 355
+                        top: 385
                     }}
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Leste', isChecked)}
                 />
@@ -337,7 +337,7 @@ const Cadastro2: React.FC<{ route: any, navigation: any, }> = ({ route, navigati
 
                     style={{
                         marginLeft: 220,
-                        top: 315
+                        top: 345
                     }}
                     onPress={(isChecked: boolean) => handleCheckboxChange('Zona Oeste', isChecked)}
                 />

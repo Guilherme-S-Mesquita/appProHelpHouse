@@ -23,6 +23,7 @@ import PedidosAgendados from '../views/pedidosAgendados';
 import TelaPerfil from '../views/telaPerfil';
 import TelaConfiguracao from '../views/configuracaoo';
 import MeuHistorico from '../views/meuHistorico';
+import Suporte from '../views/suporte';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -64,8 +65,9 @@ const Tabs = () => {
             <Image 
               source={Imagens.imgPedido} 
               style={{
-                width: 46, 
-                height: 46, 
+                width: 59, 
+                height: 59, 
+                top:6
                
               }} 
             />
@@ -86,14 +88,30 @@ const Tabs = () => {
               style={{
                 width: 46, 
                 height: 46, 
-               
               }} 
             />
           ),
         }}
       />
         
-
+        <Tab.Screen
+        name="Suporte"
+        component={Suporte}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => (
+            <Image 
+              source={Imagens.iconSuporte} 
+              style={{
+                width: 46, 
+                height: 60, 
+                top:5
+               
+              }} 
+            />
+          ),
+        }}
+      />
        
 
     </Tab.Navigator>
@@ -123,6 +141,7 @@ const AppNavigator = () => {
       <Stack.Screen name="perfil" component={TelaPerfil} options={{ headerShown: false }} />
       <Stack.Screen name="configuracao" component={TelaConfiguracao} options={{ headerShown: false }} />
       <Stack.Screen name="meuHistorico" component={MeuHistorico} options={{ headerShown: false }} />
+      <Stack.Screen name="suporte" component={Suporte} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 };

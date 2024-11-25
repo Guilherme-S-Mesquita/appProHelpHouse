@@ -9,12 +9,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
 
     },
+    scrollView: {
+        flex: 1, 
+    },
+    scrollViewContent: {
+        flexGrow: 1, 
+        alignItems: 'center', 
+        padding: 20, 
+    },
     emQuais: {
         color: '#004AAD',
         fontSize: 30,
         fontWeight: '900',
-        top: -95,
+        bottom: 115,
         left: '25.6%',
+        zIndex:10
     },
     areas: {
         color: '#F6A059',
@@ -28,10 +37,10 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '900',
         left: 50,
-        bottom: 25
+        bottom: 55
     },
     container2: {
-
+        flex: 1 
     },
     meioCirculo: {
         width: 440,
@@ -72,148 +81,90 @@ const styles = StyleSheet.create({
         bottom: 55,
     },
 
-    pedreiro: {
+  linhaCima: {
         width: 90,
         height: 90,
         marginTop: 77,
-        left: '2%',
+        left: '15%',
         bottom:2,
         marginRight:2
     },
-
-    mecanico: {
+    linhaFisio:{
         width: 90,
         height: 90,
-        left: '3.5%',
-        top: 75,
+        marginTop: 77,
+        right: 690,
+        bottom:2,
         marginRight:2
     },
-    eletricista: {
+    linhaPersonal:{
         width: 90,
         height: 90,
-        left: '5%',
-        top: 76,
+        right: 789,
+        top: 150,  
         marginRight:2
     },
-    chaveiro:{
+    linhaBaixo:{
         width: 90,
         height: 90,
-        right: '22%',
-        top: 77,  
+        right: 699,
+        top: 150,  
         marginRight:2
     },
-    costureira:{
-        width: 90,
-        height: 90,
-        right: '20.3%',
-        top: 77, 
-        marginRight:2 
-    },
-    professor:{
-        width: 90,
-        height: 90,
-        right: '25.7%',
-        top: 77, 
-        marginRight:2 
-    },
-    personalOrg:{
-        width: 90,
-        height: 90,
-        right: '23.6%',
-        top: 77,
-        marginRight:2
-    },
-    jadineiro: {
-        width: 90,
-        height: 90,
-        right: '20%',
-        top: 180,
-        marginRight:2
-    },
-    encanador: {
-        width: 90,
-        height: 90,
-        right: '18.6%',
-        top: 180,
-        marginRight:2
-    },
-    diarista: {
-        width: 90,
-        height: 90,
-        right: '17%',
-        top: 180,
-        marginRight:2
-    },
-    baba:{
-        width: 90,
-        height: 90,
-        right: '15.5%',
-        top: 180,
-        marginRight:1
-    },
-    instalador:{
-        width: 90,
-        height: 90,
-        right: '28%',
-        top: 180,
-        marginRight:2
-    },
-    cozinheiro:{
-        width: 90,
-        height: 90,
-        right: '40.5%',
-        top: 180,
-        marginRight:2
-    },
-    montador:{
-        width: 90,
-        height: 90,
-        right: '38.6%',
-        top: 180,
-        marginRight:2
-    },
-
     aindaNao: {
         color: '#fff',
         fontSize: 20,
         fontWeight: '900',
-        bottom: 678,
-        textAlign: 'center'
-
-    },
-
-    descricaoBreve: {
-        color: '#fff',
-        fontSize: 14,
-        fontWeight: '900',
-        bottom: 650,
-        left: 58,
-
+        bottom: 275,
+        textAlign: 'center',
     },
     descricaoInput: {
         backgroundColor: '#588acd',
         borderRadius: 19,
         height: 70,
         width: 350,
-        bottom: 625,
+        bottom: 240,
         left: 50,
         paddingHorizontal: 15,
         paddingBottom: 25,
         color: 'white',
         fontSize: 18,
-         fontWeight: '600'
+         fontWeight: '600',
+       zIndex:10
+         
     },
     buttonEnviar: {
         width: 145,
-        bottom: 390,
+        bottom: 365,
         shadowColor: 'black',
         shadowRadius: 5,
         shadowOffset: { width: 0, height: 9 },
         shadowOpacity: 0.3,
         elevation: 5,
-
-
+        left:150
     },
-
+    checkboxImage: {
+        width: 80, 
+        height: 80, 
+        resizeMode: 'contain',
+        marginTop: 10, 
+    },
+    flatList1: {
+        marginHorizontal: 10, 
+        alignItems: 'center', 
+    },
+    pontoPai:{
+        flexDirection : 'row',
+        justifyContent:'center',
+        marginTop:20,
+        bottom:300,
+        zIndex:10
+    },
+    ponto:{
+        width:10,
+        height:10,
+        borderRadius:4,
+        marginHorizontal:4
+    }
 });
 export default styles;
