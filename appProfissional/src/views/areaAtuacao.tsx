@@ -13,7 +13,7 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
     const [profissoesSelecionadas, setProfissoesSelecionadas] = useState<string[]>([]);
     const [descProfissaoContratado, setDescProfissaoContratado] = useState<string>('');
 
-    //isso aqui é o array da flatList como estamos usando essas imagens no checkBox e cada uma precisa de um estilo diferente coloquei dentro do array e puxei eles no renderItem que é o checkBox
+    //isso aqui é o array da flatList, como estamos usando essas imagens no checkBox e cada uma precisa de um estilo diferente coloquei dentro do array e puxei eles no renderItem que é o checkBox
     const profissoes = [
         { id: '1', label: 'Pedreiro', icon: require('../../assets/pedreiro.png'), style: styles.linhaCima, width: 80, height: 190, top: 15 },
         { id: '2', label: 'Mecânico', icon: require('../../assets/mecanico.png'), style: styles.linhaCima, width: 79, height: 192, top: 22 },
@@ -37,7 +37,6 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
         profissoes.slice(0, halfwayIndex),
         profissoes.slice(halfwayIndex),
     ];
-
 
     const handleCheckboxChange = (profession: string, isChecked: boolean) => {
         if (isChecked) {
@@ -123,7 +122,6 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
                         <Text style={styles.emQuais}>Em quais<Text style={styles.areas}> áreas</Text> {'\n'}
                             <Text style={styles.voce}>    você atua?</Text>
                         </Text>
-
 
                         <Text style={styles.selecione}>Selecione as suas profissões:</Text>
 

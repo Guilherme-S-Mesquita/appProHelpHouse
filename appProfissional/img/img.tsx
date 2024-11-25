@@ -24,6 +24,7 @@ const Imagens={
    iconTab2: require("../assets/iconTab2.png"),
    iconTab3: require("../assets/iconTab3.png"),
    imgPerfil:require("../assets/imgPerfil.png"),
-   imgPedido:require("../assets/iconPedido.png")
+   imgPedido:require("../assets/iconPedido.png"),
+   iconSuporte:require("../assets/suporte.png")
 }
 export default Imagens;

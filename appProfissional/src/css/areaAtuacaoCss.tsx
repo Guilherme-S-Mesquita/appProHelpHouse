@@ -97,8 +97,6 @@ const styles = StyleSheet.create({
         top: 150,  
         marginRight:2
     },
-    
-
     aindaNao: {
         color: '#fff',
         fontSize: 20,
@@ -106,7 +104,6 @@ const styles = StyleSheet.create({
         bottom: 275,
         textAlign: 'center',
     },
-
     descricaoInput: {
         backgroundColor: '#588acd',
         borderRadius: 19,
