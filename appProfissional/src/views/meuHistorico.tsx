@@ -70,9 +70,6 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
     <TouchableOpacity style={styles.tabs}>
       <Text style={styles.Texttab1}>Finalizados</Text>
     </TouchableOpacity>
-    <TouchableOpacity style={styles.tab2}>
-      <Text style={styles.Texttab}>Finalizados</Text>
-    </TouchableOpacity>
   </View>
 
   {loading ? (
@@ -86,16 +83,25 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
       {pedidos.map((pedido) => (
         <View key={pedido.idSolicitarPedido} style={styles.cardContainer}>
           <Text style={styles.cardTitle}>{pedido.tituloPedido}</Text>
-          <Text style={styles.clienteName}>Status:</Text>
-                  <Text style={{ fontSize: 16, marginLeft: 5, fontWeight: 'bold', color: '#0044CC' }}>
-                    {pedido.andamentoPedido || "Não definido"}
+          <Text style={styles.clienteName}>Status:
+                  <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#0044CC' }}>
+                  {pedido.andamentoPedido || "Não definido"}
+                  </Text>
                   </Text>
           {pedido.contrato && (
             <>
-              <Text style={styles.cardText}>Valor: R$ {pedido.contrato.valor}</Text>
-              <Text style={styles.cardText}>Data: {pedido.contrato.data} às {pedido.contrato.hora}</Text>
-              <Text style={styles.cardText}>Descrição: {pedido.descricaoPedido}</Text>
-              <Text style={styles.cardText}>Forma de pagamento: {pedido.contrato.forma_pagamento}</Text>
+              <Text style={styles.clienteName}>Valor:   <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              R${pedido.contrato.valor || "Não definido"}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Data: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.contrato.data} ás {pedido.contrato.hora}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Descrição: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.descricaoPedido}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Forma de pagamento: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.contrato.forma_pagamento}
+                  </Text></Text>
             </>
           )}
         </View>
