@@ -1,3 +1,4 @@
+
 import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
 
@@ -15,7 +16,7 @@ const styles = StyleSheet.create({
         borderRadius:17,
         width:402,
         height:42,
-        left:5
+        left:14
       },
       filtroImg:{
         width:25,
@@ -30,10 +31,10 @@ const styles = StyleSheet.create({
       },
       ola: {
         fontSize: 22,
-        top:95,
+        top:90,
         fontFamily:'bold',
         fontWeight: '600',
-        left:29
+        left:80
       },
       nomeUsuario: {
         color: '#ff914d',
@@ -68,8 +69,8 @@ const styles = StyleSheet.create({
         width:75,
         height:75,
         borderRadius:80,
-        left:290,
-       top:50
+        left:300,
+        top:40
       },
       localizacao: {
         fontSize:16,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
         padding: 9,
         borderRadius: 65,
         width:190,
-        left:55,
+        left:70,
         top:55
       },
       botaoAlterarRaio1: {
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
         left:10,
       },
       servicosPendentes: {
-        left:20,
+        left:40,
         fontSize:18,
         fontWeight:'bold',
         top:71
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#004AAD',
         height:480,
         width:350,
-        left:22,
+        left:42,
         borderRadius:25
       },
       azul:{
@@ -166,7 +167,7 @@ const styles = StyleSheet.create({
       containerDesc:{
       backgroundColor:'#fff',
       borderRadius:10,
-      height:180,
+      height:160,
       width:282,
       top:15,
       },

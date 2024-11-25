@@ -17,14 +17,14 @@ const styles = StyleSheet.create({
         bottom: 35,
         borderRadius: 17,
         width: 404,
-        right: 153,
+        right: 163,
         marginLeft:145,
     },
     pedido: {
         color: '#fff',
         fontSize: 28,
         fontWeight: 'bold',
-        left: 59
+        left: 20
     },
     filtro: {
         height: 25,
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
         borderRadius: 17,
         width: 380,
         marginBottom: 50,
-        marginTop:60,
+        marginTop:10,
     },
     textoAgendamento: {
         color: '#004AAD',
@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         color: '#333',
         marginBottom: 4,
+        fontWeight:'500'
     },
     doisKm: {
         color: '#FF8F49',

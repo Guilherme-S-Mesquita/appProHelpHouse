@@ -1,5 +1,5 @@
-import React, { useContext,useState } from 'react';
-import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, ScrollView,KeyboardAvoidingView} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { View, Text, Image, Alert, TouchableOpacity, ImageBackground, TextInput, ScrollView, KeyboardAvoidingView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { storage } from '../../firebase';
@@ -35,7 +35,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
     const userContext = useContext(myContext);
     const { user, setUser } = useContext(myContext);
     // const [descricao, setDescricao] = useState('');
-    const[descContratado, setDescContratado] = useState('');
+    const [descContratado, setDescContratado] = useState('');
 
 
     // Pick Image Function
@@ -51,7 +51,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
             setSelectedImage(result.assets[0].uri);
         }
     };
-    
+
 
     // Upload Image to Firebase
     const uploadMedia = async () => {
@@ -239,7 +239,7 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
 
     // Extracting route params
     const { nomeContratado, sobrenomeContratado, nascContratado, cpfContratado, telefoneContratado, emailContratado, password, cepContratado,
-        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, regiaoContratado,descProfissaoContratado } = route.params;
+        bairroContratado, ruaContratado, numCasaContratado, cidadeContratado, profissaoContratado, regiaoContratado, descProfissaoContratado } = route.params;
 
     // Submit Professional Data
     const Verificar = async () => {
@@ -262,10 +262,10 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 descContratado,
                 regiaoContratado,
                 descProfissaoContratado,
-                imagemContratado:imageUrl,
-                portifilioPro1:portifolio1,
-                portifilioPro2:portifolio2,
-                portifilioPro3:portifolio3
+                imagemContratado: imageUrl,
+                portifilioPro1: portifolio1,
+                portifilioPro2: portifolio2,
+                portifilioPro3: portifolio3
             });
 
             const result = response.data;
@@ -314,6 +314,8 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
     return (
 
         <View style={styles.containerPrincipal}>
+
+            <ScrollView>
             <Text style={styles.ultimos}>Últimos<Text style={styles.passos}> passos</Text></Text>
             <Text style={styles.acabando}>Já estamos acabando, adicione as {'\n'}últimas informações para criarmos a {'\n'}sua conta!</Text>
 
@@ -330,12 +332,52 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 </View>
             </ImageBackground>
 
+            <Text style={styles.textPromova}>Promova o seu trabalho,adicione {'\n'}fotos no seu portifólio!</Text>
+            <View style={styles.containerProtifolio}>
+
+                <View style={styles.portfolioItem}>
+                    <Image
+                        source={selectedImagePor ? { uri: selectedImagePor } : { uri: portifolio1 }}
+                        style={styles.imgPortifilio}
+                    />
+                    <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
+                        <TouchableOpacity onPress={pickImage1}>
+                            <Entypo name="plus" size={34} color="white" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+                <View style={styles.portfolioItem}>
+                    <Image
+                        source={selectedImagePortifolio2 ? { uri: selectedImagePortifolio2 } : { uri: portifolio2 }}
+                        style={styles.imgPortifilio}
+                    />
+                    <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
+                        <TouchableOpacity onPress={pickImage2}>
+                            <Entypo name="plus" size={34} color="white" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={styles.portfolioItem}>
+                    <Image
+                        source={selectedImagePortifolio3 ? { uri: selectedImagePortifolio3 } : { uri: portifolio3 }}
+                        style={styles.imgPortifilio}
+                    />
+                    <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
+                        <TouchableOpacity onPress={pickImage3}>
+                            <Entypo name="plus" size={34} color="white" />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+
+
             <View style={styles.container2}>
 
                 <Text style={styles.voce}>Fale um pouco sobre você</Text>
                 <TextInput
-                 value={descContratado}
-                 onChangeText={setDescContratado}
+                    value={descContratado}
+                    onChangeText={setDescContratado}
                     style={{
                         borderBottomWidth: 2,
                         borderColor: '#fff',
@@ -343,70 +385,17 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                         fontSize: 18,
                         top: 30,
                         paddingHorizontal: 5,
-                        width:351,
-                        right:9,
-                        fontWeight:'600'
+                        width: 351,
+                        right: 9,
+                        fontWeight: '600'
                     }}
-                     returnKeyType='done'
+                    returnKeyType='done'
                     placeholder=""
                     placeholderTextColor="#fff"
-                    >
+                    multiline={true} 
+                >
                 </TextInput>
-
-
-                <Text style={styles.textPromova}>Promova o seu trabalho,adicione {'\n'}fotos no seu portifólio!</Text>
-
             </View>
-
-
-
-
-
-
-
-            <View style={styles.containerProtifolio}>
-              
-        <View style={styles.portfolioItem}>
-            <Image 
-                source={selectedImagePor ? { uri: selectedImagePor } : { uri: portifolio1 }} 
-                    style={styles.imgPortifilio} 
-                        />
-                        <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
-                        <TouchableOpacity onPress={pickImage1}>
-                        <Entypo name="plus" size={34} color="white" />  
-                    </TouchableOpacity>
-            </View>
-        </View>
-        <View style={styles.portfolioItem}>
-            <Image 
-                source={selectedImagePortifolio2 ? { uri: selectedImagePortifolio2 } : { uri: portifolio2 }} 
-                    style={styles.imgPortifilio} 
-                        />
-                        <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
-                        <TouchableOpacity onPress={pickImage2}>
-                        <Entypo name="plus" size={34} color="white" />  
-                    </TouchableOpacity>
-            </View>
-        </View>
-
-        <View style={styles.portfolioItem}>
-            <Image 
-                source={selectedImagePortifolio3 ? { uri: selectedImagePortifolio3 } : { uri: portifolio3 }} 
-                    style={styles.imgPortifilio} 
-                        />
-                        <View style={[styles.IconPor, { backgroundColor: 'rgba(0,0,0,0.5)' }]}>
-                        <TouchableOpacity onPress={pickImage3}>
-                        <Entypo name="plus" size={34} color="white" />  
-                    </TouchableOpacity>
-            </View>
-        </View>
-    </View>
-
-
-
-
-
-
 
 
 
@@ -420,29 +409,30 @@ const UltimosPassos: React.FC<{ route: any, navigation: any }> = ({ route, navig
                 )}
 
                 {selectedImagePor && (
-                    <TouchableOpacity onPress={uploadMedia1} style={styles.button} disabled={uploadingPor}>
+                    <TouchableOpacity onPress={uploadMedia1} style={styles.button2} disabled={uploadingPor}>
                         <Text style={styles.buttonText}>{uploadingPor ? 'Enviando...' : 'Confirmar imagem'}</Text>
                     </TouchableOpacity>
                 )}
 
                 {selectedImagePortifolio2 && (
-                    <TouchableOpacity onPress={uploadMedia2} style={styles.button} disabled={uploadingPortifolio2}>
+                    <TouchableOpacity onPress={uploadMedia2} style={styles.button2} disabled={uploadingPortifolio2}>
                         <Text style={styles.buttonText}>{uploadingPortifolio2 ? 'Enviando...' : 'Confirmar imagem'}</Text>
                     </TouchableOpacity>
                 )}
 
                 {selectedImagePortifolio3 && (
-                    <TouchableOpacity onPress={uploadMedia3} style={styles.button} disabled={uploadingPortifolio3}>
+                    <TouchableOpacity onPress={uploadMedia3} style={styles.button2} disabled={uploadingPortifolio3}>
                         <Text style={styles.buttonText}>{uploadingPortifolio3 ? 'Enviando...' : 'Confirmar imagem'}</Text>
                     </TouchableOpacity>
                 )}
 
-                <TouchableOpacity onPress={Verificar} style={styles.button} disabled={loading}>
+                <TouchableOpacity onPress={Verificar} style={styles.buttonCriarPerf} disabled={loading}>
                     <Text style={styles.buttonText}>{loading ? 'Salvando...' : 'Criar conta'}</Text>
                 </TouchableOpacity>
             </View>
-        
-</View>
+
+            </ScrollView>
+        </View>
 
     );
 };

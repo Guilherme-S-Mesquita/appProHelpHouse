@@ -16,8 +16,8 @@ interface Pedido {
     valor: string;
     data: string;
     hora: string;
-    desc_servicoRealizado: string;
     forma_pagamento: string;
+    status: string;
   };
 }
 
@@ -53,52 +53,63 @@ const MeuHistorico: React.FC<{ navigation: any }> = ({ navigation }) => {
   return (
 
     <View style={styles.container}>
-      <View style={styles.navContent}>
-        <View style={styles.navbar}>
-          <TouchableOpacity>
-            <AntDesign
-              name="leftcircle"
-              size={30}
-              color="#fff"
-              style={{ marginLeft: 15 }}
-              onPress={() => navigation.navigate('homeStack')}
-            />
-          </TouchableOpacity>
-          <Text style={styles.textNav}>Pedidos</Text>
-        </View>
-        <TouchableOpacity style={styles.tabs}>
-          <Text style={styles.Texttab1}>Contratos</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.tab2}>
-          <Text style={styles.Texttab}>Finalizados</Text>
-        </TouchableOpacity>
-      </View>
-
-      {loading ? (
-        <ActivityIndicator size="large" color="#0000ff" />
-      ) : error ? (
-        <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
-      ) : pedidos.length === 0 ? (
-        <Text style={{ marginTop: 20, textAlign: 'center' }}>Nenhum pedido finalizado encontrado.</Text>
-      ) : (
-        <ScrollView>
-          {pedidos.map((pedido) => (
-            <View key={pedido.idSolicitarPedido} >
-              <Text style={styles.cardTitle}>{pedido.tituloPedido}</Text>
-              <Text>Status: {pedido.andamentoPedido}</Text>
-              {pedido.contrato && (
-                <>
-                  <Text>Valor: R$ {pedido.contrato.valor}</Text>
-                  <Text>Data: {pedido.contrato.data} às {pedido.contrato.hora}</Text>
-                  <Text>Descrição: {pedido.contrato.desc_servicoRealizado}</Text>
-                  <Text>Forma de pagamento: {pedido.contrato.forma_pagamento}</Text>
-                </>
-              )}
-            </View>
-          ))}
-        </ScrollView>
-      )}
+  <View style={styles.navContent}>
+    <View style={styles.navbar}>
+      <TouchableOpacity>
+        <AntDesign
+          name="leftcircle"
+          size={30}
+          color="#fff"
+          style={{ marginLeft: 15 }}
+          onPress={() => navigation.navigate('homeStack')}
+        />
+      </TouchableOpacity>
+      <Text style={styles.textNav}>Pedidos</Text>
     </View>
+
+    <TouchableOpacity style={styles.tabs}>
+      <Text style={styles.Texttab1}>Finalizados</Text>
+    </TouchableOpacity>
+  </View>
+
+  {loading ? (
+    <ActivityIndicator size="large" color="#0000ff" />
+  ) : error ? (
+    <Text style={{ color: 'red', textAlign: 'center' }}>{error}</Text>
+  ) : pedidos.length === 0 ? (
+    <Text style={{ marginTop: 20, textAlign: 'center' }}>Nenhum pedido finalizado encontrado.</Text>
+  ) : (
+    <ScrollView>
+      {pedidos.map((pedido) => (
+        <View key={pedido.idSolicitarPedido} style={styles.cardContainer}>
+          <Text style={styles.cardTitle}>{pedido.tituloPedido}</Text>
+          <Text style={styles.clienteName}>Status:
+                  <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#0044CC' }}>
+                  {pedido.andamentoPedido || "Não definido"}
+                  </Text>
+                  </Text>
+          {pedido.contrato && (
+            <>
+              <Text style={styles.clienteName}>Valor:   <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              R${pedido.contrato.valor || "Não definido"}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Data: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.contrato.data} ás {pedido.contrato.hora}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Descrição: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.descricaoPedido}
+                  </Text></Text>
+              <Text style={styles.clienteName}>Forma de pagamento: <Text style={{ fontSize: 16, marginLeft: 6, fontWeight: 'bold', color: '#000' }}>
+              {pedido.contrato.forma_pagamento}
+                  </Text></Text>
+            </>
+          )}
+        </View>
+      ))}
+    </ScrollView>
+  )}
+</View>
+
 
 
   );

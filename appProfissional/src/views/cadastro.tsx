@@ -46,6 +46,7 @@ const Cadastro: React.FC<{ route: any, navigation: any }> = ({ route, navigation
                 <Text style={styles.titulo}>CADASTRE-SE</Text>
             </View>
             <View style={styles.fundo}>
+                
                 <View style={styles.containerCadastro}>
                     
                     <Text style={styles.tituloDados2}>Dados <Text style={styles.pessoais}>Pessoais</Text></Text>

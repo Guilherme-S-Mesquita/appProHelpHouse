@@ -381,7 +381,7 @@ const Chat: React.FC<{ route: any; navigation: any }> = ({ route, navigation }) 
                                 value={valorCobrado}
                                 onChangeText={text => setValorCobrado(text)}
                                 style={styles.modalInput}
-                                placeholder="Digite a data marcada"
+                                placeholder="Digite o valor do serviço"
                                 placeholderTextColor="#999"
                                 returnKeyType='done'
                             />
