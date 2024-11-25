@@ -55,7 +55,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
 
   useEffect(() => {
     let isMounted = true; //ESSA VARIVAEL SERVER PARA VERIFICAR SE HÁ ALGUM PEDIDO
-    let delay = 1000; // Começa com 1 segundo
+    let delay = 2000; 
   
     const fetchPedidosComPollingExponencial = async () => {
       if (!user || !user.idContratado || !token) return;
@@ -73,7 +73,7 @@ const TelaServico: React.FC<{ navigation: any, route: any }> = ({ navigation, ro
           setContadorPedidos(response.data.contadorPedidos || 0);//ATUALIZAÇÃO CONTADOR
   
           // DELEY POSSIVEL DE UM PEDIDO AO OUTRO
-          delay = 1000;
+          delay = 2000;
         }
       } catch (error:any) {
         console.error("Erro ao buscar pedidos:", error.message || error);
