@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 3,
     elevation: 4,
-    bottom:10
+    bottom:-20
   },
   cardTitle: {
     fontSize: 20,
