@@ -34,7 +34,6 @@ const AreaAtuacao: React.FC<{ route: any, navigation: any }> = ({ route, navigat
     ];
     //aqui ta pegando a quantidade total de itens que tem no array e dividindo por dois
     const halfwayIndex = Math.ceil(profissoes.length / 2);
-    //aqui tem as duas partes do array  que  dividimos na const acima, dividi por dois porque só quero duas bolinhas de marcação
    
     const handleCheckboxChange = (profession: string, isChecked: boolean) => {
         if (isChecked) {

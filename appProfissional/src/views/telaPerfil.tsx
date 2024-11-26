@@ -19,6 +19,8 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
     return (
 
         <View style={styles.containerPai}>
+              <Image source={Imagens.sep} style={styles.palmeiras} />
+              
             <Image
                 source={{ uri: user.imagemContratado }}
                 style={styles.ImgUser}

@@ -20,6 +20,7 @@ const Imagens={
     iconHome:require("../assets/iconHome.png"),
     iconFiltro:require("../assets/iconFiltro.png"),
     fundo:require("../assets/fundo.png"),
+    sep:require("../assets/palmeiras.png"),
     
    //imgs tab bar
    iconTab: require("../assets/iconTab.png"),
