@@ -25,7 +25,7 @@ const Suporte: React.FC<{ navigation: any }> = ({ navigation }) => {
     const faqs = [
         { question: 'O HelpHouse é seguro? ', answer: 'Claro! O Help House preza a integridade e proteção de nossos usuários.' },
         { question: 'Como posso alterar minhas informações? ', answer: 'Acessando a aba de configurações que se encontra na tela de perfil.' },
-        { question: 'Como funciona o pagamento pelos serviços realizados?', answer: 'Após finalizar seu trabalho na tela de pedidos agendados, irá aparecer a forma de pagamento que você definiu com seu cliente. Após isso, só esperar seu pagamento .' },
+        { question: 'Como funciona o pagamento pelos serviços realizados?', answer: 'Após finalizar seu trabalho na tela de pedidos agendados, irá aparecer a forma de pagamento que você definiu com seu cliente.' },
         { question: 'Posso escolher os serviços que quero aceitar?', answer: 'Sim, aqui no Help House você tem o poder de escolher se irá aceitar ou não os serviços disponíveis.' },
         { question: 'Preciso pagar algo para usar o app?', answer: 'O primeiro mês aqui no Help House é inteiramente grátis. Após o primeiro mês é cobrado uma taxa de $55,00/mês' },
     ];
@@ -59,7 +59,7 @@ const Suporte: React.FC<{ navigation: any }> = ({ navigation }) => {
 
                             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
 
-                                <AntDesign name="down" size={18} color="black" style={{ color: '#0044CC' }} />
+                                <AntDesign name="down" size={11} color="black" style={{ color: '#0044CC' }} />
                                 <TouchableOpacity onPress={() => toggleAnswer(index)} style={styles.questionContainer}>
                                     <Text style={styles.question}>{faq.question}</Text>
                                 </TouchableOpacity> </View>
@@ -69,7 +69,7 @@ const Suporte: React.FC<{ navigation: any }> = ({ navigation }) => {
                         </View>
                     ))}
                 </View>
-                <Text style={styles.subTitulo}>Ainda está com duvida? {'\n'}Entre em contato conosco através de nossos canais:</Text>
+                <Text style={styles.subTitulo}>Não achou o que procurava? {'\n'}<Text style={styles.sub}>Entre em contato conosco através de nossos canais:</Text></Text>
                 <View style={{ flexDirection: 'row', marginTop: 5 }}>
                     <Icon name="envelope" size={20} color="black" style={styles.iconEmail} />
                     <Text style={styles.subTitulo2}>sevencode@gmail.com</Text>

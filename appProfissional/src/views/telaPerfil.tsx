@@ -19,6 +19,8 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
     return (
 
         <View style={styles.containerPai}>
+              <Image source={Imagens.sep} style={styles.palmeiras} />
+
             <Image
                 source={{ uri: user.imagemContratado }}
                 style={styles.ImgUser}
@@ -47,9 +49,9 @@ const TelaPerfil: React.FC<{ navigation: any, route: any }> = ({ navigation, rou
            
                     <View style={styles.containerVerical}>
                     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                        <TouchableOpacity><Image source={user.portifilioPro1 ? {uri: user.portifilioPro1} : Imagens.jesus} style={styles.fotosRolagem}/></TouchableOpacity>
-                        <TouchableOpacity><Image source={user.portifilioPro2 ? {uri: user.portifilioPro2} : Imagens.jesus} style={styles.fotosRolagem}/></TouchableOpacity>
-                        <TouchableOpacity><Image source={user.portifilioPro3 ? {uri: user.portifilioPro3} : Imagens.jesus} style={styles.fotosRolagem}/></TouchableOpacity>
+                        <TouchableOpacity><Image source={user.portifilioPro1 ? {uri: user.portifilioPro1} : Imagens.mancha} style={styles.fotosRolagem}/></TouchableOpacity>
+                        <TouchableOpacity><Image source={user.portifilioPro2 ? {uri: user.portifilioPro2} : Imagens.mancha} style={styles.fotosRolagem}/></TouchableOpacity>
+                        <TouchableOpacity><Image source={user.portifilioPro3 ? {uri: user.portifilioPro3} : Imagens.mancha} style={styles.fotosRolagem}/></TouchableOpacity>
                     </ScrollView>
                  </View>
 

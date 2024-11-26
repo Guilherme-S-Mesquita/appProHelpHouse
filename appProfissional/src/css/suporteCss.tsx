@@ -1,3 +1,4 @@
+
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
@@ -11,7 +12,7 @@ const styles = StyleSheet.create({
     width: 350,
     borderRadius: 25,
     marginTop: 20,
-    marginLeft: 22,
+    marginLeft: 40,
     height: 590
   },
   TextSuporte: {
@@ -22,24 +23,32 @@ const styles = StyleSheet.create({
     bottom: 35,
   },
   titulo: {
-    fontSize: 25,
+    fontSize: 27,
     color: '#fff',
     fontWeight: 'bold',
     bottom: 10,
+    right:2
   },
   subTitulo: {
     color: '#0044CC',
     fontWeight: 'bold',
     bottom: 2,
-    fontSize: 15,
+    fontSize: 23,
     marginTop: 10,
-    left: 5
+    left: 7,
+  },
+  sub:{
+    color: '#698FFF',
+    bottom: 2,
+    fontSize: 13,
+    marginTop: 10,
+    left: 7,
   },
   subTitulo2: {
     color: '#004aad',
     fontWeight: 'bold',
-    fontSize: 20,
-    left: 55
+    fontSize: 22,
+    left: 35
   },
 
   problema: {
@@ -110,15 +119,15 @@ const styles = StyleSheet.create({
   },
   iconEmail: {
     marginRight: 10,
-    left:55,
-    top:1
+    left:38,
+    top:5
   },
 
   iconWhats: {
     marginRight: 10,
     bottom: 7,
-    marginTop: 10,
-    left:50
+    marginTop: 14,
+    left:77
   },
   subTitulo4: {
     color: '#004aad',
@@ -126,7 +135,7 @@ const styles = StyleSheet.create({
     bottom: 3,
     fontSize: 18,
     marginTop: 10,
-    left:50
+    left:75
   },
 
 });

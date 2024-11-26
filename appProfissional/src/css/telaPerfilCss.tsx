@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
     height: 955,
     borderRadius: 100,
     right: 39,
-    top: 95,
+  bottom: 160,
     zIndex: 1
   },
   meu: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     borderRadius: 80,
     left: 30,
     zIndex: 10,
-    top: 185
+    bottom:60
   },
   botao2: {
     alignItems: 'center',
@@ -135,5 +135,9 @@ const styles = StyleSheet.create({
     left: 50,
     top: 112
   },
+  palmeiras: {
+    width: 460,
+    height: 260
+  }
 });
 export default styles;
