@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     top: 112
   },
   palmeiras: {
-    width: 410,
+    width: 460,
     height: 260
   }
 });
